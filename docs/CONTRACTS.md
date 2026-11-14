@@ -186,9 +186,11 @@ Listed in `.env.example`. Each app reads only its own.
 | `PIPELINE_TIMEOUT_S` | backend | `180` | HL-5 |
 | `WEB_ORIGIN` | backend | `http://localhost:3000` | CORS |
 | `NOMINATIM_USER_AGENT` | backend | `earth-memory-hackthenest/1.0 (contact email)` | Required by Nominatim policy |
-| `OPENAI_API_KEY`, `OPENAI_MODEL` | backend | — | Model pinned after spike S4 |
+| `LLM_PROVIDER` | backend | `gemini` | `gemini` while building, `openai` before the demo (Future of Intelligence track). Picks which key `llm.py` uses |
+| `LLM_MODEL` | backend | `gemini-3.5-flash-lite` | Text model for the agent; change together with `LLM_PROVIDER` |
+| `OPENAI_API_KEY` | backend | — | Used when `LLM_PROVIDER=openai` |
 | `EXA_API_KEY` | backend | — | |
-| `GEMINI_API_KEY`, `GEMINI_MODEL` | backend | — | Vision check |
+| `GEMINI_API_KEY`, `GEMINI_VISION_MODEL` | backend | — | Image check; also the agent's key while `LLM_PROVIDER=gemini` |
 | `MONGODB_URI` | backend | empty = disabled | Optional mirror |
 | `ELEVENLABS_API_KEY` | web (server only) | — | Never `NEXT_PUBLIC_` |
 | `ELEVENLABS_VOICE_ID`, `ELEVENLABS_MODEL_ID` | web (server only) | — | One fixed voice (FR-45) |

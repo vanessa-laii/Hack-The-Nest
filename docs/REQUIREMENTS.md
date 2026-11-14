@@ -29,20 +29,24 @@ Never traded for features.
 ## 3. What it must do
 
 **Place**
+
 - **FR-1** Resolve a place name to a point, display name and admin names; **FR-2** if several places match, return a picker instead of guessing; **FR-3** reject open water with a friendly message.
 
 **Imagery**
+
 - **FR-13** One cloud-free composite per year from Landsat 4–9 (summer months; cloud, shadow and snow masked).
 - **FR-14** Record clear-sky % per year; skip years under 60% and say why.
 - **FR-15** One fixed colour stretch across all years, so brightness changes are real, not rendering.
 
 **Change and cause**
+
 - **FR-20** Measure per year: vegetation (NDVI), water fraction, built-up fraction.
 - **FR-22** A change must last ≥ 2 years (fires excepted). **FR-23** The control place produces 0 changes.
-- **FR-30** For each change, search with Exa and reason with OpenAI (track rule), following §4.
+- **FR-30** For each change, search with Exa and reason with a text model, following §4. Gemini is allowed while building; **switch to OpenAI by the end of Phase 2** (track rule) with `LLM_PROVIDER=openai`.
 - **FR-33** Each chapter gets a confidence: `confirmed`, `likely` or `cause_unknown`.
 
 **Film and web app**
+
 - **FR-45** One fixed narration voice; captions always on, synced to words.
 - **FR-52** Player: crossfaded frames, big year label, play/pause, scrub, timeline with chapter markers, metric chart.
 - **FR-54** Every claim reachable in one click: before/after frames with dates, sources, the exact verified excerpt, confidence.

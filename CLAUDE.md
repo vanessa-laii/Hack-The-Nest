@@ -22,8 +22,9 @@ Hack The Nest 2026 project. Type a place → a 60–90 s narrated, sourced film 
 
 ## Stack and conventions
 
-- Python 3.11+, FastAPI, Pydantic v2, `pystac-client` + `planetary-computer` (+ loader chosen in spike S1), numpy, rasterio, Pillow, httpx, `exa-py`, `openai`, `google-genai`, `jsonschema`.
+- Python 3.11+, FastAPI, Pydantic v2, `pystac-client` + `planetary-computer` (+ loader chosen in spike S1), numpy, rasterio, Pillow, httpx, `exa-py`, `openai` (text, both providers), `google-genai` (image check), `jsonschema`.
 - Prompts live in `backend/app/agent/prompts/*.md`.
+- **All text-model calls go through `backend/app/llm.py`**, using the `openai` Python library. `LLM_PROVIDER=gemini` points it at Gemini's OpenAI-compatible endpoint (`https://generativelanguage.googleapis.com/v1beta/openai/`) with `GEMINI_API_KEY`; `LLM_PROVIDER=openai` uses OpenAI with `OPENAI_API_KEY`. No other module imports a model SDK for text. Switching provider must need no code change; rerun the gold-set check after switching.
 - Every module starts with a 3-line comment: what it does, its inputs, its outputs.
 - Commit messages reference task and requirement IDs: `Phase 1: yearly composites (FR-13, FR-14)`.
 - Run `python backend/scripts/validate_story.py <path>` after any change to the pipeline.

@@ -58,7 +58,7 @@ flowchart LR
 
 Goal: both of us can build without waiting on each other.
 
-- **Both:** get API keys (OpenAI, Exa, ElevenLabs, Gemini, MongoDB Atlas) into local `.env` files; agree on the contract.
+- **Both:** get API keys (Exa, ElevenLabs, Gemini, MongoDB Atlas; OpenAI later) into local `.env` files; agree on the contract. Build the agent on Gemini first (`LLM_PROVIDER=gemini`).
 - **Harman:** backend skeleton with a **mock mode** that serves the sample story and replays sample progress events; fill in the test places in `eval/gold_places.yaml`.
 - **Vanessa:** Next.js skeleton; generate types from `contracts/`; load the sample story through a typed API client.
 
@@ -79,7 +79,7 @@ Goal: place → film with narration and sources, end to end.
 
 - **Harman:** spike S4 (causes without hallucination), then the cause agent, chapters with confidence, and the 150–225 word script.
 - **Vanessa:** spike S5, then ElevenLabs narration with cached audio, word-synced captions; switch from mock mode to the real backend.
-- **Both:** run one place end to end, **submit the Devpost draft before midnight**, record a backup demo video.
+- **Both:** switch the agent to OpenAI (`LLM_PROVIDER=openai`) and rerun the test places; run one place end to end, **submit the Devpost draft before midnight**, record a backup demo video.
 
 ✅ Done when one place goes from search to narrated film with clickable sources.
 
