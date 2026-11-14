@@ -1,0 +1,10 @@
+dask==2026.8.0
+numpy==2.5.4
+planetary-computer==1.0.0
+psutil==7.2.2
+pystac==1.16.0
+pystac-client==0.9.1
+rasterio==1.5.2
+stackstac==0.5.1
+truststore==0.10.5
+xarray==2026.9.0
