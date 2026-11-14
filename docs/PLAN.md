@@ -2,7 +2,26 @@
 
 **Hack The Nest 2026 · Sat Nov 14, 12 PM → Sun Nov 15, 12 PM (Eastern)**
 
-Type a place → a 60–90 s narrated, sourced film of how it changed since 1984, from real Landsat imagery. Rules: [`REQUIREMENTS.md`](REQUIREMENTS.md). Formats: [`CONTRACTS.md`](CONTRACTS.md).
+## What we're building and why
+
+**Earth Memory: type any place on Earth and get a 60–90 second narrated, sourced film of how that spot changed since 1984, and why.**
+
+**The problem.** The biggest changes to the places we live happen too slowly to notice: a lake shrinks, farmland becomes subdivisions, a forest burns and grows back. The proof exists, because NASA and USGS's Landsat satellites have photographed every patch of land since the 1980s. But that archive is built for remote-sensing specialists. Even when you can see that a place changed, nothing tells you *why*.
+
+**What we do about it.** An agent reads 40 years of Landsat imagery for the place you name, measures what changed and when (vegetation, water, built-up land), and finds documented real-world events that explain each change. It narrates the result as a short film with every claim linked to its source. When it can't find a cause it says so, instead of guessing.
+
+**Who it's for.** Teachers and students who want a lesson about *their* town, local journalists who need evidence of how a place changed, residents and planners asking "what was here before?", and anyone curious about where they grew up.
+
+**Why it stands out.**
+
+- **Personal:** every judge has a hometown, and the demo builds theirs live.
+- **Real science:** real pixels, real dates, measured change, checked against published records. No AI-generated images.
+- **Honest AI:** claims come only from source text checked word for word, and "cause unknown" is shown plainly.
+- **Needs an agent:** measuring change, then finding and checking its cause for any place in 90 seconds can't be done by hand.
+
+Rules: [`REQUIREMENTS.md`](REQUIREMENTS.md). Formats: [`CONTRACTS.md`](CONTRACTS.md).
+
+## Team
 
 | Who | Tool | Owns |
 | --- | --- | --- |
