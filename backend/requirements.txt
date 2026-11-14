@@ -1,0 +1,10 @@
+# Backend runtime (Python 3.12). Pipeline/agent deps get added as spikes S1-S4 pick winners.
+fastapi>=0.115
+uvicorn[standard]>=0.30
+pydantic>=2.7
+pydantic-settings>=2.3
+jsonschema>=4.22
+rfc3339-validator  # lets jsonschema check "format": "date-time"
+rfc3987  # lets jsonschema check "format": "uri"
+pillow>=10.3
+httpx>=0.27
