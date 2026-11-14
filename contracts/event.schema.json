@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://earth-memory.local/contracts/event.schema.json",
+  "title": "BuildEvent",
+  "description": "One server-sent event from GET /api/stories/{id}/events. The SSE 'event:' name equals 'type'; 'data:' is this object as JSON. Version 1.0.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["type", "story_id", "seq", "ts", "message"],
+  "properties": {
+    "type": { "enum": ["progress", "frame", "change", "done", "error"] },
+    "story_id": { "type": "string" },
+    "seq": { "type": "integer", "minimum": 0, "description": "Increments by 1. Clients reconnect with Last-Event-ID = last seq." },
+    "ts": { "type": "string", "format": "date-time" },
+    "stage": {
+      "enum": ["geocode", "scenes", "composite", "metrics", "changes", "research", "verify", "script", "save"],
+      "description": "Required for progress, frame and change events."
+    },
+    "status": { "enum": ["started", "running", "done", "warning"], "description": "For progress events." },
+    "message": { "type": "string", "maxLength": 120, "description": "Plain words shown in the live feed." },
+    "progress": { "type": "number", "minimum": 0, "maximum": 1, "description": "Overall progress estimate." },
+    "frame": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["year", "thumb_url", "clear_pct"],
+      "properties": {
+        "year": { "type": "integer" },
+        "thumb_url": { "type": "string", "pattern": "^/files/" },
+        "clear_pct": { "type": "number" }
+      }
+    },
+    "change": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["change_id", "kind", "start_year", "end_year", "region_description"],
+      "properties": {
+        "change_id": { "type": "string" },
+        "kind": { "type": "string" },
+        "start_year": { "type": "integer" },
+        "end_year": { "type": "integer" },
+        "region_description": { "type": "string" }
+      }
+    },
+    "story_url": { "type": "string", "description": "On done: /api/stories/{id}." },
+    "error": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "message"],
+      "properties": {
+        "code": { "enum": ["PLACE_NOT_FOUND", "NO_LAND_DATA", "TIMEOUT", "UPSTREAM_ERROR", "INTERNAL"] },
+        "message": { "type": "string" },
+        "partial_story_url": { "type": ["string", "null"], "description": "Set when a partial story was saved and is playable." }
+      }
+    }
+  },
+  "allOf": [
+    { "if": { "properties": { "type": { "const": "frame" } } }, "then": { "required": ["stage", "frame"] } },
+    { "if": { "properties": { "type": { "const": "change" } } }, "then": { "required": ["stage", "change"] } },
+    { "if": { "properties": { "type": { "const": "progress" } } }, "then": { "required": ["stage", "status"] } },
+    { "if": { "properties": { "type": { "const": "done" } } }, "then": { "required": ["story_url"] } },
+    { "if": { "properties": { "type": { "const": "error" } } }, "then": { "required": ["error"] } }
+  ]
+}

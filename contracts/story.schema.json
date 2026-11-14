@@ -1,0 +1,298 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://earth-memory.local/contracts/story.schema.json",
+  "title": "Story",
+  "description": "One Earth Memory story. Written by backend/, read by web/. Version 1.0. See docs/CONTRACTS.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "status", "created_at", "place", "coverage", "frames", "metrics", "changes", "sources", "chapters", "script", "credits", "generation"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "id": { "$ref": "#/$defs/storyId" },
+    "is_sample": { "type": "boolean", "description": "True only for hand-made sample/mock stories. Never true for generated stories." },
+    "status": { "enum": ["complete", "partial"], "description": "partial = saved after a timeout, budget stop or upstream failure; still playable." },
+    "created_at": { "type": "string", "format": "date-time" },
+
+    "place": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["query", "display_name", "lat", "lon", "bbox", "aoi_km", "admin"],
+      "properties": {
+        "query": { "type": "string", "description": "What the user typed." },
+        "display_name": { "type": "string", "description": "Short name for the UI, e.g. 'Ypsilanti, Michigan'." },
+        "lat": { "type": "number", "minimum": -90, "maximum": 90 },
+        "lon": { "type": "number", "minimum": -180, "maximum": 180 },
+        "bbox": { "$ref": "#/$defs/bbox" },
+        "aoi_km": { "type": "number", "minimum": 3, "maximum": 10 },
+        "admin": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["country", "country_code"],
+          "properties": {
+            "city": { "type": ["string", "null"] },
+            "county": { "type": ["string", "null"] },
+            "state": { "type": ["string", "null"] },
+            "country": { "type": "string" },
+            "country_code": { "type": "string", "pattern": "^[a-z]{2}$" }
+          }
+        }
+      }
+    },
+
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["first_year", "last_year", "season_months", "years_skipped"],
+      "properties": {
+        "first_year": { "$ref": "#/$defs/year" },
+        "last_year": { "$ref": "#/$defs/year" },
+        "season_months": { "type": "array", "items": { "type": "integer", "minimum": 1, "maximum": 12 }, "minItems": 1 },
+        "years_skipped": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["year", "reason"],
+            "properties": {
+              "year": { "$ref": "#/$defs/year" },
+              "reason": { "type": "string", "description": "Plain words, e.g. 'only 41% clear sky' or 'Landsat 7 stripe gaps'." }
+            }
+          }
+        }
+      }
+    },
+
+    "frames": {
+      "type": "array",
+      "minItems": 2,
+      "description": "One per kept year, sorted by year ascending.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["year", "image_url", "thumb_url", "sensors", "scene_ids", "date_from", "date_to", "clear_pct"],
+        "properties": {
+          "year": { "$ref": "#/$defs/year" },
+          "image_url": { "$ref": "#/$defs/fileUrl", "description": "1024 x 1024 JPEG." },
+          "thumb_url": { "$ref": "#/$defs/fileUrl", "description": "256 x 256 JPEG." },
+          "sensors": { "type": "array", "minItems": 1, "items": { "enum": ["Landsat 4", "Landsat 5", "Landsat 7", "Landsat 8", "Landsat 9"] } },
+          "scene_ids": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "date_from": { "type": "string", "format": "date", "description": "Earliest acquisition date used." },
+          "date_to": { "type": "string", "format": "date", "description": "Latest acquisition date used." },
+          "clear_pct": { "type": "number", "minimum": 0, "maximum": 100 }
+        }
+      }
+    },
+
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["series"],
+      "properties": {
+        "series": {
+          "type": "array",
+          "description": "One entry per kept year, same years as frames.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["year", "ndvi_mean", "water_frac", "built_frac"],
+            "properties": {
+              "year": { "$ref": "#/$defs/year" },
+              "ndvi_mean": { "type": "number", "minimum": -1, "maximum": 1, "description": "Mean NDVI over clear pixels." },
+              "water_frac": { "type": "number", "minimum": 0, "maximum": 1, "description": "Share of clear pixels with MNDWI > 0." },
+              "built_frac": { "type": "number", "minimum": 0, "maximum": 1, "description": "Share of clear pixels with NDBI > 0 and NDVI < 0.2." }
+            }
+          }
+        }
+      }
+    },
+
+    "changes": {
+      "type": "array",
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "kind", "metric", "start_year", "end_year", "magnitude", "persistence_years", "region", "before_year", "after_year", "mask_url", "sensor_switch_flag"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^chg-[0-9]{2}$" },
+          "kind": { "enum": ["vegetation_loss", "vegetation_gain", "water_loss", "water_gain", "urban_growth", "burn", "other"] },
+          "metric": { "enum": ["ndvi_mean", "water_frac", "built_frac"] },
+          "start_year": { "$ref": "#/$defs/year" },
+          "end_year": { "$ref": "#/$defs/year" },
+          "magnitude": { "type": "number", "description": "Signed change in the metric's own units (after minus before)." },
+          "persistence_years": { "type": "integer", "minimum": 1 },
+          "region": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["bbox", "description"],
+            "properties": {
+              "bbox": { "$ref": "#/$defs/bbox" },
+              "description": { "type": "string", "description": "e.g. 'northeast quarter', 'along the west shore'." }
+            }
+          },
+          "before_year": { "$ref": "#/$defs/year" },
+          "after_year": { "$ref": "#/$defs/year" },
+          "mask_url": { "anyOf": [{ "$ref": "#/$defs/fileUrl" }, { "type": "null" }] },
+          "sensor_switch_flag": { "type": "boolean", "description": "True if the change coincides with a sensor switch and may be an artefact (DR-6)." }
+        }
+      }
+    },
+
+    "sources": {
+      "type": "array",
+      "description": "Only sources with at least one verified excerpt are kept.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "url", "title", "domain", "published_date", "authority", "retrieved_at", "excerpts"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^src-[0-9]{2}$" },
+          "url": { "type": "string", "format": "uri" },
+          "title": { "type": "string" },
+          "publisher": { "type": ["string", "null"] },
+          "domain": { "type": "string" },
+          "published_date": { "type": ["string", "null"], "format": "date" },
+          "authority": { "enum": ["authoritative", "other"], "description": "authoritative = government, scientific, or major newspaper (TR-7)." },
+          "retrieved_at": { "type": "string", "format": "date-time" },
+          "excerpts": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["id", "text", "verified"],
+              "properties": {
+                "id": { "type": "string", "pattern": "^ex-[0-9]{2}-[0-9]{2}$" },
+                "text": { "type": "string", "maxLength": 600, "description": "Verbatim passage from the page. Shown in the evidence panel." },
+                "verified": { "const": true }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "chapters": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 7,
+      "description": "intro, 1-5 change chapters, outro, in playback order.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "kind", "change_id", "start_year", "end_year", "headline", "claims", "confidence", "vision_check"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^ch-[0-9]{2}$" },
+          "kind": { "enum": ["intro", "change", "outro"] },
+          "change_id": { "type": ["string", "null"], "description": "Set for kind=change, null for intro/outro." },
+          "start_year": { "$ref": "#/$defs/year" },
+          "end_year": { "$ref": "#/$defs/year" },
+          "headline": { "type": "string", "maxLength": 60 },
+          "claims": {
+            "type": "array",
+            "description": "Empty for intro/outro and for cause_unknown chapters.",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["id", "text", "excerpt_ids"],
+              "properties": {
+                "id": { "type": "string", "pattern": "^cl-[0-9]{2}$" },
+                "text": { "type": "string", "maxLength": 240 },
+                "excerpt_ids": { "type": "array", "minItems": 1, "items": { "type": "string" } }
+              }
+            }
+          },
+          "confidence": { "enum": ["confirmed", "likely", "cause_unknown", null], "description": "null for intro/outro." },
+          "vision_check": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["verdict", "note"],
+            "properties": {
+              "verdict": { "enum": ["agrees", "disagrees", "unsure", "not_run"] },
+              "note": { "type": ["string", "null"] }
+            }
+          }
+        }
+      }
+    },
+
+    "script": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["word_count", "est_duration_s", "segments"],
+      "properties": {
+        "word_count": { "type": "integer", "minimum": 150, "maximum": 225, "description": "HL-1." },
+        "est_duration_s": { "type": "number", "minimum": 55, "maximum": 95 },
+        "segments": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "chapter_id", "text", "year_from", "year_to", "claim_ids"],
+            "properties": {
+              "id": { "type": "string", "pattern": "^seg-[0-9]{2}$" },
+              "chapter_id": { "type": "string" },
+              "text": { "type": "string" },
+              "year_from": { "$ref": "#/$defs/year" },
+              "year_to": { "$ref": "#/$defs/year" },
+              "claim_ids": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        }
+      }
+    },
+
+    "validation": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["metric", "reference_name", "reference_url", "summary"],
+      "properties": {
+        "metric": { "enum": ["ndvi_mean", "water_frac", "built_frac"] },
+        "reference_name": { "type": "string" },
+        "reference_url": { "type": "string", "format": "uri" },
+        "summary": { "type": "string", "description": "Honest comparison, including disagreement (DR-7)." }
+      }
+    },
+
+    "credits": { "type": "array", "minItems": 2, "items": { "type": "string" } },
+
+    "generation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["duration_s", "usage", "warnings"],
+      "properties": {
+        "duration_s": { "type": "number", "minimum": 0 },
+        "usage": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["exa_calls", "llm_calls", "vision_calls"],
+          "properties": {
+            "exa_calls": { "type": "integer", "minimum": 0, "maximum": 15 },
+            "llm_calls": { "type": "integer", "minimum": 0, "maximum": 25 },
+            "vision_calls": { "type": "integer", "minimum": 0, "maximum": 6 }
+          }
+        },
+        "warnings": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  },
+
+  "$defs": {
+    "storyId": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$", "maxLength": 64 },
+    "year": { "type": "integer", "minimum": 1982, "maximum": 2026 },
+    "bbox": {
+      "type": "array",
+      "description": "[west, south, east, north] in WGS84 degrees.",
+      "prefixItems": [
+        { "type": "number", "minimum": -180, "maximum": 180 },
+        { "type": "number", "minimum": -90, "maximum": 90 },
+        { "type": "number", "minimum": -180, "maximum": 180 },
+        { "type": "number", "minimum": -90, "maximum": 90 }
+      ],
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "fileUrl": { "type": "string", "pattern": "^/files/", "description": "Path served by the backend; the web app prefixes NEXT_PUBLIC_API_BASE." }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://earth-memory.local/contracts/narration.schema.json",
+  "title": "Narration",
+  "description": "Audio + word timings for one story. Written by web/ (/api/narrate) into DATA_DIR/stories/<id>/narration/. Version 1.0.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "story_id", "voice_id", "model_id", "created_at", "total_duration_s", "segments"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "story_id": { "type": "string" },
+    "voice_id": { "type": "string" },
+    "model_id": { "type": "string" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "total_duration_s": { "type": "number", "minimum": 55, "maximum": 95, "description": "HL-1: reject above 95 s." },
+    "segments": {
+      "type": "array",
+      "minItems": 3,
+      "description": "Same order and ids as story.script.segments.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["segment_id", "audio_url", "duration_s", "words"],
+        "properties": {
+          "segment_id": { "type": "string", "pattern": "^seg-[0-9]{2}$" },
+          "audio_url": { "type": "string", "pattern": "^/files/" },
+          "duration_s": { "type": "number", "minimum": 0 },
+          "words": {
+            "type": "array",
+            "description": "Word timings relative to the start of this segment's audio, built from ElevenLabs character alignment.",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["text", "start_s", "end_s"],
+              "properties": {
+                "text": { "type": "string" },
+                "start_s": { "type": "number", "minimum": 0 },
+                "end_s": { "type": "number", "minimum": 0 }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

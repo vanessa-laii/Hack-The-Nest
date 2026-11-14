@@ -1,0 +1,119 @@
+# Earth Memory: Build Plan
+
+**Hack The Nest 2026 · Sat Nov 14, 12 PM → Sun Nov 15, 12 PM (Eastern)**
+
+Type a place → a 60–90 s narrated, sourced film of how it changed since 1984, from real Landsat imagery. Rules: [`REQUIREMENTS.md`](REQUIREMENTS.md). Formats: [`CONTRACTS.md`](CONTRACTS.md).
+
+| Who | Tool | Owns |
+| --- | --- | --- |
+| **Harman** | Claude Code | `backend/`, `contracts/`, `eval/`, `spikes/`: everything that *makes* a story |
+| **Vanessa** | Cursor | `web/`: everything that *shows* a story, plus narration |
+
+**Event deadlines:** Devpost draft by **Sat midnight** · final by **Sun 12 PM** (no late entries) · demos **Sun 1:15 PM**.
+
+## Architecture
+
+```mermaid
+flowchart LR
+    subgraph WEB["web/ · Vanessa · Next.js"]
+        S[Search + gallery] --> B[Live progress] --> P[Story player]
+        N[/api/narrate · ElevenLabs/]
+    end
+    subgraph BE["backend/ · Harman · FastAPI"]
+        G[Geocode] --> I[Landsat images<br/>per year] --> M[Measure +<br/>detect changes] --> A[Cause agent<br/>Exa + OpenAI + Gemini] --> W[Write script]
+        W --> D[(data/stories/id/<br/>story.json + frames)]
+    end
+    S -- place name --> G
+    BE -- progress events --> B
+    D -- story.json --> P
+    P --> N
+```
+
+- **One contract** between the halves: the backend writes `story.json`, the web app plays it. See `CONTRACTS.md`.
+- **Disk is the source of truth**, so cached stories play offline. MongoDB only mirrors the gallery list.
+- **The agent never writes from memory.** Claims come only from source text checked word for word (REQUIREMENTS §4).
+
+## Phases
+
+### Phase 0: Setup
+
+Goal: both of us can build without waiting on each other.
+
+- **Both:** get API keys (OpenAI, Exa, ElevenLabs, Gemini, MongoDB Atlas) into local `.env` files; agree on the contract.
+- **Harman:** backend skeleton with a **mock mode** that serves the sample story and replays sample progress events; fill in the test places in `eval/gold_places.yaml`.
+- **Vanessa:** Next.js skeleton; generate types from `contracts/`; load the sample story through a typed API client.
+
+✅ Done when the web app shows the sample story from the mock backend.
+
+### Phase 1: Core
+
+Goal: real satellite pixels in a real player.
+
+- **Harman:** run spikes S1–S3 with subagents (imagery access, clean yearly images, change detection) and build the winners: place lookup → yearly frames → measurements → detected changes → progress events.
+- **Vanessa:** search page and gallery, place picker, live progress page, film player (crossfade, year label, scrub), timeline with chapter markers, metric chart. All against mock mode.
+
+✅ Done when a real Lake Mead story (frames, measurements, changes) plays in the player. **If this isn't working by about 9 PM, drop live generation and demo only pre-built stories.**
+
+### Phase 2: Full loop
+
+Goal: place → film with narration and sources, end to end.
+
+- **Harman:** spike S4 (causes without hallucination), then the cause agent, chapters with confidence, and the 150–225 word script.
+- **Vanessa:** spike S5, then ElevenLabs narration with cached audio, word-synced captions; switch from mock mode to the real backend.
+- **Both:** run one place end to end, **submit the Devpost draft before midnight**, record a backup demo video.
+
+✅ Done when one place goes from search to narrated film with clickable sources.
+
+### Phase 3: Polish (overnight, sleep in shifts)
+
+Goal: a demo that can't fail.
+
+- **Harman:** Gemini image check, validation against a published record, pre-build 6–8 stories for the gallery, speed tuning.
+- **Vanessa:** evidence panel, before/after slider, offline test with Wi-Fi off, visual polish and error states.
+
+✅ Done when every cached story plays offline, narrated, with sources.
+
+### Phase 4: Ship (Sunday morning)
+
+Goal: submitted and rehearsed.
+
+- **Feature freeze around 9 AM.** Bug fixes only after that.
+- **Harman:** README (how to run, data sources, credit line, limits).
+- **Vanessa:** demo video ≤ 3 min; optional domain and deployment.
+- **Both:** rehearse the 2-minute table demo; each person explains the other's half; **submit final on Devpost by 11:30 AM**.
+
+✅ Done when the REQUIREMENTS §8 checklist is ticked.
+
+## If we run short, cut in this order
+
+1. "Ask the place" voice Q&A
+2. Before/after slider
+3. MongoDB mirror
+4. Gemini image check
+5. Live generation (demo pre-built stories only)
+
+**Never cut:** source verification, "cause unknown" honesty, the player, narration, credit lines.
+
+## Repo structure
+
+```text
+Hack-The-Nest/
+├── CLAUDE.md · .cursor/rules/      # instructions for each AI tool
+├── docs/                           # PLAN, REQUIREMENTS, CONTRACTS, decisions/
+├── contracts/                      # JSON schemas + samples (shared, change only by agreement)
+├── backend/app/
+│   ├── pipeline/                   # geocode, imagery, composite, render, metrics, changes, run
+│   └── agent/                      # search, verify, vision, chapters, script, prompts/
+├── backend/scripts/                # build_cached.py, validate_story.py
+├── eval/gold_places.yaml           # test places for spikes
+├── spikes/                         # subagent comparison code
+├── web/app/                        # page.tsx, build/[id], story/[id], api/narrate
+├── web/components/ · web/lib/      # player pieces; generated types + API client
+└── data/                           # git-ignored: stories, frames, audio
+```
+
+## Working together
+
+- Each of us stays in our own folder; contract changes are agreed first.
+- Merge to `main` at the end of each phase, after checking it still runs.
+- Post in our chat when a phase is done or blocked.

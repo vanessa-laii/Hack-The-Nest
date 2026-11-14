@@ -1,0 +1,164 @@
+{
+  "schema_version": "1.0",
+  "id": "sample-lake-6km",
+  "is_sample": true,
+  "status": "complete",
+  "created_at": "2026-11-14T21:00:00Z",
+  "place": {
+    "query": "Sample Lake",
+    "display_name": "Sample Lake (made-up data)",
+    "lat": 36.25,
+    "lon": -114.39,
+    "bbox": [-114.4235, 36.223, -114.3565, 36.277],
+    "aoi_km": 6,
+    "admin": { "city": null, "county": "Sample County", "state": "Sample State", "country": "United States", "country_code": "us" }
+  },
+  "coverage": {
+    "first_year": 1984,
+    "last_year": 2024,
+    "season_months": [6, 7, 8, 9],
+    "years_skipped": [
+      { "year": 2012, "reason": "Landsat 7 stripe gaps (sample)" },
+      { "year": 1987, "reason": "only 41% clear sky (sample)" }
+    ]
+  },
+  "frames": [
+    { "year": 1984, "image_url": "/files/samples/frames/1984.jpg", "thumb_url": "/files/samples/thumbs/1984.jpg", "sensors": ["Landsat 5"], "scene_ids": ["SAMPLE_LT05_1984_A"], "date_from": "1984-06-12", "date_to": "1984-08-31", "clear_pct": 97 },
+    { "year": 1990, "image_url": "/files/samples/frames/1990.jpg", "thumb_url": "/files/samples/thumbs/1990.jpg", "sensors": ["Landsat 5"], "scene_ids": ["SAMPLE_LT05_1990_A"], "date_from": "1990-06-03", "date_to": "1990-09-07", "clear_pct": 94 },
+    { "year": 1996, "image_url": "/files/samples/frames/1996.jpg", "thumb_url": "/files/samples/thumbs/1996.jpg", "sensors": ["Landsat 5"], "scene_ids": ["SAMPLE_LT05_1996_A"], "date_from": "1996-06-20", "date_to": "1996-08-23", "clear_pct": 99 },
+    { "year": 2002, "image_url": "/files/samples/frames/2002.jpg", "thumb_url": "/files/samples/thumbs/2002.jpg", "sensors": ["Landsat 5", "Landsat 7"], "scene_ids": ["SAMPLE_LT05_2002_A", "SAMPLE_LE07_2002_B"], "date_from": "2002-06-08", "date_to": "2002-09-12", "clear_pct": 96 },
+    { "year": 2008, "image_url": "/files/samples/frames/2008.jpg", "thumb_url": "/files/samples/thumbs/2008.jpg", "sensors": ["Landsat 5"], "scene_ids": ["SAMPLE_LT05_2008_A"], "date_from": "2008-06-15", "date_to": "2008-08-18", "clear_pct": 92 },
+    { "year": 2014, "image_url": "/files/samples/frames/2014.jpg", "thumb_url": "/files/samples/thumbs/2014.jpg", "sensors": ["Landsat 8"], "scene_ids": ["SAMPLE_LC08_2014_A"], "date_from": "2014-06-22", "date_to": "2014-09-10", "clear_pct": 98 },
+    { "year": 2020, "image_url": "/files/samples/frames/2020.jpg", "thumb_url": "/files/samples/thumbs/2020.jpg", "sensors": ["Landsat 8"], "scene_ids": ["SAMPLE_LC08_2020_A"], "date_from": "2020-06-06", "date_to": "2020-08-25", "clear_pct": 95 },
+    { "year": 2024, "image_url": "/files/samples/frames/2024.jpg", "thumb_url": "/files/samples/thumbs/2024.jpg", "sensors": ["Landsat 8", "Landsat 9"], "scene_ids": ["SAMPLE_LC08_2024_A", "SAMPLE_LC09_2024_B"], "date_from": "2024-06-10", "date_to": "2024-09-02", "clear_pct": 93 }
+  ],
+  "metrics": {
+    "series": [
+      { "year": 1984, "ndvi_mean": 0.08, "water_frac": 0.52, "built_frac": 0.02 },
+      { "year": 1990, "ndvi_mean": 0.08, "water_frac": 0.51, "built_frac": 0.02 },
+      { "year": 1996, "ndvi_mean": 0.09, "water_frac": 0.53, "built_frac": 0.02 },
+      { "year": 2002, "ndvi_mean": 0.08, "water_frac": 0.46, "built_frac": 0.03 },
+      { "year": 2008, "ndvi_mean": 0.07, "water_frac": 0.39, "built_frac": 0.03 },
+      { "year": 2014, "ndvi_mean": 0.07, "water_frac": 0.33, "built_frac": 0.05 },
+      { "year": 2020, "ndvi_mean": 0.07, "water_frac": 0.32, "built_frac": 0.05 },
+      { "year": 2024, "ndvi_mean": 0.08, "water_frac": 0.36, "built_frac": 0.05 }
+    ]
+  },
+  "changes": [
+    {
+      "id": "chg-01",
+      "kind": "water_loss",
+      "metric": "water_frac",
+      "start_year": 2000,
+      "end_year": 2014,
+      "magnitude": -0.2,
+      "persistence_years": 10,
+      "region": { "bbox": [-114.41, 36.23, -114.37, 36.27], "description": "around the whole shoreline" },
+      "before_year": 1996,
+      "after_year": 2014,
+      "mask_url": "/files/samples/masks/chg-01.png",
+      "sensor_switch_flag": false
+    },
+    {
+      "id": "chg-02",
+      "kind": "other",
+      "metric": "built_frac",
+      "start_year": 2009,
+      "end_year": 2011,
+      "magnitude": 0.02,
+      "persistence_years": 13,
+      "region": { "bbox": [-114.375, 36.255, -114.36, 36.27], "description": "northeast corner" },
+      "before_year": 2008,
+      "after_year": 2014,
+      "mask_url": null,
+      "sensor_switch_flag": false
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-01",
+      "url": "https://example.com/sample-article-1",
+      "title": "[SAMPLE] Reservoir falls to new low",
+      "publisher": "Sample News",
+      "domain": "example.com",
+      "published_date": "2014-07-10",
+      "authority": "authoritative",
+      "retrieved_at": "2026-11-14T21:00:00Z",
+      "excerpts": [
+        { "id": "ex-01-01", "text": "[SAMPLE EXCERPT] Sample Lake dropped to its lowest level since it was filled, after more than a decade of drought in the region.", "verified": true }
+      ]
+    },
+    {
+      "id": "src-02",
+      "url": "https://example.org/sample-report",
+      "title": "[SAMPLE] Water supply report",
+      "publisher": "Sample Water Agency",
+      "domain": "example.org",
+      "published_date": "2015-02-01",
+      "authority": "authoritative",
+      "retrieved_at": "2026-11-14T21:00:00Z",
+      "excerpts": [
+        { "id": "ex-02-01", "text": "[SAMPLE EXCERPT] Inflows to Sample Lake were below average in most years between 2000 and 2014.", "verified": true }
+      ]
+    }
+  ],
+  "chapters": [
+    {
+      "id": "ch-01", "kind": "intro", "change_id": null, "start_year": 1984, "end_year": 1999,
+      "headline": "A full lake", "claims": [], "confidence": null,
+      "vision_check": { "verdict": "not_run", "note": null }
+    },
+    {
+      "id": "ch-02", "kind": "change", "change_id": "chg-01", "start_year": 2000, "end_year": 2014,
+      "headline": "The shoreline retreats",
+      "claims": [
+        { "id": "cl-01", "text": "[SAMPLE] The lake fell to its lowest level since filling after a decade of regional drought.", "excerpt_ids": ["ex-01-01", "ex-02-01"] }
+      ],
+      "confidence": "confirmed",
+      "vision_check": { "verdict": "agrees", "note": "[SAMPLE] Exposed shore visible around the lake in the after image." }
+    },
+    {
+      "id": "ch-03", "kind": "change", "change_id": "chg-02", "start_year": 2009, "end_year": 2011,
+      "headline": "New ground cleared in the northeast",
+      "claims": [], "confidence": "cause_unknown",
+      "vision_check": { "verdict": "unsure", "note": "[SAMPLE] Small bright patch; too small to identify." }
+    },
+    {
+      "id": "ch-04", "kind": "outro", "change_id": null, "start_year": 2015, "end_year": 2024,
+      "headline": "Where it stands today", "claims": [], "confidence": null,
+      "vision_check": { "verdict": "not_run", "note": null }
+    }
+  ],
+  "script": {
+    "word_count": 164,
+    "est_duration_s": 66,
+    "segments": [
+      {
+        "id": "seg-01", "chapter_id": "ch-01", "year_from": 1984, "year_to": 1999, "claim_ids": [],
+        "text": "This is sample narration for a made-up place. In nineteen eighty-four, satellites looked down on a wide blue lake in the desert. For the next fifteen years, summer after summer, the water reached almost the same shoreline, and the land around it barely changed."
+      },
+      {
+        "id": "seg-02", "chapter_id": "ch-02", "year_from": 2000, "year_to": 2014, "claim_ids": ["cl-01"],
+        "text": "Then, around two thousand, the water begins to pull back. Year by year a pale ring of dry ground appears where the lake used to be. By two thousand fourteen, about a fifth of this area has turned from water to land. Reports from the time describe the lowest level since the lake was filled, after more than a decade of drought."
+      },
+      {
+        "id": "seg-03", "chapter_id": "ch-03", "year_from": 2009, "year_to": 2011, "claim_ids": [],
+        "text": "In the northeast corner, a patch of new ground is cleared between two thousand nine and two thousand eleven. The satellites show the change clearly, but we found no record of why it happened."
+      },
+      {
+        "id": "seg-04", "chapter_id": "ch-04", "year_from": 2015, "year_to": 2024, "claim_ids": [],
+        "text": "Since then, the shoreline has crept back a little in the most recent years. The lake remembers every summer. Now you can ask it."
+      }
+    ]
+  },
+  "validation": null,
+  "credits": [
+    "Landsat imagery courtesy of NASA and the U.S. Geological Survey.",
+    "Supported by the Michigan Space Grant Consortium, NASA grant 80NSSC20M0124."
+  ],
+  "generation": {
+    "duration_s": 0,
+    "usage": { "exa_calls": 0, "llm_calls": 0, "vision_calls": 0 },
+    "warnings": ["Hand-made sample story. All values and sources are invented for building the UI."]
+  }
+}

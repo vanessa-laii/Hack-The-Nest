@@ -1,0 +1,49 @@
+# Gold evaluation set for spikes S1-S4 and regression checks.
+# EXPECTATIONS ARE HYPOTHESES: confirm each one in NASA Worldview (or by looking at our own frames)
+# before treating it as ground truth. Set `verified: true` once checked, and note what you saw.
+
+places:
+  - query: "Lake Mead, Nevada"
+    purpose: water change; validation against published reservoir records (DR-7)
+    expected_changes:
+      - kind: water_loss
+        approx_years: [2000, 2015]
+        cause_keywords: [drought, low water, reservoir level]
+      - kind: water_gain
+        approx_years: [2023, 2023]
+        cause_keywords: [snowpack, inflow, rise]
+    verified: false
+
+  - query: "Paradise, California"
+    purpose: burn change
+    expected_changes:
+      - kind: burn
+        approx_years: [2018, 2018]
+        cause_keywords: [Camp Fire, wildfire]
+    verified: false
+
+  - query: "Summerlin, Nevada"
+    purpose: built-up growth
+    expected_changes:
+      - kind: urban_growth
+        approx_years: [1990, 2010]
+        cause_keywords: [development, master-planned community, housing]
+    verified: false
+
+  - query: "Palm Jumeirah, Dubai"
+    purpose: water to land
+    expected_changes:
+      - kind: water_loss
+        approx_years: [2001, 2006]
+        cause_keywords: [land reclamation, artificial island]
+    verified: false
+
+  - query: "Central Park, New York"
+    purpose: CONTROL. Must produce zero changes (FR-23)
+    expected_changes: []
+    verified: false
+
+  - query: "Ypsilanti, Michigan"
+    purpose: local demo; small-town news coverage test
+    expected_changes: unknown
+    verified: false

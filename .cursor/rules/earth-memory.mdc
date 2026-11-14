@@ -1,0 +1,37 @@
+---
+description: Earth Memory project rules for the web app (Next.js + TypeScript)
+globs:
+alwaysApply: true
+---
+
+# Earth Memory: rules for Cursor
+
+Hack The Nest 2026 project. A place name becomes a 60–90 s narrated, sourced film of how it changed since 1984, from real Landsat satellite images. Read `docs/PLAN.md`, `docs/REQUIREMENTS.md` and `docs/CONTRACTS.md` first.
+
+## Who owns what
+
+- **Vanessa (this tool) owns:** `web/` only.
+- **Harman (Claude Code) owns:** `backend/`, `contracts/`, `eval/`, `spikes/`. **Never edit files outside `web/`.** If the backend or a contract needs to change, say so in chat so the Vanessa can tell Harman.
+- Types in `web/lib/types/` are generated from `contracts/*.schema.json` (`npm run types`). Never hand-edit them and never change the schemas.
+
+## Build against the contract
+
+- Until Phase 1 is done, build against the backend's **mock mode** (`EM_MOCK=1`): it serves `contracts/samples/story.sample.json` and replays `contracts/samples/events.sample.jsonl`.
+- All backend URLs come from `NEXT_PUBLIC_API_BASE`; `/files/...` paths in the story are prefixed with it.
+- Handle every error code in `docs/CONTRACTS.md` §5 with a friendly message and a way out. Never show a blank screen.
+
+## Non-negotiables
+
+1. **ElevenLabs key is server-side only**: used in `app/api/narrate/route.ts`, never in client code, never `NEXT_PUBLIC_`. Cache audio + `narration.json` to `DATA_DIR/stories/<id>/narration/` and reuse it.
+2. **Film length 60–90 s (HL-1):** reject narration over 95 s.
+3. **Never change what the story says.** The web app displays `story.json` exactly. No rewording claims, no added facts, no generated images.
+4. **Evidence is one click away:** every claim shows its verified excerpt and source link (FR-54). `cause_unknown` chapters show that honestly.
+5. **Credit lines** in the footer of every page (HL-11). No NASA logos.
+6. **Accessibility:** captions on by default, real `<button>`/`<label>`, contrast ≥ 4.5:1, space = play/pause, ←/→ = previous/next year.
+
+## Stack and style
+
+- Next.js (App Router) + TypeScript + Tailwind. Pages: `/` (search + gallery), `/build/[id]` (live progress), `/story/[id]` (player).
+- Components: `SearchBox`, `PlacePicker`, `ProgressFeed`, `FilmPlayer`, `Timeline`, `MetricChart`, `EvidencePanel`, `Captions`, `BeforeAfter`, `Footer`.
+- Look and feel: follow the mockup (dark ground `#0A0E13`, teal accent `#4FD1B5`, warm change accent `#F0A35E`, Space Grotesk headings, Inter body).
+- Commit messages say the phase and requirement: `Phase 1: film player crossfade (FR-52)`.
