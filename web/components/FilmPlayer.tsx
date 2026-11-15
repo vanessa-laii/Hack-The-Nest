@@ -648,9 +648,9 @@ export function FilmPlayer({
           </span>
         </div>
 
-        <p className="font-label text-[9px] uppercase tracking-[0.18em] text-[#6e6e73]">
+        {/* <p className="font-label text-[9px] uppercase tracking-[0.18em] text-[#6e6e73]">
           Click frame or Space play/pause · ← → year
-        </p>
+        </p> */}
       </div>
     </div>
   );
