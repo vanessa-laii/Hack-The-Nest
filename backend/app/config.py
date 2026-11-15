@@ -52,6 +52,8 @@ class Settings(BaseSettings):
     gemini_api_key: SecretStr | None = Field(None, alias="GEMINI_API_KEY")
     gemini_vision_model: str = Field("gemini-3.5-flash-lite", alias="GEMINI_VISION_MODEL")
     exa_api_key: SecretStr | None = Field(None, alias="EXA_API_KEY")
+    # 1 = Exa answers only from the disk cache and never spends money (spikes, tests).
+    exa_cached_only: bool = Field(False, alias="EXA_CACHED_ONLY")
     mongodb_uri: SecretStr | None = Field(None, alias="MONGODB_URI")
 
     @field_validator("aoi_km")
