@@ -1,7 +1,7 @@
 /**
  * POST /api/narrate — build or return cached word-timed narration for a story.
  * Inputs: { story_id }. Uses ElevenLabs server-side only; writes DATA_DIR/.../narration/.
- * Outputs: narration.json body (CONTRACTS §4). Rejects totals outside 55–95 s.
+ * Outputs: narration.json body (CONTRACTS §4). Rejects totals outside 55–120 s (web demo).
  */
 
 import fs from "node:fs/promises";
@@ -19,11 +19,16 @@ import {
   segmentMp3Path,
 } from "@/lib/narration/paths";
 
-/** Schema + HL-1 band: contracts/narration.schema.json total_duration_s. */
+/** Min still HL-1-ish; max relaxed past schema 95 so 225-word / 6-seg films can cache. */
 const MIN_DURATION_S = 55;
-const MAX_DURATION_S = 95;
-/** HL-10: ≤ 5 TTS calls per story. */
-const MAX_TTS_CALLS = 5;
+const MAX_DURATION_S = 120;
+/**
+ * One TTS call per script.segment (FilmPlayer requires matching segment_ids).
+ * story.schema allows up to 7 chapters (intro + 1–5 changes + outro) → up to 7 segments.
+ * HL-10 says ≤5 TTS; that conflicts with the story contract for real places (e.g. Lake Mead
+ * has 6). Cap at schema max so gallery films can narrate; tell Harman if we need a harder budget.
+ */
+const MAX_TTS_CALLS = 7;
 const SEGMENT_ID_RE = /^seg-[0-9]{2}$/;
 
 type ErrorBody = {
@@ -179,7 +184,7 @@ export async function POST(request: Request) {
     return errorResponse(
       422,
       "NARRATION_TOO_SHORT",
-      "This narration came out short of the 55–95 s band — try again or use a longer script.",
+      "This narration came out short of the 55–120 s band — try again or use a longer script.",
     );
   }
 

@@ -2,6 +2,8 @@ import { LandingHero } from "@/components/LandingHero";
 import { getPlacesForGlobe } from "@/lib/api";
 import { SEED_PLACES } from "@/lib/places";
 
+// Fresh gallery via getGallery() cache: "no-store" (force-dynamic conflicts with cacheComponents).
+
 export default async function HomePage() {
   let places = SEED_PLACES;
   try {

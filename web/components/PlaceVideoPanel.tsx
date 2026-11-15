@@ -1,7 +1,7 @@
 /**
  * Selected-place glass card — only mounts when a globe marker is chosen.
  * Inputs: selected place + close handler.
- * Outputs: quiet overlay with place name, film status, Play CTA when ready.
+ * Outputs: quiet overlay with place name, overview thumb, Play CTA when ready.
  */
 
 "use client";
@@ -32,9 +32,38 @@ function PlaceTitle({ displayName }: { displayName: string }) {
   );
 }
 
+function PlaceOverview({
+  placeName,
+  thumbUrl,
+}: {
+  placeName: string;
+  thumbUrl?: string;
+}) {
+  if (thumbUrl) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element -- remote /files thumbs from API_BASE
+      <img
+        src={thumbUrl}
+        alt={`${placeName} overview`}
+        className="mt-4 h-36 w-full rounded-xl border border-white/10 object-cover"
+      />
+    );
+  }
+
+  return (
+    <div
+      className="mt-4 h-36 w-full rounded-xl border border-white/10 bg-white/[0.04]"
+      role="img"
+      aria-label={`${placeName} overview unavailable`}
+    />
+  );
+}
+
 export function PlaceVideoPanel({ place, onClose }: PlaceVideoPanelProps) {
   const closeRef = useRef<HTMLButtonElement>(null);
-  const anyReady = place.stories.some((s) => s.ready);
+  const overviewThumb =
+    place.stories.find((s) => s.ready && s.thumbUrl)?.thumbUrl ??
+    place.stories.find((s) => s.thumbUrl)?.thumbUrl;
 
   useEffect(() => {
     closeRef.current?.focus();
@@ -60,10 +89,7 @@ export function PlaceVideoPanel({ place, onClose }: PlaceVideoPanelProps) {
       <div className="rounded-3xl border border-white/10 bg-[#1a1a1d]/75 px-5 py-5 shadow-[0_24px_80px_rgba(18,18,20,0.45)] backdrop-blur-2xl supports-[backdrop-filter]:bg-[#1a1a1d]/65">
         <div className="flex items-start justify-between gap-4">
           <div className="min-w-0">
-            <p className="font-label text-[10px] uppercase tracking-[0.28em] text-[#2997ff]/90">
-              {anyReady ? "Film ready" : "Not built yet"}
-            </p>
-            <h2 className="mt-2.5">
+            <h2>
               <PlaceTitle displayName={place.displayName} />
             </h2>
           </div>
@@ -78,13 +104,10 @@ export function PlaceVideoPanel({ place, onClose }: PlaceVideoPanelProps) {
           </button>
         </div>
 
-        <p className="mt-3 font-label text-[10px] uppercase tracking-[0.2em] text-[#6e6e73]">
-          {place.theme}
-          <span className="mx-2 text-white/20" aria-hidden>
-            ·
-          </span>
-          {anyReady ? "In gallery" : "Seed place"}
-        </p>
+        <PlaceOverview
+          placeName={place.displayName}
+          thumbUrl={overviewThumb}
+        />
 
         <div className="mt-5 flex flex-col gap-4">
           {place.stories.map((story) => (
@@ -105,17 +128,12 @@ export function PlaceVideoPanel({ place, onClose }: PlaceVideoPanelProps) {
               </p>
               <div className="mt-5 flex flex-wrap items-center gap-3">
                 {story.ready ? (
-                  <>
-                    <Link
-                      href={`/story/${story.id}`}
-                      className="inline-flex min-h-10 items-center justify-center rounded-full bg-[#2997ff] px-5 text-sm font-medium text-white transition hover:bg-[#54aeff] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2997ff]"
-                    >
-                      Play film
-                    </Link>
-                    <span className="font-label text-[9px] uppercase tracking-[0.18em] text-[#6e6e73]">
-                      Open story
-                    </span>
-                  </>
+                  <Link
+                    href={`/story/${story.id}`}
+                    className="inline-flex min-h-10 items-center justify-center rounded-full bg-[#2997ff] px-5 text-sm font-medium text-white transition hover:bg-[#54aeff] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2997ff]"
+                  >
+                    Play film
+                  </Link>
                 ) : (
                   <>
                     <span className="inline-flex min-h-10 items-center justify-center rounded-full border border-white/15 px-5 text-sm text-[#a1a1a6]">

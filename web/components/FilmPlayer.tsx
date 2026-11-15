@@ -454,7 +454,7 @@ export function FilmPlayer({
         </p>
         <p className="mt-2 text-sm text-[#a1a1a6]">
           This film&apos;s audio is {narration.total_duration_s.toFixed(1)}s
-          (limit 95s). Try another story from the gallery.
+          (limit 120s). Try another story from the gallery.
         </p>
       </div>
     );

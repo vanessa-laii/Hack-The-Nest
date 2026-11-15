@@ -33,9 +33,9 @@ function narrateErrorMessage(data: unknown): string {
       : undefined;
   if (
     err?.code === "NARRATION_TOO_LONG" ||
-    (typeof err?.message === "string" && /too long|95/i.test(err.message))
+    (typeof err?.message === "string" && /too long|95|120/i.test(err.message))
   ) {
-    return "This narration ran long — try another story.";
+    return "This narration ran long — try again, or ask for a shorter script.";
   }
   return err?.message || "Could not prepare narration. Check the narrate route and try again.";
 }

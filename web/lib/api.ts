@@ -122,19 +122,35 @@ function galleryToStub(
     blurb: blurb ?? `${g.chapter_count} chapter${g.chapter_count === 1 ? "" : "s"} · from gallery`,
     theme,
     ready: true,
+    thumbUrl: g.thumb_url ? fileUrl(g.thumb_url) : undefined,
   };
 }
 
 export async function getGallery(): Promise<GalleryItem[]> {
   try {
+    // no-store: newly built stories must show as ready on the next homepage load
+    // (revalidate: 30 kept caching an empty gallery after Lake Mead finished).
     const res = await fetch(`${API_BASE}/api/stories`, {
-      next: { revalidate: 30 },
+      cache: "no-store",
     });
     if (!res.ok) return [];
     const data = (await res.json()) as { stories: GalleryItem[] };
     return data.stories?.length ? data.stories : [];
   } catch {
     return [];
+  }
+}
+
+/** True when the backend has a playable story.json for this id. */
+export async function storyExists(id: string): Promise<boolean> {
+  try {
+    const res = await fetch(`${API_BASE}/api/stories/${encodeURIComponent(id)}`, {
+      method: "GET",
+      cache: "no-store",
+    });
+    return res.ok;
+  } catch {
+    return false;
   }
 }
 
@@ -158,19 +174,34 @@ export async function getPlacesForGlobe(): Promise<PlaceLocation[]> {
   const gallery = await getGallery();
   const byId = new Map(gallery.map((g) => [g.id, g]));
 
+  // If index is empty/stale but story.json exists, still mark seed films ready.
+  const missingIds = SEED_PLACES.flatMap((p) =>
+    p.stories.map((s) => s.id).filter((id) => !byId.has(id)),
+  );
+  const existence = await Promise.all(
+    missingIds.map(async (id) => [id, await storyExists(id)] as const),
+  );
+  const exists = new Set(existence.filter(([, ok]) => ok).map(([id]) => id));
+
   const merged: PlaceLocation[] = SEED_PLACES.map((place) => {
     const stories = place.stories.map((stub) => {
       const g = byId.get(stub.id);
-      if (!g) return { ...stub, ready: false };
-      byId.delete(stub.id);
-      return {
-        ...stub,
-        title: g.headline || stub.title,
-        firstYear: g.first_year,
-        lastYear: g.last_year,
-        blurb: stub.blurb,
-        ready: true,
-      };
+      if (g) {
+        byId.delete(stub.id);
+        return {
+          ...stub,
+          title: g.headline || stub.title,
+          firstYear: g.first_year,
+          lastYear: g.last_year,
+          blurb: stub.blurb,
+          ready: true,
+          thumbUrl: g.thumb_url ? fileUrl(g.thumb_url) : stub.thumbUrl,
+        };
+      }
+      if (exists.has(stub.id)) {
+        return { ...stub, ready: true };
+      }
+      return { ...stub, ready: false };
     });
     return { ...place, stories };
   });
@@ -189,7 +220,13 @@ export async function getPlacesForGlobe(): Promise<PlaceLocation[]> {
       ];
     } else {
       byName.stories = byName.stories.map((s) =>
-        s.id === g.id ? { ...s, ready: true } : s,
+        s.id === g.id
+          ? {
+              ...s,
+              ready: true,
+              thumbUrl: g.thumb_url ? fileUrl(g.thumb_url) : s.thumbUrl,
+            }
+          : s,
       );
     }
   }

@@ -13,6 +13,9 @@ type PlacePickerProps = {
   places: PlaceLocation[];
   selectedId: string | null;
   onSelect: (id: string | null) => void;
+  /** So the landing can hide the place card while the list is open (no overlap). */
+  onOpenChange?: (open: boolean) => void;
+  reducedMotion?: boolean;
   className?: string;
 };
 
@@ -20,6 +23,8 @@ export function PlacePicker({
   places,
   selectedId,
   onSelect,
+  onOpenChange,
+  reducedMotion = false,
   className,
 }: PlacePickerProps) {
   const [open, setOpen] = useState(false);
@@ -33,6 +38,10 @@ export function PlacePicker({
   const { primary, secondary } = selected
     ? splitPlaceName(selected.displayName)
     : { primary: null, secondary: null };
+
+  useEffect(() => {
+    onOpenChange?.(open);
+  }, [open, onOpenChange]);
 
   useEffect(() => {
     if (!open) return;
@@ -139,63 +148,69 @@ export function PlacePicker({
           )}
         </span>
         <span
-          className={`font-label text-[10px] text-[#6e6e73] transition ${open ? "rotate-180" : ""}`}
+          className={`font-label text-[10px] text-[#6e6e73] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${open ? "rotate-180" : ""}`}
           aria-hidden
         >
           ▾
         </span>
       </button>
 
-      {open ? (
-        <ul
-          ref={listRef}
-          id={listId}
-          role="listbox"
-          tabIndex={-1}
-          aria-labelledby={labelId}
-          aria-activedescendant={`${listId}-opt-${activeIndex}`}
-          onKeyDown={onListKeyDown}
-          className="mt-2 max-h-72 overflow-y-auto rounded-2xl border border-white/12 bg-[#1a1a1d]/96 py-2 shadow-[0_24px_64px_rgba(18,18,20,0.55)] backdrop-blur-xl outline-none"
-        >
-          {places.map((place, i) => {
-            const parts = splitPlaceName(place.displayName);
-            const isSelected = place.id === selectedId;
-            const isActive = i === activeIndex;
+      <div
+        className={`grid ${
+          reducedMotion
+            ? ""
+            : "transition-[grid-template-rows,opacity] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]"
+        } ${open ? "grid-rows-[1fr] opacity-100" : "pointer-events-none grid-rows-[0fr] opacity-0"}`}
+        inert={!open ? true : undefined}
+        aria-hidden={!open}
+      >
+        <div className="min-h-0 overflow-hidden">
+          <ul
+            ref={listRef}
+            id={listId}
+            role="listbox"
+            tabIndex={-1}
+            aria-labelledby={labelId}
+            aria-activedescendant={
+              open ? `${listId}-opt-${activeIndex}` : undefined
+            }
+            onKeyDown={onListKeyDown}
+            className="relative z-30 mt-2 max-h-[min(18rem,50vh)] overflow-y-auto rounded-2xl border border-white/12 bg-[#1a1a1d]/96 py-2 shadow-[0_24px_64px_rgba(18,18,20,0.55)] backdrop-blur-xl outline-none"
+          >
+            {places.map((place, i) => {
+              const parts = splitPlaceName(place.displayName);
+              const isSelected = place.id === selectedId;
+              const isActive = i === activeIndex;
 
-            return (
-              <li
-                key={place.id}
-                id={`${listId}-opt-${i}`}
-                role="option"
-                aria-selected={isSelected}
-                onMouseEnter={() => setActiveIndex(i)}
-                onClick={() => choose(place.id)}
-                className={`flex cursor-pointer items-start gap-3 px-4 py-3 transition ${
-                  isActive ? "bg-[#222226]" : "bg-transparent"
-                }`}
-              >
-                <span
-                  className={`mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full ${
-                    isSelected
-                      ? "bg-[#2997ff] shadow-[0_0_8px_rgba(41,151,255,0.85)]"
-                      : "bg-white/25"
+              return (
+                <li
+                  key={place.id}
+                  id={`${listId}-opt-${i}`}
+                  role="option"
+                  aria-selected={isSelected}
+                  onMouseEnter={() => setActiveIndex(i)}
+                  onClick={() => choose(place.id)}
+                  className={`cursor-pointer px-4 py-3 transition-colors duration-150 ${
+                    isActive || isSelected ? "bg-[#222226]" : "bg-transparent"
                   }`}
-                  aria-hidden
-                />
-                <span className="min-w-0 flex-1">
-                  <span className="font-ui block text-[16px] font-semibold leading-tight tracking-tight text-[#f5f5f7]">
+                >
+                  <span
+                    className={`font-ui block text-[16px] font-semibold leading-tight tracking-tight ${
+                      isSelected ? "text-[#2997ff]" : "text-[#f5f5f7]"
+                    }`}
+                  >
                     {parts.primary}
                   </span>
                   <span className="mt-1.5 flex flex-wrap gap-x-2.5 font-label text-[9px] uppercase tracking-[0.14em] text-[#6e6e73]">
                     {parts.secondary ? <span>{parts.secondary}</span> : null}
                     <span>{place.theme}</span>
                   </span>
-                </span>
-              </li>
-            );
-          })}
-        </ul>
-      ) : null}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 }

@@ -197,7 +197,7 @@ Map failures to the shared error envelope (`CONTRACTS` §5). Narrate-specific co
 | Story not found | 404 | (pass through / `PLACE_NOT_FOUND` style) | Offer gallery |
 | Story still building | 425 | `NOT_READY` | Keep listening to SSE; don’t call TTS |
 | `narration.json` cache hit | 200 | — | **No ElevenLabs call** |
-| Segment count **> 5** | 422 or 502 | see §5 / HL-10 | Refuse or coalesce — decide before Phase 2 ship (open Q) |
+| Segment count **> 7** | 422 | `INVALID_REQUEST` | Refuse (story schema max chapters is 7). HL-10’s ≤5 TTS conflicts with 6–7 segment stories; web allows up to **7** so FilmPlayer can keep 1:1 segment_ids. |
 | ElevenLabs timeout / 5xx / network | 502 | `UPSTREAM_ERROR` | Retry once with backoff; then fail soft. **Do not** write partial `narration.json` |
 | ElevenLabs 401/403 | 502 | `UPSTREAM_ERROR` | Log server-side only (never leak key). Message: voice service unavailable |
 | `total_duration_s > 95` | 422 | e.g. `NARRATION_TOO_LONG` (propose) | Delete any temp mp3s written this attempt; **do not** cache. UI: “This narration ran long — try another story.” |
@@ -209,7 +209,7 @@ Map failures to the shared error envelope (`CONTRACTS` §5). Narrate-specific co
 
 **Timeouts:** set fetch timeout ~30–45 s **per** TTS call (4 segments ≈ ≤3 min worst case). Player should show a “Preparing narration…” state; never blank screen.
 
-**HL-10 (≤ 5 TTS calls):** count each successful ElevenLabs with-timestamps request toward the story. Cache hits cost **0**. Sample story has **4** segments → fits. See §5 for >5 segments.
+**HL-10 vs schema:** HL-10 budgets ≤5 TTS calls; `story.schema` allows up to **7** segments. Narrate allows **≤7** TTS calls (one per segment) so real stories like Lake Mead (6) play. Cache hits cost **0**. Revisit with Harman if the hard ≤5 budget must win.
 
 ---
 
@@ -343,7 +343,7 @@ Same schema — narration must not break when mock → real:
 ## 9. Open questions for Vanessa
 
 1. **Voice pick:** Which exact `ELEVENLABS_VOICE_ID` do we freeze for the demo? (Listen to 2–3 candidates on sample seg-02 before locking.)
-2. **HL-10 vs 6–7 segments:** If a real story has intro + 5 changes + outro, do we (a) one-shot fallback, (b) ask Harman to cap/merge script segments ≤ 5, or (c) treat HL-10 as backend-agent-only and allow up to 7 web TTS calls for gallery builds?
+2. **HL-10 vs 6–7 segments:** **Decided for demo:** allow up to 7 web TTS calls (match story schema). Still flag to Harman if ≤5 must be hard — then backend should emit ≤5 script segments.
 3. **New error code:** Agree `NARRATION_TOO_LONG` (422) with Harman, or reuse `INVALID_REQUEST` / `UPSTREAM_ERROR`?
 4. **Speed knob:** Fix `voice_settings.speed` at `1.0` or tune to `0.95` after measuring sample `total_duration_s`?
 5. **Story load path:** Backend GET only, or also read `DATA_DIR/stories/<id>/story.json` when the API is down (stronger offline)?

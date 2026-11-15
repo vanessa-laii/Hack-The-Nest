@@ -11,7 +11,6 @@ import { SEED_PLACES, type PlaceLocation } from "@/lib/places";
 import { GlobeCanvas } from "./GlobeCanvas";
 import { PlacePicker } from "./PlacePicker";
 import { PlaceVideoPanel } from "./PlaceVideoPanel";
-import { SearchBox } from "./SearchBox";
 
 type LandingHeroProps = {
   places?: PlaceLocation[];
@@ -19,6 +18,7 @@ type LandingHeroProps = {
 
 export function LandingHero({ places = SEED_PLACES }: LandingHeroProps) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [pickerOpen, setPickerOpen] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -74,14 +74,32 @@ export function LandingHero({ places = SEED_PLACES }: LandingHeroProps) {
             places={places}
             selectedId={selectedId}
             onSelect={setSelectedId}
+            onOpenChange={setPickerOpen}
+            reducedMotion={reducedMotion}
           />
 
+          {/* Keep mounted; collapse smoothly while the city list is open. */}
           {selected ? (
-            <div id="films">
-              <PlaceVideoPanel
-                place={selected}
-                onClose={() => setSelectedId(null)}
-              />
+            <div
+              id="films"
+              className={`grid ${
+                reducedMotion
+                  ? ""
+                  : "transition-[grid-template-rows,opacity,margin] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]"
+              } ${
+                pickerOpen
+                  ? "pointer-events-none mt-0 grid-rows-[0fr] opacity-0"
+                  : "mt-0 grid-rows-[1fr] opacity-100 md:mt-0"
+              }`}
+              aria-hidden={pickerOpen}
+              inert={pickerOpen ? true : undefined}
+            >
+              <div className="min-h-0 overflow-hidden">
+                <PlaceVideoPanel
+                  place={selected}
+                  onClose={() => setSelectedId(null)}
+                />
+              </div>
             </div>
           ) : null}
         </div>

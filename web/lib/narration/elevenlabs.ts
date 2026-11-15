@@ -51,9 +51,9 @@ export async function synthesizeSegment(opts: {
       similarity_boost: 0.7,
       style: 0.0,
       use_speaker_boost: true,
-      // Under 1.0 so ~150-word scripts land in the 55–95 s schema / HL-1 band.
-      // 0.95 produced ~53 s on mock-narrate-demo; 0.88 targets ≥55 s.
-      speed: 0.88,
+      // Real stories hit 225 words (HL-1 max). speed 0.88 ran Lake Mead over 95 s.
+      // ~1.05 keeps long scripts nearer the 60–90 s film band without sounding rushed.
+      speed: 1.05,
     },
     apply_text_normalization: "auto",
   };

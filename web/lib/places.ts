@@ -13,6 +13,8 @@ export type PlaceStoryStub = {
   theme: string;
   /** True when GET /api/stories lists this id (film may exist on disk). */
   ready?: boolean;
+  /** Latest Landsat thumb from gallery (`GalleryItem.thumb_url`), via fileUrl. */
+  thumbUrl?: string;
 };
 
 export type PlaceLocation = {
@@ -97,42 +99,7 @@ export const SEED_PLACES: PlaceLocation[] = [
       },
     ],
   },
-  {
-    id: "central-park",
-    displayName: "Central Park, New York",
-    lat: 40.78,
-    lon: -73.97,
-    theme: "Control",
-    stories: [
-      {
-        id: "central-park-new-york-us-6km",
-        title: "Central Park, New York",
-        firstYear: 1984,
-        lastYear: 2024,
-        blurb: "Control · little lasting change expected",
-        theme: "Control",
-        ready: false,
-      },
-    ],
-  },
-  {
-    id: "ypsilanti",
-    displayName: "Ypsilanti, Michigan",
-    lat: 42.24,
-    lon: -83.61,
-    theme: "Local demo",
-    stories: [
-      {
-        id: "ypsilanti-michigan-us-6km",
-        title: "Ypsilanti, Michigan",
-        firstYear: 1984,
-        lastYear: 2024,
-        blurb: "Local demo · small-town news coverage test",
-        theme: "Local demo",
-        ready: false,
-      },
-    ],
-  },
+  // Central Park + Ypsilanti omitted: NO_LASTING_CHANGES — nothing meaningful to show.
   {
     id: "willow-run",
     displayName: "Willow Run, Ypsilanti Township, Michigan",
@@ -159,7 +126,8 @@ export const SEED_PLACES: PlaceLocation[] = [
     theme: "Bridge",
     stories: [
       {
-        id: "delray-detroit-michigan-us-6km",
+        // Backend slug uses state only (not "detroit") — match gallery id.
+        id: "delray-michigan-us-6km",
         title: "Delray, Detroit, Michigan",
         firstYear: 1984,
         lastYear: 2024,
