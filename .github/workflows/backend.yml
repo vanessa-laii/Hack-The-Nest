@@ -4,7 +4,7 @@
 #
 # How it works:
 #   1. Install Python 3.12 and backend/requirements.txt (cached between runs).
-#   2. Fail if any .env file (except .env.example) was added to git (HL-8: no secrets in git).
+#   2. Fail if any .env file (except *.example templates) was added to git (HL-8).
 #   3. Byte-compile everything, so syntax errors fail fast.
 #   4. Run the backend tests (offline: network calls are faked).
 #   5. Validate the contract samples against the schemas (CLAUDE.md non-negotiable #4).
@@ -46,9 +46,9 @@ jobs:
 
       - name: No .env files in git (HL-8)
         run: |
-          # Matches .env and .env.<anything> in any folder, like .gitignore does; the
-          # committed template .env.example is allowed.
-          committed=$(git ls-files | grep -E '(^|/)\.env(\..+)?$' | grep -v '\.env\.example$' || true)
+          # Matches .env and .env.<anything> in any folder, like .gitignore does. Templates
+          # ending in .example (.env.example, web/.env.local.example) hold no secrets: allowed.
+          committed=$(git ls-files | grep -E '(^|/)\.env(\..+)?$' | grep -v '\.example$' || true)
           if [ -n "$committed" ]; then
             echo "Secret files are committed: $committed"
             echo "Remove them from git and rotate any keys they contained."
