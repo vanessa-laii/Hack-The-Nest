@@ -1,0 +1,801 @@
+{
+  "schema_version": "1.0",
+  "story_id": "summerlin-south-nevada-us-6km",
+  "voice_id": "MFZUKuGQUsGJPQjTS4wC",
+  "model_id": "eleven_multilingual_v2",
+  "created_at": "2026-11-15T14:31:21.327Z",
+  "total_duration_s": 61.393,
+  "segments": [
+    {
+      "segment_id": "seg-01",
+      "audio_url": "/files/stories/summerlin-south-nevada-us-6km/narration/seg-01.mp3",
+      "duration_s": 31.347,
+      "words": [
+        {
+          "text": "This",
+          "start_s": 0,
+          "end_s": 0.232
+        },
+        {
+          "text": "is",
+          "start_s": 0.29,
+          "end_s": 0.36
+        },
+        {
+          "text": "Summerlin",
+          "start_s": 0.418,
+          "end_s": 0.859
+        },
+        {
+          "text": "South,",
+          "start_s": 0.952,
+          "end_s": 1.428
+        },
+        {
+          "text": "Nevada,",
+          "start_s": 1.544,
+          "end_s": 2.194
+        },
+        {
+          "text": "seen",
+          "start_s": 2.392,
+          "end_s": 2.624
+        },
+        {
+          "text": "from",
+          "start_s": 2.682,
+          "end_s": 2.821
+        },
+        {
+          "text": "space",
+          "start_s": 2.891,
+          "end_s": 3.228
+        },
+        {
+          "text": "by",
+          "start_s": 3.274,
+          "end_s": 3.402
+        },
+        {
+          "text": "Landsat",
+          "start_s": 3.495,
+          "end_s": 3.971
+        },
+        {
+          "text": "satellites,",
+          "start_s": 4.04,
+          "end_s": 4.748
+        },
+        {
+          "text": "one",
+          "start_s": 4.946,
+          "end_s": 5.201
+        },
+        {
+          "text": "summer",
+          "start_s": 5.248,
+          "end_s": 5.515
+        },
+        {
+          "text": "at",
+          "start_s": 5.561,
+          "end_s": 5.619
+        },
+        {
+          "text": "a",
+          "start_s": 5.666,
+          "end_s": 5.689
+        },
+        {
+          "text": "time",
+          "start_s": 5.747,
+          "end_s": 6.06
+        },
+        {
+          "text": "from",
+          "start_s": 6.095,
+          "end_s": 6.246
+        },
+        {
+          "text": "1984",
+          "start_s": 6.304,
+          "end_s": 7.163
+        },
+        {
+          "text": "to",
+          "start_s": 7.198,
+          "end_s": 7.256
+        },
+        {
+          "text": "2026.",
+          "start_s": 7.338,
+          "end_s": 8.394
+        },
+        {
+          "text": "Over",
+          "start_s": 8.975,
+          "end_s": 9.183
+        },
+        {
+          "text": "these",
+          "start_s": 9.242,
+          "end_s": 9.427
+        },
+        {
+          "text": "years,",
+          "start_s": 9.462,
+          "end_s": 9.729
+        },
+        {
+          "text": "the",
+          "start_s": 9.764,
+          "end_s": 9.834
+        },
+        {
+          "text": "pictures",
+          "start_s": 9.88,
+          "end_s": 10.24
+        },
+        {
+          "text": "show",
+          "start_s": 10.286,
+          "end_s": 10.484
+        },
+        {
+          "text": "one",
+          "start_s": 10.6,
+          "end_s": 10.797
+        },
+        {
+          "text": "lasting",
+          "start_s": 10.855,
+          "end_s": 11.25
+        },
+        {
+          "text": "change.",
+          "start_s": 11.32,
+          "end_s": 11.865
+        },
+        {
+          "text": "This",
+          "start_s": 12.098,
+          "end_s": 12.318
+        },
+        {
+          "text": "film",
+          "start_s": 12.388,
+          "end_s": 12.69
+        },
+        {
+          "text": "uses",
+          "start_s": 12.887,
+          "end_s": 13.259
+        },
+        {
+          "text": "43",
+          "start_s": 13.351,
+          "end_s": 13.909
+        },
+        {
+          "text": "summers",
+          "start_s": 13.967,
+          "end_s": 14.327
+        },
+        {
+          "text": "of",
+          "start_s": 14.373,
+          "end_s": 14.443
+        },
+        {
+          "text": "Landsat",
+          "start_s": 14.524,
+          "end_s": 15
+        },
+        {
+          "text": "imagery.",
+          "start_s": 15.058,
+          "end_s": 15.627
+        },
+        {
+          "text": "Each",
+          "start_s": 16.045,
+          "end_s": 16.266
+        },
+        {
+          "text": "frame",
+          "start_s": 16.324,
+          "end_s": 16.66
+        },
+        {
+          "text": "shows",
+          "start_s": 16.707,
+          "end_s": 16.974
+        },
+        {
+          "text": "the",
+          "start_s": 17.044,
+          "end_s": 17.113
+        },
+        {
+          "text": "same",
+          "start_s": 17.16,
+          "end_s": 17.427
+        },
+        {
+          "text": "square",
+          "start_s": 17.485,
+          "end_s": 17.833
+        },
+        {
+          "text": "of",
+          "start_s": 17.879,
+          "end_s": 17.938
+        },
+        {
+          "text": "ground,",
+          "start_s": 18.019,
+          "end_s": 18.53
+        },
+        {
+          "text": "6",
+          "start_s": 18.762,
+          "end_s": 18.959
+        },
+        {
+          "text": "kilometres",
+          "start_s": 19.029,
+          "end_s": 19.551
+        },
+        {
+          "text": "on",
+          "start_s": 19.621,
+          "end_s": 19.702
+        },
+        {
+          "text": "a",
+          "start_s": 19.749,
+          "end_s": 19.772
+        },
+        {
+          "text": "side.",
+          "start_s": 19.842,
+          "end_s": 20.341
+        },
+        {
+          "text": "Each",
+          "start_s": 20.701,
+          "end_s": 20.921
+        },
+        {
+          "text": "frame",
+          "start_s": 20.968,
+          "end_s": 21.27
+        },
+        {
+          "text": "combines",
+          "start_s": 21.316,
+          "end_s": 21.792
+        },
+        {
+          "text": "the",
+          "start_s": 21.862,
+          "end_s": 21.931
+        },
+        {
+          "text": "clearest",
+          "start_s": 21.989,
+          "end_s": 22.384
+        },
+        {
+          "text": "days",
+          "start_s": 22.442,
+          "end_s": 22.721
+        },
+        {
+          "text": "of",
+          "start_s": 22.779,
+          "end_s": 22.849
+        },
+        {
+          "text": "one",
+          "start_s": 22.965,
+          "end_s": 23.174
+        },
+        {
+          "text": "summer,",
+          "start_s": 23.232,
+          "end_s": 23.615
+        },
+        {
+          "text": "between",
+          "start_s": 23.65,
+          "end_s": 24.033
+        },
+        {
+          "text": "June",
+          "start_s": 24.114,
+          "end_s": 24.439
+        },
+        {
+          "text": "and",
+          "start_s": 24.474,
+          "end_s": 24.544
+        },
+        {
+          "text": "September.",
+          "start_s": 24.59,
+          "end_s": 25.194
+        },
+        {
+          "text": "Clouds",
+          "start_s": 25.554,
+          "end_s": 25.983
+        },
+        {
+          "text": "and",
+          "start_s": 26.018,
+          "end_s": 26.088
+        },
+        {
+          "text": "their",
+          "start_s": 26.123,
+          "end_s": 26.262
+        },
+        {
+          "text": "shadows",
+          "start_s": 26.297,
+          "end_s": 26.668
+        },
+        {
+          "text": "are",
+          "start_s": 26.715,
+          "end_s": 26.831
+        },
+        {
+          "text": "removed,",
+          "start_s": 26.877,
+          "end_s": 27.376
+        },
+        {
+          "text": "and",
+          "start_s": 27.4,
+          "end_s": 27.493
+        },
+        {
+          "text": "gaps",
+          "start_s": 27.574,
+          "end_s": 27.876
+        },
+        {
+          "text": "are",
+          "start_s": 27.91,
+          "end_s": 28.015
+        },
+        {
+          "text": "left",
+          "start_s": 28.05,
+          "end_s": 28.236
+        },
+        {
+          "text": "empty",
+          "start_s": 28.294,
+          "end_s": 28.572
+        },
+        {
+          "text": "instead",
+          "start_s": 28.63,
+          "end_s": 28.932
+        },
+        {
+          "text": "of",
+          "start_s": 28.967,
+          "end_s": 29.013
+        },
+        {
+          "text": "being",
+          "start_s": 29.083,
+          "end_s": 29.304
+        },
+        {
+          "text": "filled",
+          "start_s": 29.385,
+          "end_s": 29.675
+        },
+        {
+          "text": "from",
+          "start_s": 29.722,
+          "end_s": 29.849
+        },
+        {
+          "text": "other",
+          "start_s": 29.931,
+          "end_s": 30.128
+        },
+        {
+          "text": "years.",
+          "start_s": 30.186,
+          "end_s": 31.347
+        }
+      ]
+    },
+    {
+      "segment_id": "seg-02",
+      "audio_url": "/files/stories/summerlin-south-nevada-us-6km/narration/seg-02.mp3",
+      "duration_s": 25.681,
+      "words": [
+        {
+          "text": "Between",
+          "start_s": 0,
+          "end_s": 0.406
+        },
+        {
+          "text": "1991",
+          "start_s": 0.453,
+          "end_s": 1.312
+        },
+        {
+          "text": "and",
+          "start_s": 1.428,
+          "end_s": 1.521
+        },
+        {
+          "text": "2019,",
+          "start_s": 1.591,
+          "end_s": 2.775
+        },
+        {
+          "text": "the",
+          "start_s": 2.891,
+          "end_s": 2.995
+        },
+        {
+          "text": "land",
+          "start_s": 3.065,
+          "end_s": 3.274
+        },
+        {
+          "text": "across",
+          "start_s": 3.32,
+          "end_s": 3.634
+        },
+        {
+          "text": "the",
+          "start_s": 3.669,
+          "end_s": 3.738
+        },
+        {
+          "text": "area",
+          "start_s": 3.796,
+          "end_s": 4.063
+        },
+        {
+          "text": "turned",
+          "start_s": 4.122,
+          "end_s": 4.389
+        },
+        {
+          "text": "greener",
+          "start_s": 4.447,
+          "end_s": 4.795
+        },
+        {
+          "text": "on",
+          "start_s": 4.865,
+          "end_s": 4.946
+        },
+        {
+          "text": "average,",
+          "start_s": 5.004,
+          "end_s": 5.457
+        },
+        {
+          "text": "mostly",
+          "start_s": 5.573,
+          "end_s": 5.921
+        },
+        {
+          "text": "in",
+          "start_s": 5.956,
+          "end_s": 6.014
+        },
+        {
+          "text": "the",
+          "start_s": 6.049,
+          "end_s": 6.118
+        },
+        {
+          "text": "east.",
+          "start_s": 6.2,
+          "end_s": 6.664
+        },
+        {
+          "text": "In",
+          "start_s": 7.082,
+          "end_s": 7.233
+        },
+        {
+          "text": "all,",
+          "start_s": 7.303,
+          "end_s": 7.697
+        },
+        {
+          "text": "about",
+          "start_s": 7.814,
+          "end_s": 8.115
+        },
+        {
+          "text": "2500",
+          "start_s": 8.173,
+          "end_s": 9.033
+        },
+        {
+          "text": "hectares",
+          "start_s": 9.091,
+          "end_s": 9.52
+        },
+        {
+          "text": "changed.",
+          "start_s": 9.567,
+          "end_s": 10.159
+        },
+        {
+          "text": "One",
+          "start_s": 10.577,
+          "end_s": 10.797
+        },
+        {
+          "text": "report",
+          "start_s": 10.844,
+          "end_s": 11.204
+        },
+        {
+          "text": "says:",
+          "start_s": 11.25,
+          "end_s": 11.726
+        },
+        {
+          "text": "The",
+          "start_s": 11.889,
+          "end_s": 11.993
+        },
+        {
+          "text": "first",
+          "start_s": 12.051,
+          "end_s": 12.283
+        },
+        {
+          "text": "family",
+          "start_s": 12.341,
+          "end_s": 12.643
+        },
+        {
+          "text": "moved",
+          "start_s": 12.713,
+          "end_s": 12.957
+        },
+        {
+          "text": "to",
+          "start_s": 12.98,
+          "end_s": 13.038
+        },
+        {
+          "text": "Summerlin",
+          "start_s": 13.096,
+          "end_s": 13.607
+        },
+        {
+          "text": "in",
+          "start_s": 13.665,
+          "end_s": 13.723
+        },
+        {
+          "text": "1991.",
+          "start_s": 13.77,
+          "end_s": 14.884
+        },
+        {
+          "text": "One",
+          "start_s": 15.244,
+          "end_s": 15.453
+        },
+        {
+          "text": "report",
+          "start_s": 15.488,
+          "end_s": 15.813
+        },
+        {
+          "text": "also",
+          "start_s": 15.859,
+          "end_s": 16.103
+        },
+        {
+          "text": "says:",
+          "start_s": 16.173,
+          "end_s": 16.568
+        },
+        {
+          "text": "Summerlin",
+          "start_s": 16.73,
+          "end_s": 17.253
+        },
+        {
+          "text": "began",
+          "start_s": 17.311,
+          "end_s": 17.578
+        },
+        {
+          "text": "to",
+          "start_s": 17.624,
+          "end_s": 17.682
+        },
+        {
+          "text": "take",
+          "start_s": 17.729,
+          "end_s": 17.949
+        },
+        {
+          "text": "shape",
+          "start_s": 17.996,
+          "end_s": 18.297
+        },
+        {
+          "text": "in",
+          "start_s": 18.344,
+          "end_s": 18.402
+        },
+        {
+          "text": "1990.",
+          "start_s": 18.46,
+          "end_s": 19.342
+        },
+        {
+          "text": "The",
+          "start_s": 19.575,
+          "end_s": 19.691
+        },
+        {
+          "text": "change",
+          "start_s": 19.749,
+          "end_s": 20.085
+        },
+        {
+          "text": "held",
+          "start_s": 20.132,
+          "end_s": 20.352
+        },
+        {
+          "text": "for",
+          "start_s": 20.41,
+          "end_s": 20.527
+        },
+        {
+          "text": "eight",
+          "start_s": 20.596,
+          "end_s": 20.805
+        },
+        {
+          "text": "summers",
+          "start_s": 20.863,
+          "end_s": 21.223
+        },
+        {
+          "text": "in",
+          "start_s": 21.27,
+          "end_s": 21.328
+        },
+        {
+          "text": "the",
+          "start_s": 21.362,
+          "end_s": 21.432
+        },
+        {
+          "text": "record.",
+          "start_s": 21.49,
+          "end_s": 21.955
+        },
+        {
+          "text": "Compare",
+          "start_s": 22.268,
+          "end_s": 22.651
+        },
+        {
+          "text": "the",
+          "start_s": 22.686,
+          "end_s": 22.756
+        },
+        {
+          "text": "1991",
+          "start_s": 22.79,
+          "end_s": 23.557
+        },
+        {
+          "text": "and",
+          "start_s": 23.626,
+          "end_s": 23.696
+        },
+        {
+          "text": "2019",
+          "start_s": 23.766,
+          "end_s": 24.439
+        },
+        {
+          "text": "frames",
+          "start_s": 24.52,
+          "end_s": 24.822
+        },
+        {
+          "text": "to",
+          "start_s": 24.857,
+          "end_s": 24.927
+        },
+        {
+          "text": "see",
+          "start_s": 24.996,
+          "end_s": 25.182
+        },
+        {
+          "text": "it.",
+          "start_s": 25.229,
+          "end_s": 25.681
+        }
+      ]
+    },
+    {
+      "segment_id": "seg-03",
+      "audio_url": "/files/stories/summerlin-south-nevada-us-6km/narration/seg-03.mp3",
+      "duration_s": 4.365,
+      "words": [
+        {
+          "text": "That",
+          "start_s": 0,
+          "end_s": 0.255
+        },
+        {
+          "text": "is",
+          "start_s": 0.313,
+          "end_s": 0.395
+        },
+        {
+          "text": "how",
+          "start_s": 0.453,
+          "end_s": 0.557
+        },
+        {
+          "text": "Summerlin",
+          "start_s": 0.639,
+          "end_s": 1.08
+        },
+        {
+          "text": "South,",
+          "start_s": 1.173,
+          "end_s": 1.614
+        },
+        {
+          "text": "Nevada",
+          "start_s": 1.73,
+          "end_s": 2.229
+        },
+        {
+          "text": "has",
+          "start_s": 2.392,
+          "end_s": 2.566
+        },
+        {
+          "text": "changed",
+          "start_s": 2.635,
+          "end_s": 2.972
+        },
+        {
+          "text": "since",
+          "start_s": 2.995,
+          "end_s": 3.204
+        },
+        {
+          "text": "1984.",
+          "start_s": 3.228,
+          "end_s": 4.365
+        }
+      ]
+    }
+  ]
+}

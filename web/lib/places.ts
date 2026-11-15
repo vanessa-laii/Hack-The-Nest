@@ -126,11 +126,10 @@ export const SEED_PLACES: PlaceLocation[] = [
     theme: "Bridge",
     stories: [
       {
-        // Backend slug uses state only (not "detroit") — match gallery id.
-        id: "delray-michigan-us-6km",
+        id: "delray-detroit-michigan-us-6km",
         title: "Delray, Detroit, Michigan",
         firstYear: 1984,
-        lastYear: 2024,
+        lastYear: 2026,
         blurb: "Bridge · Gordie Howe International Bridge construction",
         theme: "Bridge",
         ready: false,

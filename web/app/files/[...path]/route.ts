@@ -50,11 +50,17 @@ export async function GET(
     const data = await fs.readFile(/*turbopackIgnore: true*/ full);
     const ext = path.extname(full).toLowerCase();
     const contentType = CONTENT_TYPES[ext] || "application/octet-stream";
+    // Narration mp3s are rewritten in place under the same URL; long browser
+    // cache made captions (fresh JSON) drift from audio after regenerate.
+    const isNarrationAudio =
+      ext === ".mp3" && parts.some((p) => p === "narration");
     return new NextResponse(data, {
       status: 200,
       headers: {
         "Content-Type": contentType,
-        "Cache-Control": "public, max-age=3600",
+        "Cache-Control": isNarrationAudio
+          ? "private, no-store"
+          : "public, max-age=3600",
       },
     });
   } catch (err) {

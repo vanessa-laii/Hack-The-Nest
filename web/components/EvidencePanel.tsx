@@ -1,7 +1,7 @@
 /**
  * Claim evidence: before/after frames, sources, verified excerpts (FR-54).
  * Inputs: story chapters, changes, frames, sources; optional active claim id.
- * Outputs: expandable claim rows; intro/outro as quiet chapter strips.
+ * Outputs: expandable claim rows for change chapters only.
  */
 
 "use client";
@@ -121,7 +121,7 @@ function BeforeAfter({
             {frame ? (
               <span className="mt-0.5 block em-chrome-label text-[#7A766E]">
                 Acquired {frame.date_from}
-                {frame.date_to !== frame.date_from ? `–${frame.date_to}` : ""}
+                {frame.date_to !== frame.date_from ? ` → ${frame.date_to}` : ""}
                 {frame.clear_pct != null ? ` · ${Math.round(frame.clear_pct)}% clear` : ""}
               </span>
             ) : null}
@@ -156,13 +156,13 @@ function ChangeChapterBlock({
         <h3 className="font-ui text-lg font-semibold text-[#F4F1EC]">
           {chapter.headline}
         </h3>
-        <span className="font-label text-[12px] tabular-nums text-[#7A766E]">
+        <span className="em-chrome-label text-[#7A766E]">
           {chapter.start_year}–{chapter.end_year}
         </span>
         {conf ? (
           <span
             className={clsx(
-              "text-[12px]",
+              "em-chrome-label",
               conf.className,
             )}
           >
@@ -302,25 +302,10 @@ function ChangeChapterBlock({
   );
 }
 
-function QuietChapterStrip({ chapter }: { chapter: Chapter }) {
-  return (
-    <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 py-4">
-      <span className="em-chrome-label capitalize text-[#7A766E]">
-        {chapter.kind}
-      </span>
-      <span className="font-ui text-[15px] font-semibold text-[#F4F1EC]">
-        {chapter.headline}
-      </span>
-      <span className="font-label text-[12px] tabular-nums text-[#7A766E]">
-        {chapter.start_year}–{chapter.end_year}
-      </span>
-    </div>
-  );
-}
-
 export function EvidencePanel({ story, className }: EvidencePanelProps) {
   const [openClaimId, setOpenClaimId] = useState<string | null>(null);
   const changeById = new Map(story.changes.map((c) => [c.id, c]));
+  const changeChapters = story.chapters.filter((c) => c.kind === "change");
 
   const onToggleClaim = (id: string) => {
     setOpenClaimId((prev) => (prev === id ? null : id));
@@ -339,11 +324,8 @@ export function EvidencePanel({ story, className }: EvidencePanelProps) {
         sources.
       </p>
 
-      <div className="mt-4 divide-y divide-white/[0.06] border-y border-white/[0.06]">
-        {story.chapters.map((chapter) => {
-          if (chapter.kind !== "change") {
-            return <QuietChapterStrip key={chapter.id} chapter={chapter} />;
-          }
+      <div className="mt-4 divide-y divide-white/[0.06] border-t border-white/[0.06]">
+        {changeChapters.map((chapter) => {
           const change = chapter.change_id
             ? changeById.get(chapter.change_id)
             : undefined;

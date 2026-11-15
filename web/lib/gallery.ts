@@ -1,10 +1,14 @@
 /**
  * Cached homepage gallery → globe place merge (server-only).
- * Inputs: GET /api/stories + SEED_PLACES; Outputs: PlaceLocation[] for LandingHero.
+ * Inputs: DATA_DIR stories/index.json (+ optional API); Outputs: PlaceLocation[].
  */
 
 import { cacheLife, cacheTag } from "next/cache";
 import { API_BASE, fileUrl, type GalleryItem } from "./api";
+import {
+  readGalleryFromDisk,
+  storyExistsOnDisk,
+} from "./localStories";
 import { SEED_PLACES, type PlaceLocation, type PlaceStoryStub } from "./places";
 
 function normalizeName(name: string): string {
@@ -36,26 +40,30 @@ function galleryToStub(
   };
 }
 
+async function loadGallery(): Promise<GalleryItem[]> {
+  const fromDisk = await readGalleryFromDisk();
+  if (fromDisk.length) return fromDisk;
+  if (!API_BASE) return [];
+  try {
+    const res = await fetch(`${API_BASE}/api/stories`);
+    if (!res.ok) return [];
+    const data = (await res.json()) as { stories: GalleryItem[] };
+    return data.stories?.length ? data.stories : [];
+  } catch {
+    return [];
+  }
+}
+
 /**
- * Merge GET /api/stories onto seed globe places by story id, display name, or proximity.
- * Seeds always show; gallery marks which films are ready. Never drops pins at 0,0.
+ * Merge gallery onto seed globe places by story id or display name.
+ * Prefers on-disk DATA_DIR so play-only deploys need no FastAPI.
  */
 export async function getPlacesForGlobe(): Promise<PlaceLocation[]> {
   "use cache";
   cacheTag("gallery");
   cacheLife("minutes");
 
-  let gallery: GalleryItem[] = [];
-  try {
-    const res = await fetch(`${API_BASE}/api/stories`);
-    if (res.ok) {
-      const data = (await res.json()) as { stories: GalleryItem[] };
-      gallery = data.stories?.length ? data.stories : [];
-    }
-  } catch {
-    gallery = [];
-  }
-
+  const gallery = await loadGallery();
   const byId = new Map(gallery.map((g) => [g.id, g]));
 
   const missingIds = SEED_PLACES.flatMap((p) =>
@@ -63,6 +71,8 @@ export async function getPlacesForGlobe(): Promise<PlaceLocation[]> {
   );
   const existence = await Promise.all(
     missingIds.map(async (id) => {
+      if (await storyExistsOnDisk(id)) return [id, true] as const;
+      if (!API_BASE) return [id, false] as const;
       try {
         const res = await fetch(
           `${API_BASE}/api/stories/${encodeURIComponent(id)}`,
@@ -104,12 +114,7 @@ export async function getPlacesForGlobe(): Promise<PlaceLocation[]> {
       namesMatch(p.displayName, g.display_name),
     );
     if (!byName) continue;
-    if (!byName.stories.some((s) => s.id === g.id)) {
-      byName.stories = [
-        galleryToStub(g, byName.theme, byName.stories[0]?.blurb),
-        ...byName.stories,
-      ];
-    } else {
+    if (byName.stories.some((s) => s.id === g.id)) {
       byName.stories = byName.stories.map((s) =>
         s.id === g.id
           ? {
@@ -119,6 +124,16 @@ export async function getPlacesForGlobe(): Promise<PlaceLocation[]> {
             }
           : s,
       );
+      continue;
+    }
+    const only = byName.stories.length === 1 ? byName.stories[0] : null;
+    if (only) {
+      byName.stories = [galleryToStub(g, byName.theme, only.blurb)];
+    } else {
+      byName.stories = [
+        galleryToStub(g, byName.theme, byName.stories[0]?.blurb),
+        ...byName.stories,
+      ];
     }
   }
 

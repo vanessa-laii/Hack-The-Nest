@@ -1,0 +1,64 @@
+{
+  "stories": [
+    {
+      "id": "willow-run-michigan-us-6km",
+      "display_name": "Willow Run, Michigan",
+      "first_year": 1984,
+      "last_year": 2026,
+      "thumb_url": "/files/stories/willow-run-michigan-us-6km/overview.png",
+      "headline": "The ground changes near the centre",
+      "chapter_count": 7,
+      "has_narration": false
+    },
+    {
+      "id": "delray-detroit-michigan-us-6km",
+      "display_name": "Delray, Detroit, Michigan",
+      "first_year": 1984,
+      "last_year": 2026,
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/overview.png",
+      "headline": "Land cleared or built over in the north",
+      "chapter_count": 5,
+      "has_narration": false
+    },
+    {
+      "id": "summerlin-south-nevada-us-6km",
+      "display_name": "Summerlin South, Nevada",
+      "first_year": 1984,
+      "last_year": 2026,
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/overview.png",
+      "headline": "The land turns greener in the east",
+      "chapter_count": 3,
+      "has_narration": false
+    },
+    {
+      "id": "palm-jumeirah-united-arab-emirates-ae-6km",
+      "display_name": "Palm Jumeirah, United Arab Emirates",
+      "first_year": 1987,
+      "last_year": 2026,
+      "thumb_url": "/files/stories/palm-jumeirah-united-arab-emirates-ae-6km/overview.png",
+      "headline": "Water gives way to land in the northeast",
+      "chapter_count": 4,
+      "has_narration": false
+    },
+    {
+      "id": "paradise-california-us-6km",
+      "display_name": "Paradise, California",
+      "first_year": 1984,
+      "last_year": 2026,
+      "thumb_url": "/files/stories/paradise-california-us-6km/overview.png",
+      "headline": "Green cover lost suddenly across the area",
+      "chapter_count": 4,
+      "has_narration": false
+    },
+    {
+      "id": "lake-mead-nevada-us-6km",
+      "display_name": "Lake Mead, Nevada",
+      "first_year": 1984,
+      "last_year": 2026,
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/overview.png",
+      "headline": "Water gives way to land in the east",
+      "chapter_count": 6,
+      "has_narration": false
+    }
+  ]
+}

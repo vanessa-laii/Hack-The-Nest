@@ -201,32 +201,56 @@ export function stepYear(
 }
 
 /**
- * Global time of the first moment a given year is shown under current segments.
- * Used when ←/→ seeks the scrubber to that year.
+ * Global time when a given year is shown. With fromGlobalT + direction, picks
+ * the next/previous occurrence so ←/→ cannot jump the wrong way across
+ * overlapping segment year ranges.
  */
 export function globalTimeForYear(
   segments: PlaybackSegment[],
   availableYears: number[],
   year: number,
+  fromGlobalT = 0,
+  direction: -1 | 1 = 1,
   samplesPerSegment = 48,
 ): number {
   if (segments.length === 0) return 0;
-  let bestT = 0;
-  let bestDist = Infinity;
+
+  const hits: number[] = [];
+  let fallbackT = 0;
+  let fallbackDist = Infinity;
   let acc = 0;
+
   for (const seg of segments) {
     const steps = Math.max(2, samplesPerSegment);
     for (let i = 0; i <= steps; i++) {
       const localT = (i / steps) * seg.duration_s;
       const y = pickFrameYear(seg, localT, availableYears);
-      const dist = Math.abs(y - year);
       const globalT = acc + localT;
-      if (dist < bestDist || (dist === bestDist && globalT < bestT)) {
-        bestDist = dist;
-        bestT = globalT;
+      const dist = Math.abs(y - year);
+      if (y === year) hits.push(globalT);
+      if (
+        dist < fallbackDist ||
+        (dist === fallbackDist && globalT < fallbackT)
+      ) {
+        fallbackDist = dist;
+        fallbackT = globalT;
       }
     }
     acc += seg.duration_s;
   }
-  return bestT;
+
+  const eps = 1e-3;
+  if (hits.length === 0) return fallbackT;
+
+  if (direction === 1) {
+    const after = hits.find((t) => t > fromGlobalT + eps);
+    return after ?? hits[hits.length - 1]!;
+  }
+
+  let before: number | undefined;
+  for (const t of hits) {
+    if (t < fromGlobalT - eps) before = t;
+    else break;
+  }
+  return before ?? hits[0]!;
 }
