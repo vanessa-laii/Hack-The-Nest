@@ -9,6 +9,10 @@ The contracts are the only things `backend/` and `web/` share. If it isn't here 
 3. Both sides validate against the schema: the backend before saving every story (`scripts/validate_story.py`), the web app in development (`lib/validate.ts`, dev only).
 4. Everything in `contracts/samples/` is **made-up data** for building and testing. It's flagged with `"is_sample": true`, and sample text is marked `[SAMPLE]`.
 
+**Changelog**
+
+- **story 1.1** (2026-11-14, agreed by Harman and Vanessa): `metrics.series[].built_frac` is now NDBI > 0, NDVI < 0.2 **and MNDWI ≤ 0**. Under 1.0, turbid or algae-tinted water counted as built: Lake Mead read 84–86% built. Field names, types and ranges are the same, but `schema_version` is now `"1.1"` (a const), so a story or web fixture saved as 1.0 must be rebuilt or bumped to validate.
+
 ---
 
 ## 1. HTTP API (backend, `http://localhost:8000`)

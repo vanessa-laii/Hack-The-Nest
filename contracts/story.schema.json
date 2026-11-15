@@ -2,12 +2,12 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://earth-memory.local/contracts/story.schema.json",
   "title": "Story",
-  "description": "One Earth Memory story. Written by backend/, read by web/. Version 1.0. See docs/CONTRACTS.md.",
+  "description": "One Earth Memory story. Written by backend/, read by web/. Version 1.1. See docs/CONTRACTS.md.",
   "type": "object",
   "additionalProperties": false,
   "required": ["schema_version", "id", "status", "created_at", "place", "coverage", "frames", "metrics", "changes", "sources", "chapters", "script", "credits", "generation"],
   "properties": {
-    "schema_version": { "const": "1.0" },
+    "schema_version": { "const": "1.1" },
     "id": { "$ref": "#/$defs/storyId" },
     "is_sample": { "type": "boolean", "description": "True only for hand-made sample/mock stories. Never true for generated stories." },
     "status": { "enum": ["complete", "partial"], "description": "partial = saved after a timeout, budget stop or upstream failure; still playable." },
@@ -99,7 +99,7 @@
               "year": { "$ref": "#/$defs/year" },
               "ndvi_mean": { "type": "number", "minimum": -1, "maximum": 1, "description": "Mean NDVI over clear pixels." },
               "water_frac": { "type": "number", "minimum": 0, "maximum": 1, "description": "Share of clear pixels with MNDWI > 0." },
-              "built_frac": { "type": "number", "minimum": 0, "maximum": 1, "description": "Share of clear pixels with NDBI > 0 and NDVI < 0.2." }
+              "built_frac": { "type": "number", "minimum": 0, "maximum": 1, "description": "Share of clear pixels with NDBI > 0, NDVI < 0.2 and MNDWI <= 0 (water excluded). Changed in 1.1: water was counted as built." }
             }
           }
         }

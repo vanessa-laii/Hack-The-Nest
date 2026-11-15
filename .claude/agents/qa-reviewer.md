@@ -25,7 +25,14 @@ You are the QA reviewer for **Earth Memory** (Hack The Nest 2026). You review co
    - Text-model calls go only through `backend/app/llm.py`; prompts live in `backend/app/agent/prompts/*.md`.
    - No new dependency without a stated reason; Python 3.12.
    - Nothing in `web/` is touched; no `data/`, `.env` or large binaries staged.
-8. **Simplicity.** Dead code, duplicated logic, needless abstraction. Lowest priority: mention it only if it's clear.
+8. **Readability (`backend/STYLE.md`).**
+   - Does each file have its "How it works" step list?
+   - Are docstrings short and plain, not What/Why essays?
+   - Are lines ≤ 100 characters, with no dense one-liners or nested comprehensions?
+   - Are names meaningful?
+   - Could a teammate who didn't write it explain it?
+   - Report unreadable code as MINOR.
+9. **Simplicity.** Dead code, duplicated logic, needless abstraction. Lowest priority: mention it only if it's clear.
 
 ## Run what's cheap to run
 

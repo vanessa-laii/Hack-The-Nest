@@ -1,47 +1,59 @@
-# CLI: validates story.json files against contracts/story.schema.json and the CONTRACTS §2 invariants.
+# CLI: validates story.json files against contracts/story.schema.json and the CONTRACTS §2 rules.
 # Inputs: one or more paths to story.json (or *.jsonl event streams); default = the contract sample.
 # Outputs: "OK"/errors per file on stdout; exit code 1 if any file is invalid.
 #
-# Why a CLI as well as the in-code check: CLAUDE.md says to run this after any
-# pipeline change, and it's how cached stories get checked before the demo.
+# How it works:
+#   1. Take the paths from the command line, or use the contract sample.
+#   2. Check a .jsonl file line by line as build events; anything else as a story.
+#   3. Print OK or every error per file; exit 1 if any file failed.
+#
+# Run it after any pipeline change (CLAUDE.md) and on cached stories before the demo.
 from __future__ import annotations
 
 import json
 import sys
 from pathlib import Path
 
-# Lets `python backend/scripts/validate_story.py` import `app.*` from any
-# working directory, without installing the backend as a package.
+# Lets this script import `app.*` from any working directory without installing it.
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from app.config import CONTRACTS_DIR  # noqa: E402
 from app.contract_check import event_errors, story_errors  # noqa: E402
 
 
+def _event_stream_errors(path: Path) -> list[str]:
+    """Checks each non-blank line of a .jsonl file as one build event."""
+    errors = []
+    lines = path.read_text(encoding="utf-8").splitlines()
+    for line_no, line in enumerate(lines, 1):
+        if not line.strip():
+            continue
+        for error in event_errors(json.loads(line)):
+            errors.append(f"line {line_no}: {error}")
+    return errors
+
+
 def main(argv: list[str]) -> int:
     """Checks each file and prints every error, not only the first.
+    Returns non-zero if any file failed, so scripts and CI can stop."""
+    paths = [Path(arg) for arg in argv]
+    if not paths:
+        paths = [CONTRACTS_DIR / "samples" / "story.sample.json"]
 
-    A .jsonl file is treated as a build-event stream and checked line by line
-    against event.schema.json. Anything else is treated as a story.json.
-    Returns a non-zero exit code if any file failed, so scripts and CI can stop.
-    """
-    paths = [Path(a) for a in argv] or [CONTRACTS_DIR / "samples" / "story.sample.json"]
     bad = 0
-    for p in paths:
-        if p.suffix == ".jsonl":
-            errs = []
-            for i, line in enumerate(p.read_text(encoding="utf-8").splitlines(), 1):
-                if line.strip():
-                    errs += [f"line {i}: {e}" for e in event_errors(json.loads(line))]
+    for path in paths:
+        if path.suffix == ".jsonl":
+            errors = _event_stream_errors(path)
         else:
-            errs = story_errors(json.loads(p.read_text(encoding="utf-8")))
-        if errs:
+            errors = story_errors(json.loads(path.read_text(encoding="utf-8")))
+
+        if errors:
             bad += 1
-            print(f"INVALID {p}")
-            for e in errs:
-                print(f"  - {e}")
+            print(f"INVALID {path}")
+            for error in errors:
+                print(f"  - {error}")
         else:
-            print(f"OK {p}")
+            print(f"OK {path}")
     return 1 if bad else 0
 
 
