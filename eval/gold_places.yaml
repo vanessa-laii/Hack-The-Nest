@@ -12,7 +12,7 @@ places:
       - kind: water_gain
         approx_years: [2023, 2023]
         cause_keywords: [snowpack, inflow, rise]
-    verified: false
+    verified: true
 
   - query: "Paradise, California"
     purpose: burn change
@@ -20,7 +20,7 @@ places:
       - kind: burn
         approx_years: [2018, 2018]
         cause_keywords: [Camp Fire, wildfire]
-    verified: false
+    verified: true
 
   - query: "Summerlin, Nevada"
     purpose: built-up growth
@@ -28,7 +28,7 @@ places:
       - kind: urban_growth
         approx_years: [1990, 2010]
         cause_keywords: [development, master-planned community, housing]
-    verified: false
+    verified: true
 
   - query: "Palm Jumeirah, Dubai"
     purpose: water to land
@@ -36,14 +36,55 @@ places:
       - kind: water_loss
         approx_years: [2001, 2006]
         cause_keywords: [land reclamation, artificial island]
-    verified: false
+    verified: true
 
   - query: "Central Park, New York"
     purpose: CONTROL. Must produce zero changes (FR-23)
     expected_changes: []
-    verified: false
+    verified: true
 
   - query: "Ypsilanti, Michigan"
     purpose: local demo; small-town news coverage test
     expected_changes: unknown
     verified: false
+
+  # Centre from OpenStreetMap (American Center for Mobility). 6 km frame includes Willow Run Airport to the east.
+  # Schema has no "built loss" kind, so demolitions are kind `other` on metric built_frac (expected to fall).
+  - query: "Willow Run, Ypsilanti Township, Michigan"
+    center: [42.2424, -83.5552]
+    purpose: local demo; WWII bomber plant demolished, replaced by an autonomous-vehicle test track
+    expected_changes:
+      - kind: other               # GM Willow Run plant demolished
+        metric: built_frac
+        approx_years: [2014, 2015]
+        cause_keywords: [Willow Run plant, demolition, RACER Trust]
+      - kind: urban_growth        # American Center for Mobility test track paved
+        metric: built_frac
+        approx_years: [2016, 2018]
+        cause_keywords: [American Center for Mobility, test track, autonomous vehicles]
+      - kind: other               # Willow Run Airport crosswind runways removed
+        metric: built_frac
+        approx_years: [2013, 2015]
+        cause_keywords: [Willow Run Airport, runway]
+    verified: true
+    note: >-
+      Plant demolition Sep 2014-Jan 2015 per RACER Trust project records (p.enfos.com/publicDocs/33182);
+      ACM groundbreaking Nov 2016, opened Apr 2018 (TechCrunch 2016-11-22; Michigan Public 2018-04-05).
+      Both consistent with Landsat summer composites 2008-2025 (bare ground 2015-2017, new paving 2018-2019).
+      Runway removal seen by Harman in Timelapse (2011-2015) and in composites (faded 2014, gone 2015).
+      2012 has no usable Landsat (L5 ended 2011, L8 from 2013, L7 striped).
+
+  # Centre from OpenStreetMap (bridge spans 42.2914,-83.1036 Detroit to 42.2875,-83.0977 Windsor).
+  - query: "Delray, Detroit, Michigan"
+    center: [42.289, -83.112]
+    purpose: Gordie Howe International Bridge construction; also tests masking of bright new concrete
+    expected_changes:
+      - kind: urban_growth
+        metric: built_frac
+        approx_years: [2019, 2024]
+        cause_keywords: [Gordie Howe International Bridge, port of entry]
+    verified: false
+    note: >-
+      Claude first pass only, from Landsat composites: construction visible on both banks from ~2019,
+      Windsor-side interchange clear by 2024. The bridge deck is masked as cloud by qa_pixel in 2024-2025,
+      and 2021 is hazy. Needs an independent check (Worldview HLS or a published record) before verified: true.
