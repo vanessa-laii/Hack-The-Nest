@@ -1,0 +1,1267 @@
+{
+  "schema_version": "1.3",
+  "id": "paradise-california-us-6km",
+  "is_sample": false,
+  "status": "complete",
+  "created_at": "2026-11-15T14:09:55Z",
+  "place": {
+    "query": "Paradise, California",
+    "display_name": "Paradise, California",
+    "lat": 39.7596061,
+    "lon": -121.6219177,
+    "bbox": [
+      -121.66048,
+      39.72996,
+      -121.58336,
+      39.78925
+    ],
+    "aoi_km": 6.0,
+    "admin": {
+      "city": "Paradise",
+      "county": "Butte County",
+      "state": "California",
+      "country": "United States",
+      "country_code": "us"
+    }
+  },
+  "coverage": {
+    "first_year": 1984,
+    "last_year": 2026,
+    "season_months": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "years_skipped": []
+  },
+  "frames": [
+    {
+      "year": 1984,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/1984.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/1984.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_044032_19840705_02_T1",
+        "LT05_L2SP_044032_19840806_02_T1",
+        "LT05_L2SP_044032_19840907_02_T1"
+      ],
+      "date_from": "1984-07-05",
+      "date_to": "1984-09-07",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1985,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/1985.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/1985.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_044032_19850708_02_T1",
+        "LT05_L2SP_044032_19850724_02_T1",
+        "LT05_L2SP_044032_19850825_02_T1",
+        "LT05_L2SP_044032_19850926_02_T1"
+      ],
+      "date_from": "1985-07-08",
+      "date_to": "1985-09-26",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1986,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/1986.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/1986.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_044032_19860609_02_T1",
+        "LT05_L2SP_044032_19860625_02_T1",
+        "LT05_L2SP_044032_19860812_02_T1",
+        "LT05_L2SP_044032_19860828_02_T1"
+      ],
+      "date_from": "1986-06-09",
+      "date_to": "1986-08-28",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1987,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/1987.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/1987.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_044032_19870612_02_T1",
+        "LT05_L2SP_044032_19870714_02_T1",
+        "LT05_L2SP_044032_19870730_02_T1",
+        "LT05_L2SP_044032_19870916_02_T1"
+      ],
+      "date_from": "1987-06-12",
+      "date_to": "1987-09-16",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1988,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/1988.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/1988.jpg",
+      "sensors": [
+        "Landsat 4",
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT04_L2SP_044032_19880622_02_T1",
+        "LT05_L2SP_044032_19880630_02_T1",
+        "LT05_L2SP_044032_19880716_02_T1",
+        "LT05_L2SP_044032_19880801_02_T1"
+      ],
+      "date_from": "1988-06-22",
+      "date_to": "1988-08-01",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1989,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/1989.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/1989.jpg",
+      "sensors": [
+        "Landsat 4",
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_044032_19890617_02_T1",
+        "LT04_L2SP_044032_19890711_02_T1",
+        "LT05_L2SP_044032_19890719_02_T1",
+        "LT04_L2SP_044032_19890727_02_T1"
+      ],
+      "date_from": "1989-06-17",
+      "date_to": "1989-07-27",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1990,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/1990.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/1990.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_044032_19900604_02_T1",
+        "LT05_L2SP_044032_19900620_02_T1",
+        "LT05_L2SP_044032_19900823_02_T1",
+        "LT05_L2SP_044032_19900908_02_T1"
+      ],
+      "date_from": "1990-06-04",
+      "date_to": "1990-09-08",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1991,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/1991.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/1991.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_044032_19910607_02_T1",
+        "LT05_L2SP_044032_19910709_02_T1",
+        "LT05_L2SP_044032_19910810_02_T1",
+        "LT05_L2SP_044032_19910826_02_T1"
+      ],
+      "date_from": "1991-06-07",
+      "date_to": "1991-08-26",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1992,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/1992.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/1992.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_044032_19920609_02_T1",
+        "LT05_L2SP_044032_19920625_02_T1",
+        "LT05_L2SP_044032_19920929_02_T1"
+      ],
+      "date_from": "1992-06-09",
+      "date_to": "1992-09-29",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1993,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/1993.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/1993.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_044032_19930612_02_T1",
+        "LT05_L2SP_044032_19930628_02_T1",
+        "LT05_L2SP_044032_19930730_02_T1",
+        "LT05_L2SP_044032_19930831_02_T1"
+      ],
+      "date_from": "1993-06-12",
+      "date_to": "1993-08-31",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1994,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/1994.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/1994.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_044032_19940701_02_T1",
+        "LT05_L2SP_044032_19940717_02_T1",
+        "LT05_L2SP_044032_19940818_02_T1",
+        "LT05_L2SP_044032_19940903_02_T1"
+      ],
+      "date_from": "1994-07-01",
+      "date_to": "1994-09-03",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1995,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/1995.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/1995.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_044032_19950704_02_T1",
+        "LT05_L2SP_044032_19950720_02_T1",
+        "LT05_L2SP_044032_19950805_02_T1",
+        "LT05_L2SP_044032_19950906_02_T1"
+      ],
+      "date_from": "1995-07-04",
+      "date_to": "1995-09-06",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1996,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/1996.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/1996.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_044032_19960604_02_T1",
+        "LT05_L2SP_044032_19960706_02_T1",
+        "LT05_L2SP_044032_19960722_02_T1",
+        "LT05_L2SP_044032_19960807_02_T1"
+      ],
+      "date_from": "1996-06-04",
+      "date_to": "1996-08-07",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1997,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/1997.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/1997.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_044032_19970623_02_T1",
+        "LT05_L2SP_044032_19970725_02_T1",
+        "LT05_L2SP_044032_19970810_02_T1",
+        "LT05_L2SP_044032_19970927_02_T1"
+      ],
+      "date_from": "1997-06-23",
+      "date_to": "1997-09-27",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1998,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/1998.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/1998.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_044032_19980712_02_T1",
+        "LT05_L2SP_044032_19980813_02_T1",
+        "LT05_L2SP_044032_19980829_02_T1",
+        "LT05_L2SP_044032_19980914_02_T1"
+      ],
+      "date_from": "1998-07-12",
+      "date_to": "1998-09-14",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1999,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/1999.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/1999.jpg",
+      "sensors": [
+        "Landsat 5",
+        "Landsat 7"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_044032_19990629_02_T1",
+        "LE07_L2SP_044032_19990707_02_T1",
+        "LT05_L2SP_044032_19990715_02_T1",
+        "LE07_L2SP_044032_19990723_02_T1"
+      ],
+      "date_from": "1999-06-29",
+      "date_to": "1999-07-23",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2000,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/2000.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/2000.jpg",
+      "sensors": [
+        "Landsat 5",
+        "Landsat 7"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_044033_20000615_02_T1",
+        "LE07_L2SP_044032_20000623_02_T1",
+        "LE07_L2SP_044032_20000709_02_T1",
+        "LT05_L2SP_044032_20000717_02_T1"
+      ],
+      "date_from": "2000-06-15",
+      "date_to": "2000-07-17",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2001,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/2001.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/2001.jpg",
+      "sensors": [
+        "Landsat 5",
+        "Landsat 7"
+      ],
+      "scene_ids": [
+        "LE07_L2SP_044032_20010610_02_T1",
+        "LT05_L2SP_044032_20010618_02_T1",
+        "LE07_L2SP_044032_20010728_02_T1",
+        "LT05_L2SP_044032_20010805_02_T1"
+      ],
+      "date_from": "2001-06-10",
+      "date_to": "2001-08-05",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2002,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/2002.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/2002.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_044032_20020605_02_T1",
+        "LT05_L2SP_044032_20020723_02_T1",
+        "LT05_L2SP_044032_20020808_02_T1",
+        "LT05_L2SP_044032_20020824_02_T1"
+      ],
+      "date_from": "2002-06-05",
+      "date_to": "2002-08-24",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2003,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/2003.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/2003.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_044032_20030710_02_T1",
+        "LT05_L2SP_044032_20030811_02_T1",
+        "LT05_L2SP_044032_20030827_02_T1",
+        "LT05_L2SP_044032_20030912_02_T1"
+      ],
+      "date_from": "2003-07-10",
+      "date_to": "2003-09-12",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2004,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/2004.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/2004.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_044032_20040712_02_T1",
+        "LT05_L2SP_044032_20040728_02_T1",
+        "LT05_L2SP_044032_20040829_02_T1",
+        "LT05_L2SP_044032_20040914_02_T1"
+      ],
+      "date_from": "2004-07-12",
+      "date_to": "2004-09-14",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2005,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/2005.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/2005.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_044032_20050629_02_T1",
+        "LT05_L2SP_044032_20050715_02_T1",
+        "LT05_L2SP_044032_20050816_02_T1",
+        "LT05_L2SP_044032_20050901_02_T1"
+      ],
+      "date_from": "2005-06-29",
+      "date_to": "2005-09-01",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2006,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/2006.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/2006.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_044032_20060702_02_T1",
+        "LT05_L2SP_044032_20060718_02_T1",
+        "LT05_L2SP_044032_20060803_02_T1",
+        "LT05_L2SP_044032_20060819_02_T1"
+      ],
+      "date_from": "2006-07-02",
+      "date_to": "2006-08-19",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2007,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/2007.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/2007.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_044032_20070705_02_T1",
+        "LT05_L2SP_044032_20070721_02_T1",
+        "LT05_L2SP_044032_20070822_02_T1",
+        "LT05_L2SP_044032_20070907_02_T1"
+      ],
+      "date_from": "2007-07-05",
+      "date_to": "2007-09-07",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2008,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/2008.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/2008.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_044032_20080824_02_T1",
+        "LT05_L2SP_044032_20080909_02_T1"
+      ],
+      "date_from": "2008-08-24",
+      "date_to": "2008-09-09",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2009,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/2009.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/2009.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_044032_20090624_02_T1",
+        "LT05_L2SP_044032_20090710_02_T1",
+        "LT05_L2SP_044032_20090726_02_T1",
+        "LT05_L2SP_044032_20090827_02_T1"
+      ],
+      "date_from": "2009-06-24",
+      "date_to": "2009-08-27",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2010,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/2010.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/2010.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_044032_20100627_02_T1",
+        "LT05_L2SP_044032_20100713_02_T1",
+        "LT05_L2SP_044032_20100729_02_T1",
+        "LT05_L2SP_044032_20100814_02_T1"
+      ],
+      "date_from": "2010-06-27",
+      "date_to": "2010-08-14",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2011,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/2011.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/2011.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_044032_20110801_02_T1",
+        "LT05_L2SP_044032_20110817_02_T1",
+        "LT05_L2SP_044032_20110902_02_T1",
+        "LT05_L2SP_044032_20110918_02_T1"
+      ],
+      "date_from": "2011-08-01",
+      "date_to": "2011-09-18",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2012,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/2012.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/2012.jpg",
+      "sensors": [
+        "Landsat 7"
+      ],
+      "scene_ids": [
+        "LE07_L2SP_044032_20120710_02_T1",
+        "LE07_L2SP_044033_20120710_02_T1",
+        "LE07_L2SP_044033_20120827_02_T1",
+        "LE07_L2SP_044032_20120912_02_T1"
+      ],
+      "date_from": "2012-07-10",
+      "date_to": "2012-09-12",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2013,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/2013.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/2013.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_044032_20130705_02_T1",
+        "LC08_L2SP_044033_20130705_02_T1",
+        "LC08_L2SP_044032_20130721_02_T1",
+        "LC08_L2SP_044032_20130907_02_T1"
+      ],
+      "date_from": "2013-07-05",
+      "date_to": "2013-09-07",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2014,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/2014.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/2014.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_044033_20140622_02_T1",
+        "LC08_L2SP_044032_20140724_02_T1",
+        "LC08_L2SP_044033_20140724_02_T1",
+        "LC08_L2SP_044033_20140809_02_T1",
+        "LC08_L2SP_044032_20140910_02_T1",
+        "LC08_L2SP_044033_20140910_02_T1"
+      ],
+      "date_from": "2014-06-22",
+      "date_to": "2014-09-10",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2015,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/2015.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/2015.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_044032_20150625_02_T1",
+        "LC08_L2SP_044032_20150727_02_T1",
+        "LC08_L2SP_044033_20150727_02_T1",
+        "LC08_L2SP_044033_20150812_02_T1",
+        "LC08_L2SP_044032_20150929_02_T1"
+      ],
+      "date_from": "2015-06-25",
+      "date_to": "2015-09-29",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2016,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/2016.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/2016.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_044032_20160713_02_T1",
+        "LC08_L2SP_044033_20160713_02_T1",
+        "LC08_L2SP_044033_20160729_02_T1",
+        "LC08_L2SP_044033_20160830_02_T1",
+        "LC08_L2SP_044032_20160915_02_T1"
+      ],
+      "date_from": "2016-07-13",
+      "date_to": "2016-09-15",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2017,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/2017.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/2017.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_044032_20170630_02_T1",
+        "LC08_L2SP_044033_20170716_02_T1",
+        "LC08_L2SP_044033_20170801_02_T1",
+        "LC08_L2SP_044032_20170902_02_T1"
+      ],
+      "date_from": "2017-06-30",
+      "date_to": "2017-09-02",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2018,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/2018.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/2018.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_044032_20180601_02_T1",
+        "LC08_L2SP_044032_20180804_02_T1",
+        "LC08_L2SP_044032_20180905_02_T1",
+        "LC08_L2SP_044033_20180921_02_T1"
+      ],
+      "date_from": "2018-06-01",
+      "date_to": "2018-09-21",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2019,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/2019.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/2019.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_044032_20190722_02_T1",
+        "LC08_L2SP_044032_20190823_02_T1",
+        "LC08_L2SP_044033_20190823_02_T1",
+        "LC08_L2SP_044033_20190908_02_T1",
+        "LC08_L2SP_044032_20190924_02_T1"
+      ],
+      "date_from": "2019-07-22",
+      "date_to": "2019-09-24",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2020,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/2020.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/2020.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_044032_20200622_02_T1",
+        "LC08_L2SP_044032_20200708_02_T1",
+        "LC08_L2SP_044033_20200724_02_T1",
+        "LC08_L2SP_044033_20200809_02_T1"
+      ],
+      "date_from": "2020-06-22",
+      "date_to": "2020-08-09",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2021,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/2021.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/2021.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_044032_20210711_02_T1",
+        "LC08_L2SP_044033_20210913_02_T1",
+        "LC08_L2SP_044032_20210929_02_T1",
+        "LC08_L2SP_044033_20210929_02_T1"
+      ],
+      "date_from": "2021-07-11",
+      "date_to": "2021-09-29",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2022,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/2022.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/2022.jpg",
+      "sensors": [
+        "Landsat 8",
+        "Landsat 9"
+      ],
+      "scene_ids": [
+        "LC09_L2SP_044032_20220722_02_T1",
+        "LC09_L2SP_044032_20220807_02_T1",
+        "LC08_L2SP_044033_20220831_02_T1",
+        "LC09_L2SP_044033_20220908_02_T1"
+      ],
+      "date_from": "2022-07-22",
+      "date_to": "2022-09-08",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2023,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/2023.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/2023.jpg",
+      "sensors": [
+        "Landsat 9"
+      ],
+      "scene_ids": [
+        "LC09_L2SP_044032_20230725_02_T1",
+        "LC09_L2SP_044032_20230810_02_T1",
+        "LC09_L2SP_044033_20230810_02_T1",
+        "LC09_L2SP_044032_20230911_02_T1",
+        "LC09_L2SP_044033_20230911_02_T1"
+      ],
+      "date_from": "2023-07-25",
+      "date_to": "2023-09-11",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2024,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/2024.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/2024.jpg",
+      "sensors": [
+        "Landsat 8",
+        "Landsat 9"
+      ],
+      "scene_ids": [
+        "LC09_L2SP_044032_20240711_02_T1",
+        "LC09_L2SP_044033_20240828_02_T1",
+        "LC09_L2SP_044032_20240913_02_T1",
+        "LC08_L2SP_044032_20240921_02_T1"
+      ],
+      "date_from": "2024-07-11",
+      "date_to": "2024-09-21",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2025,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/2025.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/2025.jpg",
+      "sensors": [
+        "Landsat 9"
+      ],
+      "scene_ids": [
+        "LC09_L2SP_044032_20250628_02_T1",
+        "LC09_L2SP_044032_20250714_02_T1",
+        "LC09_L2SP_044033_20250815_02_T1",
+        "LC09_L2SP_044032_20250916_02_T1"
+      ],
+      "date_from": "2025-06-28",
+      "date_to": "2025-09-16",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2026,
+      "image_url": "/files/stories/paradise-california-us-6km/frames/2026.jpg",
+      "thumb_url": "/files/stories/paradise-california-us-6km/thumbs/2026.jpg",
+      "sensors": [
+        "Landsat 8",
+        "Landsat 9"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_044032_20260709_02_T1",
+        "LC09_L2SP_044033_20260717_02_T1",
+        "LC09_L2SP_044032_20260802_02_T1",
+        "LC08_L2SP_044032_20260911_02_T1"
+      ],
+      "date_from": "2026-07-09",
+      "date_to": "2026-09-11",
+      "clear_pct": 100.0
+    }
+  ],
+  "metrics": {
+    "series": [
+      {
+        "year": 1984,
+        "ndvi_mean": 0.5642,
+        "water_frac": 0.0003,
+        "built_frac": 0.0149
+      },
+      {
+        "year": 1985,
+        "ndvi_mean": 0.5615,
+        "water_frac": 0.0004,
+        "built_frac": 0.0147
+      },
+      {
+        "year": 1986,
+        "ndvi_mean": 0.5597,
+        "water_frac": 0.0003,
+        "built_frac": 0.0147
+      },
+      {
+        "year": 1987,
+        "ndvi_mean": 0.571,
+        "water_frac": 0.0004,
+        "built_frac": 0.017
+      },
+      {
+        "year": 1988,
+        "ndvi_mean": 0.5819,
+        "water_frac": 0.0005,
+        "built_frac": 0.015
+      },
+      {
+        "year": 1989,
+        "ndvi_mean": 0.5924,
+        "water_frac": 0.0005,
+        "built_frac": 0.0168
+      },
+      {
+        "year": 1990,
+        "ndvi_mean": 0.5868,
+        "water_frac": 0.0004,
+        "built_frac": 0.0132
+      },
+      {
+        "year": 1991,
+        "ndvi_mean": 0.5778,
+        "water_frac": 0.0004,
+        "built_frac": 0.0144
+      },
+      {
+        "year": 1992,
+        "ndvi_mean": 0.5299,
+        "water_frac": 0.0003,
+        "built_frac": 0.0038
+      },
+      {
+        "year": 1993,
+        "ndvi_mean": 0.5996,
+        "water_frac": 0.0002,
+        "built_frac": 0.0098
+      },
+      {
+        "year": 1994,
+        "ndvi_mean": 0.5659,
+        "water_frac": 0.0002,
+        "built_frac": 0.014
+      },
+      {
+        "year": 1995,
+        "ndvi_mean": 0.6105,
+        "water_frac": 0.0006,
+        "built_frac": 0.01
+      },
+      {
+        "year": 1996,
+        "ndvi_mean": 0.6179,
+        "water_frac": 0.0004,
+        "built_frac": 0.0094
+      },
+      {
+        "year": 1997,
+        "ndvi_mean": 0.6153,
+        "water_frac": 0.0004,
+        "built_frac": 0.0115
+      },
+      {
+        "year": 1998,
+        "ndvi_mean": 0.5647,
+        "water_frac": 0.0006,
+        "built_frac": 0.0127
+      },
+      {
+        "year": 1999,
+        "ndvi_mean": 0.6134,
+        "water_frac": 0.0003,
+        "built_frac": 0.0127
+      },
+      {
+        "year": 2000,
+        "ndvi_mean": 0.6051,
+        "water_frac": 0.0005,
+        "built_frac": 0.0109
+      },
+      {
+        "year": 2001,
+        "ndvi_mean": 0.6003,
+        "water_frac": 0.0005,
+        "built_frac": 0.0124
+      },
+      {
+        "year": 2002,
+        "ndvi_mean": 0.5899,
+        "water_frac": 0.0007,
+        "built_frac": 0.0111
+      },
+      {
+        "year": 2003,
+        "ndvi_mean": 0.5923,
+        "water_frac": 0.0012,
+        "built_frac": 0.0115
+      },
+      {
+        "year": 2004,
+        "ndvi_mean": 0.5739,
+        "water_frac": 0.0007,
+        "built_frac": 0.0158
+      },
+      {
+        "year": 2005,
+        "ndvi_mean": 0.5917,
+        "water_frac": 0.0007,
+        "built_frac": 0.0091
+      },
+      {
+        "year": 2006,
+        "ndvi_mean": 0.6098,
+        "water_frac": 0.0006,
+        "built_frac": 0.0116
+      },
+      {
+        "year": 2007,
+        "ndvi_mean": 0.5858,
+        "water_frac": 0.0008,
+        "built_frac": 0.0086
+      },
+      {
+        "year": 2008,
+        "ndvi_mean": 0.5648,
+        "water_frac": 0.0008,
+        "built_frac": 0.0107
+      },
+      {
+        "year": 2009,
+        "ndvi_mean": 0.5926,
+        "water_frac": 0.0006,
+        "built_frac": 0.0106
+      },
+      {
+        "year": 2010,
+        "ndvi_mean": 0.5989,
+        "water_frac": 0.0007,
+        "built_frac": 0.0091
+      },
+      {
+        "year": 2011,
+        "ndvi_mean": 0.6052,
+        "water_frac": 0.0005,
+        "built_frac": 0.0076
+      },
+      {
+        "year": 2012,
+        "ndvi_mean": 0.6131,
+        "water_frac": 0.0005,
+        "built_frac": 0.0093
+      },
+      {
+        "year": 2013,
+        "ndvi_mean": 0.6458,
+        "water_frac": 0.0005,
+        "built_frac": 0.0098
+      },
+      {
+        "year": 2014,
+        "ndvi_mean": 0.627,
+        "water_frac": 0.0003,
+        "built_frac": 0.0097
+      },
+      {
+        "year": 2015,
+        "ndvi_mean": 0.6227,
+        "water_frac": 0.0004,
+        "built_frac": 0.0097
+      },
+      {
+        "year": 2016,
+        "ndvi_mean": 0.6209,
+        "water_frac": 0.0004,
+        "built_frac": 0.0098
+      },
+      {
+        "year": 2017,
+        "ndvi_mean": 0.62,
+        "water_frac": 0.0001,
+        "built_frac": 0.0078
+      },
+      {
+        "year": 2018,
+        "ndvi_mean": 0.6266,
+        "water_frac": 0.0001,
+        "built_frac": 0.0068
+      },
+      {
+        "year": 2019,
+        "ndvi_mean": 0.3869,
+        "water_frac": 0.0005,
+        "built_frac": 0.0576
+      },
+      {
+        "year": 2020,
+        "ndvi_mean": 0.429,
+        "water_frac": 0.0009,
+        "built_frac": 0.0409
+      },
+      {
+        "year": 2021,
+        "ndvi_mean": 0.361,
+        "water_frac": 0.0006,
+        "built_frac": 0.0664
+      },
+      {
+        "year": 2022,
+        "ndvi_mean": 0.3738,
+        "water_frac": 0.0005,
+        "built_frac": 0.0978
+      },
+      {
+        "year": 2023,
+        "ndvi_mean": 0.3998,
+        "water_frac": 0.0009,
+        "built_frac": 0.0916
+      },
+      {
+        "year": 2024,
+        "ndvi_mean": 0.3973,
+        "water_frac": 0.0008,
+        "built_frac": 0.0662
+      },
+      {
+        "year": 2025,
+        "ndvi_mean": 0.4114,
+        "water_frac": 0.0004,
+        "built_frac": 0.0604
+      },
+      {
+        "year": 2026,
+        "ndvi_mean": 0.4228,
+        "water_frac": 0.0006,
+        "built_frac": 0.063
+      }
+    ]
+  },
+  "changes": [
+    {
+      "id": "chg-01",
+      "kind": "burn",
+      "metric": "ndvi_mean",
+      "start_year": 2018,
+      "end_year": 2020,
+      "magnitude": -0.1976,
+      "scope": "place",
+      "area_ha": 3096.4,
+      "persistence_years": 7,
+      "region": {
+        "bbox": [
+          -121.66048,
+          39.72996,
+          -121.58336,
+          39.78925
+        ],
+        "description": "across most of the area"
+      },
+      "before_year": 2018,
+      "after_year": 2020,
+      "mask_url": "/files/stories/paradise-california-us-6km/masks/chg-01.png",
+      "sensor_switch_flag": false
+    },
+    {
+      "id": "chg-02",
+      "kind": "vegetation_gain",
+      "metric": "ndvi_mean",
+      "start_year": 1985,
+      "end_year": 1999,
+      "magnitude": 0.0519,
+      "scope": "place",
+      "area_ha": 621.9,
+      "persistence_years": 7,
+      "region": {
+        "bbox": [
+          -121.66048,
+          39.7685,
+          -121.64853,
+          39.7854
+        ],
+        "description": "in the northwest part of the area"
+      },
+      "before_year": 1985,
+      "after_year": 1999,
+      "mask_url": "/files/stories/paradise-california-us-6km/masks/chg-02.png",
+      "sensor_switch_flag": false
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-01",
+      "url": "https://www.pbs.org/wgbh/frontline/article/camp-fire-by-the-numbers/",
+      "title": "Camp Fire: By the Numbers | FRONTLINE | PBS | Official Site | Documentary Series",
+      "publisher": null,
+      "domain": "pbs.org",
+      "published_date": "2019-10-30",
+      "authority": "other",
+      "retrieved_at": "2026-11-15T14:09:55+00:00",
+      "excerpts": [
+        {
+          "id": "ex-01-01",
+          "text": "It ignited in the early morning hours of Nov. 8, 2018 and would rage for more than two weeks, devastating the town of Paradise before it was extinguished.",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "id": "src-02",
+      "url": "https://doi.org/10.6028/nist.tn.2105",
+      "title": "Camp Fire Reconnaissance",
+      "publisher": null,
+      "domain": "doi.org",
+      "published_date": "2020-08-27",
+      "authority": "other",
+      "retrieved_at": "2026-11-15T14:09:55+00:00",
+      "excerpts": [
+        {
+          "id": "ex-02-01",
+          "text": "The Camp Fire ignited on the morning of November 8, 2018, in Pulga, CA. Fanned by high winds, the fire spread quickly through wildlands and burned into the wildland-urban interface (WUI) communities of Concow, Paradise, and Magalia, CA. Within hours, thousands of structures were destroyed as over 30,000 residents evacuated the area.",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "id": "src-03",
+      "url": "https://today.csuchico.edu/paradise-rebuild-and-evolve/",
+      "title": "Paradise Continues to Rebuild and Evolve Three Years ...",
+      "publisher": null,
+      "domain": "today.csuchico.edu",
+      "published_date": "2021-11-08",
+      "authority": "authoritative",
+      "retrieved_at": "2026-11-15T14:09:55+00:00",
+      "excerpts": [
+        {
+          "id": "ex-03-01",
+          "text": "Before November 2018, Paradise was home to 26,000 people who lived in a broad assortment of housing types in neighborhoods served by schools, a major hospital, churches, shopping centers, and even a large theater. Visualizations such as Google Street View show just how the Camp Fire made neighborhoods unrecognizable. Homes are separated by empty land, and the lush shield of tall pines and landscaping is gone, as shown in the animation here.",
+          "verified": true
+        }
+      ]
+    }
+  ],
+  "chapters": [
+    {
+      "id": "ch-01",
+      "kind": "intro",
+      "change_id": null,
+      "start_year": 1984,
+      "end_year": 2017,
+      "headline": "Paradise, California in 1984",
+      "claims": [],
+      "confidence": null,
+      "vision_check": {
+        "verdict": "not_run",
+        "note": null
+      }
+    },
+    {
+      "id": "ch-02",
+      "kind": "change",
+      "change_id": "chg-02",
+      "start_year": 1985,
+      "end_year": 1999,
+      "headline": "The land turns greener in the northwest",
+      "claims": [],
+      "confidence": "cause_unknown",
+      "vision_check": {
+        "verdict": "not_run",
+        "note": null
+      }
+    },
+    {
+      "id": "ch-03",
+      "kind": "change",
+      "change_id": "chg-01",
+      "start_year": 2018,
+      "end_year": 2020,
+      "headline": "Green cover lost suddenly across the area",
+      "claims": [
+        {
+          "id": "cl-01",
+          "text": "In November 2018, the Camp Fire burned into Paradise, California, devastating the town and destroying thousands of structures.",
+          "excerpt_ids": [
+            "ex-01-01",
+            "ex-02-01"
+          ]
+        },
+        {
+          "id": "cl-02",
+          "text": "The Camp Fire left neighborhoods in Paradise with their lush shield of tall pines and landscaping gone.",
+          "excerpt_ids": [
+            "ex-03-01"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "vision_check": {
+        "verdict": "not_run",
+        "note": null
+      }
+    },
+    {
+      "id": "ch-04",
+      "kind": "outro",
+      "change_id": null,
+      "start_year": 2021,
+      "end_year": 2026,
+      "headline": "Where it stands today",
+      "claims": [],
+      "confidence": null,
+      "vision_check": {
+        "verdict": "not_run",
+        "note": null
+      }
+    }
+  ],
+  "script": {
+    "word_count": 153,
+    "est_duration_s": 61.2,
+    "segments": [
+      {
+        "id": "seg-01",
+        "chapter_id": "ch-01",
+        "text": "This is Paradise, California, seen from space by Landsat satellites, one summer at a time from 1984 to 2026. Over these years, the pictures show two lasting changes. Between 1985 and 1999, the land across the area turned greener on average, mostly in the northwest. This film uses 43 summers of Landsat imagery. Each frame shows the same square of ground, 6 kilometres on a side.",
+        "year_from": 1984,
+        "year_to": 2017,
+        "claim_ids": []
+      },
+      {
+        "id": "seg-02",
+        "chapter_id": "ch-03",
+        "text": "Between 2018 and 2020, the land across the area lost its green cover suddenly. In all, about 3100 hectares changed. Records show: In November 2018, the Camp Fire burned into Paradise, California, devastating the town and destroying thousands of structures. Records also show: The Camp Fire left neighborhoods in Paradise with their lush shield of tall pines and landscaping gone. The change held for seven summers in the record. Compare the 2018 and 2020 frames to see it.",
+        "year_from": 2018,
+        "year_to": 2020,
+        "claim_ids": [
+          "cl-01",
+          "cl-02"
+        ]
+      },
+      {
+        "id": "seg-03",
+        "chapter_id": "ch-04",
+        "text": "That is how Paradise, California has changed since 1984.",
+        "year_from": 2021,
+        "year_to": 2026,
+        "claim_ids": []
+      }
+    ]
+  },
+  "validation": null,
+  "credits": [
+    "Landsat imagery courtesy of NASA and the U.S. Geological Survey.",
+    "Supported by the Michigan Space Grant Consortium, NASA grant 80NSSC20M0124."
+  ],
+  "generation": {
+    "duration_s": 63.08,
+    "usage": {
+      "exa_calls": 0,
+      "llm_calls": 5,
+      "vision_calls": 0
+    },
+    "warnings": []
+  }
+}

@@ -1,0 +1,1128 @@
+{
+  "schema_version": "1.0",
+  "story_id": "palm-jumeirah-united-arab-emirates-ae-6km",
+  "voice_id": "MFZUKuGQUsGJPQjTS4wC",
+  "model_id": "eleven_multilingual_v2",
+  "created_at": "2026-11-15T14:31:31.393Z",
+  "total_duration_s": 89.21,
+  "segments": [
+    {
+      "segment_id": "seg-01",
+      "audio_url": "/files/stories/palm-jumeirah-united-arab-emirates-ae-6km/narration/seg-01.mp3",
+      "duration_s": 8.638,
+      "words": [
+        {
+          "text": "This",
+          "start_s": 0,
+          "end_s": 0.209
+        },
+        {
+          "text": "is",
+          "start_s": 0.267,
+          "end_s": 0.337
+        },
+        {
+          "text": "Palm",
+          "start_s": 0.383,
+          "end_s": 0.604
+        },
+        {
+          "text": "Jumeirah,",
+          "start_s": 0.673,
+          "end_s": 1.149
+        },
+        {
+          "text": "United",
+          "start_s": 1.242,
+          "end_s": 1.649
+        },
+        {
+          "text": "Arab",
+          "start_s": 1.718,
+          "end_s": 1.985
+        },
+        {
+          "text": "Emirates,",
+          "start_s": 2.067,
+          "end_s": 2.508
+        },
+        {
+          "text": "seen",
+          "start_s": 2.566,
+          "end_s": 2.775
+        },
+        {
+          "text": "from",
+          "start_s": 2.821,
+          "end_s": 2.949
+        },
+        {
+          "text": "space",
+          "start_s": 3.007,
+          "end_s": 3.332
+        },
+        {
+          "text": "by",
+          "start_s": 3.367,
+          "end_s": 3.483
+        },
+        {
+          "text": "Landsat",
+          "start_s": 3.564,
+          "end_s": 4.005
+        },
+        {
+          "text": "satellites,",
+          "start_s": 4.075,
+          "end_s": 4.714
+        },
+        {
+          "text": "one",
+          "start_s": 4.911,
+          "end_s": 5.132
+        },
+        {
+          "text": "summer",
+          "start_s": 5.166,
+          "end_s": 5.422
+        },
+        {
+          "text": "at",
+          "start_s": 5.457,
+          "end_s": 5.515
+        },
+        {
+          "text": "a",
+          "start_s": 5.561,
+          "end_s": 5.584
+        },
+        {
+          "text": "time",
+          "start_s": 5.642,
+          "end_s": 5.898
+        },
+        {
+          "text": "from",
+          "start_s": 5.933,
+          "end_s": 6.072
+        },
+        {
+          "text": "1987",
+          "start_s": 6.118,
+          "end_s": 7.012
+        },
+        {
+          "text": "to",
+          "start_s": 7.047,
+          "end_s": 7.105
+        },
+        {
+          "text": "2026.",
+          "start_s": 7.187,
+          "end_s": 8.638
+        }
+      ]
+    },
+    {
+      "segment_id": "seg-02",
+      "audio_url": "/files/stories/palm-jumeirah-united-arab-emirates-ae-6km/narration/seg-02.mp3",
+      "duration_s": 38.87,
+      "words": [
+        {
+          "text": "Between",
+          "start_s": 0,
+          "end_s": 0.383
+        },
+        {
+          "text": "2002",
+          "start_s": 0.441,
+          "end_s": 1.242
+        },
+        {
+          "text": "and",
+          "start_s": 1.358,
+          "end_s": 1.451
+        },
+        {
+          "text": "2019,",
+          "start_s": 1.521,
+          "end_s": 2.45
+        },
+        {
+          "text": "about",
+          "start_s": 2.566,
+          "end_s": 2.821
+        },
+        {
+          "text": "a",
+          "start_s": 2.856,
+          "end_s": 2.879
+        },
+        {
+          "text": "fifth",
+          "start_s": 2.972,
+          "end_s": 3.216
+        },
+        {
+          "text": "of",
+          "start_s": 3.251,
+          "end_s": 3.309
+        },
+        {
+          "text": "the",
+          "start_s": 3.355,
+          "end_s": 3.425
+        },
+        {
+          "text": "area",
+          "start_s": 3.518,
+          "end_s": 3.808
+        },
+        {
+          "text": "turned",
+          "start_s": 3.878,
+          "end_s": 4.122
+        },
+        {
+          "text": "from",
+          "start_s": 4.156,
+          "end_s": 4.296
+        },
+        {
+          "text": "water",
+          "start_s": 4.377,
+          "end_s": 4.667
+        },
+        {
+          "text": "to",
+          "start_s": 4.725,
+          "end_s": 4.772
+        },
+        {
+          "text": "land,",
+          "start_s": 4.865,
+          "end_s": 5.329
+        },
+        {
+          "text": "mostly",
+          "start_s": 5.561,
+          "end_s": 5.921
+        },
+        {
+          "text": "in",
+          "start_s": 5.968,
+          "end_s": 6.014
+        },
+        {
+          "text": "the",
+          "start_s": 6.049,
+          "end_s": 6.118
+        },
+        {
+          "text": "northeast.",
+          "start_s": 6.165,
+          "end_s": 6.92
+        },
+        {
+          "text": "In",
+          "start_s": 7.338,
+          "end_s": 7.5
+        },
+        {
+          "text": "all,",
+          "start_s": 7.57,
+          "end_s": 7.941
+        },
+        {
+          "text": "about",
+          "start_s": 8.057,
+          "end_s": 8.348
+        },
+        {
+          "text": "830",
+          "start_s": 8.417,
+          "end_s": 9.149
+        },
+        {
+          "text": "hectares",
+          "start_s": 9.23,
+          "end_s": 9.694
+        },
+        {
+          "text": "changed.",
+          "start_s": 9.752,
+          "end_s": 10.31
+        },
+        {
+          "text": "Part",
+          "start_s": 10.542,
+          "end_s": 10.786
+        },
+        {
+          "text": "of",
+          "start_s": 10.82,
+          "end_s": 10.879
+        },
+        {
+          "text": "it",
+          "start_s": 10.937,
+          "end_s": 11.006
+        },
+        {
+          "text": "may",
+          "start_s": 11.053,
+          "end_s": 11.169
+        },
+        {
+          "text": "come",
+          "start_s": 11.227,
+          "end_s": 11.413
+        },
+        {
+          "text": "from",
+          "start_s": 11.447,
+          "end_s": 11.587
+        },
+        {
+          "text": "switching",
+          "start_s": 11.656,
+          "end_s": 12.028
+        },
+        {
+          "text": "Landsat",
+          "start_s": 12.109,
+          "end_s": 12.585
+        },
+        {
+          "text": "satellites.",
+          "start_s": 12.655,
+          "end_s": 13.421
+        },
+        {
+          "text": "Records",
+          "start_s": 13.653,
+          "end_s": 14.048
+        },
+        {
+          "text": "show:",
+          "start_s": 14.083,
+          "end_s": 14.512
+        },
+        {
+          "text": "Between",
+          "start_s": 14.559,
+          "end_s": 14.93
+        },
+        {
+          "text": "2002",
+          "start_s": 14.988,
+          "end_s": 15.801
+        },
+        {
+          "text": "and",
+          "start_s": 15.871,
+          "end_s": 15.952
+        },
+        {
+          "text": "2008,",
+          "start_s": 16.01,
+          "end_s": 16.916
+        },
+        {
+          "text": "the",
+          "start_s": 17.078,
+          "end_s": 17.183
+        },
+        {
+          "text": "artificial",
+          "start_s": 17.252,
+          "end_s": 17.798
+        },
+        {
+          "text": "archipelago",
+          "start_s": 17.868,
+          "end_s": 18.564
+        },
+        {
+          "text": "of",
+          "start_s": 18.634,
+          "end_s": 18.703
+        },
+        {
+          "text": "Palm",
+          "start_s": 18.796,
+          "end_s": 19.075
+        },
+        {
+          "text": "Jumeirah",
+          "start_s": 19.145,
+          "end_s": 19.609
+        },
+        {
+          "text": "was",
+          "start_s": 19.644,
+          "end_s": 19.76
+        },
+        {
+          "text": "constructed,",
+          "start_s": 19.806,
+          "end_s": 20.526
+        },
+        {
+          "text": "evolving",
+          "start_s": 20.758,
+          "end_s": 21.234
+        },
+        {
+          "text": "from",
+          "start_s": 21.292,
+          "end_s": 21.432
+        },
+        {
+          "text": "early",
+          "start_s": 21.501,
+          "end_s": 21.768
+        },
+        {
+          "text": "stages",
+          "start_s": 21.827,
+          "end_s": 22.326
+        },
+        {
+          "text": "to",
+          "start_s": 22.488,
+          "end_s": 22.593
+        },
+        {
+          "text": "a",
+          "start_s": 22.674,
+          "end_s": 22.697
+        },
+        {
+          "text": "structure",
+          "start_s": 22.755,
+          "end_s": 23.15
+        },
+        {
+          "text": "featuring",
+          "start_s": 23.208,
+          "end_s": 23.614
+        },
+        {
+          "text": "seventeen",
+          "start_s": 23.696,
+          "end_s": 24.299
+        },
+        {
+          "text": "sandy",
+          "start_s": 24.392,
+          "end_s": 24.741
+        },
+        {
+          "text": "fronds.",
+          "start_s": 24.81,
+          "end_s": 25.414
+        },
+        {
+          "text": "In",
+          "start_s": 25.832,
+          "end_s": 25.983
+        },
+        {
+          "text": "2002,",
+          "start_s": 26.041,
+          "end_s": 27.039
+        },
+        {
+          "text": "water",
+          "start_s": 27.179,
+          "end_s": 27.481
+        },
+        {
+          "text": "covered",
+          "start_s": 27.539,
+          "end_s": 27.829
+        },
+        {
+          "text": "about",
+          "start_s": 27.852,
+          "end_s": 28.096
+        },
+        {
+          "text": "92",
+          "start_s": 28.212,
+          "end_s": 28.607
+        },
+        {
+          "text": "percent",
+          "start_s": 28.676,
+          "end_s": 29.001
+        },
+        {
+          "text": "of",
+          "start_s": 29.036,
+          "end_s": 29.083
+        },
+        {
+          "text": "the",
+          "start_s": 29.13,
+          "end_s": 29.199
+        },
+        {
+          "text": "view;",
+          "start_s": 29.246,
+          "end_s": 29.71
+        },
+        {
+          "text": "by",
+          "start_s": 29.849,
+          "end_s": 30
+        },
+        {
+          "text": "2019,",
+          "start_s": 30.07,
+          "end_s": 30.999
+        },
+        {
+          "text": "about",
+          "start_s": 31.115,
+          "end_s": 31.44
+        },
+        {
+          "text": "72",
+          "start_s": 31.556,
+          "end_s": 32.137
+        },
+        {
+          "text": "percent.",
+          "start_s": 32.206,
+          "end_s": 32.787
+        },
+        {
+          "text": "The",
+          "start_s": 32.984,
+          "end_s": 33.089
+        },
+        {
+          "text": "change",
+          "start_s": 33.147,
+          "end_s": 33.483
+        },
+        {
+          "text": "held",
+          "start_s": 33.518,
+          "end_s": 33.762
+        },
+        {
+          "text": "for",
+          "start_s": 33.832,
+          "end_s": 33.948
+        },
+        {
+          "text": "eight",
+          "start_s": 34.029,
+          "end_s": 34.238
+        },
+        {
+          "text": "summers",
+          "start_s": 34.296,
+          "end_s": 34.656
+        },
+        {
+          "text": "in",
+          "start_s": 34.702,
+          "end_s": 34.772
+        },
+        {
+          "text": "the",
+          "start_s": 34.807,
+          "end_s": 34.877
+        },
+        {
+          "text": "record.",
+          "start_s": 34.935,
+          "end_s": 35.376
+        },
+        {
+          "text": "Compare",
+          "start_s": 35.515,
+          "end_s": 35.887
+        },
+        {
+          "text": "the",
+          "start_s": 35.921,
+          "end_s": 35.991
+        },
+        {
+          "text": "2002",
+          "start_s": 36.049,
+          "end_s": 36.746
+        },
+        {
+          "text": "and",
+          "start_s": 36.804,
+          "end_s": 36.874
+        },
+        {
+          "text": "2019",
+          "start_s": 36.932,
+          "end_s": 37.663
+        },
+        {
+          "text": "frames",
+          "start_s": 37.733,
+          "end_s": 38.023
+        },
+        {
+          "text": "to",
+          "start_s": 38.058,
+          "end_s": 38.127
+        },
+        {
+          "text": "see",
+          "start_s": 38.197,
+          "end_s": 38.371
+        },
+        {
+          "text": "it.",
+          "start_s": 38.418,
+          "end_s": 38.87
+        }
+      ]
+    },
+    {
+      "segment_id": "seg-03",
+      "audio_url": "/files/stories/palm-jumeirah-united-arab-emirates-ae-6km/narration/seg-03.mp3",
+      "duration_s": 37.244,
+      "words": [
+        {
+          "text": "Between",
+          "start_s": 0,
+          "end_s": 0.406
+        },
+        {
+          "text": "2007",
+          "start_s": 0.464,
+          "end_s": 1.3
+        },
+        {
+          "text": "and",
+          "start_s": 1.37,
+          "end_s": 1.44
+        },
+        {
+          "text": "2023,",
+          "start_s": 1.498,
+          "end_s": 2.473
+        },
+        {
+          "text": "the",
+          "start_s": 2.589,
+          "end_s": 2.694
+        },
+        {
+          "text": "land",
+          "start_s": 2.763,
+          "end_s": 2.972
+        },
+        {
+          "text": "across",
+          "start_s": 3.019,
+          "end_s": 3.32
+        },
+        {
+          "text": "the",
+          "start_s": 3.355,
+          "end_s": 3.425
+        },
+        {
+          "text": "area",
+          "start_s": 3.483,
+          "end_s": 3.75
+        },
+        {
+          "text": "turned",
+          "start_s": 3.808,
+          "end_s": 4.075
+        },
+        {
+          "text": "greener",
+          "start_s": 4.133,
+          "end_s": 4.458
+        },
+        {
+          "text": "on",
+          "start_s": 4.516,
+          "end_s": 4.598
+        },
+        {
+          "text": "average,",
+          "start_s": 4.656,
+          "end_s": 5.085
+        },
+        {
+          "text": "mostly",
+          "start_s": 5.201,
+          "end_s": 5.55
+        },
+        {
+          "text": "in",
+          "start_s": 5.584,
+          "end_s": 5.631
+        },
+        {
+          "text": "the",
+          "start_s": 5.666,
+          "end_s": 5.735
+        },
+        {
+          "text": "northeast.",
+          "start_s": 5.782,
+          "end_s": 6.502
+        },
+        {
+          "text": "In",
+          "start_s": 6.92,
+          "end_s": 7.07
+        },
+        {
+          "text": "all,",
+          "start_s": 7.14,
+          "end_s": 7.57
+        },
+        {
+          "text": "about",
+          "start_s": 7.686,
+          "end_s": 7.976
+        },
+        {
+          "text": "350",
+          "start_s": 8.034,
+          "end_s": 8.789
+        },
+        {
+          "text": "hectares",
+          "start_s": 8.847,
+          "end_s": 9.276
+        },
+        {
+          "text": "changed.",
+          "start_s": 9.334,
+          "end_s": 9.88
+        },
+        {
+          "text": "One",
+          "start_s": 10.112,
+          "end_s": 10.333
+        },
+        {
+          "text": "report",
+          "start_s": 10.379,
+          "end_s": 10.739
+        },
+        {
+          "text": "says:",
+          "start_s": 10.797,
+          "end_s": 11.285
+        },
+        {
+          "text": "Extensive",
+          "start_s": 11.703,
+          "end_s": 12.307
+        },
+        {
+          "text": "landscaping",
+          "start_s": 12.353,
+          "end_s": 12.91
+        },
+        {
+          "text": "efforts",
+          "start_s": 12.98,
+          "end_s": 13.305
+        },
+        {
+          "text": "on",
+          "start_s": 13.351,
+          "end_s": 13.444
+        },
+        {
+          "text": "Palm",
+          "start_s": 13.514,
+          "end_s": 13.769
+        },
+        {
+          "text": "Jumeirah",
+          "start_s": 13.839,
+          "end_s": 14.315
+        },
+        {
+          "text": "involved",
+          "start_s": 14.512,
+          "end_s": 14.977
+        },
+        {
+          "text": "planting",
+          "start_s": 15.035,
+          "end_s": 15.371
+        },
+        {
+          "text": "thousands",
+          "start_s": 15.453,
+          "end_s": 15.929
+        },
+        {
+          "text": "of",
+          "start_s": 15.964,
+          "end_s": 16.022
+        },
+        {
+          "text": "trees,",
+          "start_s": 16.091,
+          "end_s": 16.625
+        },
+        {
+          "text": "shrubs,",
+          "start_s": 16.695,
+          "end_s": 17.148
+        },
+        {
+          "text": "and",
+          "start_s": 17.171,
+          "end_s": 17.264
+        },
+        {
+          "text": "flowers,",
+          "start_s": 17.345,
+          "end_s": 17.926
+        },
+        {
+          "text": "which",
+          "start_s": 18.042,
+          "end_s": 18.239
+        },
+        {
+          "text": "transformed",
+          "start_s": 18.286,
+          "end_s": 18.843
+        },
+        {
+          "text": "the",
+          "start_s": 18.866,
+          "end_s": 18.936
+        },
+        {
+          "text": "area",
+          "start_s": 19.005,
+          "end_s": 19.296
+        },
+        {
+          "text": "into",
+          "start_s": 19.388,
+          "end_s": 19.609
+        },
+        {
+          "text": "a",
+          "start_s": 19.702,
+          "end_s": 19.725
+        },
+        {
+          "text": "lush",
+          "start_s": 19.806,
+          "end_s": 20.097
+        },
+        {
+          "text": "oasis.",
+          "start_s": 20.178,
+          "end_s": 20.898
+        },
+        {
+          "text": "One",
+          "start_s": 21.478,
+          "end_s": 21.687
+        },
+        {
+          "text": "report",
+          "start_s": 21.734,
+          "end_s": 22.059
+        },
+        {
+          "text": "also",
+          "start_s": 22.105,
+          "end_s": 22.349
+        },
+        {
+          "text": "says:",
+          "start_s": 22.419,
+          "end_s": 22.848
+        },
+        {
+          "text": "A",
+          "start_s": 23.011,
+          "end_s": 23.092
+        },
+        {
+          "text": "new",
+          "start_s": 23.208,
+          "end_s": 23.382
+        },
+        {
+          "text": "park",
+          "start_s": 23.452,
+          "end_s": 23.777
+        },
+        {
+          "text": "covering",
+          "start_s": 23.858,
+          "end_s": 24.218
+        },
+        {
+          "text": "more",
+          "start_s": 24.276,
+          "end_s": 24.427
+        },
+        {
+          "text": "than",
+          "start_s": 24.45,
+          "end_s": 24.59
+        },
+        {
+          "text": "10",
+          "start_s": 24.648,
+          "end_s": 24.88
+        },
+        {
+          "text": "hectares",
+          "start_s": 24.95,
+          "end_s": 25.414
+        },
+        {
+          "text": "was",
+          "start_s": 25.46,
+          "end_s": 25.588
+        },
+        {
+          "text": "opened",
+          "start_s": 25.658,
+          "end_s": 25.983
+        },
+        {
+          "text": "on",
+          "start_s": 26.029,
+          "end_s": 26.099
+        },
+        {
+          "text": "Palm",
+          "start_s": 26.157,
+          "end_s": 26.378
+        },
+        {
+          "text": "Jumeirah,",
+          "start_s": 26.447,
+          "end_s": 26.947
+        },
+        {
+          "text": "featuring",
+          "start_s": 27.214,
+          "end_s": 27.619
+        },
+        {
+          "text": "over",
+          "start_s": 27.666,
+          "end_s": 27.84
+        },
+        {
+          "text": "60",
+          "start_s": 27.956,
+          "end_s": 28.328
+        },
+        {
+          "text": "species",
+          "start_s": 28.409,
+          "end_s": 28.931
+        },
+        {
+          "text": "of",
+          "start_s": 28.989,
+          "end_s": 29.047
+        },
+        {
+          "text": "indigenous",
+          "start_s": 29.106,
+          "end_s": 29.663
+        },
+        {
+          "text": "trees",
+          "start_s": 29.709,
+          "end_s": 30.011
+        },
+        {
+          "text": "and",
+          "start_s": 30.058,
+          "end_s": 30.139
+        },
+        {
+          "text": "plants.",
+          "start_s": 30.197,
+          "end_s": 30.801
+        },
+        {
+          "text": "The",
+          "start_s": 31.219,
+          "end_s": 31.335
+        },
+        {
+          "text": "change",
+          "start_s": 31.393,
+          "end_s": 31.753
+        },
+        {
+          "text": "held",
+          "start_s": 31.799,
+          "end_s": 32.043
+        },
+        {
+          "text": "for",
+          "start_s": 32.113,
+          "end_s": 32.24
+        },
+        {
+          "text": "four",
+          "start_s": 32.356,
+          "end_s": 32.623
+        },
+        {
+          "text": "summers",
+          "start_s": 32.693,
+          "end_s": 33.041
+        },
+        {
+          "text": "in",
+          "start_s": 33.099,
+          "end_s": 33.157
+        },
+        {
+          "text": "the",
+          "start_s": 33.192,
+          "end_s": 33.262
+        },
+        {
+          "text": "record.",
+          "start_s": 33.32,
+          "end_s": 33.738
+        },
+        {
+          "text": "Compare",
+          "start_s": 33.854,
+          "end_s": 34.237
+        },
+        {
+          "text": "the",
+          "start_s": 34.272,
+          "end_s": 34.342
+        },
+        {
+          "text": "2007",
+          "start_s": 34.4,
+          "end_s": 35.143
+        },
+        {
+          "text": "and",
+          "start_s": 35.201,
+          "end_s": 35.27
+        },
+        {
+          "text": "2023",
+          "start_s": 35.34,
+          "end_s": 36.037
+        },
+        {
+          "text": "frames",
+          "start_s": 36.106,
+          "end_s": 36.397
+        },
+        {
+          "text": "to",
+          "start_s": 36.431,
+          "end_s": 36.501
+        },
+        {
+          "text": "see",
+          "start_s": 36.571,
+          "end_s": 36.745
+        },
+        {
+          "text": "it.",
+          "start_s": 36.803,
+          "end_s": 37.244
+        }
+      ]
+    },
+    {
+      "segment_id": "seg-04",
+      "audio_url": "/files/stories/palm-jumeirah-united-arab-emirates-ae-6km/narration/seg-04.mp3",
+      "duration_s": 4.458,
+      "words": [
+        {
+          "text": "That",
+          "start_s": 0,
+          "end_s": 0.244
+        },
+        {
+          "text": "is",
+          "start_s": 0.302,
+          "end_s": 0.383
+        },
+        {
+          "text": "how",
+          "start_s": 0.441,
+          "end_s": 0.546
+        },
+        {
+          "text": "Palm",
+          "start_s": 0.615,
+          "end_s": 0.836
+        },
+        {
+          "text": "Jumeirah,",
+          "start_s": 0.894,
+          "end_s": 1.324
+        },
+        {
+          "text": "United",
+          "start_s": 1.393,
+          "end_s": 1.776
+        },
+        {
+          "text": "Arab",
+          "start_s": 1.834,
+          "end_s": 2.055
+        },
+        {
+          "text": "Emirates",
+          "start_s": 2.113,
+          "end_s": 2.415
+        },
+        {
+          "text": "has",
+          "start_s": 2.45,
+          "end_s": 2.554
+        },
+        {
+          "text": "changed",
+          "start_s": 2.612,
+          "end_s": 2.984
+        },
+        {
+          "text": "since",
+          "start_s": 3.007,
+          "end_s": 3.204
+        },
+        {
+          "text": "1987.",
+          "start_s": 3.228,
+          "end_s": 4.458
+        }
+      ]
+    }
+  ]
+}

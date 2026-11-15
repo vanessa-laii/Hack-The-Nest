@@ -1,0 +1,1177 @@
+{
+  "schema_version": "1.0",
+  "story_id": "lake-mead-nevada-us-6km",
+  "voice_id": "MFZUKuGQUsGJPQjTS4wC",
+  "model_id": "eleven_multilingual_v2",
+  "created_at": "2026-11-15T14:31:06.870Z",
+  "total_duration_s": 93.715,
+  "segments": [
+    {
+      "segment_id": "seg-01",
+      "audio_url": "/files/stories/lake-mead-nevada-us-6km/narration/seg-01.mp3",
+      "duration_s": 8.173,
+      "words": [
+        {
+          "text": "This",
+          "start_s": 0,
+          "end_s": 0.221
+        },
+        {
+          "text": "is",
+          "start_s": 0.279,
+          "end_s": 0.36
+        },
+        {
+          "text": "Lake",
+          "start_s": 0.43,
+          "end_s": 0.639
+        },
+        {
+          "text": "Mead,",
+          "start_s": 0.697,
+          "end_s": 1.057
+        },
+        {
+          "text": "Nevada,",
+          "start_s": 1.196,
+          "end_s": 1.8
+        },
+        {
+          "text": "seen",
+          "start_s": 2.113,
+          "end_s": 2.31
+        },
+        {
+          "text": "from",
+          "start_s": 2.357,
+          "end_s": 2.485
+        },
+        {
+          "text": "space",
+          "start_s": 2.543,
+          "end_s": 2.856
+        },
+        {
+          "text": "by",
+          "start_s": 2.891,
+          "end_s": 3.019
+        },
+        {
+          "text": "Landsat",
+          "start_s": 3.111,
+          "end_s": 3.622
+        },
+        {
+          "text": "satellites,",
+          "start_s": 3.715,
+          "end_s": 4.342
+        },
+        {
+          "text": "one",
+          "start_s": 4.435,
+          "end_s": 4.679
+        },
+        {
+          "text": "summer",
+          "start_s": 4.725,
+          "end_s": 4.981
+        },
+        {
+          "text": "at",
+          "start_s": 5.016,
+          "end_s": 5.074
+        },
+        {
+          "text": "a",
+          "start_s": 5.12,
+          "end_s": 5.143
+        },
+        {
+          "text": "time",
+          "start_s": 5.19,
+          "end_s": 5.492
+        },
+        {
+          "text": "from",
+          "start_s": 5.538,
+          "end_s": 5.689
+        },
+        {
+          "text": "1984",
+          "start_s": 5.747,
+          "end_s": 6.536
+        },
+        {
+          "text": "to",
+          "start_s": 6.571,
+          "end_s": 6.629
+        },
+        {
+          "text": "2026.",
+          "start_s": 6.699,
+          "end_s": 8.173
+        }
+      ]
+    },
+    {
+      "segment_id": "seg-02",
+      "audio_url": "/files/stories/lake-mead-nevada-us-6km/narration/seg-02.mp3",
+      "duration_s": 21.966,
+      "words": [
+        {
+          "text": "Between",
+          "start_s": 0,
+          "end_s": 0.36
+        },
+        {
+          "text": "1984",
+          "start_s": 0.406,
+          "end_s": 1.207
+        },
+        {
+          "text": "and",
+          "start_s": 1.312,
+          "end_s": 1.451
+        },
+        {
+          "text": "1991,",
+          "start_s": 1.509,
+          "end_s": 2.554
+        },
+        {
+          "text": "about",
+          "start_s": 2.67,
+          "end_s": 2.972
+        },
+        {
+          "text": "6",
+          "start_s": 3.053,
+          "end_s": 3.239
+        },
+        {
+          "text": "percent",
+          "start_s": 3.332,
+          "end_s": 3.692
+        },
+        {
+          "text": "of",
+          "start_s": 3.715,
+          "end_s": 3.762
+        },
+        {
+          "text": "the",
+          "start_s": 3.808,
+          "end_s": 3.878
+        },
+        {
+          "text": "area",
+          "start_s": 3.959,
+          "end_s": 4.272
+        },
+        {
+          "text": "turned",
+          "start_s": 4.342,
+          "end_s": 4.598
+        },
+        {
+          "text": "from",
+          "start_s": 4.632,
+          "end_s": 4.76
+        },
+        {
+          "text": "water",
+          "start_s": 4.853,
+          "end_s": 5.143
+        },
+        {
+          "text": "to",
+          "start_s": 5.201,
+          "end_s": 5.248
+        },
+        {
+          "text": "land,",
+          "start_s": 5.329,
+          "end_s": 5.735
+        },
+        {
+          "text": "mostly",
+          "start_s": 5.793,
+          "end_s": 6.118
+        },
+        {
+          "text": "in",
+          "start_s": 6.153,
+          "end_s": 6.211
+        },
+        {
+          "text": "the",
+          "start_s": 6.246,
+          "end_s": 6.327
+        },
+        {
+          "text": "east.",
+          "start_s": 6.409,
+          "end_s": 6.85
+        },
+        {
+          "text": "In",
+          "start_s": 7.152,
+          "end_s": 7.303
+        },
+        {
+          "text": "all,",
+          "start_s": 7.384,
+          "end_s": 7.814
+        },
+        {
+          "text": "about",
+          "start_s": 7.941,
+          "end_s": 8.22
+        },
+        {
+          "text": "220",
+          "start_s": 8.266,
+          "end_s": 8.905
+        },
+        {
+          "text": "hectares",
+          "start_s": 8.975,
+          "end_s": 9.404
+        },
+        {
+          "text": "changed.",
+          "start_s": 9.462,
+          "end_s": 10.008
+        },
+        {
+          "text": "One",
+          "start_s": 10.228,
+          "end_s": 10.437
+        },
+        {
+          "text": "report",
+          "start_s": 10.484,
+          "end_s": 10.82
+        },
+        {
+          "text": "says:",
+          "start_s": 10.867,
+          "end_s": 11.308
+        },
+        {
+          "text": "Storage",
+          "start_s": 11.494,
+          "end_s": 11.97
+        },
+        {
+          "text": "in",
+          "start_s": 12.005,
+          "end_s": 12.074
+        },
+        {
+          "text": "Lake",
+          "start_s": 12.156,
+          "end_s": 12.423
+        },
+        {
+          "text": "Mead",
+          "start_s": 12.481,
+          "end_s": 12.817
+        },
+        {
+          "text": "decreased",
+          "start_s": 12.934,
+          "end_s": 13.433
+        },
+        {
+          "text": "by",
+          "start_s": 13.468,
+          "end_s": 13.572
+        },
+        {
+          "text": "323,000",
+          "start_s": 13.653,
+          "end_s": 15
+        },
+        {
+          "text": "acre-feet",
+          "start_s": 15.035,
+          "end_s": 15.487
+        },
+        {
+          "text": "in",
+          "start_s": 15.522,
+          "end_s": 15.569
+        },
+        {
+          "text": "the",
+          "start_s": 15.603,
+          "end_s": 15.673
+        },
+        {
+          "text": "month",
+          "start_s": 15.731,
+          "end_s": 15.94
+        },
+        {
+          "text": "prior",
+          "start_s": 15.987,
+          "end_s": 16.242
+        },
+        {
+          "text": "to",
+          "start_s": 16.277,
+          "end_s": 16.323
+        },
+        {
+          "text": "February",
+          "start_s": 16.381,
+          "end_s": 16.788
+        },
+        {
+          "text": "29,",
+          "start_s": 16.846,
+          "end_s": 17.345
+        },
+        {
+          "text": "1984,",
+          "start_s": 17.38,
+          "end_s": 18.367
+        },
+        {
+          "text": "when",
+          "start_s": 18.413,
+          "end_s": 18.576
+        },
+        {
+          "text": "it",
+          "start_s": 18.61,
+          "end_s": 18.657
+        },
+        {
+          "text": "contained",
+          "start_s": 18.692,
+          "end_s": 19.052
+        },
+        {
+          "text": "24,045,000",
+          "start_s": 19.098,
+          "end_s": 20.677
+        },
+        {
+          "text": "acre-feet.",
+          "start_s": 20.712,
+          "end_s": 21.966
+        }
+      ]
+    },
+    {
+      "segment_id": "seg-03",
+      "audio_url": "/files/stories/lake-mead-nevada-us-6km/narration/seg-03.mp3",
+      "duration_s": 23.08,
+      "words": [
+        {
+          "text": "Between",
+          "start_s": 0,
+          "end_s": 0.383
+        },
+        {
+          "text": "1992",
+          "start_s": 0.43,
+          "end_s": 1.335
+        },
+        {
+          "text": "and",
+          "start_s": 1.451,
+          "end_s": 1.614
+        },
+        {
+          "text": "1998,",
+          "start_s": 1.683,
+          "end_s": 2.81
+        },
+        {
+          "text": "about",
+          "start_s": 2.926,
+          "end_s": 3.262
+        },
+        {
+          "text": "6",
+          "start_s": 3.402,
+          "end_s": 3.599
+        },
+        {
+          "text": "percent",
+          "start_s": 3.692,
+          "end_s": 4.063
+        },
+        {
+          "text": "of",
+          "start_s": 4.098,
+          "end_s": 4.145
+        },
+        {
+          "text": "the",
+          "start_s": 4.191,
+          "end_s": 4.261
+        },
+        {
+          "text": "area",
+          "start_s": 4.331,
+          "end_s": 4.656
+        },
+        {
+          "text": "turned",
+          "start_s": 4.714,
+          "end_s": 4.957
+        },
+        {
+          "text": "from",
+          "start_s": 4.992,
+          "end_s": 5.12
+        },
+        {
+          "text": "land",
+          "start_s": 5.213,
+          "end_s": 5.457
+        },
+        {
+          "text": "to",
+          "start_s": 5.503,
+          "end_s": 5.573
+        },
+        {
+          "text": "water,",
+          "start_s": 5.666,
+          "end_s": 6.142
+        },
+        {
+          "text": "mostly",
+          "start_s": 6.374,
+          "end_s": 6.722
+        },
+        {
+          "text": "in",
+          "start_s": 6.769,
+          "end_s": 6.815
+        },
+        {
+          "text": "the",
+          "start_s": 6.85,
+          "end_s": 6.931
+        },
+        {
+          "text": "east.",
+          "start_s": 7.012,
+          "end_s": 7.477
+        },
+        {
+          "text": "In",
+          "start_s": 7.895,
+          "end_s": 8.057
+        },
+        {
+          "text": "all,",
+          "start_s": 8.127,
+          "end_s": 8.522
+        },
+        {
+          "text": "about",
+          "start_s": 8.638,
+          "end_s": 8.928
+        },
+        {
+          "text": "180",
+          "start_s": 9.044,
+          "end_s": 9.81
+        },
+        {
+          "text": "hectares",
+          "start_s": 9.903,
+          "end_s": 10.368
+        },
+        {
+          "text": "changed.",
+          "start_s": 10.426,
+          "end_s": 10.96
+        },
+        {
+          "text": "One",
+          "start_s": 11.157,
+          "end_s": 11.378
+        },
+        {
+          "text": "report",
+          "start_s": 11.413,
+          "end_s": 11.773
+        },
+        {
+          "text": "says:",
+          "start_s": 11.831,
+          "end_s": 12.307
+        },
+        {
+          "text": "The",
+          "start_s": 12.469,
+          "end_s": 12.574
+        },
+        {
+          "text": "return",
+          "start_s": 12.643,
+          "end_s": 13.073
+        },
+        {
+          "text": "of",
+          "start_s": 13.119,
+          "end_s": 13.189
+        },
+        {
+          "text": "normal",
+          "start_s": 13.282,
+          "end_s": 13.595
+        },
+        {
+          "text": "rainfall",
+          "start_s": 13.665,
+          "end_s": 14.164
+        },
+        {
+          "text": "and",
+          "start_s": 14.222,
+          "end_s": 14.291
+        },
+        {
+          "text": "runoff",
+          "start_s": 14.349,
+          "end_s": 14.709
+        },
+        {
+          "text": "on",
+          "start_s": 14.756,
+          "end_s": 14.814
+        },
+        {
+          "text": "the",
+          "start_s": 14.86,
+          "end_s": 14.93
+        },
+        {
+          "text": "Colorado",
+          "start_s": 14.976,
+          "end_s": 15.557
+        },
+        {
+          "text": "caused",
+          "start_s": 15.673,
+          "end_s": 16.01
+        },
+        {
+          "text": "water",
+          "start_s": 16.068,
+          "end_s": 16.346
+        },
+        {
+          "text": "impounded",
+          "start_s": 16.393,
+          "end_s": 16.904
+        },
+        {
+          "text": "at",
+          "start_s": 16.95,
+          "end_s": 17.02
+        },
+        {
+          "text": "Lake",
+          "start_s": 17.089,
+          "end_s": 17.322
+        },
+        {
+          "text": "Mead",
+          "start_s": 17.38,
+          "end_s": 17.728
+        },
+        {
+          "text": "to",
+          "start_s": 17.995,
+          "end_s": 18.123
+        },
+        {
+          "text": "rise",
+          "start_s": 18.239,
+          "end_s": 18.564
+        },
+        {
+          "text": "back",
+          "start_s": 18.61,
+          "end_s": 18.808
+        },
+        {
+          "text": "to",
+          "start_s": 18.854,
+          "end_s": 18.924
+        },
+        {
+          "text": "normal",
+          "start_s": 19.017,
+          "end_s": 19.33
+        },
+        {
+          "text": "levels,",
+          "start_s": 19.377,
+          "end_s": 19.829
+        },
+        {
+          "text": "inundating",
+          "start_s": 20.027,
+          "end_s": 20.607
+        },
+        {
+          "text": "willow",
+          "start_s": 20.689,
+          "end_s": 20.956
+        },
+        {
+          "text": "root",
+          "start_s": 21.014,
+          "end_s": 21.188
+        },
+        {
+          "text": "crowns",
+          "start_s": 21.234,
+          "end_s": 21.571
+        },
+        {
+          "text": "in",
+          "start_s": 21.617,
+          "end_s": 21.675
+        },
+        {
+          "text": "the",
+          "start_s": 21.722,
+          "end_s": 21.791
+        },
+        {
+          "text": "delta.",
+          "start_s": 21.838,
+          "end_s": 23.08
+        }
+      ]
+    },
+    {
+      "segment_id": "seg-04",
+      "audio_url": "/files/stories/lake-mead-nevada-us-6km/narration/seg-04.mp3",
+      "duration_s": 14.861,
+      "words": [
+        {
+          "text": "Between",
+          "start_s": 0,
+          "end_s": 0.383
+        },
+        {
+          "text": "1999",
+          "start_s": 0.43,
+          "end_s": 1.335
+        },
+        {
+          "text": "and",
+          "start_s": 1.428,
+          "end_s": 1.579
+        },
+        {
+          "text": "2010,",
+          "start_s": 1.672,
+          "end_s": 2.438
+        },
+        {
+          "text": "about",
+          "start_s": 2.601,
+          "end_s": 2.868
+        },
+        {
+          "text": "a",
+          "start_s": 2.902,
+          "end_s": 2.926
+        },
+        {
+          "text": "fifth",
+          "start_s": 3.007,
+          "end_s": 3.239
+        },
+        {
+          "text": "of",
+          "start_s": 3.286,
+          "end_s": 3.332
+        },
+        {
+          "text": "the",
+          "start_s": 3.379,
+          "end_s": 3.448
+        },
+        {
+          "text": "area",
+          "start_s": 3.518,
+          "end_s": 3.808
+        },
+        {
+          "text": "turned",
+          "start_s": 3.866,
+          "end_s": 4.11
+        },
+        {
+          "text": "from",
+          "start_s": 4.145,
+          "end_s": 4.284
+        },
+        {
+          "text": "water",
+          "start_s": 4.365,
+          "end_s": 4.656
+        },
+        {
+          "text": "to",
+          "start_s": 4.714,
+          "end_s": 4.76
+        },
+        {
+          "text": "land,",
+          "start_s": 4.853,
+          "end_s": 5.248
+        },
+        {
+          "text": "mostly",
+          "start_s": 5.317,
+          "end_s": 5.666
+        },
+        {
+          "text": "in",
+          "start_s": 5.712,
+          "end_s": 5.759
+        },
+        {
+          "text": "the",
+          "start_s": 5.793,
+          "end_s": 5.863
+        },
+        {
+          "text": "east.",
+          "start_s": 5.944,
+          "end_s": 6.409
+        },
+        {
+          "text": "Records",
+          "start_s": 6.989,
+          "end_s": 7.361
+        },
+        {
+          "text": "show:",
+          "start_s": 7.384,
+          "end_s": 7.802
+        },
+        {
+          "text": "Since",
+          "start_s": 7.918,
+          "end_s": 8.197
+        },
+        {
+          "text": "1999,",
+          "start_s": 8.22,
+          "end_s": 9.3
+        },
+        {
+          "text": "a",
+          "start_s": 9.439,
+          "end_s": 9.509
+        },
+        {
+          "text": "multi-year",
+          "start_s": 9.625,
+          "end_s": 10.205
+        },
+        {
+          "text": "drought",
+          "start_s": 10.275,
+          "end_s": 10.612
+        },
+        {
+          "text": "and",
+          "start_s": 10.67,
+          "end_s": 10.751
+        },
+        {
+          "text": "increased",
+          "start_s": 10.832,
+          "end_s": 11.331
+        },
+        {
+          "text": "water",
+          "start_s": 11.378,
+          "end_s": 11.633
+        },
+        {
+          "text": "demand",
+          "start_s": 11.68,
+          "end_s": 11.97
+        },
+        {
+          "text": "have",
+          "start_s": 12.028,
+          "end_s": 12.144
+        },
+        {
+          "text": "caused",
+          "start_s": 12.179,
+          "end_s": 12.469
+        },
+        {
+          "text": "Lake",
+          "start_s": 12.516,
+          "end_s": 12.725
+        },
+        {
+          "text": "Mead's",
+          "start_s": 12.783,
+          "end_s": 13.015
+        },
+        {
+          "text": "water",
+          "start_s": 13.061,
+          "end_s": 13.305
+        },
+        {
+          "text": "levels",
+          "start_s": 13.352,
+          "end_s": 13.63
+        },
+        {
+          "text": "to",
+          "start_s": 13.677,
+          "end_s": 13.746
+        },
+        {
+          "text": "decline.",
+          "start_s": 13.816,
+          "end_s": 14.861
+        }
+      ]
+    },
+    {
+      "segment_id": "seg-05",
+      "audio_url": "/files/stories/lake-mead-nevada-us-6km/narration/seg-05.mp3",
+      "duration_s": 21.641,
+      "words": [
+        {
+          "text": "Between",
+          "start_s": 0,
+          "end_s": 0.383
+        },
+        {
+          "text": "2013",
+          "start_s": 0.441,
+          "end_s": 1.393
+        },
+        {
+          "text": "and",
+          "start_s": 1.44,
+          "end_s": 1.521
+        },
+        {
+          "text": "2014,",
+          "start_s": 1.591,
+          "end_s": 2.74
+        },
+        {
+          "text": "about",
+          "start_s": 2.856,
+          "end_s": 3.17
+        },
+        {
+          "text": "4",
+          "start_s": 3.262,
+          "end_s": 3.495
+        },
+        {
+          "text": "percent",
+          "start_s": 3.564,
+          "end_s": 3.924
+        },
+        {
+          "text": "of",
+          "start_s": 3.959,
+          "end_s": 4.005
+        },
+        {
+          "text": "the",
+          "start_s": 4.052,
+          "end_s": 4.122
+        },
+        {
+          "text": "area",
+          "start_s": 4.203,
+          "end_s": 4.528
+        },
+        {
+          "text": "turned",
+          "start_s": 4.586,
+          "end_s": 4.853
+        },
+        {
+          "text": "from",
+          "start_s": 4.888,
+          "end_s": 5.027
+        },
+        {
+          "text": "water",
+          "start_s": 5.108,
+          "end_s": 5.399
+        },
+        {
+          "text": "to",
+          "start_s": 5.457,
+          "end_s": 5.503
+        },
+        {
+          "text": "land,",
+          "start_s": 5.596,
+          "end_s": 6.014
+        },
+        {
+          "text": "mostly",
+          "start_s": 6.107,
+          "end_s": 6.455
+        },
+        {
+          "text": "in",
+          "start_s": 6.502,
+          "end_s": 6.56
+        },
+        {
+          "text": "the",
+          "start_s": 6.594,
+          "end_s": 6.664
+        },
+        {
+          "text": "east.",
+          "start_s": 6.757,
+          "end_s": 7.245
+        },
+        {
+          "text": "Part",
+          "start_s": 7.663,
+          "end_s": 7.895
+        },
+        {
+          "text": "of",
+          "start_s": 7.93,
+          "end_s": 7.988
+        },
+        {
+          "text": "it",
+          "start_s": 8.034,
+          "end_s": 8.104
+        },
+        {
+          "text": "may",
+          "start_s": 8.15,
+          "end_s": 8.266
+        },
+        {
+          "text": "come",
+          "start_s": 8.336,
+          "end_s": 8.533
+        },
+        {
+          "text": "from",
+          "start_s": 8.568,
+          "end_s": 8.707
+        },
+        {
+          "text": "switching",
+          "start_s": 8.777,
+          "end_s": 9.16
+        },
+        {
+          "text": "Landsat",
+          "start_s": 9.242,
+          "end_s": 9.741
+        },
+        {
+          "text": "satellites.",
+          "start_s": 9.822,
+          "end_s": 10.588
+        },
+        {
+          "text": "One",
+          "start_s": 10.82,
+          "end_s": 11.041
+        },
+        {
+          "text": "report",
+          "start_s": 11.088,
+          "end_s": 11.447
+        },
+        {
+          "text": "says:",
+          "start_s": 11.505,
+          "end_s": 11.993
+        },
+        {
+          "text": "Excessively",
+          "start_s": 12.225,
+          "end_s": 12.968
+        },
+        {
+          "text": "arid",
+          "start_s": 13.049,
+          "end_s": 13.34
+        },
+        {
+          "text": "winters",
+          "start_s": 13.398,
+          "end_s": 13.699
+        },
+        {
+          "text": "in",
+          "start_s": 13.746,
+          "end_s": 13.816
+        },
+        {
+          "text": "2012",
+          "start_s": 13.885,
+          "end_s": 14.559
+        },
+        {
+          "text": "and",
+          "start_s": 14.617,
+          "end_s": 14.698
+        },
+        {
+          "text": "2013",
+          "start_s": 14.768,
+          "end_s": 15.511
+        },
+        {
+          "text": "caused",
+          "start_s": 15.592,
+          "end_s": 15.871
+        },
+        {
+          "text": "Lake",
+          "start_s": 15.917,
+          "end_s": 16.126
+        },
+        {
+          "text": "Mead's",
+          "start_s": 16.172,
+          "end_s": 16.393
+        },
+        {
+          "text": "water",
+          "start_s": 16.428,
+          "end_s": 16.683
+        },
+        {
+          "text": "level",
+          "start_s": 16.73,
+          "end_s": 16.95
+        },
+        {
+          "text": "to",
+          "start_s": 16.997,
+          "end_s": 17.055
+        },
+        {
+          "text": "drop",
+          "start_s": 17.113,
+          "end_s": 17.322
+        },
+        {
+          "text": "approximately",
+          "start_s": 17.38,
+          "end_s": 18.03
+        },
+        {
+          "text": "51",
+          "start_s": 18.123,
+          "end_s": 18.622
+        },
+        {
+          "text": "feet",
+          "start_s": 18.692,
+          "end_s": 18.982
+        },
+        {
+          "text": "since",
+          "start_s": 19.295,
+          "end_s": 19.574
+        },
+        {
+          "text": "December",
+          "start_s": 19.609,
+          "end_s": 20.015
+        },
+        {
+          "text": "2012.",
+          "start_s": 20.085,
+          "end_s": 21.641
+        }
+      ]
+    },
+    {
+      "segment_id": "seg-06",
+      "audio_url": "/files/stories/lake-mead-nevada-us-6km/narration/seg-06.mp3",
+      "duration_s": 3.994,
+      "words": [
+        {
+          "text": "That",
+          "start_s": 0,
+          "end_s": 0.197
+        },
+        {
+          "text": "is",
+          "start_s": 0.244,
+          "end_s": 0.325
+        },
+        {
+          "text": "how",
+          "start_s": 0.383,
+          "end_s": 0.499
+        },
+        {
+          "text": "Lake",
+          "start_s": 0.592,
+          "end_s": 0.836
+        },
+        {
+          "text": "Mead,",
+          "start_s": 0.882,
+          "end_s": 1.219
+        },
+        {
+          "text": "Nevada",
+          "start_s": 1.335,
+          "end_s": 1.788
+        },
+        {
+          "text": "has",
+          "start_s": 1.846,
+          "end_s": 1.962
+        },
+        {
+          "text": "changed",
+          "start_s": 2.02,
+          "end_s": 2.45
+        },
+        {
+          "text": "since",
+          "start_s": 2.519,
+          "end_s": 2.786
+        },
+        {
+          "text": "1984.",
+          "start_s": 2.821,
+          "end_s": 3.994
+        }
+      ]
+    }
+  ]
+}
