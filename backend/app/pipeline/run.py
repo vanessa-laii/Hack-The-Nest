@@ -1,9 +1,10 @@
 # Runs the imagery half of a story build: place → scenes → yearly composites → frames, metrics.
 # Inputs: a place query (or a picked lat/lon/display_name), aoi_km, and a `sink` for build events.
-# Outputs: frames/, thumbs/ and imagery.json under DATA_DIR/stories/<id>/, plus an ImageryResult.
+# Outputs: frames/, thumbs/, composites.npz, imagery.json in DATA_DIR/stories/<id>/; ImageryResult.
 #
 # How it works:
-#   1. Find the place (geocode) and build the square area around it (AOI).
+#   1. Find the place (geocode, unless the caller already did) and build the square area
+#      around it (AOI).
 #   2. Search Landsat for up to 6 clear summer scenes per year, 1984–2026.
 #   3. Download those scenes and slice them back into one stack per year.
 #   4. Clean each year into one composite, then skip years under 60% clear (FR-14).
@@ -113,6 +114,18 @@ def seconds_since(start: float) -> float:
     return round(time.perf_counter() - start, 2)
 
 
+def save_composites(path: Path, kept: dict[int, YearComposite]) -> None:
+    """Saves the kept years' raw composites as one compressed .npz (years, dn [Y, 6, H, W]).
+    Change detection and change masks work per pixel, and rebuilding composites would mean
+    re-reading ~250 scenes. Atomic write, like every other output."""
+    years = sorted(kept)
+    dn = np.stack([kept[year].dn for year in years])
+    tmp = path.with_name(path.name + ".tmp")
+    with open(tmp, "wb") as f:
+        np.savez_compressed(f, years=np.array(years, dtype=np.int16), dn=dn)
+    tmp.replace(path)
+
+
 def write_json(path: Path, obj: dict) -> None:
     """Writes JSON to a temp file, then renames it, so readers never see half a file."""
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -124,11 +137,13 @@ def write_json(path: Path, obj: dict) -> None:
 # --- Steps 1–3: place, scenes, downloads ---
 
 async def find_place(query: str, lat: float | None, lon: float | None,
-                     display_name: str | None, aoi_km: float,
-                     sink: Emit | None) -> tuple[Place, EventLog]:
-    """Geocodes the query (FR-1/2/3) and starts the event log.
-    Events can only start here, because the story id is built from the place."""
-    place = await geocode.resolve(query, lat=lat, lon=lon, display_name=display_name)
+                     display_name: str | None, aoi_km: float, sink: Emit | None,
+                     place: Place | None = None) -> tuple[Place, EventLog]:
+    """Geocodes the query (FR-1/2/3), or uses the caller's already-resolved place, and starts
+    the event log. Events can only start here, because the story id is built from the place.
+    Reusing the caller's place means the id can't differ from the one the API returned."""
+    if place is None:
+        place = await geocode.resolve(query, lat=lat, lon=lon, display_name=display_name)
     story_id = store.story_id(place.display_name, place.admin["country_code"], aoi_km)
     emit = EventLog(story_id, sink or _ignore_event)
     await emit("progress", f"Found {place.display_name}", stage="geocode", status="done",
@@ -307,16 +322,16 @@ def build_sections(place: Place, aoi: Aoi, kept: dict[int, YearComposite], skipp
 
 async def run_imagery(query: str, *, lat: float | None = None, lon: float | None = None,
                       display_name: str | None = None, aoi_km: float | None = None,
-                      sink: Emit | None = None) -> ImageryResult:
+                      sink: Emit | None = None, place: Place | None = None) -> ImageryResult:
     """Runs geocode → scenes → composite → render + metrics, emitting build events as it goes.
-    Heavy numpy work runs in threads so the event stream stays live. The caller adds the
-    HL-5 timeout."""
+    A `place` the caller already resolved skips the geocoder. Heavy numpy work runs in
+    threads so the event stream stays live. The caller adds the HL-5 timeout."""
     start = time.perf_counter()
     timings: dict[str, float] = {}
     aoi_km = aoi_km or settings.aoi_km
 
     # 1. Place and area
-    place, emit = await find_place(query, lat, lon, display_name, aoi_km, sink)
+    place, emit = await find_place(query, lat, lon, display_name, aoi_km, sink, place)
     timings["geocode_s"] = seconds_since(start)
     aoi = make_aoi(place.lat, place.lon, aoi_km)
     years = range(FIRST_YEAR, LAST_YEAR + 1)
@@ -360,6 +375,9 @@ async def run_imagery(query: str, *, lat: float | None = None, lon: float | None
     # 7. Save
     sections = build_sections(place, aoi, kept, skipped, paths, series_rows)
     timings["total_s"] = seconds_since(start)
+    # Composites first: imagery.json is the "build finished" marker, so a reader that sees it
+    # must never find an older composites.npz next to it.
+    await asyncio.to_thread(save_composites, out / "composites.npz", kept)
     write_json(out / "imagery.json", {**sections, "timings": timings})
     return ImageryResult(story_id=emit.story_id, place=place, aoi=aoi, kept=kept,
                          sections=sections, timings=timings)

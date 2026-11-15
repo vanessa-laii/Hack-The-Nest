@@ -1,0 +1,135 @@
+{
+  "summary": {
+    "recall": 1.0,
+    "matched": 7,
+    "expected": 7,
+    "control_changes": 0,
+    "false_positives": 10,
+    "schema_errors": 0,
+    "lake_mead_urban_growth": 0,
+    "contradictions": 0,
+    "tiny": 0,
+    "max_seconds": 1.341
+  },
+  "places": {
+    "lake-mead": {
+      "found": [
+        "water_loss/water_frac 1999-2010 (-0.215)",
+        "water_loss/water_frac 1984-1991 (-0.064)",
+        "water_gain/water_frac 1992-1998 (+0.062)",
+        "water_loss/water_frac 2013-2014 (-0.043) [sensor]"
+      ],
+      "expected": 1,
+      "matched": 1,
+      "missed": [],
+      "false_positives": 3,
+      "contradictions": [],
+      "tiny": [],
+      "schema_errors": [],
+      "seconds": 1.051,
+      "scored": true
+    },
+    "paradise": {
+      "found": [
+        "burn/ndvi_mean 2018-2020 (-0.198)",
+        "vegetation_gain/ndvi_mean 1985-1999 (+0.052)"
+      ],
+      "expected": 1,
+      "matched": 1,
+      "missed": [],
+      "false_positives": 1,
+      "contradictions": [],
+      "tiny": [],
+      "schema_errors": [],
+      "seconds": 0.63,
+      "scored": true
+    },
+    "summerlin": {
+      "found": [
+        "vegetation_gain/ndvi_mean 1991-2019 (+0.107)"
+      ],
+      "expected": 1,
+      "matched": 1,
+      "missed": [],
+      "false_positives": 0,
+      "contradictions": [],
+      "tiny": [],
+      "schema_errors": [],
+      "seconds": 1.341,
+      "scored": true
+    },
+    "palm-jumeirah": {
+      "found": [
+        "water_loss/water_frac 2002-2019 (-0.200) [sensor]",
+        "vegetation_gain/ndvi_mean 2007-2023 (+0.098)"
+      ],
+      "expected": 1,
+      "matched": 1,
+      "missed": [],
+      "false_positives": 1,
+      "contradictions": [],
+      "tiny": [],
+      "schema_errors": [],
+      "seconds": 1.279,
+      "scored": true
+    },
+    "central-park": {
+      "found": [],
+      "expected": 0,
+      "matched": 0,
+      "missed": [],
+      "false_positives": 0,
+      "contradictions": [],
+      "tiny": [],
+      "schema_errors": [],
+      "seconds": 1.035,
+      "scored": true
+    },
+    "ypsilanti": {
+      "found": [],
+      "expected": 0,
+      "matched": 0,
+      "missed": [],
+      "false_positives": 0,
+      "contradictions": [],
+      "tiny": [],
+      "schema_errors": [],
+      "seconds": 0.707,
+      "scored": false
+    },
+    "willow-run": {
+      "found": [
+        "other/built_frac 2013-2014 (-1.000) [sensor]",
+        "urban_growth/built_frac 2017-2018 (+1.000)",
+        "urban_growth/built_frac 2001-2002 (+1.000)",
+        "vegetation_gain/ndvi_mean 2022-2023 (+0.168)",
+        "vegetation_gain/ndvi_mean 2017-2018 (+0.222)"
+      ],
+      "expected": 2,
+      "matched": 2,
+      "missed": [],
+      "false_positives": 3,
+      "contradictions": [],
+      "tiny": [],
+      "schema_errors": [],
+      "seconds": 0.987,
+      "scored": true
+    },
+    "delray": {
+      "found": [
+        "urban_growth/built_frac 2019-2021 (+0.994)",
+        "urban_growth/built_frac 2015-2016 (+1.000)",
+        "urban_growth/built_frac 2010-2011 (+1.000) [sensor]"
+      ],
+      "expected": 1,
+      "matched": 1,
+      "missed": [],
+      "false_positives": 2,
+      "contradictions": [],
+      "tiny": [],
+      "schema_errors": [],
+      "seconds": 1.126,
+      "scored": true
+    }
+  }
+}

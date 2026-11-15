@@ -11,6 +11,7 @@ The contracts are the only things `backend/` and `web/` share. If it isn't here 
 
 **Changelog**
 
+- **story 1.3** (2026-11-14, agreed by Harman and Vanessa): each `changes[]` item has two new required fields: `scope` (`place` | `local`) and `area_ha` (hectares of the changed region). `magnitude` is now defined per scope: `place` = change over the whole area, the same numbers as `metrics.series`; `local` = change over the changed pixels only (`region.bbox` is just their outline). `area_ha` counts all changed pixels for either scope. Why: a 6-hectare demolition reads −1.0 inside its patch but barely moves the whole-area chart, so without `scope` the chapter and the chart looked contradictory. Web: show `local` changes as "≈ N ha", not on the whole-area chart. `schema_version` is now `"1.3"`.
 - **story 1.2** (2026-11-14, agreed by Harman and Vanessa): `metrics.series[].ndvi_mean` is now the mean NDVI over clear **land** pixels (MNDWI ≤ 0). Clear water scores NDVI near −1, so under 1.1 the mean swung with how much water was in view: Lake Mead went −0.07 → −0.33 between years while the land barely changed. A year with under 1% land is skipped with a plain reason rather than reporting a meaningless number. Same field, type and range; `schema_version` is now `"1.2"`.
 - **story 1.1** (2026-11-14, agreed by Harman and Vanessa): `metrics.series[].built_frac` is now NDBI > 0, NDVI < 0.2 **and MNDWI ≤ 0**. Under 1.0, turbid or algae-tinted water counted as built: Lake Mead read 84–86% built. Field names, types and ranges are the same, but `schema_version` is now `"1.1"` (a const), so a story or web fixture saved as 1.0 must be rebuilt or bumped to validate.
 
@@ -61,7 +62,7 @@ Schema: [`contracts/story.schema.json`](../contracts/story.schema.json). Sample:
 | `coverage` | First/last year, season months, skipped years with reasons | Player "About this data", chart gaps |
 | `frames[]` | One per kept year: image + thumb URLs, sensors, scene ids, date range, clear % | Film, evidence panel |
 | `metrics.series[]` | Per year: `ndvi_mean`, `water_frac`, `built_frac` | Chart, script numbers |
-| `changes[]` | Up to 5: kind, metric, years, magnitude, region bbox + description, before/after years, mask, sensor-switch flag | Chapters, evidence panel, zoom target |
+| `changes[]` | Up to 5: kind, metric, years, magnitude, scope (place/local) + area_ha, region bbox + description, before/after years, mask, sensor-switch flag | Chapters, evidence panel, zoom target |
 | `sources[]` | Only sources with ≥ 1 **verified** excerpt; authority class | Evidence panel |
 | `chapters[]` | Intro, 1–5 change chapters, outro. Claims point to excerpt ids. Confidence + vision check | Timeline markers, evidence panel |
 | `script` | 150–225 words in segments; each segment has `chapter_id`, `year_from`, `year_to`, `claim_ids` | Narration, film sync |
@@ -191,9 +192,9 @@ Listed in `.env.example`. Each app reads only its own.
 | `PIPELINE_TIMEOUT_S` | backend | `180` | HL-5 |
 | `WEB_ORIGIN` | backend | `http://localhost:3000` | CORS |
 | `NOMINATIM_USER_AGENT` | backend | `earth-memory-hackthenest/1.0 (contact email)` | Required by Nominatim policy |
-| `LLM_PROVIDER` | backend | `gemini` | `gemini` while building, `openai` before the demo (Future of Intelligence track). Picks which key `llm.py` uses |
+| `LLM_PROVIDER` | backend | `gemini` | `gemini` (default) or `openai`. Picks which key `llm.py` uses. Any model is allowed (track rules updated Sat night) |
 | `LLM_MODEL` | backend | `gemini-3.5-flash-lite` | Text model for the agent; change together with `LLM_PROVIDER` |
-| `OPENAI_API_KEY` | backend | — | Used when `LLM_PROVIDER=openai` |
+| `OPENAI_API_KEY` | backend | — | Optional; only used if `LLM_PROVIDER=openai` |
 | `EXA_API_KEY` | backend | — | |
 | `GEMINI_API_KEY`, `GEMINI_VISION_MODEL` | backend | — | Image check; also the agent's key while `LLM_PROVIDER=gemini` |
 | `MONGODB_URI` | backend | empty = disabled | Optional mirror |
