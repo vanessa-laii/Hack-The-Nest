@@ -11,6 +11,7 @@ The contracts are the only things `backend/` and `web/` share. If it isn't here 
 
 **Changelog**
 
+- **story 1.2** (2026-11-14, agreed by Harman and Vanessa): `metrics.series[].ndvi_mean` is now the mean NDVI over clear **land** pixels (MNDWI ≤ 0). Clear water scores NDVI near −1, so under 1.1 the mean swung with how much water was in view: Lake Mead went −0.07 → −0.33 between years while the land barely changed. A year with under 1% land is skipped with a plain reason rather than reporting a meaningless number. Same field, type and range; `schema_version` is now `"1.2"`.
 - **story 1.1** (2026-11-14, agreed by Harman and Vanessa): `metrics.series[].built_frac` is now NDBI > 0, NDVI < 0.2 **and MNDWI ≤ 0**. Under 1.0, turbid or algae-tinted water counted as built: Lake Mead read 84–86% built. Field names, types and ranges are the same, but `schema_version` is now `"1.1"` (a const), so a story or web fixture saved as 1.0 must be rebuilt or bumped to validate.
 
 ---

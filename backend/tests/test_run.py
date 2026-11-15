@@ -8,13 +8,19 @@ from app.pipeline.types import SceneMeta, YearComposite
 
 
 def _scene(scene_id: str, year: int) -> SceneMeta:
+    """A minimal fake Landsat 5 scene for one summer."""
     return SceneMeta(id=scene_id, datetime=f"{year}-07-01T00:00:00Z", year=year,
                      platform="landsat-5", cloud_cover=5.0, native_epsg=32611)
 
 
+# One land pixel's 6 bands (vegetation-like), so a kept year has land to measure (schema 1.2).
+LAND_DN = np.array([8727, 10182, 9091, 20000, 14545, 10909], np.uint16)[:, None, None]
+
+
 def _year(year: int, clear_pct: float) -> YearComposite:
-    return YearComposite(year=year, dn=np.zeros((6, 2, 2), np.uint16), clear_pct=clear_pct,
-                         scenes=[])
+    """A fake summer image of plain land with the given clear %."""
+    return YearComposite(year=year, dn=LAND_DN * np.ones((1, 2, 2), np.uint16),
+                         clear_pct=clear_pct, scenes=[])
 
 
 def test_skip_reasons_never_blame_clouds_for_failures():
@@ -37,3 +43,14 @@ def test_skip_reasons_never_blame_clouds_for_failures():
     assert reasons[2003] == "only 30% of the area had a clear view"
     assert reasons[2004] == ARCHIVE_DOWN                       # search failed: not "no images"
     assert reasons[2005] == "no Landsat images of this place that summer"
+
+
+def test_almost_all_water_year_is_skipped_with_reason():
+    """A clear year with no land can't have a land greenness (schema 1.2), so it's skipped."""
+    water = np.array([9091, 9455, 8727, 7636, 7454, 7382], np.uint16)[:, None, None]
+    lake = YearComposite(year=2010, dn=water * np.ones((1, 4, 4), np.uint16), clear_pct=100.0,
+                         scenes=[])
+    kept, skipped = split_kept({2010: lake}, range(2010, 2011), {2010: [_scene("w", 2010)]},
+                               failed_years=set(), failed_ids=set())
+    assert kept == {}
+    assert "almost all water" in skipped[0]["reason"]

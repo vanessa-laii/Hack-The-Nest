@@ -72,7 +72,7 @@ def compute_metrics(series: dict[int, YearComposite]) -> list[dict]  # [{year, n
 ```
 
 - Definitions come from `story.schema.json`:
-  - `ndvi_mean` = mean NDVI over clear pixels.
+  - `ndvi_mean` = mean NDVI over clear land pixels (MNDWI ≤ 0; schema 1.2: water excluded).
   - `water_frac` = share of clear pixels with MNDWI > 0.
   - `built_frac` = share of clear pixels with NDBI > 0, NDVI < 0.2 and MNDWI ≤ 0 (schema 1.1: water excluded).
 - Reflectance = DN × 0.0000275 − 0.2 (DR-1).

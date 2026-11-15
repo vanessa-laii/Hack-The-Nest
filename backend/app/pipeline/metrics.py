@@ -7,7 +7,7 @@
 #   1. Turn raw values into reflectance (DR-1).
 #   2. Compute three indices per pixel: vegetation (NDVI), water (MNDWI), built-up (NDBI).
 #   3. Mark holes (no clear view) as NaN so they never count.
-#   4. Per year, over clear pixels only: mean NDVI, share of water, share of built-up land.
+#   4. Per year, over clear pixels: mean NDVI (land only), share of water, share of built-up.
 #   5. Clamp and round each value, one row per year, oldest first.
 from __future__ import annotations
 
@@ -24,6 +24,7 @@ BUILT_MNDWI_MAX = 0.0   # ... and MNDWI <= 0 (schema 1.1).
 # Schema 1.1 added the MNDWI test to leave out water: murky or algae-tinted water passed
 # the first two, and Lake Mead read 84–86% "built". Agreed with Vanessa, 2026-11-14.
 DECIMALS = 4
+LAND_MNDWI_MAX = 0.0    # ndvi_mean: land = MNDWI <= 0 (schema 1.2, agreed with Vanessa 2026-11-14)
 
 
 def _normalised_difference(a: np.ndarray, b: np.ndarray) -> np.ndarray:
@@ -66,7 +67,7 @@ def _clamp(value: float, low: float, high: float) -> float:
 
 
 def _year_metrics(yc: YearComposite) -> dict:
-    """The three schema metrics for one year, over clear pixels only.
+    """The three schema metrics for one year, over clear pixels (ndvi_mean: clear land only).
     A pixel is clear when all three indices are finite, so all metrics share one denominator.
     Raises ValueError if nothing is clear, because NaN is not valid JSON."""
     ix = indices(yc)
@@ -83,8 +84,13 @@ def _year_metrics(yc: YearComposite) -> dict:
     mndwi_clear = mndwi[clear]
     ndbi_clear = ndbi[clear]
 
-    # float64 sum so a 300k-pixel mean doesn't lose precision.
-    ndvi_mean = float(np.mean(ndvi_clear, dtype=np.float64))
+    # Greenness is averaged over land only (schema 1.2). Clear water scores NDVI near -1, so
+    # including it made the mean follow the lake level, not the plants. float64 keeps precision.
+    land = mndwi_clear <= LAND_MNDWI_MAX
+    if not land.any():
+        raise ValueError(f"year {yc.year}: no clear land pixels, cannot compute ndvi_mean "
+                         "(run.py skips years under MIN_LAND_PCT land first)")
+    ndvi_mean = float(np.mean(ndvi_clear[land], dtype=np.float64))
     water_frac = float(np.count_nonzero(mndwi_clear > WATER_MNDWI_MIN)) / n
 
     looks_built = ndbi_clear > BUILT_NDBI_MIN
@@ -100,6 +106,15 @@ def _year_metrics(yc: YearComposite) -> dict:
         "water_frac": round(_clamp(water_frac, 0.0, 1.0), DECIMALS),
         "built_frac": round(_clamp(built_frac, 0.0, 1.0), DECIMALS),
     }
+
+
+def land_pct(yc: YearComposite) -> float:
+    """% of the whole area that is clear land (MNDWI <= 0). run.py skips a year with almost
+    none, because greenness "of the land" means nothing when there's no land to measure."""
+    ix = indices(yc)
+    clear = np.isfinite(ix["ndvi"]) & np.isfinite(ix["mndwi"]) & np.isfinite(ix["ndbi"])
+    land = clear & (ix["mndwi"] <= LAND_MNDWI_MAX)
+    return 100.0 * float(np.count_nonzero(land)) / land.size
 
 
 def compute_metrics(series: dict[int, YearComposite]) -> list[dict]:

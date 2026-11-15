@@ -32,6 +32,7 @@ from app.pipeline.aoi import make_aoi
 from app.pipeline.types import Aoi, Place, SceneMeta, YearComposite
 
 MIN_CLEAR_PCT = 60       # FR-14: years with less clear area are skipped, with a reason
+MIN_LAND_PCT = 1         # schema 1.2: greenness is measured on land, so a year needs some
 SEASON_MONTHS = (6, 9)   # June–September: northern green season, fewest clouds and snow
 FIRST_YEAR, LAST_YEAR = 1984, 2026
 
@@ -208,6 +209,8 @@ def split_kept(series: dict[int, YearComposite], searched_years: range,
             reason = "no Landsat images of this place that summer"
         elif series[year].clear_pct < MIN_CLEAR_PCT:
             reason = _low_coverage_reason(series[year].clear_pct, n_failed, len(scenes))
+        elif metrics.land_pct(series[year]) < MIN_LAND_PCT:
+            reason = "almost all water in view, so the land's greenness can't be measured"
         else:
             kept[year] = series[year]
             continue
