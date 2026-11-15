@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://earth-memory.local/contracts/narration.schema.json",
+  "$id": "https://revisit.local/contracts/narration.schema.json",
   "title": "Narration",
   "description": "Audio + word timings for one story. Written by web/ (/api/narrate) into DATA_DIR/stories/<id>/narration/. Version 1.0.",
   "type": "object",

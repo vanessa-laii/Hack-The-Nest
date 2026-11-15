@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://earth-memory.local/contracts/event.schema.json",
+  "$id": "https://revisit.local/contracts/event.schema.json",
   "title": "BuildEvent",
   "description": "One server-sent event from GET /api/stories/{id}/events. The SSE 'event:' name equals 'type'; 'data:' is this object as JSON. Version 1.0.",
   "type": "object",
