@@ -201,10 +201,65 @@ export function stepYear(
 }
 
 /**
- * Global time when a given year is shown. With fromGlobalT + direction, picks
- * the next/previous occurrence so ←/→ cannot jump the wrong way across
- * overlapping segment year ranges.
+ * Seek ←/→ by walking the film timeline from the playhead.
+ * Never jumps the opposite direction (overlapping chapter year ranges).
  */
+export function globalTimeForYearStep(
+  segments: PlaybackSegment[],
+  availableYears: number[],
+  fromGlobalT: number,
+  direction: -1 | 1,
+  samplesPerSegment = 64,
+): number {
+  if (segments.length === 0) return 0;
+
+  type Sample = { t: number; y: number };
+  const samples: Sample[] = [];
+  let acc = 0;
+  for (const seg of segments) {
+    const steps = Math.max(2, samplesPerSegment);
+    for (let i = 0; i <= steps; i++) {
+      const localT = (i / steps) * seg.duration_s;
+      samples.push({
+        t: acc + localT,
+        y: pickFrameYear(seg, localT, availableYears),
+      });
+    }
+    acc += seg.duration_s;
+  }
+  if (samples.length === 0) return fromGlobalT;
+
+  const eps = 1e-3;
+  let currentY = samples[0]!.y;
+  for (const s of samples) {
+    if (s.t <= fromGlobalT + eps) currentY = s.y;
+    else break;
+  }
+  const targetY = stepYear(availableYears, currentY, direction);
+  if (targetY === currentY) return fromGlobalT;
+
+  if (direction === 1) {
+    const exact = samples.find(
+      (s) => s.t > fromGlobalT + eps && s.y === targetY,
+    );
+    if (exact) return exact.t;
+    const forward = samples.find(
+      (s) => s.t > fromGlobalT + eps && s.y > currentY,
+    );
+    return forward?.t ?? fromGlobalT;
+  }
+
+  let exact: Sample | undefined;
+  let older: Sample | undefined;
+  for (const s of samples) {
+    if (s.t >= fromGlobalT - eps) break;
+    if (s.y === targetY) exact = s;
+    if (s.y < currentY) older = s;
+  }
+  return exact?.t ?? older?.t ?? fromGlobalT;
+}
+
+/** @deprecated Prefer globalTimeForYearStep for ←/→ controls. */
 export function globalTimeForYear(
   segments: PlaybackSegment[],
   availableYears: number[],
@@ -213,44 +268,11 @@ export function globalTimeForYear(
   direction: -1 | 1 = 1,
   samplesPerSegment = 48,
 ): number {
-  if (segments.length === 0) return 0;
-
-  const hits: number[] = [];
-  let fallbackT = 0;
-  let fallbackDist = Infinity;
-  let acc = 0;
-
-  for (const seg of segments) {
-    const steps = Math.max(2, samplesPerSegment);
-    for (let i = 0; i <= steps; i++) {
-      const localT = (i / steps) * seg.duration_s;
-      const y = pickFrameYear(seg, localT, availableYears);
-      const globalT = acc + localT;
-      const dist = Math.abs(y - year);
-      if (y === year) hits.push(globalT);
-      if (
-        dist < fallbackDist ||
-        (dist === fallbackDist && globalT < fallbackT)
-      ) {
-        fallbackDist = dist;
-        fallbackT = globalT;
-      }
-    }
-    acc += seg.duration_s;
-  }
-
-  const eps = 1e-3;
-  if (hits.length === 0) return fallbackT;
-
-  if (direction === 1) {
-    const after = hits.find((t) => t > fromGlobalT + eps);
-    return after ?? hits[hits.length - 1]!;
-  }
-
-  let before: number | undefined;
-  for (const t of hits) {
-    if (t < fromGlobalT - eps) before = t;
-    else break;
-  }
-  return before ?? hits[0]!;
+  return globalTimeForYearStep(
+    segments,
+    availableYears,
+    fromGlobalT,
+    direction,
+    samplesPerSegment,
+  );
 }

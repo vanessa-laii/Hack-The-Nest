@@ -9,6 +9,7 @@ export {
   buildPlaybackSegments,
   frameYearsFromStory,
   globalTimeForYear,
+  globalTimeForYearStep,
   nearestFrameYear,
   pickFrameYear,
   stepYear,

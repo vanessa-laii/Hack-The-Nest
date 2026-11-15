@@ -21,12 +21,11 @@ import {
   buildPlaybackSegments,
   frameYearsFromStory,
   fractionToGlobal,
-  globalTimeForYear,
+  globalTimeForYearStep,
   globalToLocal,
   isNarrationTooLong,
   localToGlobal,
   pickFrameYear,
-  stepYear,
   totalDuration,
 } from "@/lib/playback";
 import type { Narration } from "@/lib/types/narration";
@@ -350,14 +349,13 @@ export function FilmPlayer({
 
   const seekYear = useCallback(
     (dir: -1 | 1) => {
-      const nextYear = stepYear(availableYears, yearRef.current, dir);
-      const g = globalTimeForYear(
+      const g = globalTimeForYearStep(
         segments,
         availableYears,
-        nextYear,
         globalTRef.current,
         dir,
       );
+      if (Math.abs(g - globalTRef.current) < 1e-3) return;
       void seekGlobal(g, playingRef.current);
     },
     [availableYears, segments, seekGlobal],
