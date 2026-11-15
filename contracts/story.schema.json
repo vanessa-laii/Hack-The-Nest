@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://earth-memory.local/contracts/story.schema.json",
+  "$id": "https://revisit.local/contracts/story.schema.json",
   "title": "Story",
-  "description": "One Earth Memory story. Written by backend/, read by web/. Version 1.3. See docs/CONTRACTS.md.",
+  "description": "One Revisit story. Written by backend/, read by web/. Version 1.3. See docs/CONTRACTS.md.",
   "type": "object",
   "additionalProperties": false,
   "required": ["schema_version", "id", "status", "created_at", "place", "coverage", "frames", "metrics", "changes", "sources", "chapters", "script", "credits", "generation"],
