@@ -1,6 +1,6 @@
 /**
  * Client bridge: load narration (cache-first) then mount FilmPlayer.
- * Inputs: story from server page. POSTs /api/narrate on mount.
+ * Inputs: story + optional playback callbacks (year/segment/play/ended).
  * Outputs: preparing / error / FilmPlayer. Never rewrites story text.
  */
 
@@ -14,6 +14,11 @@ import type { Story } from "@/lib/types/story";
 
 type StoryFilmProps = {
   story: Story;
+  /** Forwarded to FilmPlayer so MetricChart can track the playing year. */
+  onYearChange?: (year: number) => void;
+  onSegmentChange?: (segmentId: string, index: number) => void;
+  onPlayStateChange?: (playing: boolean) => void;
+  onEnded?: () => void;
 };
 
 type NarrateState =
@@ -35,7 +40,13 @@ function narrateErrorMessage(data: unknown): string {
   return err?.message || "Could not prepare narration. Check the narrate route and try again.";
 }
 
-export function StoryFilm({ story }: StoryFilmProps) {
+export function StoryFilm({
+  story,
+  onYearChange,
+  onSegmentChange,
+  onPlayStateChange,
+  onEnded,
+}: StoryFilmProps) {
   const [state, setState] = useState<NarrateState>({ status: "loading" });
   const [retryToken, setRetryToken] = useState(0);
 
@@ -126,6 +137,10 @@ export function StoryFilm({ story }: StoryFilmProps) {
       narration={state.narration}
       autoPlay
       captionsDefaultOn
+      onYearChange={onYearChange}
+      onSegmentChange={onSegmentChange}
+      onPlayStateChange={onPlayStateChange}
+      onEnded={onEnded}
     />
   );
 }

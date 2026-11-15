@@ -64,6 +64,6 @@ Re-generate: `POST /api/narrate` with `{ "story_id": "sample-lake-6km" }` (needs
 
 ## Gaps (ok for this pass)
 
-- MetricChart, EvidencePanel — stubs / later. (Timeline chapter markers: cut by agreement.)
-- BeforeAfter slider — not wired.
+- MetricChart + EvidencePanel — shipped on `/story/[id]` below the film (`StoryBelowFold` forwards `onYearChange` into MetricChart). Timeline chapter markers: cut by agreement.
+- BeforeAfter slider — not wired (evidence shows side-by-side before/after thumbs).
 - Visual polish of chrome may still iterate; keep the props API above.
