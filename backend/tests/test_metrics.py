@@ -148,31 +148,15 @@ def test_schema_validates():
 
 def test_ndvi_mean_ignores_water_schema_1_2():
     """Greenness is the average over land only: adding a lake must not change it."""
-    import numpy as np
-    from app.pipeline.metrics import compute_metrics
-    from app.pipeline.types import YearComposite
-
-    def dn(refl):
-        return np.uint16(round((refl + 0.2) / 0.0000275))
-
-    # Bands: blue, green, red, nir, swir1, swir2. Land = green-ish vegetation; water = dark,
-    # green above SWIR (MNDWI > 0) and NIR below red (NDVI strongly negative).
-    land = [dn(0.04), dn(0.08), dn(0.05), dn(0.35), dn(0.20), dn(0.10)]
-    water = [dn(0.05), dn(0.06), dn(0.04), dn(0.01), dn(0.005), dn(0.003)]
-    all_land = np.array(land, np.uint16)[:, None, None] * np.ones((1, 4, 4), np.uint16)
+    all_land = pixel_dn(**VEG)
     half_lake = all_land.copy()
-    half_lake[:, :, :2] = np.array(water, np.uint16)[:, None, None]
+    half_lake[:, :, :2] = pixel_dn(**WATER)[:, :, :2]   # left half becomes water (MNDWI > 0)
 
-    rows = compute_metrics({2000: YearComposite(2000, all_land, 100.0, []),
-                            2001: YearComposite(2001, half_lake, 100.0, [])})
+    rows = metrics.compute_metrics({2000: make_yc(2000, all_land), 2001: make_yc(2001, half_lake)})
     assert rows[0]["ndvi_mean"] == rows[1]["ndvi_mean"]     # the lake doesn't drag it down
     assert rows[1]["water_frac"] == 0.5
 
 
 def test_land_pct_counts_clear_land_only():
-    import numpy as np
-    from app.pipeline.metrics import land_pct
-    from app.pipeline.types import YearComposite
-    water = np.array([9091, 9455, 8727, 7636, 7454, 7382], np.uint16)[:, None, None]
-    lake = water * np.ones((1, 4, 4), np.uint16)
-    assert land_pct(YearComposite(2000, lake, 100.0, [])) == 0.0
+    """An all-water composite has no land at all."""
+    assert metrics.land_pct(make_yc(2000, pixel_dn(**WATER))) == 0.0

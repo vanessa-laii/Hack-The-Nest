@@ -1,13 +1,14 @@
+# Pinned for reproducible CI; bump deliberately.
 # Backend runtime (Python 3.12). Pipeline/agent deps get added as spikes S1-S4 pick winners.
-fastapi>=0.115
-uvicorn[standard]>=0.30
-pydantic>=2.7
-pydantic-settings>=2.3
-jsonschema>=4.22
-rfc3339-validator  # lets jsonschema check "format": "date-time"
-rfc3987  # lets jsonschema check "format": "uri"
-pillow>=10.3
-httpx>=0.27
-numpy>=1.26
-truststore>=0.9  # Windows: trust OS cert store (Norton re-signs TLS), see ADR-001
-pytest>=8
+fastapi==0.163.0
+uvicorn[standard]==0.54.0
+pydantic==2.14.3
+pydantic-settings==2.16.3
+jsonschema==4.26.0
+rfc3339-validator==0.1.4  # lets jsonschema check "format": "date-time"
+rfc3987==1.3.8  # lets jsonschema check "format": "uri"
+pillow==13.0.0
+httpx==0.28.1
+numpy==2.5.4
+truststore==0.10.5  # Windows: trust OS cert store (Norton re-signs TLS), see ADR-001
+pytest==9.2.0

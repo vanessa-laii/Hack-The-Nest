@@ -1,0 +1,191 @@
+{
+  "summary": {
+    "recall": 0.444,
+    "matched": 4,
+    "expected": 9,
+    "control_changes": 0,
+    "false_positives": 4,
+    "schema_errors": 0,
+    "lake_mead_urban_growth": 0,
+    "contradictions": 1,
+    "tiny": 0,
+    "max_seconds": 0.363
+  },
+  "places": {
+    "lake-mead": {
+      "found": [
+        "water_loss/water_frac 1999-2010 (-0.215)",
+        "water_loss/water_frac 1984-1991 (-0.064)",
+        "water_gain/water_frac 1992-1998 (+0.062)",
+        "water_loss/water_frac 2013-2014 (-0.043) [sensor]"
+      ],
+      "expected": 2,
+      "matched": 1,
+      "missed": [
+        {
+          "kind": "water_gain",
+          "approx_years": [
+            2023,
+            2023
+          ],
+          "cause_keywords": [
+            "snowpack",
+            "inflow",
+            "rise"
+          ]
+        }
+      ],
+      "false_positives": 3,
+      "contradictions": [],
+      "tiny": [],
+      "schema_errors": [],
+      "seconds": 0.363,
+      "scored": true
+    },
+    "paradise": {
+      "found": [
+        "burn/ndvi_mean 2018-2020 (-0.198)",
+        "vegetation_gain/ndvi_mean 1985-1999 (+0.052)"
+      ],
+      "expected": 1,
+      "matched": 1,
+      "missed": [],
+      "false_positives": 1,
+      "contradictions": [],
+      "tiny": [],
+      "schema_errors": [],
+      "seconds": 0.269,
+      "scored": true
+    },
+    "summerlin": {
+      "found": [
+        "urban_growth/ndvi_mean 1991-2019 (+0.107)"
+      ],
+      "expected": 1,
+      "matched": 1,
+      "missed": [],
+      "false_positives": 0,
+      "contradictions": [
+        "urban_growth/ndvi_mean 1991-2019 (+0.107)"
+      ],
+      "tiny": [],
+      "schema_errors": [],
+      "seconds": 0.225,
+      "scored": true
+    },
+    "palm-jumeirah": {
+      "found": [
+        "water_loss/water_frac 2002-2019 (-0.200) [sensor]"
+      ],
+      "expected": 1,
+      "matched": 1,
+      "missed": [],
+      "false_positives": 0,
+      "contradictions": [],
+      "tiny": [],
+      "schema_errors": [],
+      "seconds": 0.253,
+      "scored": true
+    },
+    "central-park": {
+      "found": [],
+      "expected": 0,
+      "matched": 0,
+      "missed": [],
+      "false_positives": 0,
+      "contradictions": [],
+      "tiny": [],
+      "schema_errors": [],
+      "seconds": 0.245,
+      "scored": true
+    },
+    "ypsilanti": {
+      "found": [],
+      "expected": 0,
+      "matched": 0,
+      "missed": [],
+      "false_positives": 0,
+      "contradictions": [],
+      "tiny": [],
+      "schema_errors": [],
+      "seconds": 0.018,
+      "scored": false
+    },
+    "willow-run": {
+      "found": [],
+      "expected": 3,
+      "matched": 0,
+      "missed": [
+        {
+          "kind": "other",
+          "metric": "built_frac",
+          "approx_years": [
+            2014,
+            2015
+          ],
+          "cause_keywords": [
+            "Willow Run plant",
+            "demolition",
+            "RACER Trust"
+          ]
+        },
+        {
+          "kind": "urban_growth",
+          "metric": "built_frac",
+          "approx_years": [
+            2016,
+            2018
+          ],
+          "cause_keywords": [
+            "American Center for Mobility",
+            "test track",
+            "autonomous vehicles"
+          ]
+        },
+        {
+          "kind": "other",
+          "metric": "built_frac",
+          "approx_years": [
+            2013,
+            2015
+          ],
+          "cause_keywords": [
+            "Willow Run Airport",
+            "runway"
+          ]
+        }
+      ],
+      "false_positives": 0,
+      "contradictions": [],
+      "tiny": [],
+      "schema_errors": [],
+      "seconds": 0.201,
+      "scored": true
+    },
+    "delray": {
+      "found": [],
+      "expected": 1,
+      "matched": 0,
+      "missed": [
+        {
+          "kind": "urban_growth",
+          "metric": "built_frac",
+          "approx_years": [
+            2019,
+            2024
+          ],
+          "cause_keywords": [
+            "Gordie Howe International Bridge",
+            "port of entry"
+          ]
+        }
+      ],
+      "false_positives": 0,
+      "contradictions": [],
+      "tiny": [],
+      "schema_errors": [],
+      "seconds": 0.02,
+      "scored": true
+    }
+  }
+}

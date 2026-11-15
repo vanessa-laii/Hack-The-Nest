@@ -1,11 +1,13 @@
-# FastAPI app implementing the HTTP API in docs/CONTRACTS.md §1 (mock mode + cached stories for now).
+# FastAPI app implementing the HTTP API in docs/CONTRACTS.md §1 (mock mode and real builds).
 # Inputs: HTTP requests from web/ (CORS limited to WEB_ORIGIN); settings; stories on disk.
 # Outputs: JSON responses, SSE build-event streams, static files from DATA_DIR at /files/.
 #
 # How it works:
 #   1. Create the app: CORS for the web app, the error envelope, /files/ from DATA_DIR.
-#   2. POST /api/stories starts a build (mock mode: points at the sample story).
-#   3. GET /api/stories and /api/stories/{id} serve the gallery and saved stories.
+#   2. POST /api/stories geocodes the place, then returns the saved story (200 cached) or
+#      starts/reuses a background build job (202). Mock mode points at the sample story.
+#   3. GET /api/stories and /api/stories/{id} serve the gallery and saved stories
+#      (425 while that story's job is still running).
 #   4. GET /api/stories/{id}/events streams build events as SSE, with keep-alive pings
 #      and resume from Last-Event-ID.
 from __future__ import annotations
@@ -21,9 +23,10 @@ from fastapi.responses import JSONResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field, field_validator, model_validator
 
-from app import errors, mock, store
+from app import errors, jobs, mock, store
 from app.config import settings
 from app.errors import ApiError
+from app.pipeline import geocode
 
 VERSION = "1.0"
 # Send an SSE ping after this many quiet seconds. Proxies and browsers drop idle
@@ -36,8 +39,10 @@ PING_EVERY_S = 10
 @asynccontextmanager
 async def lifespan(_: FastAPI):
     """Startup: make sure DATA_DIR exists and, in mock mode, the placeholder images,
-    so the first page load doesn't get 404s for frames."""
+    so the first page load doesn't get 404s for frames. The thread pool notes which build
+    started each thread, so a timed-out build isn't restarted while its thread still writes."""
     settings.data_dir.mkdir(parents=True, exist_ok=True)
+    jobs.track_threads()
     if settings.em_mock:
         mock.ensure_placeholders()
     yield
@@ -100,24 +105,38 @@ async def health():
     return {"ok": True, "mock": settings.em_mock, "version": VERSION}
 
 
+def _story_links(sid: str) -> dict:
+    """The URLs a POST response points the web app at (CONTRACTS §1)."""
+    return {"events_url": f"/api/stories/{sid}/events", "story_url": f"/api/stories/{sid}"}
+
+
+def _mock_create() -> JSONResponse:
+    """Mock mode: 202 with the sample story's id, whatever was asked for."""
+    sid = mock.sample_story()["id"]
+    body = {"id": sid, "cached": False, **_story_links(sid)}
+    return JSONResponse(body, status_code=202)
+
+
 @app.post("/api/stories")
 async def create_story(req: StoryRequest):
-    """Starts building a story. Mock mode: 202 with the sample story's id.
-    Real mode: the pipeline isn't wired in yet, so return the standard error and
-    the web app falls back to the gallery."""
+    """Starts building a story, or returns the saved one.
+    Geocoding happens here, before any job, so PLACE_NOT_FOUND / PLACE_AMBIGUOUS /
+    NO_LAND_DATA come back as plain HTTP errors the web app can show (FR-2)."""
     if settings.em_mock:
-        sid = mock.sample_story()["id"]
-        body = {
-            "id": sid,
-            "cached": False,
-            "events_url": f"/api/stories/{sid}/events",
-            "story_url": f"/api/stories/{sid}",
-        }
-        return JSONResponse(body, status_code=202)
-    raise ApiError(
-        "INTERNAL",
-        "Live story generation isn't available yet. Pick a story from the gallery.",
-    )
+        return _mock_create()
+
+    place = await geocode.resolve(req.query, lat=req.lat, lon=req.lon,
+                                  display_name=req.display_name)
+    aoi_km = req.aoi_km or settings.aoi_km
+    sid = store.story_id(place.display_name, place.admin["country_code"], aoi_km)
+
+    if store.load_story(sid) is not None:
+        body = {"id": sid, "cached": True, "story_url": f"/api/stories/{sid}"}
+        return JSONResponse(body, status_code=200)
+
+    jobs.start(sid, place, aoi_km)  # reuses the job if this id is already building
+    body = {"id": sid, "cached": False, **_story_links(sid)}
+    return JSONResponse(body, status_code=202)
 
 
 @app.get("/api/stories")
@@ -135,6 +154,8 @@ async def get_story(sid: str):
     so pre-built stories can be tested alongside the sample."""
     if settings.em_mock and sid == mock.sample_story()["id"]:
         return mock.sample_story()
+    if jobs.is_running(sid):
+        raise ApiError("NOT_READY", "This story is still being built.")
     story = store.load_story(sid)
     if story is None:
         raise ApiError("NOT_FOUND", f"No story with id {sid!r}.")
@@ -198,15 +219,25 @@ def _resume_after(last_event_id: str | None) -> int:
         return -1
 
 
+def _event_source(sid: str, after: int) -> AsyncIterator[dict]:
+    """Where a stream's events come from: the sample replay in mock mode, else the
+    story's build job. Raises NOT_FOUND if there is neither."""
+    if settings.em_mock and sid == mock.sample_story()["id"]:
+        return mock.replay_events(after)
+    job = None if settings.em_mock else jobs.get(sid)
+    if job is None:
+        raise ApiError("NOT_FOUND", f"No build in progress for {sid!r}.")
+    return job.follow(after)
+
+
 @app.get("/api/stories/{sid}/events")
 async def story_events(sid: str, last_event_id: str | None = Header(None)):
-    """SSE stream of build events for one story. Mock mode replays the sample stream,
-    resuming after Last-Event-ID (sent by EventSource on reconnect)."""
-    if not (settings.em_mock and sid == mock.sample_story()["id"]):
-        raise ApiError("NOT_FOUND", f"No build in progress for {sid!r}.")
+    """SSE stream of build events for one story: everything after Last-Event-ID (sent by
+    EventSource on reconnect), then live events until done or error."""
     after = _resume_after(last_event_id)
+    source = _event_source(sid, after)
     return StreamingResponse(
-        _with_pings(mock.replay_events(after)),
+        _with_pings(source),
         media_type="text/event-stream",
         # Stop caches and proxies holding events back (the progress page would freeze).
         headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},

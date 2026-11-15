@@ -366,7 +366,8 @@ async def _load_one(client: httpx.AsyncClient, sem: asyncio.Semaphore, aoi: Aoi,
         log.warning("imagery: scene %s returned a bad array (%s); using no data", scene.id, ex)
         return np.zeros(shape, np.uint16), False
 
-    _save_crop(path, arr)
+    # Writes run in a thread too, so saving many crops doesn't stall the event loop (HL-5).
+    await asyncio.to_thread(_save_crop, path, arr)
     return arr, True
 
 

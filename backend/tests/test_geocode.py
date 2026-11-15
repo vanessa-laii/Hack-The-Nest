@@ -122,6 +122,53 @@ def test_minor_namesakes_do_not_make_ambiguous(fake):
     assert p.admin["city"] == "Paradise" and p.admin["county"] == "Butte County"
 
 
+def _ranked(res, place_rank):
+    """A result with Nominatim's place_rank set (larger = smaller feature)."""
+    res["place_rank"] = place_rank
+    return res
+
+
+def test_hamlet_is_not_a_rival_of_a_town(fake):
+    # Recorded shape of live "Paradise, California" (2026-11-14): the Camp Fire town,
+    # plus a Mono County hamlet and its census area at similar importance.
+    mono = {**US_CA, "county": "Mono County"}
+    fake({"/search": [
+        _ranked(_res("Paradise", 39.76, -121.622, 0.474, US_CA, typ="administrative",
+                     cat="boundary", addresstype="town"), 16),
+        _ranked(_res("Paradise", 37.48, -118.606, 0.367, mono, typ="census",
+                     cat="boundary"), 25),
+        _ranked(_res("Paradise", 37.48, -118.606, 0.367, mono, typ="hamlet"), 20),
+    ]})
+    p = run(geocode.resolve("Paradise, California"))
+    assert p.kind == "town" and p.admin["county"] == "Butte County"
+
+
+def test_city_and_town_paris_still_ambiguous(fake):
+    # Live ranks: Paris, France is rank 12, Paris, Texas rank 16. A town stays a rival.
+    fake({"/search": [
+        _ranked(_res("Paris", 48.8535, 2.3484, 0.897, FR, typ="administrative",
+                     cat="boundary", addresstype="city"), 12),
+        _ranked(_res("Paris", 33.6609, -95.5555, 0.530, US_TX, typ="administrative",
+                     cat="boundary", addresstype="town"), 16),
+    ]})
+    with pytest.raises(ApiError) as e:
+        run(geocode.resolve("Paris"))
+    assert e.value.code == "PLACE_AMBIGUOUS"
+    assert [c["display_name"] for c in e.value.candidates] == ["Paris, France", "Paris, Texas"]
+
+
+def test_two_far_apart_towns_still_ambiguous(fake):
+    oregon = {"town": "Paradise", "state": "Oregon", "country": "United States",
+              "country_code": "us"}
+    fake({"/search": [
+        _ranked(_res("Paradise", 39.76, -121.622, 0.47, US_CA, typ="town"), 16),
+        _ranked(_res("Paradise", 44.0, -122.0, 0.40, oregon, typ="town"), 16),
+    ]})
+    with pytest.raises(ApiError) as e:
+        run(geocode.resolve("Paradise"))
+    assert e.value.code == "PLACE_AMBIGUOUS" and len(e.value.candidates) == 2
+
+
 def test_ambiguous_paris(fake):
     fake({"/search": PARIS})
     with pytest.raises(ApiError) as e:

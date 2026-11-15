@@ -1,0 +1,178 @@
+{
+  "summary": {
+    "recall": 0.889,
+    "matched": 8,
+    "expected": 9,
+    "control_changes": 0,
+    "false_positives": 12,
+    "schema_errors": 0,
+    "lake_mead_urban_growth": 0,
+    "contradictions": 7,
+    "tiny": 12,
+    "max_seconds": 0.436
+  },
+  "places": {
+    "lake-mead": {
+      "found": [
+        "water_loss/water_frac 2001-2021 (-0.255)",
+        "water_loss/built_frac 1988-1989 (+0.001)"
+      ],
+      "expected": 2,
+      "matched": 1,
+      "missed": [
+        {
+          "kind": "water_gain",
+          "approx_years": [
+            2023,
+            2023
+          ],
+          "cause_keywords": [
+            "snowpack",
+            "inflow",
+            "rise"
+          ]
+        }
+      ],
+      "false_positives": 1,
+      "contradictions": [
+        "water_loss/built_frac 1988-1989 (+0.001)"
+      ],
+      "tiny": [
+        "water_loss/built_frac 1988-1989 (+0.001)"
+      ],
+      "schema_errors": [],
+      "seconds": 0.414,
+      "scored": true
+    },
+    "paradise": {
+      "found": [
+        "burn/ndvi_mean 2018-2019 (-0.230)"
+      ],
+      "expected": 1,
+      "matched": 1,
+      "missed": [],
+      "false_positives": 0,
+      "contradictions": [],
+      "tiny": [],
+      "schema_errors": [],
+      "seconds": 0.378,
+      "scored": true
+    },
+    "summerlin": {
+      "found": [
+        "urban_growth/built_frac 1997-2006 (-0.506)",
+        "urban_growth/built_frac 1989-1990 (-0.059)",
+        "other/built_frac 2017-2018 (-0.005)",
+        "urban_growth/built_frac 2013-2014 (-0.004) [sensor]"
+      ],
+      "expected": 1,
+      "matched": 1,
+      "missed": [],
+      "false_positives": 3,
+      "contradictions": [
+        "urban_growth/built_frac 1997-2006 (-0.506)",
+        "urban_growth/built_frac 1989-1990 (-0.059)",
+        "urban_growth/built_frac 2013-2014 (-0.004) [sensor]"
+      ],
+      "tiny": [
+        "urban_growth/built_frac 2013-2014 (-0.004) [sensor]"
+      ],
+      "schema_errors": [],
+      "seconds": 0.415,
+      "scored": true
+    },
+    "palm-jumeirah": {
+      "found": [
+        "water_loss/water_frac 2002-2004 (-0.139) [sensor]",
+        "water_loss/water_frac 2013-2020 (-0.082) [sensor]",
+        "urban_growth/built_frac 2007-2008 (-0.002)",
+        "urban_growth/built_frac 2018-2019 (-0.002)",
+        "urban_growth/built_frac 2012-2013 (-0.001) [sensor]"
+      ],
+      "expected": 1,
+      "matched": 1,
+      "missed": [],
+      "false_positives": 4,
+      "contradictions": [
+        "urban_growth/built_frac 2007-2008 (-0.002)",
+        "urban_growth/built_frac 2018-2019 (-0.002)",
+        "urban_growth/built_frac 2012-2013 (-0.001) [sensor]"
+      ],
+      "tiny": [
+        "urban_growth/built_frac 2007-2008 (-0.002)",
+        "urban_growth/built_frac 2018-2019 (-0.002)",
+        "urban_growth/built_frac 2012-2013 (-0.001) [sensor]"
+      ],
+      "schema_errors": [],
+      "seconds": 0.341,
+      "scored": true
+    },
+    "central-park": {
+      "found": [],
+      "expected": 0,
+      "matched": 0,
+      "missed": [],
+      "false_positives": 0,
+      "contradictions": [],
+      "tiny": [],
+      "schema_errors": [],
+      "seconds": 0.264,
+      "scored": true
+    },
+    "ypsilanti": {
+      "found": [],
+      "expected": 0,
+      "matched": 0,
+      "missed": [],
+      "false_positives": 0,
+      "contradictions": [],
+      "tiny": [],
+      "schema_errors": [],
+      "seconds": 0.248,
+      "scored": false
+    },
+    "willow-run": {
+      "found": [
+        "other/built_frac 1986-1987 (-0.004)",
+        "other/built_frac 2022-2023 (-0.002)",
+        "other/built_frac 2013-2014 (-0.002) [sensor]",
+        "other/built_frac 2017-2018 (-0.002)",
+        "urban_growth/built_frac 2017-2018 (+0.001)"
+      ],
+      "expected": 3,
+      "matched": 3,
+      "missed": [],
+      "false_positives": 2,
+      "contradictions": [],
+      "tiny": [
+        "other/built_frac 1986-1987 (-0.004)",
+        "other/built_frac 2022-2023 (-0.002)",
+        "other/built_frac 2013-2014 (-0.002) [sensor]",
+        "other/built_frac 2017-2018 (-0.002)",
+        "urban_growth/built_frac 2017-2018 (+0.001)"
+      ],
+      "schema_errors": [],
+      "seconds": 0.249,
+      "scored": true
+    },
+    "delray": {
+      "found": [
+        "urban_growth/built_frac 2019-2021 (+0.006)",
+        "urban_growth/built_frac 2015-2016 (+0.004)",
+        "urban_growth/built_frac 2010-2012 (+0.002) [sensor]"
+      ],
+      "expected": 1,
+      "matched": 1,
+      "missed": [],
+      "false_positives": 2,
+      "contradictions": [],
+      "tiny": [
+        "urban_growth/built_frac 2015-2016 (+0.004)",
+        "urban_growth/built_frac 2010-2012 (+0.002) [sensor]"
+      ],
+      "schema_errors": [],
+      "seconds": 0.436,
+      "scored": true
+    }
+  }
+}
