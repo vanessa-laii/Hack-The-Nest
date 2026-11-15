@@ -1,4 +1,4 @@
-# Earth Memory backend
+# Revisit backend
 
 FastAPI app implementing `docs/CONTRACTS.md`. Python **3.12** (geo wheels aren't reliable on 3.13+ yet).
 

@@ -1,4 +1,4 @@
-# Earth Memory: Contracts
+# Revisit: Contracts
 
 The contracts are the only things `backend/` and `web/` share. If it isn't here or in `contracts/`, neither side may depend on it.
 
@@ -151,7 +151,7 @@ Every non-2xx response:
 | `INVALID_REQUEST` | 400 | Bad body | "Something went wrong with that request." |
 | `PLACE_NOT_FOUND` | 404 | Geocoder found nothing | "We couldn't find that place. Try adding the state or country." |
 | `PLACE_AMBIGUOUS` | 409 | Several matches | Picker with `candidates` (max 5) |
-| `NO_LAND_DATA` | 422 | Open water / no Landsat land coverage | "Earth Memory works on land. Try a nearby town." |
+| `NO_LAND_DATA` | 422 | Open water / no Landsat land coverage | "Revisit works on land. Try a nearby town." |
 | `NOT_READY` | 425 | Story still building | Keep listening to events |
 | `TIMEOUT` | event | Over 180 s | Offer `partial_story_url` if set, else the nearest cached story |
 | `UPSTREAM_ERROR` | 502 / event | A provider failed after retry | Same as timeout |
@@ -191,7 +191,7 @@ Listed in `.env.example`. Each app reads only its own.
 | `AOI_KM` | backend | `6` | 3–10, final default from spike S2 |
 | `PIPELINE_TIMEOUT_S` | backend | `180` | HL-5 |
 | `WEB_ORIGIN` | backend | `http://localhost:3000` | CORS |
-| `NOMINATIM_USER_AGENT` | backend | `earth-memory-hackthenest/1.0 (contact email)` | Required by Nominatim policy |
+| `NOMINATIM_USER_AGENT` | backend | `revisit-hackthenest/1.0 (contact email)` | Required by Nominatim policy |
 | `LLM_PROVIDER` | backend | `gemini` | `gemini` (default) or `openai`. Picks which key `llm.py` uses. Any model is allowed (track rules updated Sat night) |
 | `LLM_MODEL` | backend | `gemini-3.5-flash-lite` | Text model for the agent; change together with `LLM_PROVIDER` |
 | `OPENAI_API_KEY` | backend | — | Optional; only used if `LLM_PROVIDER=openai` |

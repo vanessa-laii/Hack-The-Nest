@@ -48,7 +48,7 @@ async def lifespan(_: FastAPI):
     yield
 
 
-app = FastAPI(title="Earth Memory backend", version=VERSION, lifespan=lifespan)
+app = FastAPI(title="Revisit backend", version=VERSION, lifespan=lifespan)
 
 # Only the web app's origin may call us from a browser (CONTRACTS §1).
 # Last-Event-ID is allowed so a browser can resume an SSE stream.

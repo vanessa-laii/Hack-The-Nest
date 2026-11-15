@@ -1,4 +1,4 @@
-# Earth Memory: instructions for Claude Code
+# Revisit: instructions for Claude Code
 
 Hack The Nest 2026 project. Type a place → a 60–90 s narrated, sourced film of how it changed since 1984 from Landsat imagery. Read these before working:
 

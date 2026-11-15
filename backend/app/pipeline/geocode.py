@@ -71,7 +71,7 @@ STATE_STYLE_COUNTRIES = {"us", "ca", "au"}
 EARTH_RADIUS_KM = 6371.0
 
 NOT_FOUND_MESSAGE = "We couldn't find that place. Try adding the state or country."
-NO_LAND_MESSAGE = "Earth Memory works on land. Try a nearby town."
+NO_LAND_MESSAGE = "Revisit works on land. Try a nearby town."
 
 # Module-level rate-limit state, shared by every resolve() in the process.
 _lock: asyncio.Lock | None = None
