@@ -1,0 +1,99 @@
+# Backend CI: checks every pull request (and every push to main) that touches backend or contracts.
+# Inputs: the repo at that commit (no secrets needed; all tests are offline).
+# Outputs: a pass/fail check on the commit or PR.
+#
+# How it works:
+#   1. Install Python 3.12 and backend/requirements.txt (cached between runs).
+#   2. Fail if any .env file (except .env.example) was added to git (HL-8: no secrets in git).
+#   3. Byte-compile everything, so syntax errors fail fast.
+#   4. Run the backend tests (offline: network calls are faked).
+#   5. Validate the contract samples against the schemas (CLAUDE.md non-negotiable #4).
+#   6. Start the server in mock mode and check the endpoints the web app uses.
+name: backend
+
+# Pull requests cover feature branches; pushes only run on main. Why: running on both
+# for the same branch would do every check twice.
+on:
+  push:
+    branches: [main]
+    paths: ["backend/**", "contracts/**", ".github/workflows/backend.yml"]
+  pull_request:
+    paths: ["backend/**", "contracts/**", ".github/workflows/backend.yml"]
+
+# A newer push to the same branch or PR cancels the older run: only the latest result matters.
+concurrency:
+  group: backend-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read   # read-only: CI never writes to the repo
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r backend/requirements.txt
+
+      - name: No .env files in git (HL-8)
+        run: |
+          # Matches .env and .env.<anything> in any folder, like .gitignore does; the
+          # committed template .env.example is allowed.
+          committed=$(git ls-files | grep -E '(^|/)\.env(\..+)?$' | grep -v '\.env\.example$' || true)
+          if [ -n "$committed" ]; then
+            echo "Secret files are committed: $committed"
+            echo "Remove them from git and rotate any keys they contained."
+            exit 1
+          fi
+
+      - name: Compile
+        run: python -m compileall -q backend/app backend/scripts backend/tests
+
+      - name: Tests
+        run: python -m pytest backend/tests -q
+
+      - name: Validate contract samples
+        run: |
+          python backend/scripts/validate_story.py \
+            contracts/samples/story.sample.json \
+            contracts/samples/events.sample.jsonl
+
+      - name: Mock server smoke test
+        working-directory: backend
+        env:
+          EM_MOCK: "1"
+        run: |
+          python -m uvicorn app.main:app --port 8000 &
+          base=localhost:8000
+          # Every request gets a time limit, so a broken server fails the job instead of hanging it.
+          get() { curl -sf --max-time 15 "$@"; }
+          post_status() {
+            curl -s --max-time 15 -o /dev/null -w '%{http_code}' -X POST "$base/api/stories" \
+              -H 'Content-Type: application/json' -d "$1"
+          }
+
+          # Wait up to ~15 s for the server to start.
+          for i in $(seq 1 30); do get "$base/api/health" > /dev/null && break; sleep 0.5; done
+
+          health=$(get "$base/api/health")
+          grep -q '"mock":true' <<< "$health"
+          test "$(post_status '{"query":"Lake Mead"}')" = 202
+          test "$(post_status '{}')" = 400
+          get "$base/api/stories/sample-lake-6km" > /dev/null
+          get "$base/files/samples/thumbs/1984.jpg" > /dev/null
+
+          # Resuming the event stream past the end must re-send the final "done" event.
+          # The output is captured first, so an early-exiting grep can't break the pipe.
+          events=$(curl -s -N --max-time 15 -H 'Last-Event-ID: 20' \
+            "$base/api/stories/sample-lake-6km/events")
+          grep -q 'event: done' <<< "$events"
+          echo "Mock API OK"
