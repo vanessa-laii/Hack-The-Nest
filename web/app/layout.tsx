@@ -38,7 +38,7 @@ const body = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Earth Memory",
+  title: "Revisit",
   description:
     "Type a place → a 60–90s narrated Landsat film of how it changed since 1984.",
 };

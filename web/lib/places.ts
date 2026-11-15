@@ -24,19 +24,20 @@ export type PlaceLocation = {
 
 export const PLACEHOLDER_PLACES: PlaceLocation[] = [
   {
+    // Same coords as contracts/samples/story.sample.json — opens mock id sample-lake-6km.
     id: "lake-mead",
-    displayName: "Lake Mead, Nevada",
+    displayName: "Sample Lake (made-up data)",
     lat: 36.25,
     lon: -114.39,
     theme: "Water change",
     stories: [
       {
-        id: "placeholder-lake-mead",
-        title: "Lake Mead shoreline",
+        id: "sample-lake-6km",
+        title: "The shoreline retreats",
         firstYear: 1984,
         lastYear: 2024,
         blurb:
-          "[SAMPLE] Placeholder film slot for reservoir shoreline change visible in Landsat imagery.",
+          "[SAMPLE] Mock backend story — shrinking lake shoreline from made-up Landsat frames. Phase 0 proof path.",
         theme: "Water change",
       },
     ],

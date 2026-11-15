@@ -20,7 +20,7 @@ export type Year = number;
 export type FileUrl = string;
 
 /**
- * One Earth Memory story. Written by backend/, read by web/. Version 1.0. See docs/CONTRACTS.md.
+ * One Revisit story. Written by backend/, read by web/. Version 1.0. See docs/CONTRACTS.md.
  */
 export interface Story {
   schema_version: "1.0";
