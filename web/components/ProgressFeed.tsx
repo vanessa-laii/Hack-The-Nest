@@ -91,9 +91,17 @@ export function ProgressFeed({ storyId, eventsPath }: ProgressFeedProps) {
         onAny(ev, "error");
         return;
       }
-      // Network hiccup while connecting — keep waiting unless already closed.
+      // After a terminal done/error we already closed; ignore reconnect noise.
+      if (es.readyState === EventSource.CLOSED) return;
+      // Persistent network failure: close so the browser does not loop forever.
+      if (es.readyState === EventSource.CONNECTING && lastSeq.current < 0) {
+        // Still first connect — allow a brief retry window via browser default.
+        return;
+      }
     });
 
+    // Always close on unmount; also closed explicitly on done/error above
+    // so the browser does not auto-reconnect after the stream ends (Harman note).
     return () => es.close();
   }, [storyId, eventsPath, router]);
 

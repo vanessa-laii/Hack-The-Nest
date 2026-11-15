@@ -63,7 +63,8 @@ export function SearchBox({ onSubmitQuery, className }: SearchBoxProps) {
               .join(", ")}`,
           );
         } else {
-          flash(friendlyErrorMessage(code));
+          // Prefer backend message (e.g. EM_MOCK=0: live generation not available yet).
+          flash(result.error.message || friendlyErrorMessage(code));
         }
         return;
       }
