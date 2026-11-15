@@ -10,7 +10,7 @@ export type PlaybackSegment = {
   year_from: number;
   year_to: number;
   duration_s: number;
-  /** Set for change chapters — held at segment end (CONTRACTS §2). */
+  /** Change chapters: hold when the year path reaches this (CONTRACTS §2). */
   after_year: number | null;
 };
 

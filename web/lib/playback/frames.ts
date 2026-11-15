@@ -1,14 +1,14 @@
 /**
  * Frame-year selection for a segment at local time t.
  * Inputs: playback segment, available frame years, local seconds.
- * Outputs: year to show (nearest kept frame); after_year hold at change end.
+ * Outputs: year to show (nearest kept frame); after_year hold mid-segment when needed.
  */
 
 import type { Story } from "@/lib/types/story";
 import type { Narration } from "@/lib/types/narration";
 import type { PlaybackSegment } from "./types";
 
-/** Last fraction of a change-chapter segment held on after_year. */
+/** Fraction of segment audio spent held on a change’s after_year. */
 export const AFTER_YEAR_HOLD_RATIO = 0.12;
 
 export function nearestFrameYear(
@@ -54,9 +54,46 @@ export function yearsInRange(
 }
 
 /**
+ * Where along [year_from, year_to] the change’s after_year sits (0…1).
+ * Clamped so a hold always lands on the segment’s year path.
+ */
+function afterYearPauseAt(
+  yearFrom: number,
+  yearTo: number,
+  afterYear: number,
+): number {
+  const span = yearTo - yearFrom;
+  if (span === 0) return 1;
+  return Math.min(1, Math.max(0, (afterYear - yearFrom) / span));
+}
+
+/** Map film progress → year-span progress, inserting a hold at pauseAt. */
+function animProgressWithHold(
+  progress: number,
+  hold: number,
+  pauseAt: number,
+): number {
+  if (hold <= 0) return progress;
+
+  const preEnd = pauseAt * (1 - hold);
+  const holdEnd = preEnd + hold;
+
+  if (progress < preEnd) {
+    if (preEnd <= 0) return pauseAt;
+    return (progress / preEnd) * pauseAt;
+  }
+  if (progress < holdEnd) return pauseAt;
+
+  const post = 1 - holdEnd;
+  if (post <= 0 || pauseAt >= 1) return 1;
+  return pauseAt + ((progress - holdEnd) / post) * (1 - pauseAt);
+}
+
+/**
  * Pick the frame year for segment + local t.
- * Spreads years in [year_from, year_to] evenly across duration; for change
- * chapters, holds after_year for the final AFTER_YEAR_HOLD_RATIO of the audio.
+ * Spreads years in [year_from, year_to] across duration. For change chapters,
+ * holds on after_year for AFTER_YEAR_HOLD_RATIO when the year path reaches it
+ * (then continues through any quiet years up to year_to).
  */
 export function pickFrameYear(
   segment: PlaybackSegment,
@@ -67,18 +104,6 @@ export function pickFrameYear(
   const duration = Math.max(segment.duration_s, 1e-6);
   const t = Math.max(0, Math.min(localT, duration));
   const progress = t / duration;
-
-  const hold =
-    segment.after_year != null && holdRatio > 0
-      ? Math.min(Math.max(holdRatio, 0), 0.45)
-      : 0;
-
-  if (hold > 0 && segment.after_year != null && progress >= 1 - hold) {
-    return nearestFrameYear(availableYears, segment.after_year);
-  }
-
-  const animProgress =
-    hold > 0 ? Math.min(1, progress / (1 - hold)) : progress;
 
   const span = yearsInRange(
     availableYears,
@@ -92,6 +117,29 @@ export function pickFrameYear(
   }
   if (span.length === 1) return span[0];
 
+  const hold =
+    segment.after_year != null && holdRatio > 0
+      ? Math.min(Math.max(holdRatio, 0), 0.45)
+      : 0;
+
+  const pauseAt =
+    hold > 0 && segment.after_year != null
+      ? afterYearPauseAt(
+          segment.year_from,
+          segment.year_to,
+          segment.after_year,
+        )
+      : 1;
+
+  if (hold > 0 && segment.after_year != null) {
+    const preEnd = pauseAt * (1 - hold);
+    const holdEnd = preEnd + hold;
+    if (progress >= preEnd && progress < holdEnd) {
+      return nearestFrameYear(availableYears, segment.after_year);
+    }
+  }
+
+  const animProgress = animProgressWithHold(progress, hold, pauseAt);
   const idx = Math.round(animProgress * (span.length - 1));
   return span[Math.max(0, Math.min(idx, span.length - 1))];
 }

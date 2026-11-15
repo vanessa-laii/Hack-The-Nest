@@ -1,10 +1,9 @@
 /**
  * Typed API client for the Revisit backend.
  * Inputs: NEXT_PUBLIC_API_BASE + optional fetch overrides.
- * Outputs: gallery/story helpers; globe merges API gallery onto SEED_PLACES.
+ * Outputs: gallery/story helpers shared by server and client.
  */
 
-import { SEED_PLACES, type PlaceLocation, type PlaceStoryStub } from "./places";
 import type { Story } from "./types/story";
 
 export const API_BASE =
@@ -99,61 +98,6 @@ export function friendlyErrorMessage(code: ApiErrorCode): string {
   }
 }
 
-function normalizeName(name: string): string {
-  return name.trim().toLowerCase().replace(/\s+/g, " ");
-}
-
-function namesMatch(a: string, b: string): boolean {
-  const na = normalizeName(a);
-  const nb = normalizeName(b);
-  return na === nb || na.includes(nb) || nb.includes(na);
-}
-
-function galleryToStub(
-  g: GalleryItem,
-  theme: string,
-  blurb?: string,
-): PlaceStoryStub {
-  return {
-    id: g.id,
-    title: g.headline || g.display_name,
-    firstYear: g.first_year,
-    lastYear: g.last_year,
-    blurb: blurb ?? `${g.chapter_count} chapter${g.chapter_count === 1 ? "" : "s"} · from gallery`,
-    theme,
-    ready: true,
-    thumbUrl: g.thumb_url ? fileUrl(g.thumb_url) : undefined,
-  };
-}
-
-export async function getGallery(): Promise<GalleryItem[]> {
-  try {
-    // no-store: newly built stories must show as ready on the next homepage load
-    // (revalidate: 30 kept caching an empty gallery after Lake Mead finished).
-    const res = await fetch(`${API_BASE}/api/stories`, {
-      cache: "no-store",
-    });
-    if (!res.ok) return [];
-    const data = (await res.json()) as { stories: GalleryItem[] };
-    return data.stories?.length ? data.stories : [];
-  } catch {
-    return [];
-  }
-}
-
-/** True when the backend has a playable story.json for this id. */
-export async function storyExists(id: string): Promise<boolean> {
-  try {
-    const res = await fetch(`${API_BASE}/api/stories/${encodeURIComponent(id)}`, {
-      method: "GET",
-      cache: "no-store",
-    });
-    return res.ok;
-  } catch {
-    return false;
-  }
-}
-
 export async function getStory(id: string): Promise<Story | null> {
   try {
     const res = await fetch(`${API_BASE}/api/stories/${id}`, {
@@ -164,74 +108,6 @@ export async function getStory(id: string): Promise<Story | null> {
   } catch {
     return null;
   }
-}
-
-/**
- * Merge GET /api/stories onto seed globe places by story id, display name, or proximity.
- * Seeds always show; gallery marks which films are ready. Never drops pins at 0,0.
- */
-export async function getPlacesForGlobe(): Promise<PlaceLocation[]> {
-  const gallery = await getGallery();
-  const byId = new Map(gallery.map((g) => [g.id, g]));
-
-  // If index is empty/stale but story.json exists, still mark seed films ready.
-  const missingIds = SEED_PLACES.flatMap((p) =>
-    p.stories.map((s) => s.id).filter((id) => !byId.has(id)),
-  );
-  const existence = await Promise.all(
-    missingIds.map(async (id) => [id, await storyExists(id)] as const),
-  );
-  const exists = new Set(existence.filter(([, ok]) => ok).map(([id]) => id));
-
-  const merged: PlaceLocation[] = SEED_PLACES.map((place) => {
-    const stories = place.stories.map((stub) => {
-      const g = byId.get(stub.id);
-      if (g) {
-        byId.delete(stub.id);
-        return {
-          ...stub,
-          title: g.headline || stub.title,
-          firstYear: g.first_year,
-          lastYear: g.last_year,
-          blurb: stub.blurb,
-          ready: true,
-          thumbUrl: g.thumb_url ? fileUrl(g.thumb_url) : stub.thumbUrl,
-        };
-      }
-      if (exists.has(stub.id)) {
-        return { ...stub, ready: true };
-      }
-      return { ...stub, ready: false };
-    });
-    return { ...place, stories };
-  });
-
-  // Remaining gallery rows: attach only when display_name matches a seed (known lat/lon).
-  // Never invent 0,0 pins for unknown gallery ids.
-  for (const g of byId.values()) {
-    const byName = merged.find((p) =>
-      namesMatch(p.displayName, g.display_name),
-    );
-    if (!byName) continue;
-    if (!byName.stories.some((s) => s.id === g.id)) {
-      byName.stories = [
-        galleryToStub(g, byName.theme, byName.stories[0]?.blurb),
-        ...byName.stories,
-      ];
-    } else {
-      byName.stories = byName.stories.map((s) =>
-        s.id === g.id
-          ? {
-              ...s,
-              ready: true,
-              thumbUrl: g.thumb_url ? fileUrl(g.thumb_url) : s.thumbUrl,
-            }
-          : s,
-      );
-    }
-  }
-
-  return merged;
 }
 
 export async function createStory(

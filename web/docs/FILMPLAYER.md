@@ -22,7 +22,7 @@ globalT  ──►  globalToLocal()  ──►  { segmentIndex, localT }
 | --- | --- |
 | Segment order | Play `narration.segments` in order; hand off on `ended` |
 | Frame years | During a segment, keep frames with `year ∈ [year_from, year_to]`, spread evenly across `duration_s` |
-| `after_year` hold | Change chapters: last ~12% of the segment holds the change’s `after_year` (`AFTER_YEAR_HOLD_RATIO`) |
+| `after_year` hold | Change chapters: ~12% hold when the year path hits the change’s `after_year` (`AFTER_YEAR_HOLD_RATIO`); segment may continue past that through quiet years to `year_to` |
 | Captions | Word timings are **segment-relative**; highlight from `narration.json` |
 | Audio URLs | Same-origin `/files/stories/<id>/narration/seg-XX.mp3` (Next `app/files` → `DATA_DIR`) |
 | Frames | `fileUrl(image_url)` → backend `/files/...` (mock samples under `data/samples/`) |

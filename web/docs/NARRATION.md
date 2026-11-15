@@ -336,7 +336,7 @@ Same schema — narration must not break when mock → real:
 - [ ] Prefix all `/files/...` with `NEXT_PUBLIC_API_BASE` in the client; narration `audio_url` stays root-relative as in schema.
 - [ ] Never put `ELEVENLABS_API_KEY` in client bundles; only `app/api/narrate/route.ts` (and server libs it imports).
 - [ ] Regenerate types with `npm run types` if contracts change — never hand-edit `lib/types/narration.ts`.
-- [ ] Film sync (later): for each playing segment, map `t ∈ [0, duration_s]` → frame year by lerping `year_from`→`year_to`; on change chapters, pause on `after_year` at segment end (CONTRACTS §2).
+- [ ] Film sync (later): for each playing segment, map `t ∈ [0, duration_s]` → frame year by lerping `year_from`→`year_to`; on change chapters, pause on the change’s `after_year` when the year path reaches it (CONTRACTS §2).
 
 ---
 
