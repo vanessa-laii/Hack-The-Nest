@@ -1,7 +1,7 @@
 /**
- * Selected-place glass card — only mounts when a globe marker is chosen.
+ * Selected-place instrument panel — mounts when a globe marker is chosen.
  * Inputs: selected place + close handler.
- * Outputs: quiet overlay with place name, placeholder film, Play CTA.
+ * Outputs: opaque overlay with place name, overview thumb, Play CTA when ready.
  */
 
 "use client";
@@ -20,11 +20,11 @@ function PlaceTitle({ displayName }: { displayName: string }) {
 
   return (
     <span className="block min-w-0">
-      <span className="font-ui text-[1.45rem] font-semibold leading-[1.15] tracking-tight text-[#f5f5f7] sm:text-[1.6rem]">
+      <span className="font-ui text-[1.45rem] font-semibold leading-[1.15] tracking-tight text-[#F4F1EC] sm:text-[1.6rem]">
         {primary}
       </span>
       {secondary ? (
-        <span className="mt-1.5 block font-label text-[10px] uppercase tracking-[0.18em] text-[#6e6e73]">
+        <span className="mt-1.5 block text-[13px] text-[#7A766E]">
           {secondary}
         </span>
       ) : null}
@@ -32,8 +32,38 @@ function PlaceTitle({ displayName }: { displayName: string }) {
   );
 }
 
+function PlaceOverview({
+  placeName,
+  thumbUrl,
+}: {
+  placeName: string;
+  thumbUrl?: string;
+}) {
+  if (thumbUrl) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element -- remote /files thumbs from API_BASE
+      <img
+        src={thumbUrl}
+        alt={`${placeName} overview`}
+        className="mt-4 h-36 w-full rounded-md border border-white/10 object-cover"
+      />
+    );
+  }
+
+  return (
+    <div
+      className="mt-4 h-36 w-full rounded-md border border-white/10 bg-white/[0.04]"
+      role="img"
+      aria-label={`${placeName} overview unavailable`}
+    />
+  );
+}
+
 export function PlaceVideoPanel({ place, onClose }: PlaceVideoPanelProps) {
   const closeRef = useRef<HTMLButtonElement>(null);
+  const overviewThumb =
+    place.stories.find((s) => s.ready && s.thumbUrl)?.thumbUrl ??
+    place.stories.find((s) => s.thumbUrl)?.thumbUrl;
 
   useEffect(() => {
     closeRef.current?.focus();
@@ -56,15 +86,10 @@ export function PlaceVideoPanel({ place, onClose }: PlaceVideoPanelProps) {
       aria-label={`${place.displayName} film`}
       className="pointer-events-auto w-full"
     >
-      <div className="rounded-3xl border border-white/10 bg-[#1a1a1d]/75 px-5 py-5 shadow-[0_24px_80px_rgba(18,18,20,0.45)] backdrop-blur-2xl supports-[backdrop-filter]:bg-[#1a1a1d]/65">
+      <div className="rounded-xl border border-white/10 bg-[#14181E] px-5 py-5 shadow-[0_24px_80px_rgba(10,14,19,0.55)]">
         <div className="flex items-start justify-between gap-4">
           <div className="min-w-0">
-            <p className="font-label text-[10px] uppercase tracking-[0.28em] text-[#2997ff]/90">
-              {place.stories.some((s) => s.id === "sample-lake-6km")
-                ? "Mock sample · ready"
-                : "Sample place"}
-            </p>
-            <h2 className="mt-2.5">
+            <h2>
               <PlaceTitle displayName={place.displayName} />
             </h2>
           </div>
@@ -72,22 +97,17 @@ export function PlaceVideoPanel({ place, onClose }: PlaceVideoPanelProps) {
             ref={closeRef}
             type="button"
             onClick={onClose}
-            className="shrink-0 rounded-full px-2.5 py-1 font-label text-[10px] uppercase tracking-[0.18em] text-[#6e6e73] transition hover:bg-white/5 hover:text-[#f5f5f7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2997ff]"
+            className="em-chrome-label shrink-0 rounded-full px-2.5 py-1 transition hover:bg-white/5 hover:text-[#F4F1EC] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5BA8A0]"
             aria-label="Close place card"
           >
             Close
           </button>
         </div>
 
-        <p className="mt-3 font-label text-[10px] uppercase tracking-[0.2em] text-[#6e6e73]">
-          {place.theme}
-          <span className="mx-2 text-white/20" aria-hidden>
-            ·
-          </span>
-          {place.stories.some((s) => s.id === "sample-lake-6km")
-            ? "Backend mock"
-            : "Placeholder"}
-        </p>
+        <PlaceOverview
+          placeName={place.displayName}
+          thumbUrl={overviewThumb}
+        />
 
         <div className="mt-5 flex flex-col gap-4">
           {place.stories.map((story) => (
@@ -96,28 +116,32 @@ export function PlaceVideoPanel({ place, onClose }: PlaceVideoPanelProps) {
               className="border-t border-white/[0.08] pt-4"
             >
               <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                <h3 className="font-ui text-lg font-semibold leading-snug tracking-tight text-[#f5f5f7]">
+                <h3 className="font-ui text-lg font-semibold leading-snug tracking-tight text-[#F4F1EC]">
                   {story.title}
                 </h3>
-                <span className="font-label text-[10px] tracking-[0.12em] text-[#6e6e73]">
+                <span className="font-label text-[12px] tabular-nums text-[#7A766E]">
                   {story.firstYear}–{story.lastYear}
                 </span>
               </div>
-              <p className="mt-2.5 text-[13px] leading-relaxed text-[#a1a1a6]">
+              <p className="mt-2.5 text-[13px] leading-relaxed text-[#A8A49C]">
                 {story.blurb}
               </p>
               <div className="mt-5 flex flex-wrap items-center gap-3">
-                <Link
-                  href={`/story/${story.id}`}
-                  className="inline-flex min-h-10 items-center justify-center rounded-full bg-[#2997ff] px-5 text-sm font-medium text-white transition hover:bg-[#54aeff] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2997ff]"
-                >
-                  Play film
-                </Link>
-                <span className="font-label text-[9px] uppercase tracking-[0.18em] text-[#6e6e73]">
-                  {story.id === "sample-lake-6km"
-                    ? "Open mock story"
-                    : "Stub · sample only"}
-                </span>
+                {story.ready ? (
+                  <Link
+                    href={`/story/${story.id}`}
+                    className="inline-flex min-h-10 items-center justify-center rounded-full bg-[#5BA8A0] px-5 text-sm font-medium text-[#0A0E13] transition hover:bg-[#6FB8B0] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5BA8A0]"
+                  >
+                    Play film
+                  </Link>
+                ) : (
+                  <>
+                    <span className="inline-flex min-h-10 items-center justify-center rounded-full border border-white/15 px-5 text-sm text-[#A8A49C]">
+                      Film isn’t ready yet
+                    </span>
+                    <span className="em-chrome-label">Search to build</span>
+                  </>
+                )}
               </div>
             </article>
           ))}

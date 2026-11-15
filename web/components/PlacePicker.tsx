@@ -13,6 +13,9 @@ type PlacePickerProps = {
   places: PlaceLocation[];
   selectedId: string | null;
   onSelect: (id: string | null) => void;
+  /** So the landing can hide the place card while the list is open (no overlap). */
+  onOpenChange?: (open: boolean) => void;
+  reducedMotion?: boolean;
   className?: string;
 };
 
@@ -20,6 +23,8 @@ export function PlacePicker({
   places,
   selectedId,
   onSelect,
+  onOpenChange,
+  reducedMotion = false,
   className,
 }: PlacePickerProps) {
   const [open, setOpen] = useState(false);
@@ -33,6 +38,10 @@ export function PlacePicker({
   const { primary, secondary } = selected
     ? splitPlaceName(selected.displayName)
     : { primary: null, secondary: null };
+
+  useEffect(() => {
+    onOpenChange?.(open);
+  }, [open, onOpenChange]);
 
   useEffect(() => {
     if (!open) return;
@@ -105,10 +114,7 @@ export function PlacePicker({
 
   return (
     <div ref={rootRef} className={className}>
-      <p
-        id={labelId}
-        className="font-label mb-2 text-[10px] uppercase tracking-[0.28em] text-[#a1a1a6]"
-      >
+      <p id={labelId} className="em-chrome-label mb-2">
         Choose a place
       </p>
 
@@ -120,7 +126,7 @@ export function PlacePicker({
         aria-labelledby={labelId}
         onClick={() => setOpen((v) => !v)}
         onKeyDown={onTriggerKeyDown}
-        className="flex min-h-12 w-full items-center justify-between gap-3 rounded-full border border-white/12 bg-[#1a1a1d]/80 px-5 text-left text-[#f5f5f7] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-md transition hover:border-white/20 hover:bg-[#222226]/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2997ff]"
+        className="flex min-h-12 w-full items-center justify-between gap-3 rounded-full border border-white/12 bg-[#14181E] px-5 text-left text-[#F4F1EC] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition hover:border-white/20 hover:bg-[#1C2229] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5BA8A0]"
       >
         <span className="min-w-0 flex-1 truncate">
           {selected ? (
@@ -129,73 +135,79 @@ export function PlacePicker({
                 {primary}
               </span>
               {secondary ? (
-                <span className="font-label mt-0.5 text-[9px] uppercase tracking-[0.16em] text-[#6e6e73]">
+                <span className="mt-0.5 text-[12px] text-[#7A766E]">
                   {secondary}
                 </span>
               ) : null}
             </span>
           ) : (
-            <span className="text-sm text-[#a1a1a6]">Choose a place…</span>
+            <span className="text-sm text-[#A8A49C]">Choose a place…</span>
           )}
         </span>
         <span
-          className={`font-label text-[10px] text-[#6e6e73] transition ${open ? "rotate-180" : ""}`}
+          className={`text-[10px] text-[#7A766E] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${open ? "rotate-180" : ""}`}
           aria-hidden
         >
           ▾
         </span>
       </button>
 
-      {open ? (
-        <ul
-          ref={listRef}
-          id={listId}
-          role="listbox"
-          tabIndex={-1}
-          aria-labelledby={labelId}
-          aria-activedescendant={`${listId}-opt-${activeIndex}`}
-          onKeyDown={onListKeyDown}
-          className="mt-2 max-h-72 overflow-y-auto rounded-2xl border border-white/12 bg-[#1a1a1d]/96 py-2 shadow-[0_24px_64px_rgba(18,18,20,0.55)] backdrop-blur-xl outline-none"
-        >
-          {places.map((place, i) => {
-            const parts = splitPlaceName(place.displayName);
-            const isSelected = place.id === selectedId;
-            const isActive = i === activeIndex;
+      <div
+        className={`grid ${
+          reducedMotion
+            ? ""
+            : "transition-[grid-template-rows,opacity] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]"
+        } ${open ? "grid-rows-[1fr] opacity-100" : "pointer-events-none grid-rows-[0fr] opacity-0"}`}
+        inert={!open ? true : undefined}
+        aria-hidden={!open}
+      >
+        <div className="min-h-0 overflow-hidden">
+          <ul
+            ref={listRef}
+            id={listId}
+            role="listbox"
+            tabIndex={-1}
+            aria-labelledby={labelId}
+            aria-activedescendant={
+              open ? `${listId}-opt-${activeIndex}` : undefined
+            }
+            onKeyDown={onListKeyDown}
+            className="relative z-30 mt-2 max-h-[min(18rem,50vh)] overflow-y-auto rounded-xl border border-white/12 bg-[#14181E] py-2 shadow-[0_24px_64px_rgba(10,14,19,0.65)] outline-none"
+          >
+            {places.map((place, i) => {
+              const parts = splitPlaceName(place.displayName);
+              const isSelected = place.id === selectedId;
+              const isActive = i === activeIndex;
 
-            return (
-              <li
-                key={place.id}
-                id={`${listId}-opt-${i}`}
-                role="option"
-                aria-selected={isSelected}
-                onMouseEnter={() => setActiveIndex(i)}
-                onClick={() => choose(place.id)}
-                className={`flex cursor-pointer items-start gap-3 px-4 py-3 transition ${
-                  isActive ? "bg-[#222226]" : "bg-transparent"
-                }`}
-              >
-                <span
-                  className={`mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full ${
-                    isSelected
-                      ? "bg-[#2997ff] shadow-[0_0_8px_rgba(41,151,255,0.85)]"
-                      : "bg-white/25"
+              return (
+                <li
+                  key={place.id}
+                  id={`${listId}-opt-${i}`}
+                  role="option"
+                  aria-selected={isSelected}
+                  onMouseEnter={() => setActiveIndex(i)}
+                  onClick={() => choose(place.id)}
+                  className={`cursor-pointer px-4 py-3 transition-colors duration-150 ${
+                    isActive || isSelected ? "bg-[#1C2229]" : "bg-transparent"
                   }`}
-                  aria-hidden
-                />
-                <span className="min-w-0 flex-1">
-                  <span className="font-ui block text-[16px] font-semibold leading-tight tracking-tight text-[#f5f5f7]">
+                >
+                  <span
+                    className={`font-ui block text-[16px] font-semibold leading-tight tracking-tight ${
+                      isSelected ? "text-[#5BA8A0]" : "text-[#F4F1EC]"
+                    }`}
+                  >
                     {parts.primary}
                   </span>
-                  <span className="mt-1.5 flex flex-wrap gap-x-2.5 font-label text-[9px] uppercase tracking-[0.14em] text-[#6e6e73]">
+                  <span className="mt-1.5 flex flex-wrap gap-x-2.5 text-[12px] text-[#7A766E]">
                     {parts.secondary ? <span>{parts.secondary}</span> : null}
                     <span>{place.theme}</span>
                   </span>
-                </span>
-              </li>
-            );
-          })}
-        </ul>
-      ) : null}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 }

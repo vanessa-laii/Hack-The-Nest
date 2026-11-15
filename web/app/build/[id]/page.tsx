@@ -1,5 +1,5 @@
 /**
- * Light live-progress page — SSE replay from mock backend (Phase 0).
+ * Light live-progress page — SSE from createStory events_url.
  * Inputs: route param id (+ optional ?events= from createStory).
  * Outputs: ProgressFeed; redirects to /story/[id] on done.
  */
@@ -20,20 +20,16 @@ async function BuildContent({ params, searchParams }: BuildPageProps) {
   return (
     <>
       <header className="relative z-10 mt-10">
-        <p className="font-label text-[10px] uppercase tracking-[0.28em] text-[#2997ff]">
+        <p className="em-chrome-label text-[#5BA8A0]">
           Building
         </p>
-        <h1 className="font-display mt-2 text-4xl font-medium tracking-tight text-[#f5f5f7] sm:text-5xl">
+        <h1 className="font-display mt-2 text-4xl font-medium tracking-tight text-[#F4F1EC] sm:text-5xl">
           Assembling your film…
         </h1>
-        <p className="mt-3 text-[#a1a1a6]">
-          Story <code className="text-[#2997ff]">{id}</code>
-          {id === "sample-lake-6km" ? (
-            <>
-              {" "}
-              — mock mode replays sample events (~1 s apart).
-            </>
-          ) : null}
+        <p className="mt-3 text-[#A8A49C]">
+          Story <code className="text-[#5BA8A0]">{id}</code>
+          {" "}
+          — watching live build events.
         </p>
       </header>
 
@@ -47,14 +43,14 @@ export default function BuildPage({ params, searchParams }: BuildPageProps) {
     <main className="relative mx-auto flex w-full max-w-2xl flex-1 flex-col px-5 py-10 sm:px-8">
       <Link
         href="/"
-        className="relative z-10 mb-2 w-fit text-sm text-[#a1a1a6] transition hover:text-[#2997ff] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2997ff]"
+        className="relative z-10 mb-2 w-fit text-sm text-[#A8A49C] transition hover:text-[#5BA8A0] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5BA8A0]"
       >
-        ← Back 
+        ← Back to globe
       </Link>
 
       <Suspense
         fallback={
-          <p className="relative z-10 mt-10 text-[#a1a1a6]">Loading build…</p>
+          <p className="relative z-10 mt-10 text-[#A8A49C]">Loading build…</p>
         }
       >
         <BuildContent params={params} searchParams={searchParams} />

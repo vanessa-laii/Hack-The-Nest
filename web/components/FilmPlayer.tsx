@@ -444,17 +444,17 @@ export function FilmPlayer({
     return (
       <div
         className={clsx(
-          "rounded-2xl border border-[#F0A35E]/40 bg-[#F0A35E]/10 px-5 py-6",
+          "rounded-md border border-[#C4A574]/40 bg-[#C4A574]/10 px-5 py-6",
           className,
         )}
         role="alert"
       >
-        <p className="font-ui text-lg font-semibold text-[#f5f5f7]">
+        <p className="font-ui text-lg font-semibold text-[#F4F1EC]">
           Narration too long to play
         </p>
-        <p className="mt-2 text-sm text-[#a1a1a6]">
+        <p className="mt-2 text-sm text-[#A8A49C]">
           This film&apos;s audio is {narration.total_duration_s.toFixed(1)}s
-          (limit 95s). Try another story from the gallery.
+          (limit 120s). Try another story from the gallery.
         </p>
       </div>
     );
@@ -462,7 +462,7 @@ export function FilmPlayer({
 
   if (!story.frames.length) {
     return (
-      <p className="rounded-2xl border border-white/10 bg-[#1a1a1d]/60 px-5 py-8 text-center text-sm text-[#a1a1a6]">
+      <p className="rounded-md border border-white/10 bg-[#14181E] px-5 py-8 text-center text-sm text-[#A8A49C]">
         No frames in this story yet.
       </p>
     );
@@ -473,7 +473,8 @@ export function FilmPlayer({
   return (
     <div
       className={clsx(
-        "relative w-full overflow-hidden rounded-2xl border border-white/10 bg-[#1a1a1d]",
+        /* Signature: thin film-rebate double edge around the player mount */
+        "relative w-full overflow-hidden rounded-md border border-white/18 bg-[#14181E] shadow-[inset_0_0_0_1px_rgba(244,241,236,0.06)] outline outline-1 outline-offset-[-5px] outline-white/10",
         className,
       )}
       role="region"
@@ -516,11 +517,11 @@ export function FilmPlayer({
 
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-[#121214]/92 via-[#121214]/4 to-transparent"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-[#0A0E13]/92 via-[#0A0E13]/4 to-transparent"
         />
 
         <p
-          className="pointer-events-none absolute left-5 top-5 z-[2] font-display text-5xl font-medium tracking-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.65)] sm:left-6 sm:top-6 sm:text-6xl lg:text-7xl"
+          className="pointer-events-none absolute left-5 top-5 z-[2] font-display text-5xl font-medium tracking-tight text-[#F4F1EC] drop-shadow-[0_2px_12px_rgba(0,0,0,0.65)] sm:left-6 sm:top-6 sm:text-6xl lg:text-7xl"
           aria-live="polite"
         >
           {displayYear}
@@ -533,7 +534,7 @@ export function FilmPlayer({
           onClick={() => {
             void togglePlay();
           }}
-          className="absolute inset-0 z-[1] cursor-pointer border-0 bg-transparent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-[#2997ff]"
+          className="absolute inset-0 z-[1] cursor-pointer border-0 bg-transparent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-[#5BA8A0]"
         />
 
         <button
@@ -543,7 +544,7 @@ export function FilmPlayer({
             e.stopPropagation();
             setCaptionsOn((v) => !v);
           }}
-          className="absolute right-4 top-4 z-10 rounded-full border border-white/15 bg-[#121214]/55 px-3 py-1 font-label text-[9px] uppercase tracking-[0.18em] text-[#f5f5f7] backdrop-blur-md transition hover:border-white/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2997ff] sm:right-5 sm:top-5"
+          className="absolute right-4 top-4 z-10 rounded-full border border-white/15 bg-[#0A0E13]/90 px-3 py-1.5 text-[12px] text-[#F4F1EC] transition hover:border-white/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5BA8A0] sm:right-5 sm:top-5"
         >
           Captions {captionsOn ? "on" : "off"}
         </button>
@@ -565,7 +566,7 @@ export function FilmPlayer({
 
         {needsGesture && !playing ? (
           <div
-            className="absolute inset-0 z-20 flex items-center justify-center bg-black/50 backdrop-blur-[2px]"
+            className="absolute inset-0 z-20 flex items-center justify-center bg-black/55"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -574,7 +575,7 @@ export function FilmPlayer({
                 e.stopPropagation();
                 void playFromGlobal(globalTRef.current);
               }}
-              className="inline-flex min-h-14 min-w-[10rem] items-center justify-center rounded-full bg-[#2997ff] px-8 text-base font-semibold text-white shadow-lg transition hover:bg-[#54aeff] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2997ff]"
+              className="inline-flex min-h-14 min-w-[10rem] items-center justify-center rounded-full bg-[#5BA8A0] px-8 text-base font-semibold text-[#0A0E13] transition hover:bg-[#6FB8B0] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5BA8A0]"
             >
               Play film
             </button>
@@ -583,7 +584,7 @@ export function FilmPlayer({
       </div>
 
       <div
-        className="flex flex-col gap-3 border-t border-white/[0.06] bg-[#121214]/95 px-4 py-3 sm:px-5"
+        className="flex flex-col gap-3 border-t border-white/[0.06] bg-[#0A0E13] px-4 py-3 sm:px-5"
         onClick={(e) => e.stopPropagation()}
       >
         <label className="sr-only" htmlFor="film-scrub">
@@ -604,7 +605,7 @@ export function FilmPlayer({
               false,
             );
           }}
-          className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-white/15 accent-[#2997ff] [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#2997ff]"
+          className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-white/15 accent-[#5BA8A0] [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#5BA8A0]"
         />
 
         <div className="flex flex-wrap items-center gap-2 sm:gap-3">
@@ -614,7 +615,7 @@ export function FilmPlayer({
               e.stopPropagation();
               void togglePlay();
             }}
-            className="inline-flex min-h-10 min-w-[4.5rem] items-center justify-center rounded-full bg-[#2997ff] px-4 text-sm font-medium text-white transition hover:bg-[#54aeff] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2997ff]"
+            className="inline-flex min-h-10 min-w-[4.5rem] items-center justify-center rounded-full bg-[#5BA8A0] px-4 text-sm font-medium text-[#0A0E13] transition hover:bg-[#6FB8B0] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5BA8A0]"
             aria-label={playing ? "Pause" : "Play"}
           >
             {playing ? "Pause" : "Play"}
@@ -626,10 +627,10 @@ export function FilmPlayer({
               e.stopPropagation();
               seekYear(-1);
             }}
-            className="inline-flex min-h-10 items-center rounded-full px-3 font-label text-[10px] uppercase tracking-[0.16em] text-[#a1a1a6] transition hover:text-[#f5f5f7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2997ff]"
+            className="inline-flex min-h-10 items-center rounded-full px-3 text-sm text-[#A8A49C] transition hover:text-[#F4F1EC] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5BA8A0]"
             aria-label="Previous year"
           >
-            ← Year
+            Previous year
           </button>
           <button
             type="button"
@@ -637,20 +638,16 @@ export function FilmPlayer({
               e.stopPropagation();
               seekYear(1);
             }}
-            className="inline-flex min-h-10 items-center rounded-full px-3 font-label text-[10px] uppercase tracking-[0.16em] text-[#a1a1a6] transition hover:text-[#f5f5f7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2997ff]"
+            className="inline-flex min-h-10 items-center rounded-full px-3 text-sm text-[#A8A49C] transition hover:text-[#F4F1EC] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5BA8A0]"
             aria-label="Next year"
           >
-            Year →
+            Next year
           </button>
 
-          <span className="ml-auto font-label text-[10px] tabular-nums uppercase tracking-[0.14em] text-[#6e6e73]">
+          <span className="ml-auto font-label text-[12px] tabular-nums text-[#7A766E]">
             {formatClock(globalT)} / {formatClock(totalS)}
           </span>
         </div>
-
-        {/* <p className="font-label text-[9px] uppercase tracking-[0.18em] text-[#6e6e73]">
-          Click frame or Space play/pause · ← → year
-        </p> */}
       </div>
     </div>
   );

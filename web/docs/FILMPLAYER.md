@@ -22,7 +22,7 @@ globalT  ──►  globalToLocal()  ──►  { segmentIndex, localT }
 | --- | --- |
 | Segment order | Play `narration.segments` in order; hand off on `ended` |
 | Frame years | During a segment, keep frames with `year ∈ [year_from, year_to]`, spread evenly across `duration_s` |
-| `after_year` hold | Change chapters: last ~12% of the segment holds the change’s `after_year` (`AFTER_YEAR_HOLD_RATIO`) |
+| `after_year` hold | Change chapters: ~12% hold when the year path hits the change’s `after_year` (`AFTER_YEAR_HOLD_RATIO`); segment may continue past that through quiet years to `year_to` |
 | Captions | Word timings are **segment-relative**; highlight from `narration.json` |
 | Audio URLs | Same-origin `/files/stories/<id>/narration/seg-XX.mp3` (Next `app/files` → `DATA_DIR`) |
 | Frames | `fileUrl(image_url)` → backend `/files/...` (mock samples under `data/samples/`) |
@@ -48,22 +48,24 @@ Keyboard: **Space** play/pause · **← / →** previous / next discrete frame y
 
 ## How to test
 
-1. Backend mock: from `backend/`, `EM_MOCK=1` + uvicorn on `:8000`.
-2. Web: from `web/`, `npm run dev` on `:3000`.
-3. Open [http://localhost:3000/story/sample-lake-6km](http://localhost:3000/story/sample-lake-6km).
+1. Backend: from `backend/`, prefer `EM_MOCK=0` + uvicorn on `:8000` (live gallery). Ensure a story exists (e.g. build Lake Mead so `lake-mead-nevada-us-6km` is in `GET /api/stories`).
+2. Web: from `web/`, `npm run types` then `npm run dev` on `:3000`.
+3. Open the globe, pick a **Film ready** place, or go to `/story/<story_id>` (e.g. `lake-mead-nevada-us-6km`).
 4. Expect: “Preparing narration…” then film with audio, captions ON, big year label, scrubber.
 5. If autoplay is blocked, tap **Play film**.
 6. Confirm Space / ← / →; year should track segments (intro 1984→…, change holds `after_year`).
 7. `npm run build` must pass.
 
-Cached sample narration (if already generated):
+Cached narration (after first generate):
 
-`data/stories/sample-lake-6km/narration/narration.json` + `seg-01.mp3` …
+`data/stories/<story_id>/narration/narration.json` + `seg-01.mp3` …
 
-Re-generate: `POST /api/narrate` with `{ "story_id": "sample-lake-6km" }` (needs `ELEVENLABS_*` only on cache miss).
+Re-generate: `POST /api/narrate` with `{ "story_id": "<story_id>" }` (needs `ELEVENLABS_*` only on cache miss).
+
+For contract/sample wiring only, `EM_MOCK=1` still serves `contracts/samples/story.sample.json` — not a product deep link.
 
 ## Gaps (ok for this pass)
 
-- Timeline chapter markers, MetricChart, EvidencePanel — stubs / later.
-- BeforeAfter slider — not wired.
+- MetricChart + EvidencePanel — shipped on `/story/[id]` below the film (`StoryBelowFold` forwards `onYearChange` into MetricChart). Timeline chapter markers: cut by agreement.
+- BeforeAfter slider — not wired (evidence shows side-by-side before/after thumbs).
 - Visual polish of chrome may still iterate; keep the props API above.

@@ -1,24 +1,24 @@
 /**
  * Full-bleed Revisit landing: globe is the page; copy floats like the inspiration layout.
- * Inputs: placeholder places list.
+ * Inputs: seed gallery places list.
  * Outputs: cinematic interactive first viewport.
  */
 
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { PLACEHOLDER_PLACES, type PlaceLocation } from "@/lib/places";
+import { SEED_PLACES, type PlaceLocation } from "@/lib/places";
 import { GlobeCanvas } from "./GlobeCanvas";
 import { PlacePicker } from "./PlacePicker";
 import { PlaceVideoPanel } from "./PlaceVideoPanel";
-import { SearchBox } from "./SearchBox";
 
 type LandingHeroProps = {
   places?: PlaceLocation[];
 };
 
-export function LandingHero({ places = PLACEHOLDER_PLACES }: LandingHeroProps) {
+export function LandingHero({ places = SEED_PLACES }: LandingHeroProps) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [pickerOpen, setPickerOpen] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -35,11 +35,11 @@ export function LandingHero({ places = PLACEHOLDER_PLACES }: LandingHeroProps) {
   );
 
   return (
-    <section className="relative h-full min-h-0 flex-1 overflow-hidden bg-[#121214]">
-      {/* No radial vignette — open charcoal; only faint corner wash + grain */}
+    <section className="relative h-full min-h-0 flex-1 overflow-hidden bg-[#0A0E13]">
+      {/* Soft orbital wash — no glass chrome on the globe */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(to_bottom,rgba(18,18,20,0.2)_0%,transparent_18%,transparent_82%,rgba(18,18,20,0.28)_100%)]"
+        className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(to_bottom,rgba(10,14,19,0.22)_0%,transparent_18%,transparent_82%,rgba(10,14,19,0.32)_100%)]"
       />
       <div aria-hidden className="grain pointer-events-none absolute inset-0 z-[1] opacity-50" />
 
@@ -54,13 +54,13 @@ export function LandingHero({ places = PLACEHOLDER_PLACES }: LandingHeroProps) {
         />
       </div>
 
-      {/* Top-left display copy — no header/nav, no mono eyebrow */}
+      {/* Top-left display copy — brand as hero signal */}
       <div className="pointer-events-none absolute left-5 top-10 z-20 max-w-[15rem] sm:left-10 sm:top-[16%] sm:max-w-xs lg:left-14 lg:max-w-sm">
-        <h1 className="font-display text-5xl font-medium leading-[0.95] tracking-tight text-[#f5f5f7] sm:text-6xl lg:text-7xl">
+        <h1 className="font-display text-5xl font-medium leading-[0.95] tracking-tight text-[#F4F1EC] sm:text-6xl lg:text-7xl">
           Revisit
         </h1>
-        <p className="mt-5 italic hidden max-w-[16rem] text-sm leading-relaxed text-[#a1a1a6] sm:block">
-          videos around the world across the decades.
+        <p className="mt-5 italic hidden max-w-[16rem] text-sm leading-relaxed text-[#A8A49C] sm:block">
+          Landsat films of how a place changed since 1984.
         </p>
       </div>
 
@@ -74,14 +74,32 @@ export function LandingHero({ places = PLACEHOLDER_PLACES }: LandingHeroProps) {
             places={places}
             selectedId={selectedId}
             onSelect={setSelectedId}
+            onOpenChange={setPickerOpen}
+            reducedMotion={reducedMotion}
           />
 
+          {/* Keep mounted; collapse smoothly while the city list is open. */}
           {selected ? (
-            <div id="films">
-              <PlaceVideoPanel
-                place={selected}
-                onClose={() => setSelectedId(null)}
-              />
+            <div
+              id="films"
+              className={`grid ${
+                reducedMotion
+                  ? ""
+                  : "transition-[grid-template-rows,opacity,margin] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]"
+              } ${
+                pickerOpen
+                  ? "pointer-events-none mt-0 grid-rows-[0fr] opacity-0"
+                  : "mt-0 grid-rows-[1fr] opacity-100 md:mt-0"
+              }`}
+              aria-hidden={pickerOpen}
+              inert={pickerOpen ? true : undefined}
+            >
+              <div className="min-h-0 overflow-hidden">
+                <PlaceVideoPanel
+                  place={selected}
+                  onClose={() => setSelectedId(null)}
+                />
+              </div>
             </div>
           ) : null}
         </div>

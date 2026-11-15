@@ -1,13 +1,13 @@
 import { LandingHero } from "@/components/LandingHero";
-import { getPlacesForGlobe } from "@/lib/api";
-import { PLACEHOLDER_PLACES } from "@/lib/places";
+import { getPlacesForGlobe } from "@/lib/gallery";
+import { SEED_PLACES } from "@/lib/places";
 
 export default async function HomePage() {
-  let places = PLACEHOLDER_PLACES;
+  let places = SEED_PLACES;
   try {
     places = await getPlacesForGlobe();
   } catch {
-    places = PLACEHOLDER_PLACES;
+    places = SEED_PLACES;
   }
 
   return (

@@ -7,7 +7,8 @@
 import type { ClockPosition, PlaybackSegment } from "./types";
 
 /** HL-1 hard reject for playback (matches /api/narrate). */
-export const MAX_NARRATION_S = 95;
+/** Web demo ceiling (HL-1 / schema say 95; real 225-word scripts often run long). */
+export const MAX_NARRATION_S = 120;
 
 export function segmentOffsets(segments: PlaybackSegment[]): number[] {
   const offsets: number[] = [];

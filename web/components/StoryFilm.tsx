@@ -1,6 +1,6 @@
 /**
  * Client bridge: load narration (cache-first) then mount FilmPlayer.
- * Inputs: story from server page. POSTs /api/narrate on mount.
+ * Inputs: story + optional playback callbacks (year/segment/play/ended).
  * Outputs: preparing / error / FilmPlayer. Never rewrites story text.
  */
 
@@ -14,6 +14,11 @@ import type { Story } from "@/lib/types/story";
 
 type StoryFilmProps = {
   story: Story;
+  /** Forwarded to FilmPlayer so MetricChart can track the playing year. */
+  onYearChange?: (year: number) => void;
+  onSegmentChange?: (segmentId: string, index: number) => void;
+  onPlayStateChange?: (playing: boolean) => void;
+  onEnded?: () => void;
 };
 
 type NarrateState =
@@ -28,14 +33,20 @@ function narrateErrorMessage(data: unknown): string {
       : undefined;
   if (
     err?.code === "NARRATION_TOO_LONG" ||
-    (typeof err?.message === "string" && /too long|95/i.test(err.message))
+    (typeof err?.message === "string" && /too long|95|120/i.test(err.message))
   ) {
-    return "This narration ran long — try another story.";
+    return "This narration ran long — try again, or ask for a shorter script.";
   }
   return err?.message || "Could not prepare narration. Check the narrate route and try again.";
 }
 
-export function StoryFilm({ story }: StoryFilmProps) {
+export function StoryFilm({
+  story,
+  onYearChange,
+  onSegmentChange,
+  onPlayStateChange,
+  onEnded,
+}: StoryFilmProps) {
   const [state, setState] = useState<NarrateState>({ status: "loading" });
   const [retryToken, setRetryToken] = useState(0);
 
@@ -86,12 +97,12 @@ export function StoryFilm({ story }: StoryFilmProps) {
   if (state.status === "loading") {
     return (
       <div
-        className="rounded-2xl border border-white/10 bg-[#1a1a1d]/60 px-5 py-12 text-center"
+        className="rounded-md border border-white/10 bg-[#14181E] px-5 py-12 text-center"
         role="status"
         aria-live="polite"
       >
-        <p className="font-ui text-base text-[#f5f5f7]">Preparing narration…</p>
-        <p className="mt-2 font-label text-[10px] uppercase tracking-[0.18em] text-[#6e6e73]">
+        <p className="font-ui text-base text-[#F4F1EC]">Preparing narration…</p>
+        <p className="em-chrome-label mt-2 text-[#7A766E]">
           Cache-first · POST /api/narrate
         </p>
       </div>
@@ -101,16 +112,16 @@ export function StoryFilm({ story }: StoryFilmProps) {
   if (state.status === "error") {
     return (
       <div
-        className="rounded-2xl border border-[#F0A35E]/35 bg-[#F0A35E]/10 px-5 py-6"
+        className="rounded-md border border-[#C4A574]/35 bg-[#C4A574]/10 px-5 py-6"
         role="alert"
       >
-        <p className="font-ui text-base font-semibold text-[#f5f5f7]">
+        <p className="font-ui text-base font-semibold text-[#F4F1EC]">
           Narration unavailable
         </p>
-        <p className="mt-2 text-sm text-[#a1a1a6]">{state.message}</p>
+        <p className="mt-2 text-sm text-[#A8A49C]">{state.message}</p>
         <button
           type="button"
-          className="mt-4 inline-flex min-h-11 items-center rounded-full border border-white/15 px-5 text-sm text-[#f5f5f7] transition hover:border-[#2997ff]/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2997ff]"
+          className="mt-4 inline-flex min-h-11 items-center rounded-full border border-white/15 px-5 text-sm text-[#F4F1EC] transition hover:border-[#5BA8A0]/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5BA8A0]"
           onClick={() => setRetryToken((n) => n + 1)}
         >
           Try again
@@ -126,6 +137,10 @@ export function StoryFilm({ story }: StoryFilmProps) {
       narration={state.narration}
       autoPlay
       captionsDefaultOn
+      onYearChange={onYearChange}
+      onSegmentChange={onSegmentChange}
+      onPlayStateChange={onPlayStateChange}
+      onEnded={onEnded}
     />
   );
 }

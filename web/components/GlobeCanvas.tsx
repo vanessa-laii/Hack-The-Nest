@@ -12,8 +12,8 @@ import type { PlaceLocation } from "@/lib/places";
 const Globe = dynamic(() => import("./Globe"), {
   ssr: false,
   loading: () => (
-    <div className="flex h-full w-full items-center justify-center bg-[#121214]">
-      <div className="h-24 w-24 animate-pulse rounded-full border border-[#2997ff]/25 bg-[#2997ff]/10 shadow-[0_0_40px_rgba(41,151,255,0.25)]" />
+    <div className="flex h-full w-full items-center justify-center bg-[#0A0E13]">
+      <div className="h-24 w-24 animate-pulse rounded-full border border-[#5BA8A0]/25 bg-[#5BA8A0]/10 shadow-[0_0_40px_rgba(91,168,160,0.22)]" />
     </div>
   ),
 });

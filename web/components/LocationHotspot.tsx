@@ -13,8 +13,8 @@ import { latLonToVector3 } from "@/lib/geo";
 import type { PlaceLocation } from "@/lib/places";
 
 const GLOBE_RADIUS = 1.6;
-const ACCENT = "#2997ff";
-const SELECTED = "#f5f5f7";
+const ACCENT = "#5BA8A0";
+const SELECTED = "#F4F1EC";
 
 type LocationHotspotProps = {
   place: PlaceLocation;

@@ -1,7 +1,7 @@
 /**
- * Placeholder gallery places for the landing globe.
- * Inputs: none (static seed data).
- * Outputs: PlaceLocation[] with lat/lon and sample story stubs.
+ * Seed gallery places for the landing globe (real catalog ids).
+ * Inputs: none (static seed from spikes/s3-changes/places.json + eval/gold_places.yaml).
+ * Outputs: PlaceLocation[] with lat/lon and story stubs keyed by real story_id.
  */
 
 export type PlaceStoryStub = {
@@ -11,6 +11,10 @@ export type PlaceStoryStub = {
   lastYear: number;
   blurb: string;
   theme: string;
+  /** True when GET /api/stories lists this id (film may exist on disk). */
+  ready?: boolean;
+  /** Latest Landsat thumb from gallery (`GalleryItem.thumb_url`), via fileUrl. */
+  thumbUrl?: string;
 };
 
 export type PlaceLocation = {
@@ -22,41 +26,40 @@ export type PlaceLocation = {
   stories: PlaceStoryStub[];
 };
 
-export const PLACEHOLDER_PLACES: PlaceLocation[] = [
+export const SEED_PLACES: PlaceLocation[] = [
   {
-    // Same coords as contracts/samples/story.sample.json — opens mock id sample-lake-6km.
     id: "lake-mead",
-    displayName: "Sample Lake (made-up data)",
+    displayName: "Lake Mead, Nevada",
     lat: 36.25,
     lon: -114.39,
     theme: "Water change",
     stories: [
       {
-        id: "sample-lake-6km",
-        title: "The shoreline retreats",
+        id: "lake-mead-nevada-us-6km",
+        title: "Lake Mead, Nevada",
         firstYear: 1984,
         lastYear: 2024,
-        blurb:
-          "[SAMPLE] Mock backend story — shrinking lake shoreline from made-up Landsat frames. Phase 0 proof path.",
+        blurb: "Water change · drought / reservoir levels",
         theme: "Water change",
+        ready: false,
       },
     ],
   },
   {
-    id: "paradise-ca",
+    id: "paradise",
     displayName: "Paradise, California",
     lat: 39.76,
     lon: -121.62,
     theme: "Wildfire",
     stories: [
       {
-        id: "placeholder-paradise",
-        title: "Paradise landscape recovery",
+        id: "paradise-california-us-6km",
+        title: "Paradise, California",
         firstYear: 1984,
         lastYear: 2024,
-        blurb:
-          "[SAMPLE] Placeholder film slot for post-fire landscape change. Not a verified claim.",
+        blurb: "Wildfire · burn / landscape recovery",
         theme: "Wildfire",
+        ready: false,
       },
     ],
   },
@@ -65,16 +68,16 @@ export const PLACEHOLDER_PLACES: PlaceLocation[] = [
     displayName: "Summerlin, Nevada",
     lat: 36.17,
     lon: -115.33,
-    theme: "Urban growth",
+    theme: "Urban vegetation",
     stories: [
       {
-        id: "placeholder-summerlin",
-        title: "Summerlin expansion",
+        id: "summerlin-south-nevada-us-6km",
+        title: "Summerlin, Nevada",
         firstYear: 1984,
         lastYear: 2024,
-        blurb:
-          "[SAMPLE] Placeholder film slot for urban growth patterns over decades.",
-        theme: "Urban growth",
+        blurb: "Urban vegetation · master-planned community growth",
+        theme: "Urban vegetation",
+        ready: false,
       },
     ],
   },
@@ -86,49 +89,51 @@ export const PLACEHOLDER_PLACES: PlaceLocation[] = [
     theme: "Land reclamation",
     stories: [
       {
-        id: "placeholder-palm-jumeirah",
-        title: "Palm Jumeirah form",
+        id: "palm-jumeirah-united-arab-emirates-ae-6km",
+        title: "Palm Jumeirah, Dubai",
         firstYear: 1984,
         lastYear: 2024,
-        blurb:
-          "[SAMPLE] Placeholder film slot for coastal reclamation visible from orbit.",
+        blurb: "Land reclamation · water to land",
         theme: "Land reclamation",
+        ready: false,
+      },
+    ],
+  },
+  // Central Park + Ypsilanti omitted: NO_LASTING_CHANGES — nothing meaningful to show.
+  {
+    id: "willow-run",
+    displayName: "Willow Run, Ypsilanti Township, Michigan",
+    lat: 42.2424,
+    lon: -83.5552,
+    theme: "Demolition · test track",
+    stories: [
+      {
+        id: "willow-run-michigan-us-6km",
+        title: "Willow Run, Michigan",
+        firstYear: 1984,
+        lastYear: 2024,
+        blurb: "Demolition · plant cleared, then AV test track",
+        theme: "Demolition · test track",
+        ready: false,
       },
     ],
   },
   {
-    id: "central-park",
-    displayName: "Central Park, New York",
-    lat: 40.78,
-    lon: -73.97,
-    theme: "Little change",
+    id: "delray",
+    displayName: "Delray, Detroit, Michigan",
+    lat: 42.289,
+    lon: -83.112,
+    theme: "Bridge",
     stories: [
       {
-        id: "placeholder-central-park",
-        title: "Central Park control",
+        // Backend slug uses state only (not "detroit") — match gallery id.
+        id: "delray-michigan-us-6km",
+        title: "Delray, Detroit, Michigan",
         firstYear: 1984,
         lastYear: 2024,
-        blurb:
-          "[SAMPLE] Placeholder control site — relatively stable park canopy for comparison.",
-        theme: "Little change",
-      },
-    ],
-  },
-  {
-    id: "ypsilanti",
-    displayName: "Ypsilanti, Michigan",
-    lat: 42.24,
-    lon: -83.61,
-    theme: "Local demo",
-    stories: [
-      {
-        id: "placeholder-ypsilanti",
-        title: "Ypsilanti local demo",
-        firstYear: 1984,
-        lastYear: 2024,
-        blurb:
-          "[SAMPLE] Local demo placeholder for hackathon walkthroughs near Ann Arbor.",
-        theme: "Local demo",
+        blurb: "Bridge · Gordie Howe International Bridge construction",
+        theme: "Bridge",
+        ready: false,
       },
     ],
   },
@@ -148,14 +153,14 @@ export function splitPlaceName(displayName: string): {
 }
 
 export function getPlaceById(id: string): PlaceLocation | undefined {
-  return PLACEHOLDER_PLACES.find((p) => p.id === id);
+  return SEED_PLACES.find((p) => p.id === id);
 }
 
 export function getStoryStub(storyId: string): {
   place: PlaceLocation;
   story: PlaceStoryStub;
 } | undefined {
-  for (const place of PLACEHOLDER_PLACES) {
+  for (const place of SEED_PLACES) {
     const story = place.stories.find((s) => s.id === storyId);
     if (story) return { place, story };
   }

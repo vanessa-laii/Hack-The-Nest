@@ -107,7 +107,7 @@ export function ProgressFeed({ storyId, eventsPath }: ProgressFeedProps) {
 
   return (
     <div className="relative z-10 mt-8">
-      <p className="font-label text-[10px] uppercase tracking-[0.28em] text-[#2997ff]">
+      <p className="em-chrome-label text-[#5BA8A0]">
         {status === "connecting" && "Connecting…"}
         {status === "live" && "Live progress"}
         {status === "done" && "Done — opening story"}
@@ -115,10 +115,10 @@ export function ProgressFeed({ storyId, eventsPath }: ProgressFeedProps) {
       </p>
 
       {errorMsg ? (
-        <p role="alert" className="mt-3 text-sm text-[#F0A35E]">
+        <p role="alert" className="mt-3 text-sm text-[#C4A574]">
           {errorMsg}{" "}
-          <Link href="/" className="underline hover:text-[#2997ff]">
-            Back to globe
+          <Link href="/" className="underline hover:text-[#5BA8A0]">
+            ← Back to globe
           </Link>
         </p>
       ) : null}
@@ -129,18 +129,18 @@ export function ProgressFeed({ storyId, eventsPath }: ProgressFeedProps) {
         aria-label="Build events"
       >
         {lines.length === 0 ? (
-          <li className="text-sm text-[#a1a1a6]">Waiting for events…</li>
+          <li className="text-sm text-[#A8A49C]">Waiting for events…</li>
         ) : (
           lines.map((line) => (
             <li
               key={`${line.seq}-${line.type}`}
-              className="flex items-start gap-3 rounded-xl border border-white/8 bg-white/[0.02] px-4 py-3 text-sm text-[#a1a1a6]"
+              className="flex items-start gap-3 rounded-xl border border-white/8 bg-white/[0.02] px-4 py-3 text-sm text-[#A8A49C]"
             >
-              <span className="font-label shrink-0 text-[10px] text-[#6e6e73]">
+              <span className="font-label shrink-0 text-[11px] tabular-nums text-[#7A766E]">
                 {String(line.seq).padStart(2, "0")}
               </span>
               <span className="min-w-0 flex-1">
-                <span className="font-label mr-2 text-[9px] uppercase tracking-[0.14em] text-[#2997ff]/80">
+                <span className="font-label mr-2 text-[11px] tabular-nums text-[#5BA8A0]/80">
                   {line.type}
                 </span>
                 {line.message}
@@ -160,15 +160,15 @@ export function ProgressFeed({ storyId, eventsPath }: ProgressFeedProps) {
         )}
       </ol>
 
-      <p className="mt-6 text-sm text-[#6e6e73]">
+      <p className="mt-6 text-sm text-[#7A766E]">
         Or{" "}
         <Link
           href={`/story/${storyId}`}
-          className="text-[#2997ff] underline-offset-2 hover:underline"
+          className="text-[#5BA8A0] underline-offset-2 hover:underline"
         >
           open the story now
         </Link>{" "}
-        (mock sample is already complete).
+        (if the build already finished, the film may be playable).
       </p>
     </div>
   );

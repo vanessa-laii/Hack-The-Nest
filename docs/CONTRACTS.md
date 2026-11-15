@@ -81,7 +81,7 @@ Schema: [`contracts/story.schema.json`](../contracts/story.schema.json). Sample:
 - `confidence == "cause_unknown"` ⇔ that chapter has no claims.
 - `script.word_count` is 150–225 and equals the real word count of all segment texts.
 
-**Playback rule (web)**: play segments in order. During a segment, the film animates frames from `year_from` to `year_to`, spread evenly across the segment's audio duration, pausing on `after_year` at the end of a change chapter. Captions highlight words from `narration.json`.
+**Playback rule (web)**: play segments in order. During a segment, the film animates frames from `year_from` to `year_to` across the segment's audio duration. On a change chapter, pause when the year path reaches that change's `after_year` (not at the segment's `year_to`); a sourced segment may continue past `after_year` through quiet years up to `year_to`. Captions highlight words from `narration.json`.
 
 ## 3. Build events (SSE)
 
