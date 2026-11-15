@@ -1,0 +1,796 @@
+{
+  "schema_version": "1.0",
+  "story_id": "paradise-california-us-6km",
+  "voice_id": "MFZUKuGQUsGJPQjTS4wC",
+  "model_id": "eleven_multilingual_v2",
+  "created_at": "2026-11-15T14:31:14.405Z",
+  "total_duration_s": 66.549,
+  "segments": [
+    {
+      "segment_id": "seg-01",
+      "audio_url": "/files/stories/paradise-california-us-6km/narration/seg-01.mp3",
+      "duration_s": 27.957,
+      "words": [
+        {
+          "text": "This",
+          "start_s": 0,
+          "end_s": 0.221
+        },
+        {
+          "text": "is",
+          "start_s": 0.279,
+          "end_s": 0.36
+        },
+        {
+          "text": "Paradise,",
+          "start_s": 0.43,
+          "end_s": 0.964
+        },
+        {
+          "text": "California,",
+          "start_s": 0.987,
+          "end_s": 1.741
+        },
+        {
+          "text": "seen",
+          "start_s": 1.8,
+          "end_s": 2.032
+        },
+        {
+          "text": "from",
+          "start_s": 2.09,
+          "end_s": 2.229
+        },
+        {
+          "text": "space",
+          "start_s": 2.299,
+          "end_s": 2.635
+        },
+        {
+          "text": "by",
+          "start_s": 2.682,
+          "end_s": 2.821
+        },
+        {
+          "text": "Landsat",
+          "start_s": 2.937,
+          "end_s": 3.425
+        },
+        {
+          "text": "satellites,",
+          "start_s": 3.506,
+          "end_s": 4.203
+        },
+        {
+          "text": "one",
+          "start_s": 4.435,
+          "end_s": 4.679
+        },
+        {
+          "text": "summer",
+          "start_s": 4.737,
+          "end_s": 5.004
+        },
+        {
+          "text": "at",
+          "start_s": 5.05,
+          "end_s": 5.12
+        },
+        {
+          "text": "a",
+          "start_s": 5.166,
+          "end_s": 5.19
+        },
+        {
+          "text": "time",
+          "start_s": 5.248,
+          "end_s": 5.573
+        },
+        {
+          "text": "from",
+          "start_s": 5.608,
+          "end_s": 5.77
+        },
+        {
+          "text": "1984",
+          "start_s": 5.828,
+          "end_s": 6.734
+        },
+        {
+          "text": "to",
+          "start_s": 6.769,
+          "end_s": 6.827
+        },
+        {
+          "text": "2026.",
+          "start_s": 6.908,
+          "end_s": 7.964
+        },
+        {
+          "text": "Over",
+          "start_s": 8.626,
+          "end_s": 8.835
+        },
+        {
+          "text": "these",
+          "start_s": 8.893,
+          "end_s": 9.079
+        },
+        {
+          "text": "years,",
+          "start_s": 9.114,
+          "end_s": 9.404
+        },
+        {
+          "text": "the",
+          "start_s": 9.427,
+          "end_s": 9.497
+        },
+        {
+          "text": "pictures",
+          "start_s": 9.555,
+          "end_s": 9.903
+        },
+        {
+          "text": "show",
+          "start_s": 9.938,
+          "end_s": 10.124
+        },
+        {
+          "text": "two",
+          "start_s": 10.194,
+          "end_s": 10.426
+        },
+        {
+          "text": "lasting",
+          "start_s": 10.542,
+          "end_s": 10.948
+        },
+        {
+          "text": "changes.",
+          "start_s": 11.018,
+          "end_s": 11.622
+        },
+        {
+          "text": "Between",
+          "start_s": 11.819,
+          "end_s": 12.167
+        },
+        {
+          "text": "1985",
+          "start_s": 12.214,
+          "end_s": 13.235
+        },
+        {
+          "text": "and",
+          "start_s": 13.317,
+          "end_s": 13.398
+        },
+        {
+          "text": "1999,",
+          "start_s": 13.456,
+          "end_s": 14.559
+        },
+        {
+          "text": "the",
+          "start_s": 14.675,
+          "end_s": 14.779
+        },
+        {
+          "text": "land",
+          "start_s": 14.838,
+          "end_s": 15.047
+        },
+        {
+          "text": "across",
+          "start_s": 15.105,
+          "end_s": 15.406
+        },
+        {
+          "text": "the",
+          "start_s": 15.453,
+          "end_s": 15.523
+        },
+        {
+          "text": "area",
+          "start_s": 15.615,
+          "end_s": 15.917
+        },
+        {
+          "text": "turned",
+          "start_s": 15.987,
+          "end_s": 16.266
+        },
+        {
+          "text": "greener",
+          "start_s": 16.324,
+          "end_s": 16.672
+        },
+        {
+          "text": "on",
+          "start_s": 16.742,
+          "end_s": 16.835
+        },
+        {
+          "text": "average,",
+          "start_s": 16.893,
+          "end_s": 17.345
+        },
+        {
+          "text": "mostly",
+          "start_s": 17.612,
+          "end_s": 17.984
+        },
+        {
+          "text": "in",
+          "start_s": 18.03,
+          "end_s": 18.077
+        },
+        {
+          "text": "the",
+          "start_s": 18.112,
+          "end_s": 18.181
+        },
+        {
+          "text": "northwest.",
+          "start_s": 18.228,
+          "end_s": 19.017
+        },
+        {
+          "text": "This",
+          "start_s": 19.435,
+          "end_s": 19.644
+        },
+        {
+          "text": "film",
+          "start_s": 19.714,
+          "end_s": 19.969
+        },
+        {
+          "text": "uses",
+          "start_s": 20.062,
+          "end_s": 20.41
+        },
+        {
+          "text": "43",
+          "start_s": 20.527,
+          "end_s": 21.084
+        },
+        {
+          "text": "summers",
+          "start_s": 21.153,
+          "end_s": 21.502
+        },
+        {
+          "text": "of",
+          "start_s": 21.571,
+          "end_s": 21.653
+        },
+        {
+          "text": "Landsat",
+          "start_s": 21.746,
+          "end_s": 22.256
+        },
+        {
+          "text": "imagery.",
+          "start_s": 22.314,
+          "end_s": 22.895
+        },
+        {
+          "text": "Each",
+          "start_s": 23.313,
+          "end_s": 23.533
+        },
+        {
+          "text": "frame",
+          "start_s": 23.592,
+          "end_s": 23.893
+        },
+        {
+          "text": "shows",
+          "start_s": 23.94,
+          "end_s": 24.195
+        },
+        {
+          "text": "the",
+          "start_s": 24.265,
+          "end_s": 24.335
+        },
+        {
+          "text": "same",
+          "start_s": 24.381,
+          "end_s": 24.625
+        },
+        {
+          "text": "square",
+          "start_s": 24.671,
+          "end_s": 24.996
+        },
+        {
+          "text": "of",
+          "start_s": 25.031,
+          "end_s": 25.089
+        },
+        {
+          "text": "ground,",
+          "start_s": 25.159,
+          "end_s": 25.647
+        },
+        {
+          "text": "6",
+          "start_s": 25.879,
+          "end_s": 26.076
+        },
+        {
+          "text": "kilometres",
+          "start_s": 26.146,
+          "end_s": 26.715
+        },
+        {
+          "text": "on",
+          "start_s": 26.784,
+          "end_s": 26.877
+        },
+        {
+          "text": "a",
+          "start_s": 26.924,
+          "end_s": 26.947
+        },
+        {
+          "text": "side.",
+          "start_s": 27.016,
+          "end_s": 27.957
+        }
+      ]
+    },
+    {
+      "segment_id": "seg-02",
+      "audio_url": "/files/stories/paradise-california-us-6km/narration/seg-02.mp3",
+      "duration_s": 34.18,
+      "words": [
+        {
+          "text": "Between",
+          "start_s": 0,
+          "end_s": 0.383
+        },
+        {
+          "text": "2018",
+          "start_s": 0.441,
+          "end_s": 1.138
+        },
+        {
+          "text": "and",
+          "start_s": 1.254,
+          "end_s": 1.393
+        },
+        {
+          "text": "2020,",
+          "start_s": 1.463,
+          "end_s": 2.206
+        },
+        {
+          "text": "the",
+          "start_s": 2.345,
+          "end_s": 2.461
+        },
+        {
+          "text": "land",
+          "start_s": 2.531,
+          "end_s": 2.763
+        },
+        {
+          "text": "across",
+          "start_s": 2.81,
+          "end_s": 3.123
+        },
+        {
+          "text": "the",
+          "start_s": 3.17,
+          "end_s": 3.239
+        },
+        {
+          "text": "area",
+          "start_s": 3.332,
+          "end_s": 3.611
+        },
+        {
+          "text": "lost",
+          "start_s": 3.704,
+          "end_s": 4.005
+        },
+        {
+          "text": "its",
+          "start_s": 4.063,
+          "end_s": 4.191
+        },
+        {
+          "text": "green",
+          "start_s": 4.249,
+          "end_s": 4.505
+        },
+        {
+          "text": "cover",
+          "start_s": 4.574,
+          "end_s": 4.853
+        },
+        {
+          "text": "suddenly.",
+          "start_s": 4.911,
+          "end_s": 5.503
+        },
+        {
+          "text": "In",
+          "start_s": 5.921,
+          "end_s": 6.084
+        },
+        {
+          "text": "all,",
+          "start_s": 6.153,
+          "end_s": 6.606
+        },
+        {
+          "text": "about",
+          "start_s": 6.722,
+          "end_s": 7.047
+        },
+        {
+          "text": "3100",
+          "start_s": 7.117,
+          "end_s": 7.837
+        },
+        {
+          "text": "hectares",
+          "start_s": 7.906,
+          "end_s": 8.324
+        },
+        {
+          "text": "changed.",
+          "start_s": 8.382,
+          "end_s": 8.928
+        },
+        {
+          "text": "Records",
+          "start_s": 9.16,
+          "end_s": 9.543
+        },
+        {
+          "text": "show:",
+          "start_s": 9.567,
+          "end_s": 10.019
+        },
+        {
+          "text": "In",
+          "start_s": 10.182,
+          "end_s": 10.333
+        },
+        {
+          "text": "November",
+          "start_s": 10.403,
+          "end_s": 10.809
+        },
+        {
+          "text": "2018,",
+          "start_s": 10.867,
+          "end_s": 11.738
+        },
+        {
+          "text": "the",
+          "start_s": 11.854,
+          "end_s": 11.97
+        },
+        {
+          "text": "Camp",
+          "start_s": 12.04,
+          "end_s": 12.295
+        },
+        {
+          "text": "Fire",
+          "start_s": 12.353,
+          "end_s": 12.655
+        },
+        {
+          "text": "burned",
+          "start_s": 12.713,
+          "end_s": 13.015
+        },
+        {
+          "text": "into",
+          "start_s": 13.05,
+          "end_s": 13.189
+        },
+        {
+          "text": "Paradise,",
+          "start_s": 13.259,
+          "end_s": 13.804
+        },
+        {
+          "text": "California,",
+          "start_s": 13.827,
+          "end_s": 14.675
+        },
+        {
+          "text": "devastating",
+          "start_s": 14.942,
+          "end_s": 15.581
+        },
+        {
+          "text": "the",
+          "start_s": 15.627,
+          "end_s": 15.697
+        },
+        {
+          "text": "town",
+          "start_s": 15.755,
+          "end_s": 16.115
+        },
+        {
+          "text": "and",
+          "start_s": 16.231,
+          "end_s": 16.416
+        },
+        {
+          "text": "destroying",
+          "start_s": 16.475,
+          "end_s": 17.009
+        },
+        {
+          "text": "thousands",
+          "start_s": 17.125,
+          "end_s": 17.647
+        },
+        {
+          "text": "of",
+          "start_s": 17.694,
+          "end_s": 17.752
+        },
+        {
+          "text": "structures.",
+          "start_s": 17.81,
+          "end_s": 18.506
+        },
+        {
+          "text": "Records",
+          "start_s": 18.994,
+          "end_s": 19.389
+        },
+        {
+          "text": "also",
+          "start_s": 19.435,
+          "end_s": 19.714
+        },
+        {
+          "text": "show:",
+          "start_s": 19.783,
+          "end_s": 20.225
+        },
+        {
+          "text": "The",
+          "start_s": 20.387,
+          "end_s": 20.503
+        },
+        {
+          "text": "Camp",
+          "start_s": 20.573,
+          "end_s": 20.851
+        },
+        {
+          "text": "Fire",
+          "start_s": 20.898,
+          "end_s": 21.269
+        },
+        {
+          "text": "left",
+          "start_s": 21.362,
+          "end_s": 21.618
+        },
+        {
+          "text": "neighborhoods",
+          "start_s": 21.699,
+          "end_s": 22.21
+        },
+        {
+          "text": "in",
+          "start_s": 22.256,
+          "end_s": 22.326
+        },
+        {
+          "text": "Paradise",
+          "start_s": 22.396,
+          "end_s": 23.081
+        },
+        {
+          "text": "with",
+          "start_s": 23.243,
+          "end_s": 23.417
+        },
+        {
+          "text": "their",
+          "start_s": 23.452,
+          "end_s": 23.603
+        },
+        {
+          "text": "lush",
+          "start_s": 23.673,
+          "end_s": 23.928
+        },
+        {
+          "text": "shield",
+          "start_s": 23.975,
+          "end_s": 24.3
+        },
+        {
+          "text": "of",
+          "start_s": 24.358,
+          "end_s": 24.416
+        },
+        {
+          "text": "tall",
+          "start_s": 24.485,
+          "end_s": 24.764
+        },
+        {
+          "text": "pines",
+          "start_s": 24.834,
+          "end_s": 25.263
+        },
+        {
+          "text": "and",
+          "start_s": 25.403,
+          "end_s": 25.612
+        },
+        {
+          "text": "landscaping",
+          "start_s": 25.704,
+          "end_s": 26.366
+        },
+        {
+          "text": "gone.",
+          "start_s": 26.459,
+          "end_s": 26.982
+        },
+        {
+          "text": "The",
+          "start_s": 27.341,
+          "end_s": 27.469
+        },
+        {
+          "text": "change",
+          "start_s": 27.527,
+          "end_s": 28.073
+        },
+        {
+          "text": "held",
+          "start_s": 28.143,
+          "end_s": 28.352
+        },
+        {
+          "text": "for",
+          "start_s": 28.41,
+          "end_s": 28.514
+        },
+        {
+          "text": "seven",
+          "start_s": 28.607,
+          "end_s": 28.944
+        },
+        {
+          "text": "summers",
+          "start_s": 29.013,
+          "end_s": 29.385
+        },
+        {
+          "text": "in",
+          "start_s": 29.466,
+          "end_s": 29.559
+        },
+        {
+          "text": "the",
+          "start_s": 29.606,
+          "end_s": 29.675
+        },
+        {
+          "text": "record.",
+          "start_s": 29.733,
+          "end_s": 30.233
+        },
+        {
+          "text": "Compare",
+          "start_s": 30.65,
+          "end_s": 31.266
+        },
+        {
+          "text": "the",
+          "start_s": 31.382,
+          "end_s": 31.51
+        },
+        {
+          "text": "2018",
+          "start_s": 31.579,
+          "end_s": 32.183
+        },
+        {
+          "text": "and",
+          "start_s": 32.229,
+          "end_s": 32.299
+        },
+        {
+          "text": "2020",
+          "start_s": 32.357,
+          "end_s": 32.972
+        },
+        {
+          "text": "frames",
+          "start_s": 33.054,
+          "end_s": 33.379
+        },
+        {
+          "text": "to",
+          "start_s": 33.425,
+          "end_s": 33.495
+        },
+        {
+          "text": "see",
+          "start_s": 33.565,
+          "end_s": 33.75
+        },
+        {
+          "text": "it.",
+          "start_s": 33.797,
+          "end_s": 34.18
+        }
+      ]
+    },
+    {
+      "segment_id": "seg-03",
+      "audio_url": "/files/stories/paradise-california-us-6km/narration/seg-03.mp3",
+      "duration_s": 4.412,
+      "words": [
+        {
+          "text": "That",
+          "start_s": 0,
+          "end_s": 0.232
+        },
+        {
+          "text": "is",
+          "start_s": 0.29,
+          "end_s": 0.372
+        },
+        {
+          "text": "how",
+          "start_s": 0.43,
+          "end_s": 0.534
+        },
+        {
+          "text": "Paradise,",
+          "start_s": 0.627,
+          "end_s": 1.219
+        },
+        {
+          "text": "California",
+          "start_s": 1.242,
+          "end_s": 1.974
+        },
+        {
+          "text": "has",
+          "start_s": 2.055,
+          "end_s": 2.241
+        },
+        {
+          "text": "changed",
+          "start_s": 2.322,
+          "end_s": 2.81
+        },
+        {
+          "text": "since",
+          "start_s": 2.868,
+          "end_s": 3.146
+        },
+        {
+          "text": "1984.",
+          "start_s": 3.181,
+          "end_s": 4.412
+        }
+      ]
+    }
+  ]
+}

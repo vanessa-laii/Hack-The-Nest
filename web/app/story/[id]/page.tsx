@@ -7,11 +7,8 @@
 import Link from "next/link";
 import { Suspense } from "react";
 import { StoryBelowFold } from "@/components/StoryBelowFold";
-import {
-  friendlyErrorMessage,
-  getStory,
-  type ApiErrorCode,
-} from "@/lib/api";
+import { friendlyErrorMessage, type ApiErrorCode } from "@/lib/api";
+import { readStoryFromDisk } from "@/lib/localStories";
 import type { Story } from "@/lib/types/story";
 
 type StoryPageProps = {
@@ -230,7 +227,7 @@ function AboutThisFilm({ story }: { story: Story }) {
 
 async function StoryContent({ params }: StoryPageProps) {
   const { id } = await params;
-  const story = await getStory(id);
+  const story = await readStoryFromDisk(id);
 
   if (!story) {
     return (

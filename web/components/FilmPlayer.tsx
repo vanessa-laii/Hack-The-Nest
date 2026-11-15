@@ -55,12 +55,18 @@ function formatClock(seconds: number): string {
 }
 
 /** Same-origin /files for narration (Next DATA_DIR route). */
-function audioSrc(audioUrl: string): string {
+function audioSrc(audioUrl: string, cacheKey?: string): string {
   if (!audioUrl) return "";
-  if (audioUrl.startsWith("http://") || audioUrl.startsWith("https://")) {
-    return audioUrl;
+  let url = audioUrl;
+  if (!url.startsWith("http://") && !url.startsWith("https://")) {
+    url = url.startsWith("/") ? url : `/${url}`;
   }
-  return audioUrl.startsWith("/") ? audioUrl : `/${audioUrl}`;
+  // Bust browser cache when narration is regenerated (same path, new mp3).
+  if (cacheKey) {
+    const sep = url.includes("?") ? "&" : "?";
+    url = `${url}${sep}v=${encodeURIComponent(cacheKey)}`;
+  }
+  return url;
 }
 
 export function FilmPlayer({
@@ -183,7 +189,7 @@ export function FilmPlayer({
         ? narrSegById.get(nextPlay.segment_id)
         : undefined;
       if (!next) return;
-      const url = audioSrc(next.audio_url);
+      const url = audioSrc(next.audio_url, narration.created_at);
       if (!prefetchRef.current) {
         prefetchRef.current = new Audio();
         prefetchRef.current.preload = "auto";
@@ -199,7 +205,7 @@ export function FilmPlayer({
         prefetchRef.current.load();
       }
     },
-    [segments, narrSegById],
+    [segments, narrSegById, narration.created_at],
   );
 
   const loadSegmentAudio = useCallback(
@@ -210,7 +216,7 @@ export function FilmPlayer({
         ? narrSegById.get(playSeg.segment_id)
         : undefined;
       if (!audio || !narrSeg) return false;
-      const url = audioSrc(narrSeg.audio_url);
+      const url = audioSrc(narrSeg.audio_url, narration.created_at);
       try {
         const absolute = new URL(url, window.location.href).href;
         if (audio.src !== absolute) {
@@ -267,7 +273,7 @@ export function FilmPlayer({
       }
       return true;
     },
-    [segments, narrSegById, prefetchNext, setPlayState],
+    [segments, narrSegById, narration.created_at, prefetchNext, setPlayState],
   );
 
   const tick = useCallback(() => {
@@ -345,7 +351,13 @@ export function FilmPlayer({
   const seekYear = useCallback(
     (dir: -1 | 1) => {
       const nextYear = stepYear(availableYears, yearRef.current, dir);
-      const g = globalTimeForYear(segments, availableYears, nextYear);
+      const g = globalTimeForYear(
+        segments,
+        availableYears,
+        nextYear,
+        globalTRef.current,
+        dir,
+      );
       void seekGlobal(g, playingRef.current);
     },
     [availableYears, segments, seekGlobal],

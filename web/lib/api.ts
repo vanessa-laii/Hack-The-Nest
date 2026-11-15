@@ -1,14 +1,11 @@
 /**
- * Typed API client for the Revisit backend.
- * Inputs: NEXT_PUBLIC_API_BASE + optional fetch overrides.
- * Outputs: gallery/story helpers shared by server and client.
+ * Typed API helpers. Play-only uses same-origin /files (empty API_BASE).
+ * Inputs: optional NEXT_PUBLIC_API_BASE when a FastAPI backend is running.
+ * Outputs: URL helpers + createStory (live builds only).
  */
 
-import type { Story } from "./types/story";
-
 export const API_BASE =
-  process.env.NEXT_PUBLIC_API_BASE?.replace(/\/$/, "") ||
-  "http://localhost:8000";
+  process.env.NEXT_PUBLIC_API_BASE?.replace(/\/$/, "") || "";
 
 export type GalleryItem = {
   id: string;
@@ -98,21 +95,17 @@ export function friendlyErrorMessage(code: ApiErrorCode): string {
   }
 }
 
-export async function getStory(id: string): Promise<Story | null> {
-  try {
-    const res = await fetch(`${API_BASE}/api/stories/${id}`, {
-      cache: "no-store",
-    });
-    if (!res.ok) return null;
-    return (await res.json()) as Story;
-  } catch {
-    return null;
-  }
-}
-
 export async function createStory(
   body: CreateStoryBody,
 ): Promise<CreateStoryResponse | ApiError> {
+  if (!API_BASE) {
+    return {
+      error: {
+        code: "INTERNAL",
+        message: "Live builds need a backend. Play a cached place from the globe.",
+      },
+    };
+  }
   const res = await fetch(`${API_BASE}/api/stories`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },

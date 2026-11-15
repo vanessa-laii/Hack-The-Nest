@@ -68,7 +68,10 @@ async function readLocalStory(storyId: string): Promise<StoryForNarration | null
 }
 
 async function fetchBackendStory(storyId: string): Promise<StoryForNarration> {
-  const apiBase = process.env.NEXT_PUBLIC_API_BASE?.replace(/\/$/, "") || "http://localhost:8000";
+  const apiBase = process.env.NEXT_PUBLIC_API_BASE?.replace(/\/$/, "") || "";
+  if (!apiBase) {
+    throw new StoryLoadError("Story not found", 404, "NOT_FOUND");
+  }
   let res: Response;
   try {
     res = await fetch(`${apiBase}/api/stories/${encodeURIComponent(storyId)}`, {

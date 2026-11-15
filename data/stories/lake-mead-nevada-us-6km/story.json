@@ -1,0 +1,1491 @@
+{
+  "schema_version": "1.3",
+  "id": "lake-mead-nevada-us-6km",
+  "is_sample": false,
+  "status": "complete",
+  "created_at": "2026-11-15T14:08:52Z",
+  "place": {
+    "query": "Lake Mead, Nevada",
+    "display_name": "Lake Mead, Nevada",
+    "lat": 36.2130617,
+    "lon": -114.4132805,
+    "bbox": [
+      -114.45002,
+      36.18342,
+      -114.37654,
+      36.24271
+    ],
+    "aoi_km": 6.0,
+    "admin": {
+      "city": null,
+      "county": "Clark County",
+      "state": "Nevada",
+      "country": "United States",
+      "country_code": "us"
+    }
+  },
+  "coverage": {
+    "first_year": 1984,
+    "last_year": 2026,
+    "season_months": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "years_skipped": []
+  },
+  "frames": [
+    {
+      "year": 1984,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/1984.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/1984.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_19840702_02_T1",
+        "LT05_L2SP_039035_19840920_02_T1"
+      ],
+      "date_from": "1984-07-02",
+      "date_to": "1984-09-20",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1985,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/1985.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/1985.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_19850619_02_T1",
+        "LT05_L2SP_039035_19850806_02_T1",
+        "LT05_L2SP_039035_19850822_02_T1",
+        "LT05_L2SP_039035_19850907_02_T1"
+      ],
+      "date_from": "1985-06-19",
+      "date_to": "1985-09-07",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1986,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/1986.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/1986.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_19860606_02_T1",
+        "LT05_L2SP_038035_19860615_02_T1",
+        "LT05_L2SP_039035_19860910_02_T1",
+        "LT05_L2SP_039035_19860926_02_T1"
+      ],
+      "date_from": "1986-06-06",
+      "date_to": "1986-09-26",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1987,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/1987.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/1987.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_19870609_02_T1",
+        "LT05_L2SP_039035_19870711_02_T1",
+        "LT05_L2SP_039035_19870812_02_T1",
+        "LT05_L2SP_039035_19870929_02_T1"
+      ],
+      "date_from": "1987-06-09",
+      "date_to": "1987-09-29",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1988,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/1988.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/1988.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_19880713_02_T1",
+        "LT05_L2SP_039035_19880729_02_T1",
+        "LT05_L2SP_039035_19880814_02_T1",
+        "LT05_L2SP_039035_19880915_02_T1"
+      ],
+      "date_from": "1988-07-13",
+      "date_to": "1988-09-15",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1989,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/1989.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/1989.jpg",
+      "sensors": [
+        "Landsat 4",
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT04_L2SP_039035_19890606_02_T1",
+        "LT05_L2SP_039035_19890630_02_T1",
+        "LT05_L2SP_039035_19890801_02_T1",
+        "LT05_L2SP_039035_19890902_02_T1"
+      ],
+      "date_from": "1989-06-06",
+      "date_to": "1989-09-02",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1990,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/1990.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/1990.jpg",
+      "sensors": [
+        "Landsat 4",
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_19900601_02_T1",
+        "LT05_L2SP_039035_19900617_02_T1",
+        "LT05_L2SP_039035_19900703_02_T1",
+        "LT04_L2SP_039035_19900727_02_T1"
+      ],
+      "date_from": "1990-06-01",
+      "date_to": "1990-07-27",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1991,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/1991.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/1991.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_19910620_02_T1",
+        "LT05_L2SP_039035_19910807_02_T1",
+        "LT05_L2SP_039035_19910823_02_T1",
+        "LT05_L2SP_039035_19910924_02_T1"
+      ],
+      "date_from": "1991-06-20",
+      "date_to": "1991-09-24",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1992,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/1992.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/1992.jpg",
+      "sensors": [
+        "Landsat 4",
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT04_L2SP_039035_19920630_02_T1",
+        "LT05_L2SP_039035_19920809_02_T1",
+        "LT05_L2SP_039035_19920910_02_T1",
+        "LT05_L2SP_039035_19920926_02_T1"
+      ],
+      "date_from": "1992-06-30",
+      "date_to": "1992-09-26",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1993,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/1993.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/1993.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_19930711_02_T1",
+        "LT05_L2SP_039035_19930727_02_T1",
+        "LT05_L2SP_039035_19930828_02_T1",
+        "LT05_L2SP_039035_19930929_02_T1"
+      ],
+      "date_from": "1993-07-11",
+      "date_to": "1993-09-29",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1994,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/1994.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/1994.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_19940612_02_T1",
+        "LT05_L2SP_039035_19940628_02_T1",
+        "LT05_L2SP_039035_19940714_02_T1",
+        "LT05_L2SP_039035_19940916_02_T1"
+      ],
+      "date_from": "1994-06-12",
+      "date_to": "1994-09-16",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1995,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/1995.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/1995.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_19950701_02_T1",
+        "LT05_L2SP_039035_19950818_02_T1",
+        "LT05_L2SP_039035_19950903_02_T1",
+        "LT05_L2SP_038035_19950912_02_T1"
+      ],
+      "date_from": "1995-07-01",
+      "date_to": "1995-09-12",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1996,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/1996.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/1996.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_19960601_02_T1",
+        "LT05_L2SP_039035_19960617_02_T1",
+        "LT05_L2SP_039035_19960719_02_T1",
+        "LT05_L2SP_039035_19960804_02_T1"
+      ],
+      "date_from": "1996-06-01",
+      "date_to": "1996-08-04",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1997,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/1997.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/1997.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_19970620_02_T1",
+        "LT05_L2SP_039035_19970706_02_T1",
+        "LT05_L2SP_039035_19970823_02_T1",
+        "LT05_L2SP_039035_19970924_02_T1"
+      ],
+      "date_from": "1997-06-20",
+      "date_to": "1997-09-24",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1998,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/1998.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/1998.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_19980623_02_T1",
+        "LT05_L2SP_039035_19980725_02_T1",
+        "LT05_L2SP_039035_19980826_02_T1",
+        "LT05_L2SP_039035_19980927_02_T1"
+      ],
+      "date_from": "1998-06-23",
+      "date_to": "1998-09-27",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1999,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/1999.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/1999.jpg",
+      "sensors": [
+        "Landsat 5",
+        "Landsat 7"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_19990610_02_T1",
+        "LT05_L2SP_039035_19990626_02_T1",
+        "LE07_L2SP_039035_19990720_02_T1",
+        "LT05_L2SP_039035_19990813_02_T1"
+      ],
+      "date_from": "1999-06-10",
+      "date_to": "1999-08-13",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2000,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/2000.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/2000.jpg",
+      "sensors": [
+        "Landsat 5",
+        "Landsat 7"
+      ],
+      "scene_ids": [
+        "LE07_L2SP_039035_20000604_02_T1",
+        "LE07_L2SP_039035_20000706_02_T1",
+        "LT05_L2SP_039035_20000916_02_T1",
+        "LE07_L2SP_039035_20000924_02_T1"
+      ],
+      "date_from": "2000-06-04",
+      "date_to": "2000-09-24",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2001,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/2001.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/2001.jpg",
+      "sensors": [
+        "Landsat 5",
+        "Landsat 7"
+      ],
+      "scene_ids": [
+        "LE07_L2SP_039035_20010623_02_T1",
+        "LT05_L2SP_039035_20010717_02_T1",
+        "LT05_L2SP_039035_20010818_02_T1",
+        "LE07_L2SP_039035_20010826_02_T1"
+      ],
+      "date_from": "2001-06-23",
+      "date_to": "2001-08-26",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2002,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/2002.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/2002.jpg",
+      "sensors": [
+        "Landsat 5",
+        "Landsat 7"
+      ],
+      "scene_ids": [
+        "LE07_L2SP_039035_20020610_02_T1",
+        "LT05_L2SP_039035_20020618_02_T1",
+        "LT05_L2SP_039035_20020704_02_T1",
+        "LE07_L2SP_039035_20020728_02_T1"
+      ],
+      "date_from": "2002-06-10",
+      "date_to": "2002-07-28",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2003,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/2003.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/2003.jpg",
+      "sensors": [
+        "Landsat 5",
+        "Landsat 7"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_20030621_02_T1",
+        "LT05_L2SP_039035_20030707_02_T1",
+        "LT05_L2SP_039035_20030808_02_T1",
+        "LE07_L2SP_039035_20030917_02_T1"
+      ],
+      "date_from": "2003-06-21",
+      "date_to": "2003-09-17",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2004,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/2004.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/2004.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_20040607_02_T1",
+        "LT05_L2SP_039035_20040810_02_T1",
+        "LT05_L2SP_039035_20040826_02_T1",
+        "LT05_L2SP_039035_20040927_02_T1"
+      ],
+      "date_from": "2004-06-07",
+      "date_to": "2004-09-27",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2005,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/2005.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/2005.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_20050626_02_T1",
+        "LT05_L2SP_039035_20050712_02_T1",
+        "LT05_L2SP_039035_20050829_02_T1",
+        "LT05_L2SP_039035_20050914_02_T1"
+      ],
+      "date_from": "2005-06-26",
+      "date_to": "2005-09-14",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2006,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/2006.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/2006.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_20060629_02_T1",
+        "LT05_L2SP_039035_20060715_02_T1",
+        "LT05_L2SP_039035_20060731_02_T1",
+        "LT05_L2SP_039035_20060917_02_T1"
+      ],
+      "date_from": "2006-06-29",
+      "date_to": "2006-09-17",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2007,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/2007.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/2007.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_20070616_02_T1",
+        "LT05_L2SP_039035_20070702_02_T1",
+        "LT05_L2SP_039035_20070718_02_T1",
+        "LT05_L2SP_039035_20070803_02_T1"
+      ],
+      "date_from": "2007-06-16",
+      "date_to": "2007-08-03",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2008,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/2008.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/2008.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_20080602_02_T1",
+        "LT05_L2SP_039035_20080618_02_T1",
+        "LT05_L2SP_039035_20080821_02_T1",
+        "LT05_L2SP_039035_20080906_02_T1"
+      ],
+      "date_from": "2008-06-02",
+      "date_to": "2008-09-06",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2009,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/2009.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/2009.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_20090707_02_T1",
+        "LT05_L2SP_039035_20090808_02_T1",
+        "LT05_L2SP_039035_20090909_02_T1",
+        "LT05_L2SP_039035_20090925_02_T1"
+      ],
+      "date_from": "2009-07-07",
+      "date_to": "2009-09-25",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2010,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/2010.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/2010.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_20100624_02_T1",
+        "LT05_L2SP_039035_20100811_02_T1",
+        "LT05_L2SP_039035_20100827_02_T1",
+        "LT05_L2SP_039035_20100928_02_T1"
+      ],
+      "date_from": "2010-06-24",
+      "date_to": "2010-09-28",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2011,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/2011.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/2011.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_20110611_02_T1",
+        "LT05_L2SP_039035_20110627_02_T1",
+        "LT05_L2SP_039035_20110830_02_T1",
+        "LT05_L2SP_039035_20110915_02_T1"
+      ],
+      "date_from": "2011-06-11",
+      "date_to": "2011-09-15",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2012,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/2012.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/2012.jpg",
+      "sensors": [
+        "Landsat 7"
+      ],
+      "scene_ids": [
+        "LE07_L2SP_039035_20120605_02_T1",
+        "LE07_L2SP_039035_20120621_02_T1",
+        "LE07_L2SP_039035_20120824_02_T1",
+        "LE07_L2SP_039035_20120925_02_T1"
+      ],
+      "date_from": "2012-06-05",
+      "date_to": "2012-09-25",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2013,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/2013.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/2013.jpg",
+      "sensors": [
+        "Landsat 7",
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LE07_L2SP_039035_20130608_02_T1",
+        "LC08_L2SP_039035_20130616_02_T1",
+        "LC08_L2SP_039035_20130718_02_T1",
+        "LC08_L2SP_039035_20130803_02_T1"
+      ],
+      "date_from": "2013-06-08",
+      "date_to": "2013-08-03",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2014,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/2014.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/2014.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_039035_20140603_02_T1",
+        "LC08_L2SP_039035_20140619_02_T1",
+        "LC08_L2SP_039035_20140721_02_T1",
+        "LC08_L2SP_039035_20140923_02_T1"
+      ],
+      "date_from": "2014-06-03",
+      "date_to": "2014-09-23",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2015,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/2015.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/2015.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_039035_20150622_02_T1",
+        "LC08_L2SP_039035_20150724_02_T1",
+        "LC08_L2SP_039035_20150809_02_T1",
+        "LC08_L2SP_039035_20150910_02_T1"
+      ],
+      "date_from": "2015-06-22",
+      "date_to": "2015-09-10",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2016,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/2016.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/2016.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_039035_20160624_02_T1",
+        "LC08_L2SP_039035_20160710_02_T1",
+        "LC08_L2SP_039035_20160726_02_T1",
+        "LC08_L2SP_039035_20160912_02_T1"
+      ],
+      "date_from": "2016-06-24",
+      "date_to": "2016-09-12",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2017,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/2017.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/2017.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_039035_20170611_02_T1",
+        "LC08_L2SP_039035_20170627_02_T1",
+        "LC08_L2SP_039035_20170729_02_T1",
+        "LC08_L2SP_039035_20170814_02_T1"
+      ],
+      "date_from": "2017-06-11",
+      "date_to": "2017-08-14",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2018,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/2018.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/2018.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_039035_20180614_02_T1",
+        "LC08_L2SP_039035_20180630_02_T1",
+        "LC08_L2SP_039035_20180801_02_T1",
+        "LC08_L2SP_039035_20180918_02_T1"
+      ],
+      "date_from": "2018-06-14",
+      "date_to": "2018-09-18",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2019,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/2019.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/2019.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_039035_20190601_02_T1",
+        "LC08_L2SP_039035_20190719_02_T1",
+        "LC08_L2SP_039035_20190820_02_T1",
+        "LC08_L2SP_039035_20190921_02_T1"
+      ],
+      "date_from": "2019-06-01",
+      "date_to": "2019-09-21",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2020,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/2020.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/2020.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_039035_20200619_02_T1",
+        "LC08_L2SP_039035_20200705_02_T1",
+        "LC08_L2SP_039035_20200806_02_T1",
+        "LC08_L2SP_039035_20200923_02_T1"
+      ],
+      "date_from": "2020-06-19",
+      "date_to": "2020-09-23",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2021,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/2021.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/2021.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_039035_20210606_02_T1",
+        "LC08_L2SP_039035_20210708_02_T1",
+        "LC08_L2SP_039035_20210809_02_T1",
+        "LC08_L2SP_039035_20210825_02_T1"
+      ],
+      "date_from": "2021-06-06",
+      "date_to": "2021-08-25",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2022,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/2022.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/2022.jpg",
+      "sensors": [
+        "Landsat 9"
+      ],
+      "scene_ids": [
+        "LC09_L2SP_039035_20220601_02_T1",
+        "LC09_L2SP_039035_20220617_02_T1",
+        "LC09_L2SP_039035_20220703_02_T1",
+        "LC09_L2SP_039035_20220905_02_T1"
+      ],
+      "date_from": "2022-06-01",
+      "date_to": "2022-09-05",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2023,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/2023.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/2023.jpg",
+      "sensors": [
+        "Landsat 8",
+        "Landsat 9"
+      ],
+      "scene_ids": [
+        "LC09_L2SP_039035_20230706_02_T1",
+        "LC08_L2SP_039035_20230714_02_T1",
+        "LC09_L2SP_039035_20230807_02_T1",
+        "LC09_L2SP_039035_20230924_02_T1"
+      ],
+      "date_from": "2023-07-06",
+      "date_to": "2023-09-24",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2024,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/2024.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/2024.jpg",
+      "sensors": [
+        "Landsat 8",
+        "Landsat 9"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_039035_20240614_02_T1",
+        "LC09_L2SP_039035_20240708_02_T1",
+        "LC09_L2SP_039035_20240825_02_T1",
+        "LC09_L2SP_039035_20240926_02_T1"
+      ],
+      "date_from": "2024-06-14",
+      "date_to": "2024-09-26",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2025,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/2025.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/2025.jpg",
+      "sensors": [
+        "Landsat 8",
+        "Landsat 9"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_039035_20250617_02_T1",
+        "LC09_L2SP_039035_20250711_02_T1",
+        "LC09_L2SP_039035_20250812_02_T1",
+        "LC09_L2SP_039035_20250913_02_T1"
+      ],
+      "date_from": "2025-06-17",
+      "date_to": "2025-09-13",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2026,
+      "image_url": "/files/stories/lake-mead-nevada-us-6km/frames/2026.jpg",
+      "thumb_url": "/files/stories/lake-mead-nevada-us-6km/thumbs/2026.jpg",
+      "sensors": [
+        "Landsat 8",
+        "Landsat 9"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_039035_20260604_02_T1",
+        "LC08_L2SP_039035_20260620_02_T1",
+        "LC08_L2SP_039035_20260706_02_T1",
+        "LC09_L2SP_039035_20260730_02_T1"
+      ],
+      "date_from": "2026-06-04",
+      "date_to": "2026-07-30",
+      "clear_pct": 100.0
+    }
+  ],
+  "metrics": {
+    "series": [
+      {
+        "year": 1984,
+        "ndvi_mean": 0.084,
+        "water_frac": 0.7624,
+        "built_frac": 0.1474
+      },
+      {
+        "year": 1985,
+        "ndvi_mean": 0.089,
+        "water_frac": 0.7624,
+        "built_frac": 0.1657
+      },
+      {
+        "year": 1986,
+        "ndvi_mean": 0.0736,
+        "water_frac": 0.7562,
+        "built_frac": 0.1943
+      },
+      {
+        "year": 1987,
+        "ndvi_mean": 0.0826,
+        "water_frac": 0.7543,
+        "built_frac": 0.1922
+      },
+      {
+        "year": 1988,
+        "ndvi_mean": 0.0767,
+        "water_frac": 0.742,
+        "built_frac": 0.2147
+      },
+      {
+        "year": 1989,
+        "ndvi_mean": 0.0659,
+        "water_frac": 0.7256,
+        "built_frac": 0.2204
+      },
+      {
+        "year": 1990,
+        "ndvi_mean": 0.0709,
+        "water_frac": 0.7139,
+        "built_frac": 0.2167
+      },
+      {
+        "year": 1991,
+        "ndvi_mean": 0.0816,
+        "water_frac": 0.6984,
+        "built_frac": 0.2035
+      },
+      {
+        "year": 1992,
+        "ndvi_mean": 0.0927,
+        "water_frac": 0.7,
+        "built_frac": 0.217
+      },
+      {
+        "year": 1993,
+        "ndvi_mean": 0.1056,
+        "water_frac": 0.7228,
+        "built_frac": 0.2099
+      },
+      {
+        "year": 1994,
+        "ndvi_mean": 0.0848,
+        "water_frac": 0.7091,
+        "built_frac": 0.2266
+      },
+      {
+        "year": 1995,
+        "ndvi_mean": 0.0968,
+        "water_frac": 0.7135,
+        "built_frac": 0.2075
+      },
+      {
+        "year": 1996,
+        "ndvi_mean": 0.0817,
+        "water_frac": 0.7266,
+        "built_frac": 0.2206
+      },
+      {
+        "year": 1997,
+        "ndvi_mean": 0.0913,
+        "water_frac": 0.7436,
+        "built_frac": 0.2045
+      },
+      {
+        "year": 1998,
+        "ndvi_mean": 0.0842,
+        "water_frac": 0.7624,
+        "built_frac": 0.1583
+      },
+      {
+        "year": 1999,
+        "ndvi_mean": 0.0791,
+        "water_frac": 0.7525,
+        "built_frac": 0.1822
+      },
+      {
+        "year": 2000,
+        "ndvi_mean": 0.064,
+        "water_frac": 0.742,
+        "built_frac": 0.2038
+      },
+      {
+        "year": 2001,
+        "ndvi_mean": 0.0733,
+        "water_frac": 0.7137,
+        "built_frac": 0.2288
+      },
+      {
+        "year": 2002,
+        "ndvi_mean": 0.0615,
+        "water_frac": 0.6772,
+        "built_frac": 0.2642
+      },
+      {
+        "year": 2003,
+        "ndvi_mean": 0.0649,
+        "water_frac": 0.6499,
+        "built_frac": 0.2342
+      },
+      {
+        "year": 2004,
+        "ndvi_mean": 0.0682,
+        "water_frac": 0.6192,
+        "built_frac": 0.2735
+      },
+      {
+        "year": 2005,
+        "ndvi_mean": 0.1045,
+        "water_frac": 0.6414,
+        "built_frac": 0.253
+      },
+      {
+        "year": 2006,
+        "ndvi_mean": 0.0827,
+        "water_frac": 0.6188,
+        "built_frac": 0.3063
+      },
+      {
+        "year": 2007,
+        "ndvi_mean": 0.0769,
+        "water_frac": 0.5941,
+        "built_frac": 0.3117
+      },
+      {
+        "year": 2008,
+        "ndvi_mean": 0.0851,
+        "water_frac": 0.5802,
+        "built_frac": 0.3115
+      },
+      {
+        "year": 2009,
+        "ndvi_mean": 0.0948,
+        "water_frac": 0.5543,
+        "built_frac": 0.3569
+      },
+      {
+        "year": 2010,
+        "ndvi_mean": 0.1038,
+        "water_frac": 0.5376,
+        "built_frac": 0.3604
+      },
+      {
+        "year": 2011,
+        "ndvi_mean": 0.1034,
+        "water_frac": 0.5713,
+        "built_frac": 0.3236
+      },
+      {
+        "year": 2012,
+        "ndvi_mean": 0.0641,
+        "water_frac": 0.5946,
+        "built_frac": 0.3253
+      },
+      {
+        "year": 2013,
+        "ndvi_mean": 0.0871,
+        "water_frac": 0.576,
+        "built_frac": 0.326
+      },
+      {
+        "year": 2014,
+        "ndvi_mean": 0.0813,
+        "water_frac": 0.5327,
+        "built_frac": 0.3551
+      },
+      {
+        "year": 2015,
+        "ndvi_mean": 0.0848,
+        "water_frac": 0.5203,
+        "built_frac": 0.3603
+      },
+      {
+        "year": 2016,
+        "ndvi_mean": 0.0962,
+        "water_frac": 0.511,
+        "built_frac": 0.3554
+      },
+      {
+        "year": 2017,
+        "ndvi_mean": 0.0974,
+        "water_frac": 0.5266,
+        "built_frac": 0.3312
+      },
+      {
+        "year": 2018,
+        "ndvi_mean": 0.0953,
+        "water_frac": 0.5221,
+        "built_frac": 0.3585
+      },
+      {
+        "year": 2019,
+        "ndvi_mean": 0.1081,
+        "water_frac": 0.5349,
+        "built_frac": 0.3061
+      },
+      {
+        "year": 2020,
+        "ndvi_mean": 0.1156,
+        "water_frac": 0.5386,
+        "built_frac": 0.3087
+      },
+      {
+        "year": 2021,
+        "ndvi_mean": 0.0948,
+        "water_frac": 0.5047,
+        "built_frac": 0.3748
+      },
+      {
+        "year": 2022,
+        "ndvi_mean": 0.0757,
+        "water_frac": 0.455,
+        "built_frac": 0.3969
+      },
+      {
+        "year": 2023,
+        "ndvi_mean": 0.0891,
+        "water_frac": 0.485,
+        "built_frac": 0.4002
+      },
+      {
+        "year": 2024,
+        "ndvi_mean": 0.0869,
+        "water_frac": 0.4925,
+        "built_frac": 0.3956
+      },
+      {
+        "year": 2025,
+        "ndvi_mean": 0.0768,
+        "water_frac": 0.4758,
+        "built_frac": 0.4003
+      },
+      {
+        "year": 2026,
+        "ndvi_mean": 0.0815,
+        "water_frac": 0.4535,
+        "built_frac": 0.4149
+      }
+    ]
+  },
+  "changes": [
+    {
+      "id": "chg-01",
+      "kind": "water_loss",
+      "metric": "water_frac",
+      "start_year": 1999,
+      "end_year": 2010,
+      "magnitude": -0.2149,
+      "scope": "place",
+      "area_ha": 652.9,
+      "persistence_years": 17,
+      "region": {
+        "bbox": [
+          -114.39601,
+          36.18342,
+          -114.37654,
+          36.24271
+        ],
+        "description": "in the east part of the area"
+      },
+      "before_year": 1999,
+      "after_year": 2010,
+      "mask_url": "/files/stories/lake-mead-nevada-us-6km/masks/chg-01.png",
+      "sensor_switch_flag": false
+    },
+    {
+      "id": "chg-02",
+      "kind": "water_loss",
+      "metric": "water_frac",
+      "start_year": 1984,
+      "end_year": 1991,
+      "magnitude": -0.064,
+      "scope": "place",
+      "area_ha": 218.7,
+      "persistence_years": 6,
+      "region": {
+        "bbox": [
+          -114.39234,
+          36.1852,
+          -114.37654,
+          36.24271
+        ],
+        "description": "in the east part of the area"
+      },
+      "before_year": 1984,
+      "after_year": 1991,
+      "mask_url": "/files/stories/lake-mead-nevada-us-6km/masks/chg-02.png",
+      "sensor_switch_flag": false
+    },
+    {
+      "id": "chg-03",
+      "kind": "water_gain",
+      "metric": "water_frac",
+      "start_year": 1992,
+      "end_year": 1998,
+      "magnitude": 0.0624,
+      "scope": "place",
+      "area_ha": 184.1,
+      "persistence_years": 3,
+      "region": {
+        "bbox": [
+          -114.39234,
+          36.1852,
+          -114.37654,
+          36.24271
+        ],
+        "description": "in the east part of the area"
+      },
+      "before_year": 1992,
+      "after_year": 1998,
+      "mask_url": "/files/stories/lake-mead-nevada-us-6km/masks/chg-03.png",
+      "sensor_switch_flag": false
+    },
+    {
+      "id": "chg-04",
+      "kind": "water_loss",
+      "metric": "water_frac",
+      "start_year": 2013,
+      "end_year": 2014,
+      "magnitude": -0.0433,
+      "scope": "place",
+      "area_ha": 203.8,
+      "persistence_years": 13,
+      "region": {
+        "bbox": [
+          -114.39785,
+          36.18342,
+          -114.38132,
+          36.24271
+        ],
+        "description": "in the east part of the area"
+      },
+      "before_year": 2013,
+      "after_year": 2014,
+      "mask_url": "/files/stories/lake-mead-nevada-us-6km/masks/chg-04.png",
+      "sensor_switch_flag": true
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-01",
+      "url": "http://hdl.handle.net/11166/166927",
+      "title": "UCRC: Content of Colorado River Storage Project Reservoirs, Streamflow, and Power Generation",
+      "publisher": null,
+      "domain": "hdl.handle.net",
+      "published_date": "1984-03-14",
+      "authority": "other",
+      "retrieved_at": "2026-11-15T14:08:52+00:00",
+      "excerpts": [
+        {
+          "id": "ex-01-01",
+          "text": "Storage in Lake Mead decreased 323,000 acre-feet during the month. On February 29, 1984, the reservoir contained 24,045,000 acre-feet at water surface elevation 1,207.67 feet (84.67 feet above rated head elevation 1,123 feet.)",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "id": "src-02",
+      "url": "https://www.courtlistener.com/opinion/7063966/southwest-center-for-biological-diversity-v-us-bureau-of-reclamation/",
+      "title": "Southwest Center for Biological Diversity v. U.S. Bureau of Reclamation, Court of Appeals for the Ninth Circuit, 1998",
+      "publisher": null,
+      "domain": "courtlistener.com",
+      "published_date": "1998-05-04",
+      "authority": "other",
+      "retrieved_at": "2026-11-15T14:08:52+00:00",
+      "excerpts": [
+        {
+          "id": "ex-02-01",
+          "text": "More recently, however, the return of normal rainfall and runoff on the Colorado has caused the water impounded at Lake Mead to rise back to its normal levels, inundating the root crowns of the willows in the delta. Although the willows have shown resiliency to inundation for periods of over 13 months, the extended inundation of the delta has caused a loss of willows and cottonwoods.",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "id": "src-03",
+      "url": "https://www.reviewjournal.com/news/drought-stricken-lake-mead-falls-to-a-level-not-seen-since-1937/",
+      "title": "Drought-stricken Lake Mead falls to a level not seen since 1937 | News",
+      "publisher": null,
+      "domain": "reviewjournal.com",
+      "published_date": "2010-10-19",
+      "authority": "other",
+      "retrieved_at": "2026-11-15T14:08:52+00:00",
+      "excerpts": [
+        {
+          "id": "ex-03-01",
+          "text": "Since drought took hold on the Colorado and its tributaries in 1999, the surface of Lake Mead has plunged almost 130 feet and caused fits for the National Park Service and its marina operators who must extend roads, utilities and other services to reach the shrinking shoreline.",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "id": "src-04",
+      "url": "https://science.nasa.gov/earth/earth-observatory/water-level-changes-in-lake-mead-45945/",
+      "title": "Water Level Changes in Lake Mead - NASA Science",
+      "publisher": null,
+      "domain": "science.nasa.gov",
+      "published_date": "2010-09-23",
+      "authority": "authoritative",
+      "retrieved_at": "2026-11-15T14:08:52+00:00",
+      "excerpts": [
+        {
+          "id": "ex-04-01",
+          "text": "In August 2010, Lake Mead reached its lowest level since 1956, the result of a persistent drought and increasing human demand.",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "id": "src-05",
+      "url": "https://www.esa.int/articles/about-us/directorates/earth-observation-programmes/earth-from-space-lowering-lake-levels",
+      "title": "Earth from Space: Lowering lake levels",
+      "publisher": null,
+      "domain": "esa.int",
+      "published_date": "2010-10-29",
+      "authority": "authoritative",
+      "retrieved_at": "2026-11-15T14:08:52+00:00",
+      "excerpts": [
+        {
+          "id": "ex-05-01",
+          "text": "Its reservoir, Lake Mead, is one of the largest in the world, with a surface area of 593 sq km. However, an 11-year drought and increased water consumption due to population growth have resulted in a decline in its water levels.",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "id": "src-06",
+      "url": "https://science.time.com/2010/10/18/water-lake-mead-is-at-record-low-levels-is-the-southwest-drying-up/",
+      "title": "Water: Lake Mead Is at Record Low Levels. Is the Southwest Drying Up? | TIME.com",
+      "publisher": null,
+      "domain": "science.time.com",
+      "published_date": "2010-10-18",
+      "authority": "other",
+      "retrieved_at": "2026-11-15T14:08:52+00:00",
+      "excerpts": [
+        {
+          "id": "ex-06-01",
+          "text": "The past decade has seen a precipitous decline in Lake Mead's water levels, as a stubborn, multi-year drought and continued growth in the Southwest have combined to drain the reservoir.",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "id": "src-07",
+      "url": "https://bouldercityreview.com/news/lake-mead-hoover-dam/lake-mead-dips-to-lowest-level-in-decades/",
+      "title": "Lake Mead dips to lowest level in decades | Boulder City Review",
+      "publisher": null,
+      "domain": "bouldercityreview.com",
+      "published_date": "2014-07-16",
+      "authority": "other",
+      "retrieved_at": "2026-11-15T14:08:52+00:00",
+      "excerpts": [
+        {
+          "id": "ex-07-01",
+          "text": "The decrease in the water level has been the result of excessively arid winters in 2012 and 2013, and it's caused Lake Mead to drop approximately 51 feet since December 2012, according to the Bureau of Reclamation.",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "id": "src-08",
+      "url": "https://www.lakescientist.com/lake-mead-water-levels-30-feet-since-february/",
+      "title": "Lake Mead Water Levels Down 30 Feet Since February - Lake Scientist",
+      "publisher": null,
+      "domain": "lakescientist.com",
+      "published_date": "2014-07-22",
+      "authority": "other",
+      "retrieved_at": "2026-11-15T14:08:52+00:00",
+      "excerpts": [
+        {
+          "id": "ex-08-01",
+          "text": "Lake Mead water levels have dropped 30 feet since February 2014, according to the Weather Channel. The largest man-made reservoir in the United States now sits at just 39 percent capacity.",
+          "verified": true
+        }
+      ]
+    }
+  ],
+  "chapters": [
+    {
+      "id": "ch-01",
+      "kind": "intro",
+      "change_id": null,
+      "start_year": 1984,
+      "end_year": 1984,
+      "headline": "Lake Mead, Nevada in 1984",
+      "claims": [],
+      "confidence": null,
+      "vision_check": {
+        "verdict": "not_run",
+        "note": null
+      }
+    },
+    {
+      "id": "ch-02",
+      "kind": "change",
+      "change_id": "chg-02",
+      "start_year": 1984,
+      "end_year": 1991,
+      "headline": "Water gives way to land in the east",
+      "claims": [
+        {
+          "id": "cl-01",
+          "text": "Storage in Lake Mead decreased by 323,000 acre-feet in the month prior to February 29, 1984, when it contained 24,045,000 acre-feet.",
+          "excerpt_ids": [
+            "ex-01-01"
+          ]
+        },
+        {
+          "id": "cl-02",
+          "text": "On February 29, 1984, Lake Mead contained 24,045,000 acre-feet of water after storage decreased 323,000 acre-feet during the month.",
+          "excerpt_ids": [
+            "ex-01-01"
+          ]
+        }
+      ],
+      "confidence": "likely",
+      "vision_check": {
+        "verdict": "not_run",
+        "note": null
+      }
+    },
+    {
+      "id": "ch-03",
+      "kind": "change",
+      "change_id": "chg-03",
+      "start_year": 1992,
+      "end_year": 1998,
+      "headline": "Land goes under water in the east",
+      "claims": [
+        {
+          "id": "cl-03",
+          "text": "The return of normal rainfall and runoff on the Colorado caused water impounded at Lake Mead to rise back to normal levels, inundating willow root crowns in the delta.",
+          "excerpt_ids": [
+            "ex-02-01"
+          ]
+        }
+      ],
+      "confidence": "likely",
+      "vision_check": {
+        "verdict": "not_run",
+        "note": null
+      }
+    },
+    {
+      "id": "ch-04",
+      "kind": "change",
+      "change_id": "chg-01",
+      "start_year": 1999,
+      "end_year": 2010,
+      "headline": "Water gives way to land in the east",
+      "claims": [
+        {
+          "id": "cl-04",
+          "text": "Since 1999, a multi-year drought and increased water demand have caused Lake Mead's water levels to decline.",
+          "excerpt_ids": [
+            "ex-03-01",
+            "ex-04-01",
+            "ex-05-01",
+            "ex-06-01"
+          ]
+        }
+      ],
+      "confidence": "confirmed",
+      "vision_check": {
+        "verdict": "not_run",
+        "note": null
+      }
+    },
+    {
+      "id": "ch-05",
+      "kind": "change",
+      "change_id": "chg-04",
+      "start_year": 2013,
+      "end_year": 2014,
+      "headline": "Water gives way to land in the east",
+      "claims": [
+        {
+          "id": "cl-05",
+          "text": "Excessively arid winters in 2012 and 2013 caused Lake Mead's water level to drop approximately 51 feet since December 2012.",
+          "excerpt_ids": [
+            "ex-07-01"
+          ]
+        },
+        {
+          "id": "cl-06",
+          "text": "Lake Mead's water levels dropped 30 feet since February 2014.",
+          "excerpt_ids": [
+            "ex-08-01"
+          ]
+        }
+      ],
+      "confidence": "likely",
+      "vision_check": {
+        "verdict": "not_run",
+        "note": null
+      }
+    },
+    {
+      "id": "ch-06",
+      "kind": "outro",
+      "change_id": null,
+      "start_year": 2015,
+      "end_year": 2026,
+      "headline": "Where it stands today",
+      "claims": [],
+      "confidence": null,
+      "vision_check": {
+        "verdict": "not_run",
+        "note": null
+      }
+    }
+  ],
+  "script": {
+    "word_count": 225,
+    "est_duration_s": 90.0,
+    "segments": [
+      {
+        "id": "seg-01",
+        "chapter_id": "ch-01",
+        "text": "This is Lake Mead, Nevada, seen from space by Landsat satellites, one summer at a time from 1984 to 2026.",
+        "year_from": 1984,
+        "year_to": 1984,
+        "claim_ids": []
+      },
+      {
+        "id": "seg-02",
+        "chapter_id": "ch-02",
+        "text": "Between 1984 and 1991, about 6 percent of the area turned from water to land, mostly in the east. In all, about 220 hectares changed. One report says: Storage in Lake Mead decreased by 323,000 acre-feet in the month prior to February 29, 1984, when it contained 24,045,000 acre-feet.",
+        "year_from": 1985,
+        "year_to": 1991,
+        "claim_ids": [
+          "cl-01"
+        ]
+      },
+      {
+        "id": "seg-03",
+        "chapter_id": "ch-03",
+        "text": "Between 1992 and 1998, about 6 percent of the area turned from land to water, mostly in the east. In all, about 180 hectares changed. One report says: The return of normal rainfall and runoff on the Colorado caused water impounded at Lake Mead to rise back to normal levels, inundating willow root crowns in the delta.",
+        "year_from": 1992,
+        "year_to": 1998,
+        "claim_ids": [
+          "cl-03"
+        ]
+      },
+      {
+        "id": "seg-04",
+        "chapter_id": "ch-04",
+        "text": "Between 1999 and 2010, about a fifth of the area turned from water to land, mostly in the east. Records show: Since 1999, a multi-year drought and increased water demand have caused Lake Mead's water levels to decline.",
+        "year_from": 1999,
+        "year_to": 2012,
+        "claim_ids": [
+          "cl-04"
+        ]
+      },
+      {
+        "id": "seg-05",
+        "chapter_id": "ch-05",
+        "text": "Between 2013 and 2014, about 4 percent of the area turned from water to land, mostly in the east. Part of it may come from switching Landsat satellites. One report says: Excessively arid winters in 2012 and 2013 caused Lake Mead's water level to drop approximately 51 feet since December 2012.",
+        "year_from": 2013,
+        "year_to": 2014,
+        "claim_ids": [
+          "cl-05"
+        ]
+      },
+      {
+        "id": "seg-06",
+        "chapter_id": "ch-06",
+        "text": "That is how Lake Mead, Nevada has changed since 1984.",
+        "year_from": 2015,
+        "year_to": 2026,
+        "claim_ids": []
+      }
+    ]
+  },
+  "validation": null,
+  "credits": [
+    "Landsat imagery courtesy of NASA and the U.S. Geological Survey.",
+    "Supported by the Michigan Space Grant Consortium, NASA grant 80NSSC20M0124."
+  ],
+  "generation": {
+    "duration_s": 120.47,
+    "usage": {
+      "exa_calls": 0,
+      "llm_calls": 15,
+      "vision_calls": 0
+    },
+    "warnings": []
+  }
+}

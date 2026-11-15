@@ -1,0 +1,1210 @@
+{
+  "schema_version": "1.3",
+  "id": "summerlin-south-nevada-us-6km",
+  "is_sample": false,
+  "status": "complete",
+  "created_at": "2026-11-15T14:16:30Z",
+  "place": {
+    "query": "Summerlin, Nevada",
+    "display_name": "Summerlin South, Nevada",
+    "lat": 36.1532572,
+    "lon": -115.3311201,
+    "bbox": [
+      -115.36783,
+      36.12361,
+      -115.29441,
+      36.1829
+    ],
+    "aoi_km": 6.0,
+    "admin": {
+      "city": "Summerlin South",
+      "county": "Clark County",
+      "state": "Nevada",
+      "country": "United States",
+      "country_code": "us"
+    }
+  },
+  "coverage": {
+    "first_year": 1984,
+    "last_year": 2026,
+    "season_months": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "years_skipped": []
+  },
+  "frames": [
+    {
+      "year": 1984,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/1984.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/1984.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_040035_19840607_02_T1",
+        "LT05_L2SP_040035_19840623_02_T1",
+        "LT05_L2SP_040035_19840709_02_T1",
+        "LT05_L2SP_039035_19840920_02_T1"
+      ],
+      "date_from": "1984-06-07",
+      "date_to": "1984-09-20",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1985,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/1985.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/1985.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_040035_19850626_02_T1",
+        "LT05_L2SP_039035_19850806_02_T1",
+        "LT05_L2SP_040035_19850813_02_T1",
+        "LT05_L2SP_039035_19850822_02_T1"
+      ],
+      "date_from": "1985-06-26",
+      "date_to": "1985-08-22",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1986,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/1986.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/1986.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_19860606_02_T1",
+        "LT05_L2SP_040035_19860901_02_T1",
+        "LT05_L2SP_039035_19860910_02_T1",
+        "LT05_L2SP_039035_19860926_02_T1"
+      ],
+      "date_from": "1986-06-06",
+      "date_to": "1986-09-26",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1987,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/1987.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/1987.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_040035_19870718_02_T1",
+        "LT05_L2SP_039035_19870812_02_T1",
+        "LT05_L2SP_040035_19870920_02_T1",
+        "LT05_L2SP_039035_19870929_02_T1"
+      ],
+      "date_from": "1987-07-18",
+      "date_to": "1987-09-29",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1988,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/1988.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/1988.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_040035_19880602_02_T1",
+        "LT05_L2SP_039035_19880814_02_T1",
+        "LT05_L2SP_039035_19880915_02_T1",
+        "LT05_L2SP_040035_19880922_02_T1"
+      ],
+      "date_from": "1988-06-02",
+      "date_to": "1988-09-22",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1989,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/1989.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/1989.jpg",
+      "sensors": [
+        "Landsat 4",
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT04_L2SP_039035_19890606_02_T1",
+        "LT05_L2SP_039035_19890630_02_T1",
+        "LT05_L2SP_039035_19890716_02_T1",
+        "LT05_L2SP_039035_19890801_02_T1"
+      ],
+      "date_from": "1989-06-06",
+      "date_to": "1989-08-01",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1990,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/1990.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/1990.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_19900601_02_T1",
+        "LT05_L2SP_040035_19900608_02_T1",
+        "LT05_L2SP_039035_19900703_02_T1",
+        "LT05_L2SP_040035_19900827_02_T1"
+      ],
+      "date_from": "1990-06-01",
+      "date_to": "1990-08-27",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1991,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/1991.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/1991.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_19910620_02_T1",
+        "LT05_L2SP_040035_19910713_02_T1",
+        "LT05_L2SP_039035_19910807_02_T1",
+        "LT05_L2SP_039035_19910924_02_T1"
+      ],
+      "date_from": "1991-06-20",
+      "date_to": "1991-09-24",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1992,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/1992.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/1992.jpg",
+      "sensors": [
+        "Landsat 4",
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT04_L2SP_039035_19920630_02_T1",
+        "LT05_L2SP_039035_19920809_02_T1",
+        "LT05_L2SP_039035_19920910_02_T1",
+        "LT05_L2SP_039035_19920926_02_T1"
+      ],
+      "date_from": "1992-06-30",
+      "date_to": "1992-09-26",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1993,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/1993.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/1993.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_19930711_02_T1",
+        "LT05_L2SP_040035_19930718_02_T1",
+        "LT05_L2SP_039035_19930727_02_T1",
+        "LT05_L2SP_040035_19930819_02_T1"
+      ],
+      "date_from": "1993-07-11",
+      "date_to": "1993-08-19",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1994,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/1994.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/1994.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_19940612_02_T1",
+        "LT05_L2SP_039035_19940628_02_T1",
+        "LT05_L2SP_039035_19940714_02_T1",
+        "LT05_L2SP_040035_19940822_02_T1"
+      ],
+      "date_from": "1994-06-12",
+      "date_to": "1994-08-22",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1995,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/1995.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/1995.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_040035_19950606_02_T1",
+        "LT05_L2SP_040035_19950622_02_T1",
+        "LT05_L2SP_039035_19950701_02_T1",
+        "LT05_L2SP_039035_19950818_02_T1"
+      ],
+      "date_from": "1995-06-06",
+      "date_to": "1995-08-18",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1996,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/1996.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/1996.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_19960601_02_T1",
+        "LT05_L2SP_040035_19960608_02_T1",
+        "LT05_L2SP_040035_19960624_02_T1",
+        "LT05_L2SP_039035_19960719_02_T1"
+      ],
+      "date_from": "1996-06-01",
+      "date_to": "1996-07-19",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1997,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/1997.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/1997.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_19970620_02_T1",
+        "LT05_L2SP_040035_19970627_02_T1",
+        "LT05_L2SP_040035_19970713_02_T1",
+        "LT05_L2SP_040035_19970814_02_T1"
+      ],
+      "date_from": "1997-06-20",
+      "date_to": "1997-08-14",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1998,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/1998.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/1998.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_040035_19980716_02_T1",
+        "LT05_L2SP_039035_19980725_02_T1",
+        "LT05_L2SP_040035_19980801_02_T1",
+        "LT05_L2SP_040035_19980817_02_T1"
+      ],
+      "date_from": "1998-07-16",
+      "date_to": "1998-08-17",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1999,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/1999.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/1999.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_19990610_02_T1",
+        "LT05_L2SP_040035_19990617_02_T1",
+        "LT05_L2SP_039035_19990626_02_T1",
+        "LT05_L2SP_040035_19990703_02_T1"
+      ],
+      "date_from": "1999-06-10",
+      "date_to": "1999-07-03",
+      "clear_pct": 99.7
+    },
+    {
+      "year": 2000,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/2000.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/2000.jpg",
+      "sensors": [
+        "Landsat 5",
+        "Landsat 7"
+      ],
+      "scene_ids": [
+        "LE07_L2SP_039035_20000604_02_T1",
+        "LT05_L2SP_040035_20000619_02_T1",
+        "LE07_L2SP_039035_20000620_02_T1",
+        "LT05_L2SP_040035_20000705_02_T1"
+      ],
+      "date_from": "2000-06-04",
+      "date_to": "2000-07-05",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2001,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/2001.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/2001.jpg",
+      "sensors": [
+        "Landsat 5",
+        "Landsat 7"
+      ],
+      "scene_ids": [
+        "LE07_L2SP_039035_20010607_02_T1",
+        "LT05_L2SP_039035_20010615_02_T1",
+        "LE07_L2SP_039035_20010623_02_T1",
+        "LE07_L2SP_040035_20010630_02_T1"
+      ],
+      "date_from": "2001-06-07",
+      "date_to": "2001-06-30",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2002,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/2002.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/2002.jpg",
+      "sensors": [
+        "Landsat 5",
+        "Landsat 7"
+      ],
+      "scene_ids": [
+        "LE07_L2SP_039035_20020610_02_T1",
+        "LE07_L2SP_040035_20020617_02_T1",
+        "LT05_L2SP_039035_20020618_02_T1",
+        "LT05_L2SP_039035_20020704_02_T1"
+      ],
+      "date_from": "2002-06-10",
+      "date_to": "2002-07-04",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2003,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/2003.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/2003.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_040035_20030612_02_T1",
+        "LT05_L2SP_039035_20030621_02_T1",
+        "LT05_L2SP_040035_20030628_02_T1",
+        "LT05_L2SP_039035_20030707_02_T1"
+      ],
+      "date_from": "2003-06-12",
+      "date_to": "2003-07-07",
+      "clear_pct": 99.9
+    },
+    {
+      "year": 2004,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/2004.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/2004.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_20040810_02_T1",
+        "LT05_L2SP_039035_20040826_02_T1",
+        "LT05_L2SP_040035_20040918_02_T1",
+        "LT05_L2SP_039035_20040927_02_T1"
+      ],
+      "date_from": "2004-08-10",
+      "date_to": "2004-09-27",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2005,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/2005.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/2005.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_040035_20050601_02_T1",
+        "LT05_L2SP_040035_20050703_02_T1",
+        "LT05_L2SP_039035_20050712_02_T1",
+        "LT05_L2SP_040035_20050719_02_T1"
+      ],
+      "date_from": "2005-06-01",
+      "date_to": "2005-07-19",
+      "clear_pct": 99.8
+    },
+    {
+      "year": 2006,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/2006.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/2006.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_040035_20060604_02_T1",
+        "LT05_L2SP_040035_20060620_02_T1",
+        "LT05_L2SP_039035_20060715_02_T1",
+        "LT05_L2SP_040035_20060807_02_T1"
+      ],
+      "date_from": "2006-06-04",
+      "date_to": "2006-08-07",
+      "clear_pct": 99.8
+    },
+    {
+      "year": 2007,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/2007.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/2007.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_20070616_02_T1",
+        "LT05_L2SP_040035_20070709_02_T1",
+        "LT05_L2SP_039035_20070718_02_T1",
+        "LT05_L2SP_040035_20070810_02_T1"
+      ],
+      "date_from": "2007-06-16",
+      "date_to": "2007-08-10",
+      "clear_pct": 99.8
+    },
+    {
+      "year": 2008,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/2008.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/2008.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_20080602_02_T1",
+        "LT05_L2SP_039035_20080618_02_T1",
+        "LT05_L2SP_040035_20080812_02_T1",
+        "LT05_L2SP_039035_20080821_02_T1"
+      ],
+      "date_from": "2008-06-02",
+      "date_to": "2008-08-21",
+      "clear_pct": 99.8
+    },
+    {
+      "year": 2009,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/2009.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/2009.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_040035_20090714_02_T1",
+        "LT05_L2SP_039035_20090808_02_T1",
+        "LT05_L2SP_040035_20090815_02_T1",
+        "LT05_L2SP_040035_20090831_02_T1"
+      ],
+      "date_from": "2009-07-14",
+      "date_to": "2009-08-31",
+      "clear_pct": 99.9
+    },
+    {
+      "year": 2010,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/2010.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/2010.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_20100624_02_T1",
+        "LT05_L2SP_040035_20100701_02_T1",
+        "LT05_L2SP_040035_20100903_02_T1",
+        "LT05_L2SP_040035_20100919_02_T1"
+      ],
+      "date_from": "2010-06-24",
+      "date_to": "2010-09-19",
+      "clear_pct": 99.9
+    },
+    {
+      "year": 2011,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/2011.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/2011.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_039035_20110627_02_T1",
+        "LT05_L2SP_040035_20110720_02_T1",
+        "LT05_L2SP_040035_20110805_02_T1",
+        "LT05_L2SP_039035_20110830_02_T1"
+      ],
+      "date_from": "2011-06-27",
+      "date_to": "2011-08-30",
+      "clear_pct": 99.8
+    },
+    {
+      "year": 2012,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/2012.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/2012.jpg",
+      "sensors": [
+        "Landsat 7"
+      ],
+      "scene_ids": [
+        "LE07_L2SP_039035_20120605_02_T1",
+        "LE07_L2SP_039035_20120621_02_T1",
+        "LE07_L2SP_040035_20120628_02_T1",
+        "LE07_L2SP_039035_20120925_02_T1"
+      ],
+      "date_from": "2012-06-05",
+      "date_to": "2012-09-25",
+      "clear_pct": 99.8
+    },
+    {
+      "year": 2013,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/2013.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/2013.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_039035_20130616_02_T1",
+        "LC08_L2SP_040035_20130623_02_T1",
+        "LC08_L2SP_040035_20130810_02_T1",
+        "LC08_L2SP_040035_20130927_02_T1"
+      ],
+      "date_from": "2013-06-16",
+      "date_to": "2013-09-27",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2014,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/2014.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/2014.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_040035_20140829_02_T1",
+        "LC08_L2SP_039035_20140923_02_T1",
+        "LC08_L2SP_040035_20140930_02_T1"
+      ],
+      "date_from": "2014-08-29",
+      "date_to": "2014-09-30",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2015,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/2015.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/2015.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_040035_20150715_02_T1",
+        "LC08_L2SP_039035_20150724_02_T1",
+        "LC08_L2SP_040035_20150901_02_T1",
+        "LC08_L2SP_040035_20150917_02_T1"
+      ],
+      "date_from": "2015-07-15",
+      "date_to": "2015-09-17",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2016,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/2016.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/2016.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_040035_20160615_02_T1",
+        "LC08_L2SP_040035_20160717_02_T1",
+        "LC08_L2SP_040035_20160903_02_T1",
+        "LC08_L2SP_039035_20160912_02_T1"
+      ],
+      "date_from": "2016-06-15",
+      "date_to": "2016-09-12",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2017,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/2017.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/2017.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_040035_20170602_02_T1",
+        "LC08_L2SP_040035_20170618_02_T1",
+        "LC08_L2SP_040035_20170704_02_T1",
+        "LC08_L2SP_039035_20170814_02_T1"
+      ],
+      "date_from": "2017-06-02",
+      "date_to": "2017-08-14",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2018,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/2018.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/2018.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_040035_20180621_02_T1",
+        "LC08_L2SP_040035_20180909_02_T1",
+        "LC08_L2SP_039035_20180918_02_T1",
+        "LC08_L2SP_040035_20180925_02_T1"
+      ],
+      "date_from": "2018-06-21",
+      "date_to": "2018-09-25",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2019,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/2019.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/2019.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_040035_20190710_02_T1",
+        "LC08_L2SP_040035_20190811_02_T1",
+        "LC08_L2SP_039035_20190820_02_T1",
+        "LC08_L2SP_040035_20190912_02_T1"
+      ],
+      "date_from": "2019-07-10",
+      "date_to": "2019-09-12",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2020,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/2020.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/2020.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_040035_20200610_02_T1",
+        "LC08_L2SP_040035_20200728_02_T1",
+        "LC08_L2SP_039035_20200806_02_T1",
+        "LC08_L2SP_039035_20200923_02_T1"
+      ],
+      "date_from": "2020-06-10",
+      "date_to": "2020-09-23",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2021,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/2021.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/2021.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_039035_20210606_02_T1",
+        "LC08_L2SP_040035_20210613_02_T1",
+        "LC08_L2SP_039035_20210809_02_T1",
+        "LC08_L2SP_040035_20210816_02_T1"
+      ],
+      "date_from": "2021-06-06",
+      "date_to": "2021-08-16",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2022,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/2022.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/2022.jpg",
+      "sensors": [
+        "Landsat 8",
+        "Landsat 9"
+      ],
+      "scene_ids": [
+        "LC09_L2SP_040035_20220608_02_T1",
+        "LC08_L2SP_040035_20220616_02_T1",
+        "LC08_L2SP_040035_20220702_02_T1",
+        "LC09_L2SP_039035_20220905_02_T1"
+      ],
+      "date_from": "2022-06-08",
+      "date_to": "2022-09-05",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2023,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/2023.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/2023.jpg",
+      "sensors": [
+        "Landsat 8",
+        "Landsat 9"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_040035_20230705_02_T1",
+        "LC08_L2SP_039035_20230714_02_T1",
+        "LC09_L2SP_039035_20230807_02_T1",
+        "LC09_L2SP_040035_20230830_02_T1"
+      ],
+      "date_from": "2023-07-05",
+      "date_to": "2023-08-30",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2024,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/2024.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/2024.jpg",
+      "sensors": [
+        "Landsat 8",
+        "Landsat 9"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_039035_20240614_02_T1",
+        "LC08_L2SP_040035_20240621_02_T1",
+        "LC09_L2SP_040035_20240629_02_T1",
+        "LC08_L2SP_040035_20240707_02_T1"
+      ],
+      "date_from": "2024-06-14",
+      "date_to": "2024-07-07",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2025,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/2025.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/2025.jpg",
+      "sensors": [
+        "Landsat 8",
+        "Landsat 9"
+      ],
+      "scene_ids": [
+        "LC09_L2SP_040035_20250616_02_T1",
+        "LC08_L2SP_040035_20250710_02_T1",
+        "LC09_L2SP_039035_20250711_02_T1",
+        "LC08_L2SP_040035_20250811_02_T1"
+      ],
+      "date_from": "2025-06-16",
+      "date_to": "2025-08-11",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2026,
+      "image_url": "/files/stories/summerlin-south-nevada-us-6km/frames/2026.jpg",
+      "thumb_url": "/files/stories/summerlin-south-nevada-us-6km/thumbs/2026.jpg",
+      "sensors": [
+        "Landsat 8",
+        "Landsat 9"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_040035_20260611_02_T1",
+        "LC09_L2SP_040035_20260619_02_T1",
+        "LC08_L2SP_040035_20260627_02_T1",
+        "LC08_L2SP_040035_20260729_02_T1"
+      ],
+      "date_from": "2026-06-11",
+      "date_to": "2026-07-29",
+      "clear_pct": 100.0
+    }
+  ],
+  "metrics": {
+    "series": [
+      {
+        "year": 1984,
+        "ndvi_mean": 0.1123,
+        "water_frac": 0.0,
+        "built_frac": 1.0
+      },
+      {
+        "year": 1985,
+        "ndvi_mean": 0.1092,
+        "water_frac": 0.0,
+        "built_frac": 1.0
+      },
+      {
+        "year": 1986,
+        "ndvi_mean": 0.095,
+        "water_frac": 0.0,
+        "built_frac": 1.0
+      },
+      {
+        "year": 1987,
+        "ndvi_mean": 0.096,
+        "water_frac": 0.0,
+        "built_frac": 1.0
+      },
+      {
+        "year": 1988,
+        "ndvi_mean": 0.1015,
+        "water_frac": 0.0,
+        "built_frac": 0.9964
+      },
+      {
+        "year": 1989,
+        "ndvi_mean": 0.0932,
+        "water_frac": 0.0001,
+        "built_frac": 0.972
+      },
+      {
+        "year": 1990,
+        "ndvi_mean": 0.0968,
+        "water_frac": 0.0001,
+        "built_frac": 0.9469
+      },
+      {
+        "year": 1991,
+        "ndvi_mean": 0.1069,
+        "water_frac": 0.0001,
+        "built_frac": 0.9318
+      },
+      {
+        "year": 1992,
+        "ndvi_mean": 0.1094,
+        "water_frac": 0.0,
+        "built_frac": 0.9119
+      },
+      {
+        "year": 1993,
+        "ndvi_mean": 0.116,
+        "water_frac": 0.0001,
+        "built_frac": 0.9078
+      },
+      {
+        "year": 1994,
+        "ndvi_mean": 0.1018,
+        "water_frac": 0.0001,
+        "built_frac": 0.9014
+      },
+      {
+        "year": 1995,
+        "ndvi_mean": 0.1231,
+        "water_frac": 0.0002,
+        "built_frac": 0.8875
+      },
+      {
+        "year": 1996,
+        "ndvi_mean": 0.103,
+        "water_frac": 0.0004,
+        "built_frac": 0.8753
+      },
+      {
+        "year": 1997,
+        "ndvi_mean": 0.1127,
+        "water_frac": 0.0005,
+        "built_frac": 0.848
+      },
+      {
+        "year": 1998,
+        "ndvi_mean": 0.1156,
+        "water_frac": 0.0011,
+        "built_frac": 0.8103
+      },
+      {
+        "year": 1999,
+        "ndvi_mean": 0.1219,
+        "water_frac": 0.0021,
+        "built_frac": 0.7477
+      },
+      {
+        "year": 2000,
+        "ndvi_mean": 0.1299,
+        "water_frac": 0.0023,
+        "built_frac": 0.6723
+      },
+      {
+        "year": 2001,
+        "ndvi_mean": 0.1345,
+        "water_frac": 0.0022,
+        "built_frac": 0.6074
+      },
+      {
+        "year": 2002,
+        "ndvi_mean": 0.142,
+        "water_frac": 0.0023,
+        "built_frac": 0.5433
+      },
+      {
+        "year": 2003,
+        "ndvi_mean": 0.1515,
+        "water_frac": 0.0057,
+        "built_frac": 0.4814
+      },
+      {
+        "year": 2004,
+        "ndvi_mean": 0.1615,
+        "water_frac": 0.0092,
+        "built_frac": 0.4364
+      },
+      {
+        "year": 2005,
+        "ndvi_mean": 0.166,
+        "water_frac": 0.0076,
+        "built_frac": 0.4021
+      },
+      {
+        "year": 2006,
+        "ndvi_mean": 0.1638,
+        "water_frac": 0.0055,
+        "built_frac": 0.3882
+      },
+      {
+        "year": 2007,
+        "ndvi_mean": 0.1554,
+        "water_frac": 0.0091,
+        "built_frac": 0.3651
+      },
+      {
+        "year": 2008,
+        "ndvi_mean": 0.161,
+        "water_frac": 0.0106,
+        "built_frac": 0.3397
+      },
+      {
+        "year": 2009,
+        "ndvi_mean": 0.1806,
+        "water_frac": 0.0041,
+        "built_frac": 0.3285
+      },
+      {
+        "year": 2010,
+        "ndvi_mean": 0.1856,
+        "water_frac": 0.0052,
+        "built_frac": 0.3239
+      },
+      {
+        "year": 2011,
+        "ndvi_mean": 0.1901,
+        "water_frac": 0.0046,
+        "built_frac": 0.327
+      },
+      {
+        "year": 2012,
+        "ndvi_mean": 0.1669,
+        "water_frac": 0.0062,
+        "built_frac": 0.3058
+      },
+      {
+        "year": 2013,
+        "ndvi_mean": 0.2067,
+        "water_frac": 0.0065,
+        "built_frac": 0.305
+      },
+      {
+        "year": 2014,
+        "ndvi_mean": 0.2204,
+        "water_frac": 0.0083,
+        "built_frac": 0.2813
+      },
+      {
+        "year": 2015,
+        "ndvi_mean": 0.2138,
+        "water_frac": 0.0072,
+        "built_frac": 0.2832
+      },
+      {
+        "year": 2016,
+        "ndvi_mean": 0.2144,
+        "water_frac": 0.0069,
+        "built_frac": 0.28
+      },
+      {
+        "year": 2017,
+        "ndvi_mean": 0.2062,
+        "water_frac": 0.007,
+        "built_frac": 0.2776
+      },
+      {
+        "year": 2018,
+        "ndvi_mean": 0.2109,
+        "water_frac": 0.0065,
+        "built_frac": 0.2676
+      },
+      {
+        "year": 2019,
+        "ndvi_mean": 0.2136,
+        "water_frac": 0.0066,
+        "built_frac": 0.258
+      },
+      {
+        "year": 2020,
+        "ndvi_mean": 0.2113,
+        "water_frac": 0.0069,
+        "built_frac": 0.2494
+      },
+      {
+        "year": 2021,
+        "ndvi_mean": 0.2035,
+        "water_frac": 0.0062,
+        "built_frac": 0.2599
+      },
+      {
+        "year": 2022,
+        "ndvi_mean": 0.1961,
+        "water_frac": 0.0067,
+        "built_frac": 0.2691
+      },
+      {
+        "year": 2023,
+        "ndvi_mean": 0.1997,
+        "water_frac": 0.0076,
+        "built_frac": 0.2627
+      },
+      {
+        "year": 2024,
+        "ndvi_mean": 0.1953,
+        "water_frac": 0.0069,
+        "built_frac": 0.2684
+      },
+      {
+        "year": 2025,
+        "ndvi_mean": 0.1941,
+        "water_frac": 0.0046,
+        "built_frac": 0.2764
+      },
+      {
+        "year": 2026,
+        "ndvi_mean": 0.1924,
+        "water_frac": 0.0065,
+        "built_frac": 0.2788
+      }
+    ]
+  },
+  "changes": [
+    {
+      "id": "chg-01",
+      "kind": "vegetation_gain",
+      "metric": "ndvi_mean",
+      "start_year": 1991,
+      "end_year": 2019,
+      "magnitude": 0.1067,
+      "scope": "place",
+      "area_ha": 2504.9,
+      "persistence_years": 8,
+      "region": {
+        "bbox": [
+          -115.34103,
+          36.12361,
+          -115.29441,
+          36.1829
+        ],
+        "description": "in the east part of the area, where bare dry ground turned greener"
+      },
+      "before_year": 1991,
+      "after_year": 2019,
+      "mask_url": "/files/stories/summerlin-south-nevada-us-6km/masks/chg-01.png",
+      "sensor_switch_flag": false
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-01",
+      "url": "https://www.reviewjournal.com/homes/advertising-features/summerlin-has-history-with-red-rock-canyon/",
+      "title": "Summerlin has history with Red Rock Canyon | Provided Content | Homes",
+      "publisher": null,
+      "domain": "reviewjournal.com",
+      "published_date": "2016-11-20",
+      "authority": "other",
+      "retrieved_at": "2026-11-15T14:16:30+00:00",
+      "excerpts": [
+        {
+          "id": "ex-01-01",
+          "text": "\"This single act, performed in 1988, three years before the first family moved to Summerlin in 1991, set the tone for the community's environmentally friendly development policies going forward,\" Warden said.",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "id": "src-02",
+      "url": "https://www.reviewjournal.com/homes/advertising-features/summerlin-opens-community-park-1893774/",
+      "title": "Summerlin opens community park | Provided Content | Homes",
+      "publisher": null,
+      "domain": "reviewjournal.com",
+      "published_date": "2019-11-16",
+      "authority": "other",
+      "retrieved_at": "2026-11-15T14:16:30+00:00",
+      "excerpts": [
+        {
+          "id": "ex-02-01",
+          "text": "Developed by The Howard Hughes Corporation, Summerlin began to take shape in 1990 and has ranked in the country's top 10 best-selling master-planned communities for nearly two decades.",
+          "verified": true
+        }
+      ]
+    }
+  ],
+  "chapters": [
+    {
+      "id": "ch-01",
+      "kind": "intro",
+      "change_id": null,
+      "start_year": 1984,
+      "end_year": 1990,
+      "headline": "Summerlin South, Nevada in 1984",
+      "claims": [],
+      "confidence": null,
+      "vision_check": {
+        "verdict": "not_run",
+        "note": null
+      }
+    },
+    {
+      "id": "ch-02",
+      "kind": "change",
+      "change_id": "chg-01",
+      "start_year": 1991,
+      "end_year": 2019,
+      "headline": "The land turns greener in the east",
+      "claims": [
+        {
+          "id": "cl-01",
+          "text": "The first family moved to Summerlin in 1991.",
+          "excerpt_ids": [
+            "ex-01-01"
+          ]
+        },
+        {
+          "id": "cl-02",
+          "text": "Summerlin began to take shape in 1990.",
+          "excerpt_ids": [
+            "ex-02-01"
+          ]
+        }
+      ],
+      "confidence": "likely",
+      "vision_check": {
+        "verdict": "not_run",
+        "note": null
+      }
+    },
+    {
+      "id": "ch-03",
+      "kind": "outro",
+      "change_id": null,
+      "start_year": 2020,
+      "end_year": 2026,
+      "headline": "Where it stands today",
+      "claims": [],
+      "confidence": null,
+      "vision_check": {
+        "verdict": "not_run",
+        "note": null
+      }
+    }
+  ],
+  "script": {
+    "word_count": 154,
+    "est_duration_s": 61.6,
+    "segments": [
+      {
+        "id": "seg-01",
+        "chapter_id": "ch-01",
+        "text": "This is Summerlin South, Nevada, seen from space by Landsat satellites, one summer at a time from 1984 to 2026. Over these years, the pictures show one lasting change. This film uses 43 summers of Landsat imagery. Each frame shows the same square of ground, 6 kilometres on a side. Each frame combines the clearest days of one summer, between June and September. Clouds and their shadows are removed, and gaps are left empty instead of being filled from other years.",
+        "year_from": 1984,
+        "year_to": 1990,
+        "claim_ids": []
+      },
+      {
+        "id": "seg-02",
+        "chapter_id": "ch-02",
+        "text": "Between 1991 and 2019, the land across the area turned greener on average, mostly in the east. In all, about 2500 hectares changed. One report says: The first family moved to Summerlin in 1991. One report also says: Summerlin began to take shape in 1990. The change held for eight summers in the record. Compare the 1991 and 2019 frames to see it.",
+        "year_from": 1991,
+        "year_to": 2019,
+        "claim_ids": [
+          "cl-01",
+          "cl-02"
+        ]
+      },
+      {
+        "id": "seg-03",
+        "chapter_id": "ch-03",
+        "text": "That is how Summerlin South, Nevada has changed since 1984.",
+        "year_from": 2020,
+        "year_to": 2026,
+        "claim_ids": []
+      }
+    ]
+  },
+  "validation": null,
+  "credits": [
+    "Landsat imagery courtesy of NASA and the U.S. Geological Survey.",
+    "Supported by the Michigan Space Grant Consortium, NASA grant 80NSSC20M0124."
+  ],
+  "generation": {
+    "duration_s": 27.63,
+    "usage": {
+      "exa_calls": 0,
+      "llm_calls": 4,
+      "vision_calls": 0
+    },
+    "warnings": []
+  }
+}

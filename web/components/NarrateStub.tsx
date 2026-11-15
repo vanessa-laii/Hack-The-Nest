@@ -78,7 +78,7 @@ export function NarrateStub({ storyId }: NarrateStubProps) {
           <ul className="space-y-2">
             {narration.segments.map((seg) => (
               <li key={seg.segment_id} className="flex flex-col gap-1">
-                <span className="font-label text-[11px] tabular-nums text-[#7A766E]">
+                <span className="em-chrome-label text-[#7A766E]">
                   {seg.segment_id}
                 </span>
                 {/* eslint-disable-next-line jsx-a11y/media-has-caption -- Phase 0 stub; captions land with FilmPlayer */}

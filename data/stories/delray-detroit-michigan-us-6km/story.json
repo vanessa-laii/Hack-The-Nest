@@ -1,0 +1,1262 @@
+{
+  "schema_version": "1.3",
+  "id": "delray-detroit-michigan-us-6km",
+  "is_sample": false,
+  "status": "complete",
+  "created_at": "2026-11-15T14:17:06Z",
+  "place": {
+    "query": "Delray, Detroit, Michigan",
+    "display_name": "Delray, Detroit, Michigan",
+    "lat": 42.289,
+    "lon": -83.112,
+    "bbox": [
+      -83.15207,
+      42.25936,
+      -83.07193,
+      42.31864
+    ],
+    "aoi_km": 6.0,
+    "admin": {
+      "city": "River Rouge",
+      "county": "Wayne County",
+      "state": "Michigan",
+      "country": "United States",
+      "country_code": "us"
+    }
+  },
+  "coverage": {
+    "first_year": 1984,
+    "last_year": 2026,
+    "season_months": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "years_skipped": []
+  },
+  "frames": [
+    {
+      "year": 1984,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/1984.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/1984.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_020031_19840611_02_T1",
+        "LT05_L2SP_020031_19840713_02_T1",
+        "LT05_L2SP_020031_19840729_02_T1",
+        "LT05_L2SP_019031_19840908_02_T1"
+      ],
+      "date_from": "1984-06-11",
+      "date_to": "1984-09-08",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1985,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/1985.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/1985.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_019031_19850623_02_T1",
+        "LT05_L2SP_020031_19850630_02_T1",
+        "LT05_L2SP_020031_19850801_02_T1"
+      ],
+      "date_from": "1985-06-23",
+      "date_to": "1985-08-01",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1986,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/1986.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/1986.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_020031_19860601_02_T1",
+        "LT05_L2SP_020031_19860617_02_T1",
+        "LT05_L2SP_020031_19860804_02_T1"
+      ],
+      "date_from": "1986-06-01",
+      "date_to": "1986-08-04",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1987,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/1987.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/1987.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_020031_19870604_02_T1",
+        "LT05_L2SP_019031_19870613_02_T1",
+        "LT05_L2SP_020031_19870807_02_T1",
+        "LT05_L2SP_020031_19870823_02_T1"
+      ],
+      "date_from": "1987-06-04",
+      "date_to": "1987-08-23",
+      "clear_pct": 97.7
+    },
+    {
+      "year": 1988,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/1988.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/1988.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_019031_19880615_02_T1",
+        "LT05_L2SP_020031_19880724_02_T1",
+        "LT05_L2SP_019031_19880802_02_T1"
+      ],
+      "date_from": "1988-06-15",
+      "date_to": "1988-08-02",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1989,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/1989.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/1989.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_019031_19890618_02_T1",
+        "LT05_L2SP_020031_19890711_02_T1",
+        "LT05_L2SP_020031_19890812_02_T1"
+      ],
+      "date_from": "1989-06-18",
+      "date_to": "1989-08-12",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1990,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/1990.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/1990.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_019031_19900621_02_T1",
+        "LT05_L2SP_019031_19900808_02_T1",
+        "LT05_L2SP_020031_19900815_02_T1",
+        "LT05_L2SP_020031_19900831_02_T1"
+      ],
+      "date_from": "1990-06-21",
+      "date_to": "1990-08-31",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1991,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/1991.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/1991.jpg",
+      "sensors": [
+        "Landsat 4",
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT04_L2SP_020031_19910607_02_T1",
+        "LT05_L2SP_019031_19910608_02_T1",
+        "LT05_L2SP_019031_19910811_02_T1",
+        "LT05_L2SP_019031_19910928_02_T1"
+      ],
+      "date_from": "1991-06-07",
+      "date_to": "1991-09-28",
+      "clear_pct": 99.6
+    },
+    {
+      "year": 1992,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/1992.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/1992.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_019031_19920610_02_T1",
+        "LT05_L2SP_020031_19920719_02_T1",
+        "LT05_L2SP_019031_19920829_02_T1"
+      ],
+      "date_from": "1992-06-10",
+      "date_to": "1992-08-29",
+      "clear_pct": 99.9
+    },
+    {
+      "year": 1993,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/1993.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/1993.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_019031_19930613_02_T1",
+        "LT05_L2SP_019031_19930715_02_T1",
+        "LT05_L2SP_019031_19930731_02_T1",
+        "LT05_L2SP_019031_19930901_02_T1"
+      ],
+      "date_from": "1993-06-13",
+      "date_to": "1993-09-01",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1994,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/1994.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/1994.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_020031_19940607_02_T1",
+        "LT05_L2SP_019031_19940819_02_T1",
+        "LT05_L2SP_020031_19940911_02_T1",
+        "LT05_L2SP_019031_19940920_02_T1"
+      ],
+      "date_from": "1994-06-07",
+      "date_to": "1994-09-20",
+      "clear_pct": 99.8
+    },
+    {
+      "year": 1995,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/1995.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/1995.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_019031_19950619_02_T1",
+        "LT05_L2SP_020031_19950712_02_T1",
+        "LT05_L2SP_020031_19950813_02_T1",
+        "LT05_L2SP_020031_19950914_02_T1"
+      ],
+      "date_from": "1995-06-19",
+      "date_to": "1995-09-14",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 1996,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/1996.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/1996.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_020030_19960628_02_T1",
+        "LT05_L2SP_020030_19960714_02_T1",
+        "LT05_L2SP_020030_19960815_02_T1",
+        "LT05_L2SP_020031_19960815_02_T1",
+        "LT05_L2SP_020030_19960831_02_T1",
+        "LT05_L2SP_020031_19960831_02_T1"
+      ],
+      "date_from": "1996-06-28",
+      "date_to": "1996-08-31",
+      "clear_pct": 98.1
+    },
+    {
+      "year": 1997,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/1997.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/1997.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_020030_19970615_02_T1",
+        "LT05_L2SP_020031_19970615_02_T1",
+        "LT05_L2SP_020030_19970802_02_T1",
+        "LT05_L2SP_020030_19970903_02_T1",
+        "LT05_L2SP_020031_19970903_02_T1"
+      ],
+      "date_from": "1997-06-15",
+      "date_to": "1997-09-03",
+      "clear_pct": 99.4
+    },
+    {
+      "year": 1998,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/1998.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/1998.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_020031_19980618_02_T1",
+        "LT05_L2SP_019031_19980713_02_T1",
+        "LT05_L2SP_020030_19980720_02_T1",
+        "LT05_L2SP_020031_19980720_02_T1",
+        "LT05_L2SP_020030_19980906_02_T1",
+        "LT05_L2SP_020031_19980906_02_T1"
+      ],
+      "date_from": "1998-06-18",
+      "date_to": "1998-09-06",
+      "clear_pct": 99.9
+    },
+    {
+      "year": 1999,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/1999.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/1999.jpg",
+      "sensors": [
+        "Landsat 5",
+        "Landsat 7"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_020031_19990605_02_T1",
+        "LT05_L2SP_020031_19990707_02_T1",
+        "LT05_L2SP_020031_19990925_02_T1",
+        "LE07_L2SP_019031_19990926_02_T1"
+      ],
+      "date_from": "1999-06-05",
+      "date_to": "1999-09-26",
+      "clear_pct": 99.9
+    },
+    {
+      "year": 2000,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/2000.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/2000.jpg",
+      "sensors": [
+        "Landsat 5",
+        "Landsat 7"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_020030_20000607_02_T1",
+        "LT05_L2SP_020031_20000607_02_T1",
+        "LE07_L2SP_020030_20000701_02_T1",
+        "LE07_L2SP_020031_20000701_02_T1",
+        "LT05_L2SP_020031_20000927_02_T1"
+      ],
+      "date_from": "2000-06-07",
+      "date_to": "2000-09-27",
+      "clear_pct": 98.9
+    },
+    {
+      "year": 2001,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/2001.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/2001.jpg",
+      "sensors": [
+        "Landsat 5",
+        "Landsat 7"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_019031_20010806_02_T1",
+        "LE07_L2SP_020030_20010821_02_T1",
+        "LE07_L2SP_020031_20010821_02_T1",
+        "LE07_L2SP_019031_20010830_02_T1",
+        "LT05_L2SP_020030_20010930_02_T1"
+      ],
+      "date_from": "2001-08-06",
+      "date_to": "2001-09-30",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2002,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/2002.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/2002.jpg",
+      "sensors": [
+        "Landsat 5",
+        "Landsat 7"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_020031_20020715_02_T1",
+        "LE07_L2SP_019031_20020716_02_T1",
+        "LE07_L2SP_019031_20020801_02_T1",
+        "LT05_L2SP_020031_20020901_02_T1"
+      ],
+      "date_from": "2002-07-15",
+      "date_to": "2002-09-01",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2003,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/2003.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/2003.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_019031_20030625_02_T1",
+        "LT05_L2SP_020031_20030819_02_T1",
+        "LT05_L2SP_019031_20030913_02_T1",
+        "LT05_L2SP_020031_20030920_02_T1"
+      ],
+      "date_from": "2003-06-25",
+      "date_to": "2003-09-20",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2004,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/2004.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/2004.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_020031_20040821_02_T1",
+        "LT05_L2SP_020031_20040906_02_T1",
+        "LT05_L2SP_019031_20040915_02_T1",
+        "LT05_L2SP_020031_20040922_02_T1"
+      ],
+      "date_from": "2004-08-21",
+      "date_to": "2004-09-22",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2005,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/2005.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/2005.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_019031_20050801_02_T1",
+        "LT05_L2SP_019031_20050817_02_T1",
+        "LT05_L2SP_019031_20050902_02_T1",
+        "LT05_L2SP_020031_20050909_02_T1"
+      ],
+      "date_from": "2005-08-01",
+      "date_to": "2005-09-09",
+      "clear_pct": 99.8
+    },
+    {
+      "year": 2006,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/2006.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/2006.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_020031_20060624_02_T1",
+        "LT05_L2SP_019031_20060719_02_T1",
+        "LT05_L2SP_019031_20060804_02_T1",
+        "LT05_L2SP_019031_20060921_02_T1"
+      ],
+      "date_from": "2006-06-24",
+      "date_to": "2006-09-21",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2007,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/2007.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/2007.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_020031_20070611_02_T1",
+        "LT05_L2SP_019031_20070620_02_T1",
+        "LT05_L2SP_019031_20070706_02_T1",
+        "LT05_L2SP_019031_20070924_02_T1"
+      ],
+      "date_from": "2007-06-11",
+      "date_to": "2007-09-24",
+      "clear_pct": 99.8
+    },
+    {
+      "year": 2008,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/2008.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/2008.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_020031_20080715_02_T1",
+        "LT05_L2SP_020031_20080816_02_T1",
+        "LT05_L2SP_020031_20080901_02_T1",
+        "LT05_L2SP_020031_20080917_02_T1"
+      ],
+      "date_from": "2008-07-15",
+      "date_to": "2008-09-17",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2009,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/2009.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/2009.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_019031_20090625_02_T1",
+        "LT05_L2SP_019031_20090727_02_T1",
+        "LT05_L2SP_020031_20090819_02_T1",
+        "LT05_L2SP_019031_20090913_02_T1"
+      ],
+      "date_from": "2009-06-25",
+      "date_to": "2009-09-13",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2010,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/2010.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/2010.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_020031_20100619_02_T1",
+        "LT05_L2SP_020031_20100705_02_T1",
+        "LT05_L2SP_019031_20100714_02_T1",
+        "LT05_L2SP_020031_20100806_02_T1"
+      ],
+      "date_from": "2010-06-19",
+      "date_to": "2010-08-06",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2011,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/2011.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/2011.jpg",
+      "sensors": [
+        "Landsat 5"
+      ],
+      "scene_ids": [
+        "LT05_L2SP_019031_20110701_02_T1",
+        "LT05_L2SP_019031_20110717_02_T1",
+        "LT05_L2SP_019031_20110818_02_T1",
+        "LT05_L2SP_019031_20110903_02_T1"
+      ],
+      "date_from": "2011-07-01",
+      "date_to": "2011-09-03",
+      "clear_pct": 99.9
+    },
+    {
+      "year": 2012,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/2012.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/2012.jpg",
+      "sensors": [
+        "Landsat 7"
+      ],
+      "scene_ids": [
+        "LE07_L2SP_020031_20120702_02_T1",
+        "LE07_L2SP_019031_20120711_02_T1",
+        "LE07_L2SP_020031_20120803_02_T1",
+        "LE07_L2SP_019031_20120828_02_T1"
+      ],
+      "date_from": "2012-07-02",
+      "date_to": "2012-08-28",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2013,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/2013.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/2013.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_019031_20130604_02_T1",
+        "LC08_L2SP_019031_20130620_02_T1",
+        "LC08_L2SP_020030_20130713_02_T1",
+        "LC08_L2SP_020031_20130713_02_T1",
+        "LC08_L2SP_019031_20130823_02_T1"
+      ],
+      "date_from": "2013-06-04",
+      "date_to": "2013-08-23",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2014,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/2014.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/2014.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_019031_20140607_02_T1",
+        "LC08_L2SP_020031_20140614_02_T1",
+        "LC08_L2SP_019031_20140826_02_T1",
+        "LC08_L2SP_019031_20140927_02_T1"
+      ],
+      "date_from": "2014-06-07",
+      "date_to": "2014-09-27",
+      "clear_pct": 99.9
+    },
+    {
+      "year": 2015,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/2015.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/2015.jpg",
+      "sensors": [
+        "Landsat 7",
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LE07_L2SP_019031_20150704_02_T1",
+        "LC08_L2SP_019031_20150728_02_T1",
+        "LC08_L2SP_019031_20150914_02_T1",
+        "LC08_L2SP_020030_20150921_02_T1",
+        "LC08_L2SP_020031_20150921_02_T1"
+      ],
+      "date_from": "2015-07-04",
+      "date_to": "2015-09-21",
+      "clear_pct": 99.9
+    },
+    {
+      "year": 2016,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/2016.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/2016.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_020030_20160603_02_T1",
+        "LC08_L2SP_019031_20160612_02_T1",
+        "LC08_L2SP_020030_20160619_02_T1",
+        "LC08_L2SP_020031_20160619_02_T1",
+        "LC08_L2SP_019031_20160916_02_T1"
+      ],
+      "date_from": "2016-06-03",
+      "date_to": "2016-09-16",
+      "clear_pct": 99.9
+    },
+    {
+      "year": 2017,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/2017.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/2017.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_019031_20170717_02_T1",
+        "LC08_L2SP_019031_20170802_02_T1",
+        "LC08_L2SP_020030_20170926_02_T1",
+        "LC08_L2SP_020031_20170926_02_T1"
+      ],
+      "date_from": "2017-07-17",
+      "date_to": "2017-09-26",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2018,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/2018.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/2018.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_019031_20180704_02_T1",
+        "LC08_L2SP_020030_20180711_02_T1",
+        "LC08_L2SP_020031_20180711_02_T1",
+        "LC08_L2SP_020031_20180812_02_T1",
+        "LC08_L2SP_020031_20180929_02_T1"
+      ],
+      "date_from": "2018-07-04",
+      "date_to": "2018-09-29",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2019,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/2019.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/2019.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_019031_20190621_02_T1",
+        "LC08_L2SP_020031_20190628_02_T1",
+        "LC08_L2SP_020030_20190714_02_T1",
+        "LC08_L2SP_020031_20190714_02_T1",
+        "LC08_L2SP_019031_20190723_02_T1"
+      ],
+      "date_from": "2019-06-21",
+      "date_to": "2019-07-23",
+      "clear_pct": 99.9
+    },
+    {
+      "year": 2020,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/2020.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/2020.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_020031_20200614_02_T1",
+        "LC08_L2SP_020030_20200630_02_T1",
+        "LC08_L2SP_020031_20200630_02_T1",
+        "LC08_L2SP_019031_20200709_02_T1",
+        "LC08_L2SP_019031_20200725_02_T1"
+      ],
+      "date_from": "2020-06-14",
+      "date_to": "2020-07-25",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2021,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/2021.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/2021.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_020031_20210617_02_T1",
+        "LC08_L2SP_020030_20210719_02_T1",
+        "LC08_L2SP_020030_20210820_02_T1",
+        "LC08_L2SP_019031_20210930_02_T1"
+      ],
+      "date_from": "2021-06-17",
+      "date_to": "2021-09-30",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2022,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/2022.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/2022.jpg",
+      "sensors": [
+        "Landsat 8",
+        "Landsat 9"
+      ],
+      "scene_ids": [
+        "LC09_L2SP_020031_20220628_02_T1",
+        "LC09_L2SP_020030_20220831_02_T1",
+        "LC09_L2SP_020031_20220831_02_T1",
+        "LC08_L2SP_019031_20220901_02_T1",
+        "LC08_L2SP_020030_20220908_02_T1"
+      ],
+      "date_from": "2022-06-28",
+      "date_to": "2022-09-08",
+      "clear_pct": 99.8
+    },
+    {
+      "year": 2023,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/2023.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/2023.jpg",
+      "sensors": [
+        "Landsat 8"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_020030_20230725_02_T1",
+        "LC08_L2SP_020031_20230725_02_T1",
+        "LC08_L2SP_019031_20230803_02_T1",
+        "LC08_L2SP_019031_20230819_02_T1",
+        "LC08_L2SP_019031_20230904_02_T1"
+      ],
+      "date_from": "2023-07-25",
+      "date_to": "2023-09-04",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2024,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/2024.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/2024.jpg",
+      "sensors": [
+        "Landsat 8",
+        "Landsat 9"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_020030_20240727_02_T1",
+        "LC08_L2SP_020030_20240913_02_T1",
+        "LC09_L2SP_019031_20240914_02_T1",
+        "LC09_L2SP_020030_20240921_02_T1",
+        "LC09_L2SP_020031_20240921_02_T1"
+      ],
+      "date_from": "2024-07-27",
+      "date_to": "2024-09-21",
+      "clear_pct": 99.9
+    },
+    {
+      "year": 2025,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/2025.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/2025.jpg",
+      "sensors": [
+        "Landsat 8",
+        "Landsat 9"
+      ],
+      "scene_ids": [
+        "LC08_L2SP_020030_20250714_02_T1",
+        "LC08_L2SP_020031_20250714_02_T1",
+        "LC09_L2SP_019031_20250715_02_T1",
+        "LC08_L2SP_019031_20250723_02_T1",
+        "LC09_L2SP_019031_20250917_02_T1"
+      ],
+      "date_from": "2025-07-14",
+      "date_to": "2025-09-17",
+      "clear_pct": 100.0
+    },
+    {
+      "year": 2026,
+      "image_url": "/files/stories/delray-detroit-michigan-us-6km/frames/2026.jpg",
+      "thumb_url": "/files/stories/delray-detroit-michigan-us-6km/thumbs/2026.jpg",
+      "sensors": [
+        "Landsat 9"
+      ],
+      "scene_ids": [
+        "LC09_L2SP_020031_20260607_02_T1",
+        "LC09_L2SP_019031_20260803_02_T1",
+        "LC09_L2SP_020030_20260911_02_T1",
+        "LC09_L2SP_020030_20260927_02_T1",
+        "LC09_L2SP_020031_20260927_02_T1"
+      ],
+      "date_from": "2026-06-07",
+      "date_to": "2026-09-27",
+      "clear_pct": 99.9
+    }
+  ],
+  "metrics": {
+    "series": [
+      {
+        "year": 1984,
+        "ndvi_mean": 0.3487,
+        "water_frac": 0.1507,
+        "built_frac": 0.1261
+      },
+      {
+        "year": 1985,
+        "ndvi_mean": 0.3709,
+        "water_frac": 0.1496,
+        "built_frac": 0.1296
+      },
+      {
+        "year": 1986,
+        "ndvi_mean": 0.3644,
+        "water_frac": 0.1532,
+        "built_frac": 0.1121
+      },
+      {
+        "year": 1987,
+        "ndvi_mean": 0.381,
+        "water_frac": 0.1525,
+        "built_frac": 0.0883
+      },
+      {
+        "year": 1988,
+        "ndvi_mean": 0.3195,
+        "water_frac": 0.1511,
+        "built_frac": 0.1666
+      },
+      {
+        "year": 1989,
+        "ndvi_mean": 0.3866,
+        "water_frac": 0.1491,
+        "built_frac": 0.1149
+      },
+      {
+        "year": 1990,
+        "ndvi_mean": 0.3888,
+        "water_frac": 0.1479,
+        "built_frac": 0.1398
+      },
+      {
+        "year": 1991,
+        "ndvi_mean": 0.3632,
+        "water_frac": 0.145,
+        "built_frac": 0.1661
+      },
+      {
+        "year": 1992,
+        "ndvi_mean": 0.4121,
+        "water_frac": 0.1495,
+        "built_frac": 0.062
+      },
+      {
+        "year": 1993,
+        "ndvi_mean": 0.3856,
+        "water_frac": 0.145,
+        "built_frac": 0.1501
+      },
+      {
+        "year": 1994,
+        "ndvi_mean": 0.3658,
+        "water_frac": 0.1442,
+        "built_frac": 0.1376
+      },
+      {
+        "year": 1995,
+        "ndvi_mean": 0.3959,
+        "water_frac": 0.154,
+        "built_frac": 0.0799
+      },
+      {
+        "year": 1996,
+        "ndvi_mean": 0.3772,
+        "water_frac": 0.149,
+        "built_frac": 0.1065
+      },
+      {
+        "year": 1997,
+        "ndvi_mean": 0.4003,
+        "water_frac": 0.1468,
+        "built_frac": 0.1537
+      },
+      {
+        "year": 1998,
+        "ndvi_mean": 0.3767,
+        "water_frac": 0.1486,
+        "built_frac": 0.1236
+      },
+      {
+        "year": 1999,
+        "ndvi_mean": 0.3666,
+        "water_frac": 0.1467,
+        "built_frac": 0.1595
+      },
+      {
+        "year": 2000,
+        "ndvi_mean": 0.3961,
+        "water_frac": 0.1435,
+        "built_frac": 0.1462
+      },
+      {
+        "year": 2001,
+        "ndvi_mean": 0.3617,
+        "water_frac": 0.1432,
+        "built_frac": 0.1922
+      },
+      {
+        "year": 2002,
+        "ndvi_mean": 0.3481,
+        "water_frac": 0.1446,
+        "built_frac": 0.1831
+      },
+      {
+        "year": 2003,
+        "ndvi_mean": 0.3968,
+        "water_frac": 0.1456,
+        "built_frac": 0.1561
+      },
+      {
+        "year": 2004,
+        "ndvi_mean": 0.409,
+        "water_frac": 0.1447,
+        "built_frac": 0.1459
+      },
+      {
+        "year": 2005,
+        "ndvi_mean": 0.3801,
+        "water_frac": 0.1435,
+        "built_frac": 0.1711
+      },
+      {
+        "year": 2006,
+        "ndvi_mean": 0.3977,
+        "water_frac": 0.1432,
+        "built_frac": 0.172
+      },
+      {
+        "year": 2007,
+        "ndvi_mean": 0.3728,
+        "water_frac": 0.1452,
+        "built_frac": 0.1809
+      },
+      {
+        "year": 2008,
+        "ndvi_mean": 0.3587,
+        "water_frac": 0.145,
+        "built_frac": 0.1791
+      },
+      {
+        "year": 2009,
+        "ndvi_mean": 0.3974,
+        "water_frac": 0.1391,
+        "built_frac": 0.1275
+      },
+      {
+        "year": 2010,
+        "ndvi_mean": 0.4021,
+        "water_frac": 0.1426,
+        "built_frac": 0.1392
+      },
+      {
+        "year": 2011,
+        "ndvi_mean": 0.4069,
+        "water_frac": 0.1406,
+        "built_frac": 0.1501
+      },
+      {
+        "year": 2012,
+        "ndvi_mean": 0.3801,
+        "water_frac": 0.1382,
+        "built_frac": 0.1694
+      },
+      {
+        "year": 2013,
+        "ndvi_mean": 0.4266,
+        "water_frac": 0.1411,
+        "built_frac": 0.1678
+      },
+      {
+        "year": 2014,
+        "ndvi_mean": 0.4309,
+        "water_frac": 0.1408,
+        "built_frac": 0.1564
+      },
+      {
+        "year": 2015,
+        "ndvi_mean": 0.4342,
+        "water_frac": 0.1402,
+        "built_frac": 0.1697
+      },
+      {
+        "year": 2016,
+        "ndvi_mean": 0.3765,
+        "water_frac": 0.1392,
+        "built_frac": 0.1969
+      },
+      {
+        "year": 2017,
+        "ndvi_mean": 0.3879,
+        "water_frac": 0.1398,
+        "built_frac": 0.1967
+      },
+      {
+        "year": 2018,
+        "ndvi_mean": 0.4062,
+        "water_frac": 0.1404,
+        "built_frac": 0.1778
+      },
+      {
+        "year": 2019,
+        "ndvi_mean": 0.4184,
+        "water_frac": 0.1396,
+        "built_frac": 0.169
+      },
+      {
+        "year": 2020,
+        "ndvi_mean": 0.3954,
+        "water_frac": 0.1398,
+        "built_frac": 0.2014
+      },
+      {
+        "year": 2021,
+        "ndvi_mean": 0.4059,
+        "water_frac": 0.1406,
+        "built_frac": 0.1855
+      },
+      {
+        "year": 2022,
+        "ndvi_mean": 0.4035,
+        "water_frac": 0.1377,
+        "built_frac": 0.2006
+      },
+      {
+        "year": 2023,
+        "ndvi_mean": 0.4113,
+        "water_frac": 0.1416,
+        "built_frac": 0.1568
+      },
+      {
+        "year": 2024,
+        "ndvi_mean": 0.3838,
+        "water_frac": 0.1427,
+        "built_frac": 0.185
+      },
+      {
+        "year": 2025,
+        "ndvi_mean": 0.3934,
+        "water_frac": 0.1401,
+        "built_frac": 0.1843
+      },
+      {
+        "year": 2026,
+        "ndvi_mean": 0.4036,
+        "water_frac": 0.1406,
+        "built_frac": 0.1817
+      }
+    ]
+  },
+  "changes": [
+    {
+      "id": "chg-01",
+      "kind": "urban_growth",
+      "metric": "built_frac",
+      "start_year": 2019,
+      "end_year": 2021,
+      "magnitude": 0.9936,
+      "scope": "local",
+      "area_ha": 28.2,
+      "persistence_years": 6,
+      "region": {
+        "bbox": [
+          -83.10879,
+          42.29048,
+          -83.09237,
+          42.30619
+        ],
+        "description": "a 28 ha area in the north part, where land was cleared or built over"
+      },
+      "before_year": 2019,
+      "after_year": 2021,
+      "mask_url": "/files/stories/delray-detroit-michigan-us-6km/masks/chg-01.png",
+      "sensor_switch_flag": false
+    },
+    {
+      "id": "chg-02",
+      "kind": "urban_growth",
+      "metric": "built_frac",
+      "start_year": 2015,
+      "end_year": 2016,
+      "magnitude": 1.0,
+      "scope": "local",
+      "area_ha": 16.3,
+      "persistence_years": 10,
+      "region": {
+        "bbox": [
+          -83.09397,
+          42.27062,
+          -83.07914,
+          42.27655
+        ],
+        "description": "a 16 ha area in the southeast part, where land was cleared or built over"
+      },
+      "before_year": 2015,
+      "after_year": 2016,
+      "mask_url": "/files/stories/delray-detroit-michigan-us-6km/masks/chg-02.png",
+      "sensor_switch_flag": false
+    },
+    {
+      "id": "chg-03",
+      "kind": "urban_growth",
+      "metric": "built_frac",
+      "start_year": 2010,
+      "end_year": 2011,
+      "magnitude": 1.0,
+      "scope": "local",
+      "area_ha": 4.2,
+      "persistence_years": 16,
+      "region": {
+        "bbox": [
+          -83.08475,
+          42.29404,
+          -83.07914,
+          42.29641
+        ],
+        "description": "a 4 ha area in the east part, where land was cleared or built over"
+      },
+      "before_year": 2010,
+      "after_year": 2011,
+      "mask_url": "/files/stories/delray-detroit-michigan-us-6km/masks/chg-03.png",
+      "sensor_switch_flag": true
+    }
+  ],
+  "sources": [],
+  "chapters": [
+    {
+      "id": "ch-01",
+      "kind": "intro",
+      "change_id": null,
+      "start_year": 1984,
+      "end_year": 2009,
+      "headline": "Delray, Detroit, Michigan in 1984",
+      "claims": [],
+      "confidence": null,
+      "vision_check": {
+        "verdict": "not_run",
+        "note": null
+      }
+    },
+    {
+      "id": "ch-02",
+      "kind": "change",
+      "change_id": "chg-03",
+      "start_year": 2010,
+      "end_year": 2011,
+      "headline": "Land cleared or built over in the east",
+      "claims": [],
+      "confidence": "cause_unknown",
+      "vision_check": {
+        "verdict": "not_run",
+        "note": null
+      }
+    },
+    {
+      "id": "ch-03",
+      "kind": "change",
+      "change_id": "chg-02",
+      "start_year": 2015,
+      "end_year": 2016,
+      "headline": "Land cleared or built over in the southeast",
+      "claims": [],
+      "confidence": "cause_unknown",
+      "vision_check": {
+        "verdict": "not_run",
+        "note": null
+      }
+    },
+    {
+      "id": "ch-04",
+      "kind": "change",
+      "change_id": "chg-01",
+      "start_year": 2019,
+      "end_year": 2021,
+      "headline": "Land cleared or built over in the north",
+      "claims": [],
+      "confidence": "cause_unknown",
+      "vision_check": {
+        "verdict": "not_run",
+        "note": null
+      }
+    },
+    {
+      "id": "ch-05",
+      "kind": "outro",
+      "change_id": null,
+      "start_year": 2022,
+      "end_year": 2026,
+      "headline": "Where it stands today",
+      "claims": [],
+      "confidence": null,
+      "vision_check": {
+        "verdict": "not_run",
+        "note": null
+      }
+    }
+  ],
+  "script": {
+    "word_count": 158,
+    "est_duration_s": 63.2,
+    "segments": [
+      {
+        "id": "seg-01",
+        "chapter_id": "ch-01",
+        "text": "This is Delray, Detroit, Michigan, seen from space by Landsat satellites, one summer at a time from 1984 to 2026. In 1984, water covered about 15 percent of the view.",
+        "year_from": 1984,
+        "year_to": 2009,
+        "claim_ids": []
+      },
+      {
+        "id": "seg-02",
+        "chapter_id": "ch-02",
+        "text": "Between 2010 and 2011, about 4 hectares were cleared or built over in the east. Part of it may come from switching Landsat satellites. The change held for 16 summers in the record. Compare the 2010 and 2011 frames to see it.",
+        "year_from": 2010,
+        "year_to": 2014,
+        "claim_ids": []
+      },
+      {
+        "id": "seg-03",
+        "chapter_id": "ch-03",
+        "text": "Between 2015 and 2016, about 16 hectares were cleared or built over in the southeast. The change held for ten summers in the record. Compare the 2015 and 2016 frames to see it.",
+        "year_from": 2015,
+        "year_to": 2018,
+        "claim_ids": []
+      },
+      {
+        "id": "seg-04",
+        "chapter_id": "ch-04",
+        "text": "Between 2019 and 2021, about 28 hectares were cleared or built over in the north. The change held for six summers in the record. Compare the 2019 and 2021 frames to see it.",
+        "year_from": 2019,
+        "year_to": 2021,
+        "claim_ids": []
+      },
+      {
+        "id": "seg-05",
+        "chapter_id": "ch-05",
+        "text": "By 2026, water covered about 14 percent of the view. That is how Delray, Detroit, Michigan has changed since 1984.",
+        "year_from": 2022,
+        "year_to": 2026,
+        "claim_ids": []
+      }
+    ]
+  },
+  "validation": null,
+  "credits": [
+    "Landsat imagery courtesy of NASA and the U.S. Geological Survey.",
+    "Supported by the Michigan Space Grant Consortium, NASA grant 80NSSC20M0124."
+  ],
+  "generation": {
+    "duration_s": 29.02,
+    "usage": {
+      "exa_calls": 0,
+      "llm_calls": 9,
+      "vision_calls": 0
+    },
+    "warnings": []
+  }
+}
