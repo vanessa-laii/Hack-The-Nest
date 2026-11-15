@@ -8,7 +8,8 @@ import fs from "node:fs";
 import path from "node:path";
 
 export function getDataDir(): string {
-  const raw = process.env.DATA_DIR?.trim() || "../data";
+  // Prefer web/data for Vercel (Root Directory = web); ../data for local monorepo.
+  const raw = process.env.DATA_DIR?.trim() || "./data";
   if (path.isAbsolute(raw)) return raw;
   return path.resolve(/*turbopackIgnore: true*/ process.cwd(), raw);
 }

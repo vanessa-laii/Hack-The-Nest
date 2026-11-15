@@ -3,8 +3,11 @@
 .env.*
 !.env.example
 
-# Data and caches (stories, frames, audio, traces)
+# Local/backend data at repo root (optional). Vercel ships web/data/stories.
 data/
+!web/data/
+!web/data/**
+data.bak*/
 *.tif
 *.tiff
 
