@@ -47,11 +47,18 @@ TIMEOUT_S = 15.0
 # top, take the top. Obscure features all share one flat importance, so rule 1
 # can't separate them; e.g. "Willow Run, Michigan" gives 4 hits at Ypsilanti and
 # 2 unrelated creeks, and the majority cluster is the real answer.
+# Exception for tiny settlements: when the top is a town or city, a hamlet (or a census
+# area, a farm, a lone house) is never its rival. "Paradise, California" gives the Camp
+# Fire town and a Mono County hamlet of a few dozen people with similar importance.
+# We compare kinds, not place_rank gaps: Paris, Texas (rank 16) is 4 ranks below
+# Paris, France (rank 12) yet is a real town people mean, so it must stay a rival.
 # At least one rival → PLACE_AMBIGUOUS with up to MAX_CANDIDATES candidates.
 RIVAL_IMPORTANCE_RATIO = 0.5
 RIVAL_MIN_KM = 25.0
 OBSCURE_IMPORTANCE = 0.2
 MAX_CANDIDATES = 5
+TOWN_OR_BIGGER = {"city", "town", "municipality"}
+MINOR_SETTLEMENTS = {"hamlet", "isolated_dwelling", "farm", "locality", "census"}
 
 # Nominatim feature types that mean "open sea", not a lake or reservoir (FR-3).
 # Bays and straits are left out on purpose: they usually have land in a 6 km box.
@@ -331,12 +338,20 @@ def _majority_is_top(top: dict, land: list[dict]) -> bool:
     return same_count * 2 > len(land)
 
 
+def _is_minor_settlement(res: dict, top: dict) -> bool:
+    """A hamlet-sized place next to a top town or city (tiny-settlement exception above)."""
+    top_is_town = _kind(top) in TOWN_OR_BIGGER
+    return top_is_town and _kind(res) in MINOR_SETTLEMENTS
+
+
 def _pick_rivals(top: dict, land: list[dict]) -> list[dict]:
     """The top result plus every rival, each a different place from those already picked."""
     floor = top["_imp"] * RIVAL_IMPORTANCE_RATIO
     picks = [top]
     for res in land[1:]:
         if res["_imp"] < floor:
+            continue
+        if _is_minor_settlement(res, top):
             continue
         already_picked = any(_same_place(res, p) for p in picks)
         if not already_picked:

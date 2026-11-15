@@ -1,0 +1,91 @@
+# Writes results.json for the window-means approach from score.json plus the notes below.
+# Inputs: spikes/s3-changes/window-means/score.json (run score.py window-means first).
+# Outputs: spikes/s3-changes/window-means/results.json.
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+
+NOTES = {
+    "approach": "window-means",
+    "thresholds": {
+        "WINDOW_YEARS": "3 summers per side: averages out one odd summer, still dates a change "
+                        "to about a year. k=2 doubled the false positives; k=4 lost recall and "
+                        "fired on the control.",
+        "NOISE_Z": "4 standard errors of the window-mean difference; noise = 1.4826 x MAD of "
+                   "first differences / sqrt(2), so a steady trend is not counted as noise. Z=3 "
+                   "fired on the control (water 1987-88); Z=5 gives the same recall.",
+        "MIN_JUMP": "ndvi_mean 0.05 (a tenth of the area going green->bare), water_frac 0.02 "
+                    "(~0.7 km2 at 6 km), built_frac 0.03 (~1 km2). Floors stop very quiet "
+                    "series (e.g. desert water_frac, noise 0.0004) from reporting trivia.",
+        "PIXEL_NDVI_JUMP / PIXEL_CLASS_JUMP": "0.15 NDVI (~4x the noise of a 3-summer pixel "
+                    "mean) / class flipped in >= half the summers: used to draw the region.",
+        "MIN_REGION_SHARE": "0.5% of the area must show the change per pixel, else it is an "
+                            "area-wide shift (light, haze, calibration) with no place on a map.",
+        "LOCAL_MIN_PATCH_HA + LOCAL_CLASS_JUMP": "4 ha connected patch whose built-up class "
+                    "fully flipped (0/3 -> 3/3 summers or back). The control's largest such "
+                    "patch at any split is 23 px (~2 ha); 2.5-4 ha all keep the control at 0. "
+                    "2-of-3 flips let the control reach 111 px, so a full flip is required.",
+        "PERSIST_MIN_YEARS": "2 (FR-22); one odd summer is forgiven, two in a row end it.",
+        "old-level check": "the k summers before the before-window must sit on the old side of "
+                           "the midpoint; removes 2-summer excursions (Central Park water "
+                           "1986-87).",
+        "merge": "same-direction steps <= 2k summers apart with no reversal become one change "
+                 "(Lake Mead 2001-2021 instead of four steps).",
+        "BURN_DNBR_MIN": "0.27 (USGS moderate severity) on the changed pixels, first summer "
+                         "after; plus the drop must happen within 2 summers.",
+        "SHORE_WATER_SHARE": "0.5 of new 'built' pixels were water in any earlier summer -> "
+                             "exposed lake bed, water_loss (Lake Mead 2021: 42% in the "
+                             "before-window only, 71% over all earlier summers).",
+        "DESERT rule": "mean NDVI < 0.2 before and the pixels leaving 'built' gained >= 0.05 "
+                       "NDVI -> urban_growth (bare soil passes the built test; Summerlin's "
+                       "built_frac falls 1.0 -> 0.27 as suburbs replace desert).",
+        "DR-6": "main sensor family per year (TM if any L4/5, else OLI if any L8/9, else "
+                "ETM+); flag if start or end is within 1 year of a family change.",
+    },
+    "tried": [
+        "Series only, no merging: recall 3/9, Lake Mead's decline split into 4 steps, "
+        "control 1 (water 1987-88 excursion), Lake Mead urban_growth 1.",
+        "+ step merging, old-level check, any-earlier-summer shoreline test, pixel-based desert "
+        "rule: recall 4/9, control 0, FP 1. Willow Run and Delray invisible area-wide (their "
+        "k=3 jumps are z < 3.5 and < 0.03 built_frac).",
+        "+ local built-up patches with 2-of-3 flips: control 4 changes. Full flip: control 0, "
+        "recall 8/9.",
+        "Joining touching local patches of the same direction (Delray deck + plaza).",
+        "Sweep: local 2.5/3/4/5 ha -> recall 8/8/8/7 of 9, control 0 for all; Z 3/4/5 -> "
+        "control 1/0/0; k 2/3/4 -> control 1/0/2.",
+    ],
+    "weaknesses": [
+        "Lake Mead 2023 water_gain is missed: the 2023 rise (+0.03) only undoes a 2022 low; a "
+        "3-year window mean cannot see a 1-2 summer change at the end of the record.",
+        "Short or end-of-record changes in general: a change needs k summers after it, so "
+        "anything in the last 2 summers is invisible; fast-regrowing fires (grass) too.",
+        "Local patches add false positives against the gold set (11 total), though most look "
+        "like real local projects (Palm Jumeirah islands, Summerlin infill, Willow Run 2022-23, "
+        "Delray 2015-16). Willow Run 1986-87 'demolition' leans on the odd 1984 summer.",
+        "Local layer is built-up only; local vegetation or water patches were not tried "
+        "(farm rotation makes NDVI patches noisy: Willow Run shows 270-px NDVI patches).",
+        "The 4 ha local floor was set against the control's noise (~2x its largest patch); one "
+        "control is thin evidence for an unknown city.",
+        "The desert rule and the shrinking-lake rule rename changes; a real town built on a "
+        "former lake bed would be told as water_loss.",
+        "Merged trends span long years (Lake Mead 2001-2021); the film may want sub-steps.",
+        "Local magnitudes are tiny in built_frac units (patch share of the whole area), so the "
+        "narration must not present them as area-wide.",
+        "Region bbox maps pixels linearly to place.bbox (UTM square vs lon/lat envelope): off by "
+        "at most a pixel or two.",
+        "Only 7 scored places; thresholds are physical but untested on forests, farms, snow.",
+    ],
+}
+
+
+def main() -> None:
+    score = json.loads((HERE / "score.json").read_text(encoding="utf-8"))
+    results = {"summary": score["summary"], **NOTES}
+    (HERE / "results.json").write_text(json.dumps(results, indent=2), encoding="utf-8")
+
+
+if __name__ == "__main__":
+    main()

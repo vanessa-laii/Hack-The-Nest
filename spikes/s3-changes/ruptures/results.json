@@ -1,0 +1,96 @@
+{
+  "approach": "ruptures",
+  "summary": {
+    "recall": 0.333,
+    "matched": 3,
+    "expected": 9,
+    "control_changes": 0,
+    "false_positives": 3,
+    "schema_errors": 0,
+    "lake_mead_urban_growth": 0,
+    "max_seconds": 0.566
+  },
+  "pass_bar": {
+    "recall_ge_0.8": false,
+    "control_zero": true,
+    "schema_valid": true,
+    "under_2s": true
+  },
+  "found": {
+    "lake-mead": ["water_loss 2001-2007 (-0.170)", "water_loss 2021-2022 (-0.051)", "water_loss 2013-2014 (-0.049, sensor flag)"],
+    "paradise": ["burn 2018-2019 (-0.227 NDVI), across most of the area (73%)"],
+    "summerlin": ["other/built_frac 1988-2014 (-0.729, sensor flag)"],
+    "palm-jumeirah": ["water_loss 2002-2006 (-0.154, sensor flag), northeast side", "water_loss 2012-2024 (-0.096, sensor flag), east side"],
+    "central-park": [],
+    "ypsilanti": [],
+    "willow-run": [],
+    "delray": []
+  },
+  "false_positives_reviewed": {
+    "lake-mead water_loss 2021-2022": "Real: Lake Mead's record low was 2022. Outside the gold window (2000-2015 +-2), so the scorer counts it as a false positive.",
+    "palm-jumeirah water_loss 2012-2024": "Real: the frames show new reclaimed land on the east side (Dubai Harbour) between 2012 and 2024. Not in the gold list.",
+    "summerlin other/built_frac": "Real change, wrong kind: see weaknesses (desert soil counts as built)."
+  },
+  "missed": {
+    "lake-mead water_gain 2023": "2023-2024 is only ~0.03 above the single low year 2022 and falls back by 2026; against a 3-year window it is not a rise at all. No sensible penalty makes a 2-year, 2-sigma bump a level change without also firing on the control.",
+    "summerlin urban_growth": "Detected, but as other/built_frac -0.73: bare desert passes the built_frac test (NDBI > 0, NDVI < 0.2), so the area read 100% 'built' in 1984 and building a city with lawns LOWERED it. Following the README mapping (built falls -> other) gives the wrong kind. This is a metric-definition problem, best fixed in the contract (e.g. a bare-soil exclusion, like schema 1.1's water exclusion), not with a detector hack.",
+    "willow-run x3 (demolition 2014-15, test track 2016-18, runway 2013-15)": "Each is ~1% of the 36 km2 square. built_frac noise there is sigma 0.011 with single-year dips (1992, 2014, 2023) of 0.03-0.04, so a 1% step is below both the physical minimum (3%) and 3 sigma. Not visible in an area-wide series at 6 km.",
+    "delray urban_growth 2019-2024 (bridge)": "Same: the bridge and port of entry are a small share of the square and built_frac noise is sigma 0.020 (haze, Detroit summers)."
+  },
+  "method": {
+    "segmentation": "ruptures PELT, model='l2' (mean shift), min_size=3 years, jump=1, run separately on ndvi_mean, water_frac, built_frac.",
+    "penalty": "pen = 2 * sigma^2 * ln(n) (BIC for a mean shift in Gaussian noise), sigma = 1.4826 * MAD(first differences) / sqrt(2), floored at 0.005 / 0.002 / 0.003 (ndvi / water / built) because flat, 4-decimal series would otherwise give sigma ~ 0. Scaling by each series' own sigma is what lets one rule serve a noisy city and a calm lake.",
+    "merging": "Back-to-back shifts in the same direction merge into one gradual change if the pause between them is <= 5 years (PELT cuts a ramp into steps). start_year = last year of the old level, end_year = first year of the new level; magnitude = mean(new level segment) - mean(old level segment).",
+    "thresholds": {
+      "MIN_JUMP": {"ndvi_mean": 0.05, "water_frac": 0.02, "built_frac": 0.03, "why": "NDVI 0.05 ~ healthy vs stressed canopy, beyond sun-angle/phenology spread; 2-3% of the area ~ 0.7-1.1 km2 of a 6 km square, visible in the film. built gets more room because its NDBI test is the noisiest."},
+      "MIN_JUMP_SIGMAS": {"value": 3.0, "why": "43 years of noise: 2 sigma would fire by chance on the control."},
+      "MIN_SEGMENT_YEARS": {"value": 3, "why": "A 2-year level can be one hazy summer plus a neighbour; with 2, the control fires (Central Park water 1986-87)."},
+      "MIN_PERSISTENCE": {"value": 2, "why": "FR-22; persistence_years = consecutive years from end_year that stay nearer the new level than the old. Burns exempt."},
+      "region_pixel_threshold": {"ndvi": 0.15, "water_or_built_class": 0.5, "why": "Per-pixel means over up to 3 years each side. NDVI 0.15 ~ 2.5x the control's per-pixel flicker (0.06, ADR-002); for water/built the pixel's class flipped in most window years."},
+      "MIN_REGION_SHARE": {"value": 0.005, "why": "Largest 8-connected changed area must be >= 0.5% of the square (~0.18 km2, ~200 pixels): a real change is one place, not salt-and-pepper."},
+      "MIN_EXPLAINED_SHARE": {"value": 0.2, "why": "That area must hold >= 20% of the whole per-pixel change. A sensor/haze/phenology shift moves every pixel a little, so its largest area holds ~1-7% (control 2%, Paradise burn-scar 'built' rise 7%, Palm diffuse greening 3%, Summerlin greening 1%); real changes hold 28-90%."},
+      "burn": {"min_ndvi_drop": 0.10, "sudden_share": 0.7, "min_dnbr": 0.27, "why": "Large NDVI drop, >= 70% of it in one year, and the changed area's median dNBR (NIR vs SWIR2) >= 0.27, the USGS moderate-low severity class."},
+      "shrinking_lake_rule": "A built_frac rise whose changed pixels were >= 50% water in the before window is exposed shore / reclaimed land: dropped if a water_loss already covers those years, otherwise relabelled water_loss. Never urban_growth.",
+      "burn_scar_rule": "A built_frac rise in the same years as a burn whose changed pixels lie >= 50% inside the burn area is the scar (burnt ground passes the built test): dropped.",
+      "DR-6": "Each year gets an instrument family (OLI if L8/L9 present, else TM if L4/L5, else ETM+ = L7-only). A switch year is one whose family differs from the previous kept year. Flag if start or end year is within 1 year of a switch."
+    },
+    "ranking": "Largest first by |magnitude| / MIN_JUMP[metric], so metrics in different units compare fairly. At most 5 (HL-2)."
+  },
+  "sensitivity": {
+    "note": "Changing one knob at a time, counts per place (lake, paradise, summerlin, palm, central-park, ypsilanti, willow, delray), baseline 3/1/1/2/0/0/0/0.",
+    "penalty_factor_1_or_4": "no change: the size, noise and region tests decide, not the penalty",
+    "MIN_JUMP_SIGMAS_2": "lake-mead +1, control still 0",
+    "MIN_JUMP_SIGMAS_4": "lake-mead 1 (drops the two 0.05 steps)",
+    "MIN_EXPLAINED_SHARE_0.1_or_0.3": "no change",
+    "MIN_EXPLAINED_SHARE_0": "paradise +1 (burn scar as urban_growth would survive the region-size test only), control still 0",
+    "MIN_SEGMENT_YEARS_2": "control 1, palm +1, summerlin +1, willow +1: the main guard against 2-year blips",
+    "MIN_REGION_SHARE_0": "no change (explained-share test catches the same cases)"
+  },
+  "tried": [
+    "min_size=2 and merging any same-direction run: Lake Mead became one 2000-2022 change, Palm one 2002-2020 change, Willow Run/Ypsilanti a 1985-2013 'vegetation_gain' ramp, and the control produced 3 changes (built 1986-1998 +0.12, two water blips).",
+    "Pause limit for merging (5 years) and min_size=3: removed the long drift ramps and the control's blips.",
+    "Burn-scar rule by 'changed pixels were green (NDVI >= 0.4) before': failed on Paradise (houses/roads in the forest are mixed pixels). Replaced by 'changed pixels lie inside the burn area'.",
+    "Region-coherence tests: largest-area size alone missed some diffuse cases; adding the explained-share test cleanly split real (>= 0.28) from drift (<= 0.07).",
+    "Looked at frames: Summerlin 1988 vs 2014 (desert -> suburb with golf courses), Palm Jumeirah 2012 vs 2024 (new Dubai Harbour land on the east side)."
+  ],
+  "weaknesses": [
+    "Recall 3/9 is far below the 80% bar. Four misses (Willow Run x3, Delray) are changes of ~1% of the square under 2-3% series noise: no series-based detector at 6 km will see them without lowering thresholds to where the control fires. They need a per-pixel detector run directly on the composites, or a smaller area.",
+    "Summerlin is detected with the wrong kind because built_frac counts bare desert as built. Needs a contract-level metric fix (agreed with Vanessa), not a detector rule.",
+    "Short changes (Lake Mead's 2023 rebound) are invisible by design: min_size=3 and 3 sigma.",
+    "Gradual changes are cut at 5-year plateaus, so Lake Mead's decline is 3 separate water_loss changes instead of one 2000-2022 story; the agent must stitch them.",
+    "The burn kind relies on dNBR; a clear-cut also passes. Burns are only detected on ndvi_mean, so a fire in a scrubby, low-NDVI area (< 0.10 drop) becomes vegetation_loss.",
+    "The lon/lat bbox maps pixel extents linearly onto place.bbox (the composite is a UTM square), so edges can be off by a pixel or two.",
+    "8-connected BFS in pure Python is ~0.1-0.3 s for large masks (Paradise 73%); fine for <2 s but the slowest part.",
+    "Tuned and checked on 8 places only; the explained-share gap (0.07 vs 0.28) is wide but rests on few examples."
+  ],
+  "dependency": {
+    "package": "ruptures==1.1.10",
+    "pulls_in": "scipy (1.18.1 here) and numpy",
+    "timing_note": "0.5-0.65 s max per place in repeated runs; one run hit 1.49 s while other spike agents were loading the machine.",
+    "note": "Python 3.12 wheel installed cleanly on Windows. Only rpt.Pelt(model='l2') is used: about 20 lines of dynamic programming that could be written in numpy if the extra dependency is not wanted."
+  },
+  "files": {
+    "detect": "spikes/s3-changes/ruptures/detect.py",
+    "score": "spikes/s3-changes/ruptures/score.json"
+  }
+}

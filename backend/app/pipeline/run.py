@@ -1,6 +1,6 @@
 # Runs the imagery half of a story build: place → scenes → yearly composites → frames, metrics.
 # Inputs: a place query (or a picked lat/lon/display_name), aoi_km, and a `sink` for build events.
-# Outputs: frames/, thumbs/ and imagery.json under DATA_DIR/stories/<id>/, plus an ImageryResult.
+# Outputs: frames/, thumbs/, composites.npz, imagery.json in DATA_DIR/stories/<id>/; ImageryResult.
 #
 # How it works:
 #   1. Find the place (geocode) and build the square area around it (AOI).
@@ -111,6 +111,18 @@ def file_url(path: Path) -> str:
 def seconds_since(start: float) -> float:
     """Seconds since a perf_counter() reading, rounded for the timings record."""
     return round(time.perf_counter() - start, 2)
+
+
+def save_composites(path: Path, kept: dict[int, YearComposite]) -> None:
+    """Saves the kept years' raw composites as one compressed .npz (years, dn [Y, 6, H, W]).
+    Change detection and change masks work per pixel, and rebuilding composites would mean
+    re-reading ~250 scenes. Atomic write, like every other output."""
+    years = sorted(kept)
+    dn = np.stack([kept[year].dn for year in years])
+    tmp = path.with_name(path.name + ".tmp")
+    with open(tmp, "wb") as f:
+        np.savez_compressed(f, years=np.array(years, dtype=np.int16), dn=dn)
+    tmp.replace(path)
 
 
 def write_json(path: Path, obj: dict) -> None:
@@ -360,6 +372,9 @@ async def run_imagery(query: str, *, lat: float | None = None, lon: float | None
     # 7. Save
     sections = build_sections(place, aoi, kept, skipped, paths, series_rows)
     timings["total_s"] = seconds_since(start)
+    # Composites first: imagery.json is the "build finished" marker, so a reader that sees it
+    # must never find an older composites.npz next to it.
+    await asyncio.to_thread(save_composites, out / "composites.npz", kept)
     write_json(out / "imagery.json", {**sections, "timings": timings})
     return ImageryResult(story_id=emit.story_id, place=place, aoi=aoi, kept=kept,
                          sections=sections, timings=timings)

@@ -1,0 +1,58 @@
+{
+  "approach": "segments",
+  "method": "Per metric series: robust noise (MAD of second differences / sqrt 6), one-year despiking, exact best piecewise-linear fit (independent straight segments, dynamic programming, 1-6 segments, >= 3 years each) chosen by BIC. Neighbouring same-direction slopes and jumps of the fitted line join into one movement; movements >= max(physical floor, 4 x noise) that persist >= 2 years (FR-22) become candidates. Each candidate gets a per-pixel before/after map (3-year windows, same index definitions as metrics.py); the largest 4-connected patch must cover >= 1% of the area. Cross-metric rules name the kind; DR-6 flags sensor switches; top 5 by size in noise units.",
+  "summary": {
+    "recall": 0.444,
+    "matched": 4,
+    "expected": 9,
+    "control_changes": 0,
+    "false_positives": 3,
+    "schema_errors": 0,
+    "lake_mead_urban_growth": 0,
+    "max_seconds": 0.76
+  },
+  "found": {
+    "lake-mead": ["water_loss 1999-2010 -0.215 (match)", "water_loss 1984-1991 -0.064", "water_gain 1992-1998 +0.062", "water_loss 2013-2014 -0.043 [sensor]"],
+    "paradise": ["burn 2018-2020 -0.198 ndvi (match, dNBR-checked)", "vegetation_gain 1985-1999 +0.052 (patch only just over 1%)"],
+    "summerlin": ["urban_growth ndvi_mean 1991-2019 +0.107 (match, desert-suburb rule)"],
+    "palm-jumeirah": ["water_loss 2002-2019 -0.200 [sensor] (match; reclamation step + later decline merged)"],
+    "central-park": [],
+    "ypsilanti": [],
+    "willow-run": [],
+    "delray": []
+  },
+  "thresholds": {
+    "PHYSICAL_FLOOR": {"value": {"ndvi_mean": 0.03, "water_frac": 0.02, "built_frac": 0.02}, "why": "0.03 NDVI ~ dry vs wet summer for the same vegetation; 0.02 of a 6 km square ~ 0.7 km2 (a reservoir arm, a subdivision)."},
+    "NOISE_K": {"value": 4.0, "why": "Change must be >= 4 x the series' own year-to-year noise, estimated from second differences so a real slow trend is not counted as noise. Scales per place and metric (e.g. Central Park built_frac noise 0.019 -> 0.074 threshold; Lake Mead water 0.008 -> 0.031)."},
+    "SPIKE_K / SPIKE_AGREE": {"value": [3.0, 0.5], "why": "A year >= 3 noise away from its neighbours' mean, with neighbours agreeing within half that jump, is a cloud/haze spike and is replaced before fitting."},
+    "MAX_SEGMENTS / MIN_SEGMENT_YEARS": {"value": [6, 3], "why": "LandTrendr's usual max; a slope needs >= 3 years to be measurable. BIC charges 3 parameters per extra segment."},
+    "PERSIST_MIN": {"value": 2, "why": "FR-22. Persistence = consecutive years from the end year that stay past the halfway level between before and after. Burns exempt (sudden)."},
+    "MIN_PATCH_SHARE": {"value": 0.01, "why": "The largest connected patch of changed pixels must cover >= 1% of the area (~0.36 km2). Real land change comes in blocks; sensor/haze/season effects flip scattered pixels. This is the gate that makes the control 0: Central Park's series-level candidates (built_frac +0.15 1992-2001 etc.) had largest patches of 0.05-0.27% of the area, while real changes had 2.5-85%."},
+    "PIXEL_NDVI_CHANGE / PIXEL_CLASS_CHANGE": {"value": [0.1, 0.5], "why": "A pixel counts as changed if its mean land NDVI moved >= 0.1, or its water/built share across the 3-year window moved by >= half."},
+    "BURN_DNBR_MIN / BURN_MAX_YEARS": {"value": [0.27, 2], "why": "An NDVI fall within <= 2 summers is a burn only if the changed pixels' median dNBR >= 0.27 (USGS moderate-severity lower bound); haze lowers NDVI but not NBR this much. Paradise gives a clear pass."},
+    "DESERT_BUILT_MIN": {"value": 0.5, "why": "If > 50% of the area is 'built' before, the built-up test is reading bare soil. A built fall with greening on the same pixels is then development (lawns, trees), reported as urban_growth on ndvi_mean, timed and placed by the built fall."},
+    "OVERLAP_MIN": {"value": 0.5, "why": "Shrinking-lake rule: >= 50% of the new-built pixels were water in the before window -> exposed shoreline, reported as water_loss (never urban_growth). Same 50% for burn-scar and desert-suburb companions."},
+    "DR-6": {"why": "Each year's main instrument: OLI if L8/9, else TM if L4/5, else ETM+. Flag if start or end year is within 1 year of a change of main instrument or of a Landsat 7-only year."}
+  },
+  "sensitivity": "Recall stayed 4/9 and the control 0 for NOISE_K in {3,4,5} x MIN_PATCH_SHARE in {0.005,0.01,0.02} (false positives 2-5). MAX_SEGMENTS 4 or 6 same recall; 8 loses one match (over-segmentation splits a movement). Without the patch gate the control gets 5 changes.",
+  "tried": [
+    "Raw endpoint magnitude + noise threshold only: control had 5 changes (built_frac swings, water 1987, slow NDVI drift). Fixed by the spatial-coherence (largest patch) gate, not by raising thresholds.",
+    "Land-only per-pixel NDVI (matching ndvi_mean schema 1.2): removed Lake Mead NDVI candidates whose pixel maps disagreed with the series.",
+    "MIN_SEGMENT_YEARS 2 to catch Lake Mead's 2022-2024 rebound: no change (BIC does not buy a 2-year segment on that series).",
+    "Looked for local changes at Willow Run, Delray and Central Park with per-pixel built/NDVI maps: Willow Run built patches <= 0.4% of the area in 2013-2020 (demolition to pavement keeps the pixel 'built'); Delray 2016/18 -> 2024/25 built rise has a 1.2-1.4% patch, but the area series moves ~0.03 against noise 0.02 (threshold 0.08). Central Park patches at the same scale were <= 0.06%, so a block-level stage might catch Delray, but it was not built: it would need its own control testing.",
+    "Label propagation for connected patches was 0.8 s on Paradise; pointer jumping brought detect() to <= 0.8 s per place (checked against a BFS)."
+  ],
+  "missed": {
+    "lake-mead water_gain 2023": "A 2-year rebound (0.455 in 2022 -> 0.492 in 2024, back to 0.454 by 2026). ~5 x noise but only 2-3 years long, so no straight segment captures it and it reverses: borderline under FR-22.",
+    "willow-run other/other/urban_growth 2013-2018": "Not visible in the area-level metrics or in the built-up class per pixel: the plant and runway changes swap one bright paved surface for another. Needs a brightness or SWIR change index, not the schema metrics.",
+    "delray urban_growth 2019-2024": "The bridge/port of entry is a few % of a 6 km square in a noisy urban built_frac series (noise 0.02 -> threshold 0.08, actual rise ~0.03)."
+  },
+  "weaknesses": [
+    "Recall 44% is well under the 80% pass bar. The method is strong on big, area-level changes (lake decline, burn, desert suburbs, land reclamation) and blind to local changes smaller than the 6 km area's noise.",
+    "Movement years can be loose: neighbouring same-direction pieces join, so Palm Jumeirah reports 2002-2019 (reclamation step + later Bluewaters/Marina-era decline) and Lake Mead 1999-2010 (stops at the 2011-2013 wet-year bump instead of 2015).",
+    "Magnitude is the raw series difference between start and end years (what the chart shows), so a noisy endpoint year can shift it a little; detection itself uses the fitted line.",
+    "The desert-suburb rule would also call new irrigated farmland in a desert 'urban_growth'.",
+    "Unscored 'false positives' at Lake Mead (1984-91 loss, 1992-98 refill, 2013-14 loss) and Paradise (1985-99 greening) look like real level changes, but they are not in the gold set; Paradise's greening patch is only just over the 1% gate.",
+    "Region bbox maps pixel rows/columns linearly into place.bbox (the composite grid is UTM, so edges can be off by a pixel or two). Descriptions are compass-ninths only ('in the east part of the area')."
+  ]
+}

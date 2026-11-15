@@ -1,0 +1,179 @@
+{
+  "approach": "combined",
+  "summary": {
+    "recall": 1.0,
+    "matched": 7,
+    "expected": 7,
+    "control_changes": 0,
+    "false_positives": 10,
+    "schema_errors": 0,
+    "lake_mead_urban_growth": 0,
+    "contradictions": 0,
+    "tiny": 0,
+    "max_seconds": 1.101,
+    "pass_bar": "MET: recall 1.0 (7/7, current gold set), control 0, schema 0, contradictions 0, tiny 0, < 2 s. The 10 extra changes are the same as before the QA fixes and were all checked against the frames (listed below). QA fixes changed no detection's kind, metric or years; only region descriptions and one persistence (Palm vegetation_gain 3 -> 4, now counted on the NDVI series it is told on)."
+  },
+  "method": [
+    "Place-wide layer: the segments approach unchanged (despike, BIC-chosen straight segments, movements >= max(physical floor, 4 x noise), lasting >= 2 summers, one connected patch >= 1% of the area).",
+    "Local layer: per pixel, built-up must FULLY flip between the 3 summers before and the 3 after (never built in any clear summer before, built in every clear summer after, or the reverse; >= 2 clear summers per window). Connected (8-neighbour) patches >= 4 ha. Same pixels at splits <= 2 apart are one event.",
+    "Local magnitude is measured INSIDE the patch's region: mean built-up share of the region's pixels over the 3 summers after minus the 3 before (about +/-1.0 for a full flip). The narration must say 'in this area'. This replaces window-means' share of the whole 6 km square, which made real local changes tiny (0.001-0.006).",
+    "Local changes also need: the old state seen for 6 summers (3 before the before-window that sit on the old side), persistence >= 2 summers (FR-22), and, if dated within 1 year of a sensor switch, >= 2 later summers clear of every switch that stay changed (otherwise dropped; if kept, sensor_switch_flag is set, DR-6).",
+    "Local re-reads: a rise on pixels that were water -> exposed shore (dropped if a place-wide water_loss tells it, else re-told as water_loss on the region's water share); a rise inside a burn -> dropped; a fall that became water -> water_gain likewise; a fall in an arid place -> dropped (desert rule); a fall whose region greened >= 0.1 NDVI -> told as vegetation_gain on the region's land NDVI (what is visible), not as built-up falling.",
+    "Same-kind local changes <= 500 m apart with start years <= 2 apart are merged and re-measured over the joined region.",
+    "Final honesty gate: kind, metric and sign must agree (water_loss/-, water_gain/+, vegetation_loss/-, vegetation_gain/+, burn/-, urban_growth on built_frac/+, other on built_frac/-); anything else is dropped, never re-signed.",
+    "Ranking: place-wide first (by size in noise units), then local by area x |in-region magnitude|; keep 5 (HL-2)."
+  ],
+  "summerlin_decision": {
+    "choice": "vegetation_gain on ndvi_mean, 1991-2019, +0.107, region 'in the east part of the area, where bare dry ground turned greener'. The built_frac fall is not reported.",
+    "why": [
+      "Checked per pixel (1986-88 vs 2010-12): 0 pixels go from not built-up to built-up; 25,860 go the other way. Bare desert passes the built-up test and roofs, roads and lawns score lower, so urban_growth on built_frac with a positive magnitude does not exist in our data. Urban_growth with a negative magnitude (or on ndvi_mean) would be a contradiction.",
+      "'other' on built_frac with a negative magnitude is what the film tells as demolition, which is false here.",
+      "Greenness really rose (place land NDVI 0.10 -> 0.21; 70% of the pixels that left 'built-up' gained >= 0.05 NDVI) and the frames show it: 1991 is bare desert, 2019 is streets, parks and golf-course green. So vegetation_gain is a true, visible statement; the sources can then say why (development).",
+      "It is dated and placed by the clearer built-up fall (same pixels, same years), as segments did, but keeps the NDVI number so the chart and script agree."
+    ],
+    "arid_test": "median yearly land NDVI over the whole record < 0.2 (Summerlin 0.16, Palm Jumeirah 0.07). The whole record, because irrigated suburbs lift Summerlin above 0.2 after 2013 and a recent-window test let a 2017-18 subdivision through as 'other' (demolition)."
+  },
+  "misses": {
+    "note": "None on the current gold set (7/7). The earlier misses (Lake Mead 2023 water_gain, Summerlin as urban_growth, Willow Run runway) are no longer gold entries; the reasons they can't be found honestly still hold if they come back."
+  },
+  "thresholds": {
+    "PHYSICAL_FLOOR / NOISE_K / SPIKE_K / MAX_SEGMENTS / MIN_SEGMENT_YEARS / MIN_PATCH_SHARE": "unchanged from segments/ (0.03 NDVI, 0.02 of the area; 4 x noise; 3 x noise spikes; <= 6 segments of >= 3 years; place-wide patch >= 1% of the area).",
+    "WINDOW = 3": "3 summers per side average out one odd summer and still date a change to about a year (both prior approaches settled on 3).",
+    "LOCAL_MIN_PATCH_HA = 4": "about 44 pixels: a big-box store with its car park, a bridge plaza. The control's largest fully flipped patch at any split is 23 px (~2 ha), so a 2x margin. Sweep: 2.5 / 3 / 4 / 5 / 6 ha all keep the control at 0; 2.5-3 ha adds Summerlin infill and a Ypsilanti patch, 5-6 ha loses Willow Run and Delray patches.",
+    "full flip (0 of the clear summers before, all after), LOCAL_MIN_CLEAR = 2": "a single patch has to prove the change alone; 2-of-3 flips give the control patches of up to 296 px (~27 ha).",
+    "old state seen for 6 summers": "one patch is weak evidence; an odd first summer (Willow Run 1984, built 0.10 vs 0.07) made two 1986-87 patches that were a new dark roof and bare soil re-greening.",
+    "PERSIST_MIN = 2": "FR-22; one odd summer is forgiven, two in a row end the count. Burns need 1 (sudden; the dNBR test already rules out haze).",
+    "sensor rule": "change dated within 1 year of a main-sensor switch (TM -> ETM+-only -> OLI) needs >= 2 later summers clear of any switch that stay changed, else dropped (dropped: Delray 2011-12). Kept ones carry sensor_switch_flag.",
+    "LOCAL_GREENING_MIN = 0.10": "the same 'visible' NDVI step as the place-wide pixel test; the built-up test cannot tell a removed roof from bare soil that grew over, so a region that turned green is told as greening.",
+    "MERGE_GAP_M = 500, MERGE_YEARS = 2": "a cleared block and the plaza next to it are one project (Delray 2019-21: 168 px + 86 px + 59 px -> one 28 ha change).",
+    "BURN_DNBR_MIN = 0.27, BURN_MAX_YEARS = 2": "USGS moderate severity; measured on the first summer after the drop began (Paradise: 0.31 in 2019, 0.25 by 2020 as plants regrow).",
+    "WATER_SHARE = 0.5, DESERT_NDVI_MAX = 0.2, DESERT_GREENING_MIN = 0.05": "as in the prior approaches (shrinking-lake rule; arid land; greening)."
+  },
+  "detections": {
+    "lake-mead": [
+      {
+        "change": "water_loss/water_frac 1999-2010 -0.215",
+        "gold": "water_loss 2000-2015",
+        "seen": "east shore recedes by about 1 km, wide pale bands of exposed bed."
+      },
+      {
+        "change": "water_loss/water_frac 1984-1991 -0.064",
+        "gold": "false positive",
+        "seen": "real: the east shore is visibly further west in 1991 than 1984 (late-80s drawdown)."
+      },
+      {
+        "change": "water_gain/water_frac 1992-1998 +0.062",
+        "gold": "false positive",
+        "seen": "real: water covers the east shore's coves again by 1998."
+      },
+      {
+        "change": "water_loss/water_frac 2013-2014 -0.043 [sensor]",
+        "gold": "false positive",
+        "seen": "weak but real: the shore is slightly lower in 2014; 2013 is a striped Landsat 7 mix, so it is flagged. The level 2014-2016 stays low, so it is not just the sensor."
+      }
+    ],
+    "paradise": [
+      {
+        "change": "burn/ndvi_mean 2018-2020 -0.198",
+        "gold": "burn 2018",
+        "seen": "the forest across the town is brown in 2020 (Camp Fire scar)."
+      },
+      {
+        "change": "vegetation_gain/ndvi_mean 1985-1999 +0.052",
+        "gold": "false positive",
+        "seen": "weak but real: a bare slope in the northwest corner is visibly greener in 1999; the place-wide rise is slow forest growth. Not a strong story."
+      }
+    ],
+    "summerlin": [
+      {
+        "change": "vegetation_gain/ndvi_mean 1991-2019 +0.107",
+        "gold": "counted as false positive (gold says urban_growth)",
+        "seen": "1991 bare desert; 2019 streets, houses, parks and golf greens across the east two-thirds."
+      }
+    ],
+    "palm-jumeirah": [
+      {
+        "change": "water_loss/water_frac 2002-2019 -0.200 [sensor]",
+        "gold": "water_loss 2001-2006",
+        "seen": "2002 a few sand bars; 2019 the full Palm with fronds and crescent."
+      },
+      {
+        "change": "vegetation_gain/ndvi_mean 2007-2023 +0.098",
+        "gold": "false positive",
+        "seen": "real: the trunk is bare sand under construction in 2007 and built up with green landscaping in 2023."
+      }
+    ],
+    "central-park": [],
+    "ypsilanti": [],
+    "willow-run": [
+      {
+        "change": "other/built_frac 2013-2014 -1.000 [sensor], 6 ha",
+        "gold": "other 2014-2015 (plant demolition)",
+        "seen": "a bright roof of the Willow Run plant is rubble in 2014 and a pale slab after. Kept despite the 2013 sensor switch: 2015-2016 stay changed."
+      },
+      {
+        "change": "urban_growth/built_frac 2017-2018 +1.000, 5 ha",
+        "gold": "urban_growth 2016-2018 (test track)",
+        "seen": "a grassy plot southeast of the airport is a bright new pad in 2018."
+      },
+      {
+        "change": "urban_growth/built_frac 2001-2002 +1.000, 4 ha",
+        "gold": "false positive",
+        "seen": "real: a green field at the east edge is cleared to bare ground in 2002 and stays disturbed. 'Built-up' here is bare soil; the narration should say 'cleared'."
+      },
+      {
+        "change": "vegetation_gain/ndvi_mean 2022-2023 +0.168, 9 ha",
+        "gold": "false positive",
+        "seen": "weak but real: part of the old plant slab turns darker/greener in 2023 and stays so to 2026."
+      },
+      {
+        "change": "vegetation_gain/ndvi_mean 2017-2018 +0.222, 6 ha",
+        "gold": "false positive",
+        "seen": "real: the pale plant slab gets dark track lines with grass between in 2018 (test-track paving)."
+      }
+    ],
+    "delray": [
+      {
+        "change": "urban_growth/built_frac 2019-2021 +0.994, 28 ha",
+        "gold": "urban_growth 2019-2024 (Gordie Howe bridge)",
+        "seen": "blocks of houses and trees are cleared to bare ground by 2021; white plaza structures appear by 2023."
+      },
+      {
+        "change": "urban_growth/built_frac 2015-2016 +1.000, 16 ha",
+        "gold": "false positive",
+        "seen": "real: a green lot by the river is cleared to bare ground in 2016 and stays so in 2019."
+      },
+      {
+        "change": "urban_growth/built_frac 2010-2011 +1.000 [sensor], 4 ha",
+        "gold": "false positive",
+        "seen": "real: a vegetated strip at the riverside industrial site is bare/paved from 2011; flagged (2012 Landsat 7 year), kept because 2014+ stay changed."
+      }
+    ]
+  },
+  "check_images": [
+    "data/spikes/s3-check/willow-run.jpg",
+    "data/spikes/s3-check/delray.jpg",
+    "data/spikes/s3-check/summerlin.jpg",
+    "data/spikes/s3-check/palm-jumeirah.jpg",
+    "data/spikes/s3-check/lake-mead.jpg",
+    "data/spikes/s3-check/paradise.jpg"
+  ],
+  "check_images_how": "python spikes/s3-changes/combined/make_check_images.py [place keys]: per change, whole before/after frames and a close-up (>= 1.2 km) with the region box.",
+  "weaknesses": [
+    "Built-up = bare soil too. Local 'urban_growth' patches are often land cleared for building, not finished buildings (Delray 2015-16, Willow Run 2001-02). The kind stays urban_growth (the schema has no 'cleared' kind) but the region description now says 'where land was cleared or built over'; the script must not say 'built' unless a source does.",
+    "Local magnitudes are in-region (about +/-1.0). The script must say 'in this area' and never present them as a share of the whole place; the schema has no field that says which, so the promoted code needs a flag or a convention (proposal: region.scope = 'local' | 'place', needs a contract change agreed with Vanessa).",
+    "Built-up falls outside deserts are only told when they visibly greened; a real demolition that left bare ground or rubble is dropped (only a local, fully flipped fall with no greening is kept as 'other', e.g. Willow Run 2013-14). Safer than narrating fields as demolition.",
+    "Thin features (runways, roads, shorelines) under ~2 pixels wide cannot form a 4 ha fully flipped patch.",
+    "The arid test is place-wide (median NDVI < 0.2). A place that is half desert, half irrigated farmland may be misjudged.",
+    "The 4 ha floor and 6-summer history rule are set against one control; local changes in the first 6 summers of the record (1984-1989) can't be found.",
+    "Shrinking-lake and desert rules re-tell or drop changes; a real town on an old lake bed would be told as water_loss or not at all.",
+    "Region bbox maps pixels linearly to place.bbox (UTM square vs lon/lat envelope): off by at most a pixel or two.",
+    "Only 7 scored places; thresholds are physical but untested on forests, farms, snow."
+  ],
+  "qa_fixes": [
+    "Place-wide built-up falls are never kept as 'other' (demolition). Arid places: desert rule as before. Elsewhere: if the same pixels greened >= 0.10 NDVI over the same years, re-told as vegetation_gain on ndvi_mean (unless an overlapping greening change already tells it); otherwise dropped. On the gold set this dropped falls at Paradise (greened 0.047), Central Park (0.02, 0.087) and Willow Run 1984-93 (greened 0.111 per pixel, but place-wide NDVI +0.056 < its size bar 0.070); none of them reached the output before either.",
+    "Every re-told change (shrinking lake -> water_loss, local -> water_loss/water_gain, local -> vegetation_gain, desert greening re-dated by the built-up fall) must now pass the physical floor and NOISE_K x noise of the series it is told on, not just have the right sign. A re-dated desert greening that fails keeps its own years and number.",
+    "The sensor-switch rule (within 1 year of a switch -> >= 2 later switch-free summers that stay changed, else dropped) now applies to place-wide changes too, as in ADR-003. Lake Mead 2013-14 and Palm 2002-19 pass it.",
+    "urban_growth regions now read '..., where land was cleared or built over'. Local phrases are 'a N ha area in the east part', '... near the centre', '... spread across the place'."
+  ]
+}

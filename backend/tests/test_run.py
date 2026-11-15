@@ -3,7 +3,8 @@
 # Outputs: pytest results.
 import numpy as np
 
-from app.pipeline.run import ARCHIVE_DOWN, split_kept
+from app.pipeline import metrics
+from app.pipeline.run import ARCHIVE_DOWN, MIN_LAND_PCT, split_kept
 from app.pipeline.types import SceneMeta, YearComposite
 
 
@@ -15,6 +16,8 @@ def _scene(scene_id: str, year: int) -> SceneMeta:
 
 # One land pixel's 6 bands (vegetation-like), so a kept year has land to measure (schema 1.2).
 LAND_DN = np.array([8727, 10182, 9091, 20000, 14545, 10909], np.uint16)[:, None, None]
+# One water pixel's 6 bands (MNDWI > 0), so it counts as no land.
+WATER_DN = np.array([9091, 9455, 8727, 7636, 7454, 7382], np.uint16)[:, None, None]
 
 
 def _year(year: int, clear_pct: float) -> YearComposite:
@@ -47,10 +50,31 @@ def test_skip_reasons_never_blame_clouds_for_failures():
 
 def test_almost_all_water_year_is_skipped_with_reason():
     """A clear year with no land can't have a land greenness (schema 1.2), so it's skipped."""
-    water = np.array([9091, 9455, 8727, 7636, 7454, 7382], np.uint16)[:, None, None]
-    lake = YearComposite(year=2010, dn=water * np.ones((1, 4, 4), np.uint16), clear_pct=100.0,
+    lake = YearComposite(year=2010, dn=WATER_DN * np.ones((1, 4, 4), np.uint16), clear_pct=100.0,
                          scenes=[])
     kept, skipped = split_kept({2010: lake}, range(2010, 2011), {2010: [_scene("w", 2010)]},
                                failed_years=set(), failed_ids=set())
     assert kept == {}
     assert "almost all water" in skipped[0]["reason"]
+
+
+def test_cloudy_water_year_gets_the_clear_view_reason():
+    """A year that is both too cloudy and all water is skipped for the clear view, checked first."""
+    lake = YearComposite(year=2010, dn=WATER_DN * np.ones((1, 4, 4), np.uint16), clear_pct=40.0,
+                         scenes=[])
+    kept, skipped = split_kept({2010: lake}, range(2010, 2011), {2010: [_scene("w", 2010)]},
+                               failed_years=set(), failed_ids=set())
+    assert kept == {}
+    assert skipped[0]["reason"] == "only 40% of the area had a clear view"
+
+
+def test_year_at_the_land_threshold_is_kept():
+    """1 land pixel in 100 (exactly MIN_LAND_PCT) and 1 in 81 (just above) are both enough."""
+    for side in (10, 9):
+        dn = WATER_DN * np.ones((1, side, side), np.uint16)
+        dn[:, 0, 0] = LAND_DN[:, 0, 0]
+        year = YearComposite(year=2010, dn=dn, clear_pct=100.0, scenes=[])
+        assert metrics.land_pct(year) >= MIN_LAND_PCT
+        kept, skipped = split_kept({2010: year}, range(2010, 2011), {2010: [_scene("l", 2010)]},
+                                   failed_years=set(), failed_ids=set())
+        assert list(kept) == [2010], skipped

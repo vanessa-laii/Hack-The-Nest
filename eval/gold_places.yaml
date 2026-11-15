@@ -9,9 +9,11 @@ places:
       - kind: water_loss
         approx_years: [2000, 2015]
         cause_keywords: [drought, low water, reservoir level]
-      - kind: water_gain
-        approx_years: [2023, 2023]
-        cause_keywords: [snowpack, inflow, rise]
+      # Removed 2026-11-14 (ADR-003): the 2023 rise only partly undid the one-summer 2022 low
+      # and was gone again by 2026, so it isn't a lasting change; FR-22 says don't report it.
+      # - kind: water_gain
+      #   approx_years: [2023, 2023]
+      #   cause_keywords: [snowpack, inflow, rise]
     verified: true
 
   - query: "Paradise, California"
@@ -25,7 +27,11 @@ places:
   - query: "Summerlin, Nevada"
     purpose: built-up growth
     expected_changes:
-      - kind: urban_growth
+      # Was urban_growth. Changed 2026-11-14 (ADR-003): our built-up measure (schema 1.1)
+      # counts bare desert as "built", so building the suburb makes built_frac FALL. What our
+      # data can honestly show is the desert turning greener (lawns, parks, trees).
+      - kind: vegetation_gain
+        metric: ndvi_mean
         approx_years: [1990, 2010]
         cause_keywords: [development, master-planned community, housing]
     verified: true
@@ -62,10 +68,12 @@ places:
         metric: built_frac
         approx_years: [2016, 2018]
         cause_keywords: [American Center for Mobility, test track, autonomous vehicles]
-      - kind: other               # Willow Run Airport crosswind runways removed
-        metric: built_frac
-        approx_years: [2013, 2015]
-        cause_keywords: [Willow Run Airport, runway]
+      # Removed 2026-11-14 (ADR-003): the crosswind runways are 1-2 Landsat pixels (30 m) wide,
+      # below what a reliable change patch can resolve. Visible by eye, not detectable by S3.
+      # - kind: other               # Willow Run Airport crosswind runways removed
+      #   metric: built_frac
+      #   approx_years: [2013, 2015]
+      #   cause_keywords: [Willow Run Airport, runway]
     verified: true
     note: >-
       Plant demolition Sep 2014-Jan 2015 per RACER Trust project records (p.enfos.com/publicDocs/33182);

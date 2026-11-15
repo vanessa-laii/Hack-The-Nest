@@ -106,7 +106,7 @@ Lake Mead and Paradise stay 100% clean.
 **Changes from the plan:**
 - Ranking scenes by clear pixels inside the area plus haze made Central Park flicker *more* (0.018–0.020). Scene ranking therefore stays on cloud cover, and haze is handled by demoting hazy scenes as described above.
 - **Scene ranking after QA.** Tier 2 scenes (+50 "cloud points") rank after clean ones both when downloading (`imagery.py`) and when compositing (`composite.py`), via the shared `types.scene_rank_score`. QA found Lake Mead 1993 composited from a Tier 2 scene.
-- **Striped Landsat 7 penalty (+25) applies to downloads only.** That stops a summer from getting only striped scenes, the motivation from Willow Run 2023 (9.31% → 9.13% holes in the spike, not yet re-measured with this ranking). Inside the composite, measured on the S2 cache:
+- **Striped Landsat 7 penalty (+25) applies to downloads only.** That stops a summer from getting only striped scenes, the motivation from Willow Run 2023 (9.31% → 9.13% holes in the spike; with this ranking in the real pipeline it is now 100% clear). Inside the composite, measured on the S2 cache:
 
   | Composite ranking | Central Park flicker (series / pixel) |
   | --- | --- |
