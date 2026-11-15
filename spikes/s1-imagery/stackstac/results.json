@@ -1,0 +1,118 @@
+{
+  "approach": "stackstac",
+  "passed": false,
+  "wall_time_s": 69.0,
+  "search_time_s": 5.0,
+  "load_time_s": 64.0,
+  "n_items": 546,
+  "n_years_with_data": 43,
+  "years_missing": [],
+  "bands_loaded": [
+    "blue",
+    "green",
+    "red",
+    "nir08",
+    "swir16",
+    "swir22",
+    "qa_pixel"
+  ],
+  "array_shape": [
+    546,
+    7,
+    206,
+    207
+  ],
+  "peak_memory_mb": 1026,
+  "scaling_applied": "reflectance = DN * 0.0000275 - 0.2 (DR-1)",
+  "install_notes": "py -3.12 -m venv .venv; pip install pystac-client planetary-computer stackstac numpy dask rasterio psutil truststore: all binary wheels on py3.12 Windows 11, no build issues. On this machine Norton Antivirus intercepts TLS, so (a) truststore is needed for STAC/sign requests and (b) GDAL/libcurl (schannel) needs GDAL_CURL_CA_BUNDLE pointing at a PEM exported from the Windows ROOT store; plain CURL_CA_BUNDLE did NOT work. TLS verification stays on.",
+  "problems": [
+    "Missed the 60 s bar: best cold run 69.0 s (search 5.0 s + load 64.0 s); other runs 88-111 s. Load is dominated by ~3,800 small remote COG window reads (546 items x 7 bands) and varies a lot run to run.",
+    "stackstac 0.5.1 + numpy 2 rejects fill_value=0 for dtype uint16; workaround fill_value=np.uint16(0).",
+    "Local TLS interception (Norton) breaks certifi and GDAL's schannel default; fixed with truststore + GDAL_CURL_CA_BUNDLE (see install_notes). Other Windows machines without Norton may not need this.",
+    "Single 1984-2026 search returns all months (1420 items) and took 26.8 s; parallel per-year Jun-Sep searches cut it to ~5-7 s.",
+    "More threads (128) and GDAL HTTP/2 multiplex tuning did not help; results were within network noise or worse."
+  ],
+  "notes": "Best run: per-year parallel STAC search (16 threads), dask threaded scheduler with 64 workers, chunksize=1024 (one chunk per item-band), bounds_latlon AOI, epsg=32611, resolution=30, dtype=uint16, fill_value=0, rescale=False. 546 Jun-Sep scenes with cloud<50 from Landsat 4/5/7/8/9; red nonzero pixel fraction 0.868 (fill/edge pixels = 0). Per-year median red reflectance (all valid pixels, no cloud masking) is in median_red_reflectance_by_year and rises from ~0.04-0.07 in 1984-85 to ~0.18-0.21 after 2005, consistent with Lake Mead's falling water exposing bright shoreline. Idea to get under 60 s not tested here: load fewer scenes (e.g. best 3-5 per year by cloud cover, ~150-200 items) since per-scene read latency dominates.",
+  "median_red_reflectance_by_year": {
+    "1984": 0.0421,
+    "1985": 0.0665,
+    "1986": 0.1337,
+    "1987": 0.1453,
+    "1988": 0.0913,
+    "1989": 0.1157,
+    "1990": 0.1227,
+    "1991": 0.1372,
+    "1992": 0.1554,
+    "1993": 0.1103,
+    "1994": 0.1351,
+    "1995": 0.15,
+    "1996": 0.1007,
+    "1997": 0.0563,
+    "1998": 0.1359,
+    "1999": 0.1041,
+    "2000": 0.1482,
+    "2001": 0.1406,
+    "2002": 0.1754,
+    "2003": 0.1849,
+    "2004": 0.1717,
+    "2005": 0.1498,
+    "2006": 0.1887,
+    "2007": 0.1965,
+    "2008": 0.1906,
+    "2009": 0.1773,
+    "2010": 0.179,
+    "2011": 0.1651,
+    "2012": 0.1684,
+    "2013": 0.1712,
+    "2014": 0.1958,
+    "2015": 0.2014,
+    "2016": 0.1853,
+    "2017": 0.1809,
+    "2018": 0.1877,
+    "2019": 0.1951,
+    "2020": 0.1964,
+    "2021": 0.1793,
+    "2022": 0.1967,
+    "2023": 0.1805,
+    "2024": 0.1911,
+    "2025": 0.1929,
+    "2026": 0.2075
+  },
+  "runs": {
+    "run1": {
+      "wall_time_s": 109.9,
+      "search_time_s": 26.8,
+      "load_time_s": 83.1,
+      "peak_memory_mb": 1032,
+      "notes": "threads=32, chunksize=1024; nonzero red pixel fraction=0.868; platforms=['landsat-4', 'landsat-5', 'landsat-7', 'landsat-8', 'landsat-9']; STAC search returned 1420 items all months, 546 Jun-Sep"
+    },
+    "run2": {
+      "wall_time_s": 69.0,
+      "search_time_s": 5.0,
+      "load_time_s": 64.0,
+      "peak_memory_mb": 1026,
+      "notes": "search=per-year, load threads=64, chunksize=1024; nonzero red pixel fraction=0.868; platforms=['landsat-4', 'landsat-5', 'landsat-7', 'landsat-8', 'landsat-9']; STAC search returned 546 items, 546 Jun-Sep"
+    },
+    "run3": {
+      "wall_time_s": 94.5,
+      "search_time_s": 9.5,
+      "load_time_s": 85.0,
+      "peak_memory_mb": 1133,
+      "notes": "search=per-year, load threads=128, chunksize=1024; nonzero red pixel fraction=0.868; platforms=['landsat-4', 'landsat-5', 'landsat-7', 'landsat-8', 'landsat-9']; STAC search returned 546 items, 546 Jun-Sep"
+    },
+    "run4": {
+      "wall_time_s": 88.3,
+      "search_time_s": 6.4,
+      "load_time_s": 81.9,
+      "peak_memory_mb": 1007,
+      "notes": "search=per-year, gdal_tune=True, load threads=64, chunksize=1024; nonzero red pixel fraction=0.868; platforms=['landsat-4', 'landsat-5', 'landsat-7', 'landsat-8', 'landsat-9']; STAC search returned 546 items, 546 Jun-Sep"
+    },
+    "run5": {
+      "wall_time_s": 111.3,
+      "search_time_s": 7.3,
+      "load_time_s": 103.9,
+      "peak_memory_mb": 1006,
+      "notes": "search=per-year, gdal_tune=False, load threads=32, chunksize=1024; nonzero red pixel fraction=0.868; platforms=['landsat-4', 'landsat-5', 'landsat-7', 'landsat-8', 'landsat-9']; STAC search returned 546 items, 546 Jun-Sep"
+    }
+  }
+}

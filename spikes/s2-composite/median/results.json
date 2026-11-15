@@ -1,0 +1,90 @@
+{
+  "approach": "median",
+  "runs": {
+    "lake-mead": {
+      "n_scenes": 254,
+      "load_s": 3.37,
+      "n2": {
+        "runtime_s": 4.44,
+        "peak_mem_mb_composite": 90.4,
+        "years": 43,
+        "nodata_pixel_frac": 0.0398
+      },
+      "n4": {
+        "runtime_s": 6.07,
+        "peak_mem_mb_composite": 97.9,
+        "years": 43,
+        "nodata_pixel_frac": 0.0029
+      },
+      "n6": {
+        "runtime_s": 6.82,
+        "peak_mem_mb_composite": 105.3,
+        "years": 43,
+        "nodata_pixel_frac": 0.0
+      }
+    },
+    "paradise": {
+      "n_scenes": 258,
+      "load_s": 4.69,
+      "n2": {
+        "runtime_s": 4.28,
+        "peak_mem_mb_composite": 90.4,
+        "years": 43,
+        "nodata_pixel_frac": 0.0611
+      },
+      "n4": {
+        "runtime_s": 5.63,
+        "peak_mem_mb_composite": 97.9,
+        "years": 43,
+        "nodata_pixel_frac": 0.0041
+      },
+      "n6": {
+        "runtime_s": 6.45,
+        "peak_mem_mb_composite": 105.3,
+        "years": 43,
+        "nodata_pixel_frac": 0.0003
+      }
+    },
+    "central-park": {
+      "n_scenes": 258,
+      "load_s": 4.38,
+      "n2": {
+        "runtime_s": 3.2,
+        "peak_mem_mb_composite": 90.4,
+        "years": 43,
+        "nodata_pixel_frac": 0.0448
+      },
+      "n4": {
+        "runtime_s": 3.98,
+        "peak_mem_mb_composite": 97.9,
+        "years": 43,
+        "nodata_pixel_frac": 0.0055
+      },
+      "n6": {
+        "runtime_s": 7.05,
+        "peak_mem_mb_composite": 105.3,
+        "years": 43,
+        "nodata_pixel_frac": 0.0023
+      }
+    }
+  },
+  "input_array_mb": {
+    "lake-mead": 378.3,
+    "paradise": 384.3,
+    "central-park": 384.3
+  },
+  "notes": [
+    "runtime_s covers composite() only (input already in RAM); load_s is the npz read.",
+    "peak_mem_mb_composite is tracemalloc peak during composite(), excluding the input array (see input_array_mb).",
+    "median_year sorts in uint16 with a 65535 sentinel and counts valid obs from the mask (65535 is also a real saturated DN in the data); self_test checks it equals an np.nanmedian float32 oracle exactly.",
+    "Even clear counts average the two middle values, so the composite pixel can be a value no real date had; bands may also come from different dates.",
+    "Reflectance DN 0 is treated as fill in addition to the QA rule; valid medians are clipped to >= 1 to keep 0 = nodata.",
+    "nodata_pixel_frac = fraction of pixels with no clear observation, averaged over years.",
+    "Timings were taken while the other S2 spike agents ran in parallel on the same machine; an isolated one-year benchmark took ~0.06 s/year (~2.6 s/place at N=4), so these numbers are likely pessimistic.",
+    "Peak memory is dominated by the output array (43 years x 6 x 334 x 334 uint16 = 55 MB); per-year working set is ~10 MB at N=6.",
+    "Surprise: reflectance DN 65535 appears in QA-clear pixels (saturation; QA_RADSAT is not part of the agreed mask). The median keeps them as valid; it tolerates a few, but a single-scene pick would not."
+  ],
+  "problems": [
+    "First version used np.nanmedian: 12-19 s per place (masked-array fallback for short axes), over the 10 s budget. A float32 sort-based median got ~8-11 s; the uint16 sort version is used instead."
+  ]
+}

@@ -28,3 +28,7 @@ web/.vercel/
 Thumbs.db
 .vscode/
 .idea/
+
+# Large spike contact sheets (regenerate with spikes/s2b-mask/run_s2b.py)
+spikes/s2b-mask/*_before.jpg
+spikes/s2b-mask/*_after.jpg

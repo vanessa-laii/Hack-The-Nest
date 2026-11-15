@@ -1,0 +1,26 @@
+{
+ "bits1-4 (reference)": {
+  "cloud_like_pct": 5.695,
+  "holes_pct": 0.0
+ },
+ "bits1-4 + outlier rejection": {
+  "cloud_like_pct": 0.49,
+  "holes_pct": 0.0
+ },
+ "full ADR-002 mask": {
+  "cloud_like_pct": 0.485,
+  "holes_pct": 0.01
+ },
+ "composite_series": {
+  "cloud_like_pct": 0.483,
+  "holes_pct": 0.01
+ },
+ "composite_series_notes": [
+  "Outlier rejection: dropped 24 cloud-bright observation(s) the QA mask missed (blue > 0.08 above the pixel's summer median), changing 0.06% of pixels.",
+  "Holes: 0.0% of the area has no clear observation and is left empty (never filled from other years)."
+ ],
+ "scene_0801_qa_values": [
+  30048,
+  62820
+ ]
+}

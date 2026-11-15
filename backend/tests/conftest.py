@@ -1,0 +1,7 @@
+# pytest setup shared by every test file in backend/tests.
+# Inputs: none.
+# Outputs: puts backend/ on sys.path so `import app...` works from any working directory.
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))

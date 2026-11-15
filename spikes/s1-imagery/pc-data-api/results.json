@@ -1,0 +1,163 @@
+{
+  "approach": "pc-data-api",
+  "passed": false,
+  "wall_time_s": 85.9,
+  "search_time_s": 5.4,
+  "load_time_s": 80.4,
+  "n_items": 546,
+  "n_years_with_data": 43,
+  "years_missing": [],
+  "bands_loaded": [
+    "blue",
+    "green",
+    "red",
+    "nir08",
+    "swir16",
+    "swir22",
+    "qa_pixel"
+  ],
+  "array_shape": [
+    546,
+    7,
+    200,
+    200
+  ],
+  "peak_memory_mb": 434.3,
+  "scaling_applied": "reflectance = DN * 0.0000275 - 0.2 (DR-1), applied client-side; server returned raw DN (unscale=false)",
+  "install_notes": "pip install httpx numpy truststore (pystac-client used only in run 1) worked on py3.12 win; no GDAL/rasterio needed (.npy output)",
+  "problems": [
+    "Timing is unstable: 38.1 s once, then 88.6 s and 85.9 s with identical code and no 429s/errors. That makes 1 of 4 runs under 60 s, so not reliably within the bar. The other S1 spike agents were probably downloading at the same time, so bandwidth contention may explain the slow runs. Not isolated.",
+    "pystac-client searching all years took 23 s. Running per-year Jun-Sep STAC POSTs concurrently (fields excluding assets) cut that to 2-5 s.",
+    "Python certifi TLS verification failed on this Windows machine (curl via schannel was fine), so truststore.inject_into_ssl() was needed.",
+    "The AOI is covered by items in EPSG:32611 and EPSG:32612. Items in 32612 are warped server-side to 32611 with nearest resampling, so those pixels are not native-grid."
+  ],
+  "notes": "Uses /item/bbox/{utm bbox}/200x200.npy with coord_crs=dst_crs=epsg:32611, all 7 assets in one request per item (546 requests, about 0.64 MB each, 350 MB total). The response is uint16 raw DN (unscale=false) with shape (8,200,200): 7 bands plus a TiTiler mask band. The bbox is snapped to the Landsat grid (edges at coordinate %30==15), so the crop is native 30 m. The /item/point value matched the crop pixel exactly (13670 == 13670) on a 32611 item. Scaling is applied client-side. Possible speedups not tried: return_mask=false (saves 1/8 of bytes), higher concurrency, and per-year best-scene selection to cut request count. Per-year median red reflectance (QA cloud/shadow masked) is in per_year_median_red. The AOI is mostly lake, and red rises from about 0.04-0.13 (1984-2000) to about 0.18-0.20 (2014-2026), which fits the lake shrinking and exposing shoreline.",
+  "per_year_median_red": {
+    "1984": 0.0363,
+    "1985": 0.0523,
+    "1986": 0.1141,
+    "1987": 0.0484,
+    "1988": 0.0483,
+    "1989": 0.0921,
+    "1990": 0.1093,
+    "1991": 0.1205,
+    "1992": 0.131,
+    "1993": 0.0888,
+    "1994": 0.1385,
+    "1995": 0.1331,
+    "1996": 0.0633,
+    "1997": 0.0469,
+    "1998": 0.052,
+    "1999": 0.0544,
+    "2000": 0.0564,
+    "2001": 0.1183,
+    "2002": 0.1687,
+    "2003": 0.1535,
+    "2004": 0.1607,
+    "2005": 0.1457,
+    "2006": 0.1571,
+    "2007": 0.1773,
+    "2008": 0.1749,
+    "2009": 0.1741,
+    "2010": 0.1789,
+    "2011": 0.1637,
+    "2012": 0.1694,
+    "2013": 0.1742,
+    "2014": 0.1894,
+    "2015": 0.1971,
+    "2016": 0.1872,
+    "2017": 0.1851,
+    "2018": 0.1892,
+    "2019": 0.1968,
+    "2020": 0.1925,
+    "2021": 0.1808,
+    "2022": 0.2009,
+    "2023": 0.1797,
+    "2024": 0.1927,
+    "2025": 0.1953,
+    "2026": 0.2038
+  },
+  "fidelity": {
+    "dtype": "uint16",
+    "red_dn_min_max": [
+      8143,
+      20642
+    ],
+    "red_is_integer_dn": true,
+    "point_check": {
+      "item": "LT05_L2SP_039035_20090808_02_T1",
+      "crop_value": 13472,
+      "point_api": {
+        "coordinates": [
+          -114.38280819757551,
+          36.26311510994452
+        ],
+        "values": [
+          13472.0
+        ],
+        "band_names": [
+          "red_b1"
+        ]
+      },
+      "http": 200
+    },
+    "item_epsgs": [
+      "32611",
+      "32612"
+    ]
+  },
+  "n_loaded": 546,
+  "concurrency": 32,
+  "bytes_downloaded_mb": 349.5,
+  "retries_by_status": {},
+  "errors": [],
+  "n_errors": 0,
+  "platforms": [
+    "landsat-4",
+    "landsat-5",
+    "landsat-7",
+    "landsat-8",
+    "landsat-9"
+  ],
+  "utm_bbox_epsg32611": [
+    731505,
+    4011825,
+    737505,
+    4017825
+  ],
+  "raw_npy_shape_per_item": [
+    8,
+    200,
+    200
+  ],
+  "runs": [
+    {
+      "concurrency": 24,
+      "search": "pystac-client, all years",
+      "wall_time_s": 75.5,
+      "search_time_s": 23.3,
+      "load_time_s": 52.2
+    },
+    {
+      "concurrency": 32,
+      "search": "per-year httpx POST",
+      "wall_time_s": 38.1,
+      "search_time_s": 2.0,
+      "load_time_s": 36.1
+    },
+    {
+      "concurrency": 32,
+      "search": "per-year httpx POST",
+      "wall_time_s": 88.6,
+      "search_time_s": 1.8,
+      "load_time_s": 86.8
+    },
+    {
+      "concurrency": 32,
+      "search": "per-year httpx POST",
+      "wall_time_s": 85.9,
+      "search_time_s": 5.4,
+      "load_time_s": 80.4
+    }
+  ]
+}

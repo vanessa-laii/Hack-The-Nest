@@ -8,3 +8,6 @@ rfc3339-validator  # lets jsonschema check "format": "date-time"
 rfc3987  # lets jsonschema check "format": "uri"
 pillow>=10.3
 httpx>=0.27
+numpy>=1.26
+truststore>=0.9  # Windows: trust OS cert store (Norton re-signs TLS), see ADR-001
+pytest>=8

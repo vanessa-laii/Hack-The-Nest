@@ -1,0 +1,128 @@
+{
+  "approach": "pc-data-api",
+  "passed": true,
+  "wall_time_s": 15.5,
+  "search_time_s": 3.3,
+  "load_time_s": 12.2,
+  "n_items": 170,
+  "n_years_with_data": 43,
+  "years_missing": [],
+  "bands_loaded": [
+    "blue",
+    "green",
+    "red",
+    "nir08",
+    "swir16",
+    "swir22",
+    "qa_pixel"
+  ],
+  "array_shape": [
+    170,
+    7,
+    200,
+    200
+  ],
+  "peak_memory_mb": 182.1,
+  "scaling_applied": "reflectance = DN * 0.0000275 - 0.2 (DR-1), applied client-side; server returned raw DN (unscale=false)",
+  "install_notes": "pip install httpx numpy truststore (pystac-client used only in run 1) worked on py3.12 win; no GDAL/rasterio needed (.npy output)",
+  "problems": [],
+  "notes": "",
+  "per_year_median_red": {
+    "1984": 0.0363,
+    "1985": 0.0463,
+    "1986": 0.0687,
+    "1987": 0.0459,
+    "1988": 0.0364,
+    "1989": 0.0803,
+    "1990": 0.1142,
+    "1991": 0.1198,
+    "1992": 0.1189,
+    "1993": 0.0921,
+    "1994": 0.1146,
+    "1995": 0.1012,
+    "1996": 0.065,
+    "1997": 0.0392,
+    "1998": 0.0277,
+    "1999": 0.0357,
+    "2000": 0.0591,
+    "2001": 0.1081,
+    "2002": 0.1498,
+    "2003": 0.1533,
+    "2004": 0.1549,
+    "2005": 0.1403,
+    "2006": 0.1574,
+    "2007": 0.1685,
+    "2008": 0.1904,
+    "2009": 0.1653,
+    "2010": 0.1717,
+    "2011": 0.1597,
+    "2012": 0.1616,
+    "2013": 0.1709,
+    "2014": 0.1856,
+    "2015": 0.1871,
+    "2016": 0.1894,
+    "2017": 0.2015,
+    "2018": 0.1807,
+    "2019": 0.1846,
+    "2020": 0.1926,
+    "2021": 0.1809,
+    "2022": 0.2137,
+    "2023": 0.1683,
+    "2024": 0.1907,
+    "2025": 0.1977,
+    "2026": 0.2093
+  },
+  "fidelity": {
+    "dtype": "uint16",
+    "red_dn_min_max": [
+      7567,
+      20916
+    ],
+    "red_is_integer_dn": true,
+    "point_check": {
+      "item": "LE07_L2SP_039035_20050906_02_T1",
+      "crop_value": 8264,
+      "point_api": {
+        "coordinates": [
+          -114.38280819757551,
+          36.26311510994452
+        ],
+        "values": [
+          8264.0
+        ],
+        "band_names": [
+          "red_b1"
+        ]
+      },
+      "http": 200
+    },
+    "item_epsgs": [
+      "32611",
+      "32612"
+    ]
+  },
+  "n_loaded": 170,
+  "concurrency": 24,
+  "bytes_downloaded_mb": 108.8,
+  "retries_by_status": {},
+  "errors": [],
+  "n_errors": 0,
+  "platforms": [
+    "landsat-4",
+    "landsat-5",
+    "landsat-7",
+    "landsat-8",
+    "landsat-9"
+  ],
+  "utm_bbox_epsg32611": [
+    731505,
+    4011825,
+    737505,
+    4017825
+  ],
+  "raw_npy_shape_per_item": [
+    8,
+    200,
+    200
+  ]
+}

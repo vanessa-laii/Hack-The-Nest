@@ -1,0 +1,1002 @@
+{
+  "median": {
+    "lake-mead": {
+      "n2": {
+        "3km": {
+          "years_total": 43,
+          "years_kept": 42,
+          "years_skipped_lt60": [
+            2017
+          ],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "6km": {
+          "years_total": 43,
+          "years_kept": 42,
+          "years_skipped_lt60": [
+            2017
+          ],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "10km": {
+          "years_total": 43,
+          "years_kept": 42,
+          "years_skipped_lt60": [
+            2017
+          ],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        }
+      },
+      "n4": {
+        "3km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "6km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "10km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        }
+      },
+      "n6": {
+        "3km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "6km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "10km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        }
+      }
+    },
+    "paradise": {
+      "n2": {
+        "3km": {
+          "years_total": 43,
+          "years_kept": 41,
+          "years_skipped_lt60": [
+            1993,
+            1996
+          ],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "6km": {
+          "years_total": 43,
+          "years_kept": 41,
+          "years_skipped_lt60": [
+            1993,
+            1996
+          ],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "10km": {
+          "years_total": 43,
+          "years_kept": 41,
+          "years_skipped_lt60": [
+            1993,
+            1996
+          ],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        }
+      },
+      "n4": {
+        "3km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "6km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "10km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        }
+      },
+      "n6": {
+        "3km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "6km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "10km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        }
+      }
+    },
+    "central-park": {
+      "n2": {
+        "3km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": {
+            "series": 0.0146,
+            "pixel": 0.053
+          }
+        },
+        "6km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 99.6,
+          "flicker": {
+            "series": 0.0223,
+            "pixel": 0.0665
+          }
+        },
+        "10km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 86.0,
+          "cloudy_years": [
+            2015,
+            2016,
+            2020,
+            2022,
+            2025,
+            2026
+          ],
+          "median_clear_pct": 99.4,
+          "flicker": {
+            "series": 0.0193,
+            "pixel": 0.0616
+          }
+        }
+      },
+      "n4": {
+        "3km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": {
+            "series": 0.0109,
+            "pixel": 0.0453
+          }
+        },
+        "6km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": {
+            "series": 0.015,
+            "pixel": 0.0604
+          }
+        },
+        "10km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 88.4,
+          "cloudy_years": [
+            2015,
+            2018,
+            2020,
+            2022,
+            2026
+          ],
+          "median_clear_pct": 99.9,
+          "flicker": {
+            "series": 0.0119,
+            "pixel": 0.056
+          }
+        }
+      },
+      "n6": {
+        "3km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": {
+            "series": 0.0136,
+            "pixel": 0.0433
+          }
+        },
+        "6km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": {
+            "series": 0.015,
+            "pixel": 0.0559
+          }
+        },
+        "10km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 93.0,
+          "cloudy_years": [
+            2020,
+            2022,
+            2026
+          ],
+          "median_clear_pct": 100.0,
+          "flicker": {
+            "series": 0.0132,
+            "pixel": 0.0521
+          }
+        }
+      }
+    }
+  },
+  "best-gapfill/fill-bit0": {
+    "lake-mead": {
+      "n2": {
+        "3km": {
+          "years_total": 43,
+          "years_kept": 42,
+          "years_skipped_lt60": [
+            2017
+          ],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "6km": {
+          "years_total": 43,
+          "years_kept": 42,
+          "years_skipped_lt60": [
+            2017
+          ],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "10km": {
+          "years_total": 43,
+          "years_kept": 42,
+          "years_skipped_lt60": [
+            2017
+          ],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        }
+      },
+      "n4": {
+        "3km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "6km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "10km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        }
+      },
+      "n6": {
+        "3km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "6km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "10km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        }
+      }
+    },
+    "paradise": {
+      "n2": {
+        "3km": {
+          "years_total": 43,
+          "years_kept": 41,
+          "years_skipped_lt60": [
+            1993,
+            1996
+          ],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "6km": {
+          "years_total": 43,
+          "years_kept": 41,
+          "years_skipped_lt60": [
+            1993,
+            1996
+          ],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "10km": {
+          "years_total": 43,
+          "years_kept": 41,
+          "years_skipped_lt60": [
+            1993,
+            1996
+          ],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        }
+      },
+      "n4": {
+        "3km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "6km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "10km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        }
+      },
+      "n6": {
+        "3km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "6km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "10km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        }
+      }
+    },
+    "central-park": {
+      "n2": {
+        "3km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": {
+            "series": 0.0189,
+            "pixel": 0.0648
+          }
+        },
+        "6km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 99.6,
+          "flicker": {
+            "series": 0.0295,
+            "pixel": 0.0829
+          }
+        },
+        "10km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 83.7,
+          "cloudy_years": [
+            2014,
+            2015,
+            2016,
+            2020,
+            2022,
+            2025,
+            2026
+          ],
+          "median_clear_pct": 99.4,
+          "flicker": {
+            "series": 0.0239,
+            "pixel": 0.0743
+          }
+        }
+      },
+      "n4": {
+        "3km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": {
+            "series": 0.0165,
+            "pixel": 0.0596
+          }
+        },
+        "6km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": {
+            "series": 0.0316,
+            "pixel": 0.0754
+          }
+        },
+        "10km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 79.1,
+          "cloudy_years": [
+            2015,
+            2016,
+            2017,
+            2018,
+            2020,
+            2022,
+            2024,
+            2025,
+            2026
+          ],
+          "median_clear_pct": 99.9,
+          "flicker": {
+            "series": 0.024,
+            "pixel": 0.071
+          }
+        }
+      },
+      "n6": {
+        "3km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 97.7,
+          "cloudy_years": [
+            2026
+          ],
+          "median_clear_pct": 100.0,
+          "flicker": {
+            "series": 0.0192,
+            "pixel": 0.0625
+          }
+        },
+        "6km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 97.7,
+          "cloudy_years": [
+            2026
+          ],
+          "median_clear_pct": 100.0,
+          "flicker": {
+            "series": 0.0333,
+            "pixel": 0.0878
+          }
+        },
+        "10km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 79.1,
+          "cloudy_years": [
+            2015,
+            2016,
+            2017,
+            2018,
+            2020,
+            2022,
+            2024,
+            2025,
+            2026
+          ],
+          "median_clear_pct": 100.0,
+          "flicker": {
+            "series": 0.0286,
+            "pixel": 0.0777
+          }
+        }
+      }
+    }
+  },
+  "medoid": {
+    "lake-mead": {
+      "n2": {
+        "3km": {
+          "years_total": 43,
+          "years_kept": 42,
+          "years_skipped_lt60": [
+            2017
+          ],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "6km": {
+          "years_total": 43,
+          "years_kept": 42,
+          "years_skipped_lt60": [
+            2017
+          ],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "10km": {
+          "years_total": 43,
+          "years_kept": 42,
+          "years_skipped_lt60": [
+            2017
+          ],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        }
+      },
+      "n4": {
+        "3km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "6km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "10km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        }
+      },
+      "n6": {
+        "3km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "6km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "10km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        }
+      }
+    },
+    "paradise": {
+      "n2": {
+        "3km": {
+          "years_total": 43,
+          "years_kept": 41,
+          "years_skipped_lt60": [
+            1993,
+            1996
+          ],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "6km": {
+          "years_total": 43,
+          "years_kept": 41,
+          "years_skipped_lt60": [
+            1993,
+            1996
+          ],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "10km": {
+          "years_total": 43,
+          "years_kept": 41,
+          "years_skipped_lt60": [
+            1993,
+            1996
+          ],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        }
+      },
+      "n4": {
+        "3km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "6km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "10km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        }
+      },
+      "n6": {
+        "3km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "6km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        },
+        "10km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": null
+        }
+      }
+    },
+    "central-park": {
+      "n2": {
+        "3km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": {
+            "series": 0.0144,
+            "pixel": 0.0645
+          }
+        },
+        "6km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 99.6,
+          "flicker": {
+            "series": 0.026,
+            "pixel": 0.0798
+          }
+        },
+        "10km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 86.0,
+          "cloudy_years": [
+            2015,
+            2016,
+            2020,
+            2022,
+            2025,
+            2026
+          ],
+          "median_clear_pct": 99.4,
+          "flicker": {
+            "series": 0.0192,
+            "pixel": 0.0743
+          }
+        }
+      },
+      "n4": {
+        "3km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": {
+            "series": 0.0116,
+            "pixel": 0.0558
+          }
+        },
+        "6km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": {
+            "series": 0.0173,
+            "pixel": 0.0696
+          }
+        },
+        "10km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 88.4,
+          "cloudy_years": [
+            2015,
+            2017,
+            2020,
+            2022,
+            2026
+          ],
+          "median_clear_pct": 99.9,
+          "flicker": {
+            "series": 0.0108,
+            "pixel": 0.0648
+          }
+        }
+      },
+      "n6": {
+        "3km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": {
+            "series": 0.0124,
+            "pixel": 0.0523
+          }
+        },
+        "6km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 100.0,
+          "cloudy_years": [],
+          "median_clear_pct": 100.0,
+          "flicker": {
+            "series": 0.0171,
+            "pixel": 0.0666
+          }
+        },
+        "10km": {
+          "years_total": 43,
+          "years_kept": 43,
+          "years_skipped_lt60": [],
+          "clean_year_pct": 90.7,
+          "cloudy_years": [
+            2015,
+            2020,
+            2022,
+            2026
+          ],
+          "median_clear_pct": 100.0,
+          "flicker": {
+            "series": 0.0137,
+            "pixel": 0.0608
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,82 @@
+approach      place         N  km  kept/total clean%  med-clear  flicker(series,pixel)
+median        lake-mead     2    3   42/43     100.0     100.0   
+median        lake-mead     2    6   42/43     100.0     100.0   
+median        lake-mead     2   10   42/43     100.0     100.0   
+median        lake-mead     4    3   43/43     100.0     100.0   
+median        lake-mead     4    6   43/43     100.0     100.0   
+median        lake-mead     4   10   43/43     100.0     100.0   
+median        lake-mead     6    3   43/43     100.0     100.0   
+median        lake-mead     6    6   43/43     100.0     100.0   
+median        lake-mead     6   10   43/43     100.0     100.0   
+median        paradise      2    3   41/43     100.0     100.0   
+median        paradise      2    6   41/43     100.0     100.0   
+median        paradise      2   10   41/43     100.0     100.0   
+median        paradise      4    3   43/43     100.0     100.0   
+median        paradise      4    6   43/43     100.0     100.0   
+median        paradise      4   10   43/43     100.0     100.0   
+median        paradise      6    3   43/43     100.0     100.0   
+median        paradise      6    6   43/43     100.0     100.0   
+median        paradise      6   10   43/43     100.0     100.0   
+median        central-park  2    3   43/43     100.0     100.0  0.0146 0.053
+median        central-park  2    6   43/43     100.0      99.6  0.0223 0.0665
+median        central-park  2   10   43/43      86.0      99.4  0.0193 0.0616
+median        central-park  4    3   43/43     100.0     100.0  0.0109 0.0453
+median        central-park  4    6   43/43     100.0     100.0  0.015 0.0604
+median        central-park  4   10   43/43      88.4      99.9  0.0119 0.056
+median        central-park  6    3   43/43     100.0     100.0  0.0136 0.0433
+median        central-park  6    6   43/43     100.0     100.0  0.015 0.0559
+median        central-park  6   10   43/43      93.0     100.0  0.0132 0.0521
+best-gapfill/fill-bit0 lake-mead     2    3   42/43     100.0     100.0   
+best-gapfill/fill-bit0 lake-mead     2    6   42/43     100.0     100.0   
+best-gapfill/fill-bit0 lake-mead     2   10   42/43     100.0     100.0   
+best-gapfill/fill-bit0 lake-mead     4    3   43/43     100.0     100.0   
+best-gapfill/fill-bit0 lake-mead     4    6   43/43     100.0     100.0   
+best-gapfill/fill-bit0 lake-mead     4   10   43/43     100.0     100.0   
+best-gapfill/fill-bit0 lake-mead     6    3   43/43     100.0     100.0   
+best-gapfill/fill-bit0 lake-mead     6    6   43/43     100.0     100.0   
+best-gapfill/fill-bit0 lake-mead     6   10   43/43     100.0     100.0   
+best-gapfill/fill-bit0 paradise      2    3   41/43     100.0     100.0   
+best-gapfill/fill-bit0 paradise      2    6   41/43     100.0     100.0   
+best-gapfill/fill-bit0 paradise      2   10   41/43     100.0     100.0   
+best-gapfill/fill-bit0 paradise      4    3   43/43     100.0     100.0   
+best-gapfill/fill-bit0 paradise      4    6   43/43     100.0     100.0   
+best-gapfill/fill-bit0 paradise      4   10   43/43     100.0     100.0   
+best-gapfill/fill-bit0 paradise      6    3   43/43     100.0     100.0   
+best-gapfill/fill-bit0 paradise      6    6   43/43     100.0     100.0   
+best-gapfill/fill-bit0 paradise      6   10   43/43     100.0     100.0   
+best-gapfill/fill-bit0 central-park  2    3   43/43     100.0     100.0  0.0189 0.0648
+best-gapfill/fill-bit0 central-park  2    6   43/43     100.0      99.6  0.0295 0.0829
+best-gapfill/fill-bit0 central-park  2   10   43/43      83.7      99.4  0.0239 0.0743
+best-gapfill/fill-bit0 central-park  4    3   43/43     100.0     100.0  0.0165 0.0596
+best-gapfill/fill-bit0 central-park  4    6   43/43     100.0     100.0  0.0316 0.0754
+best-gapfill/fill-bit0 central-park  4   10   43/43      79.1      99.9  0.024 0.071
+best-gapfill/fill-bit0 central-park  6    3   43/43      97.7     100.0  0.0192 0.0625
+best-gapfill/fill-bit0 central-park  6    6   43/43      97.7     100.0  0.0333 0.0878
+best-gapfill/fill-bit0 central-park  6   10   43/43      79.1     100.0  0.0286 0.0777
+medoid        lake-mead     2    3   42/43     100.0     100.0   
+medoid        lake-mead     2    6   42/43     100.0     100.0   
+medoid        lake-mead     2   10   42/43     100.0     100.0   
+medoid        lake-mead     4    3   43/43     100.0     100.0   
+medoid        lake-mead     4    6   43/43     100.0     100.0   
+medoid        lake-mead     4   10   43/43     100.0     100.0   
+medoid        lake-mead     6    3   43/43     100.0     100.0   
+medoid        lake-mead     6    6   43/43     100.0     100.0   
+medoid        lake-mead     6   10   43/43     100.0     100.0   
+medoid        paradise      2    3   41/43     100.0     100.0   
+medoid        paradise      2    6   41/43     100.0     100.0   
+medoid        paradise      2   10   41/43     100.0     100.0   
+medoid        paradise      4    3   43/43     100.0     100.0   
+medoid        paradise      4    6   43/43     100.0     100.0   
+medoid        paradise      4   10   43/43     100.0     100.0   
+medoid        paradise      6    3   43/43     100.0     100.0   
+medoid        paradise      6    6   43/43     100.0     100.0   
+medoid        paradise      6   10   43/43     100.0     100.0   
+medoid        central-park  2    3   43/43     100.0     100.0  0.0144 0.0645
+medoid        central-park  2    6   43/43     100.0      99.6  0.026 0.0798
+medoid        central-park  2   10   43/43      86.0      99.4  0.0192 0.0743
+medoid        central-park  4    3   43/43     100.0     100.0  0.0116 0.0558
+medoid        central-park  4    6   43/43     100.0     100.0  0.0173 0.0696
+medoid        central-park  4   10   43/43      88.4      99.9  0.0108 0.0648
+medoid        central-park  6    3   43/43     100.0     100.0  0.0124 0.0523
+medoid        central-park  6    6   43/43     100.0     100.0  0.0171 0.0666
+medoid        central-park  6   10   43/43      90.7     100.0  0.0137 0.0608
