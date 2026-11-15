@@ -234,36 +234,21 @@ Optional tiny spike (only if needed before implementing the route): `web/spikes/
 
 ---
 
-## 6. Sample story → files on disk
+## 6. Story → files on disk
 
-Input: [`contracts/samples/story.sample.json`](../../contracts/samples/story.sample.json)
+Product films use real catalog ids (e.g. `lake-mead-nevada-us-6km`). For narration pipeline checks against the contract sample, input may still be [`contracts/samples/story.sample.json`](../../contracts/samples/story.sample.json) under `EM_MOCK=1` — that path is **not** linked from the product UI.
 
-| Field | Value |
-| --- | --- |
-| `id` | `sample-lake-6km` |
-| `script.word_count` | 164 |
-| `script.est_duration_s` | 66 |
-| Segments | **4** (`seg-01` … `seg-04`) |
-
-| Segment | Chapter | Years | Role (approx.) |
-| --- | --- | --- | --- |
-| `seg-01` | `ch-01` intro | 1984→1999 | Setup / full lake |
-| `seg-02` | `ch-02` change | 2000→2014 | Shoreline retreat + claim `cl-01` |
-| `seg-03` | `ch-03` change | 2009→2011 | Cause unknown (honest) |
-| `seg-04` | `ch-04` outro | 2015→2024 | Where it stands |
-
-After a successful `POST /api/narrate` with `{ "story_id": "sample-lake-6km" }`:
+After a successful `POST /api/narrate` with `{ "story_id": "<story_id>" }`:
 
 ```text
 DATA_DIR/
 └── stories/
-    └── sample-lake-6km/
+    └── <story_id>/
         └── narration/                    ← web writes ONLY here
             ├── narration.json
             ├── seg-01.mp3
             ├── seg-02.mp3
-            ├── seg-03.mp3
-            └── seg-04.mp3
+            └── …
 ```
 
 **Example `narration.json` (illustrative timings):**
@@ -271,7 +256,7 @@ DATA_DIR/
 ```json
 {
   "schema_version": "1.0",
-  "story_id": "sample-lake-6km",
+  "story_id": "lake-mead-nevada-us-6km",
   "voice_id": "<from ELEVENLABS_VOICE_ID>",
   "model_id": "eleven_multilingual_v2",
   "created_at": "2026-11-15T02:00:00Z",
@@ -279,7 +264,7 @@ DATA_DIR/
   "segments": [
     {
       "segment_id": "seg-01",
-      "audio_url": "/files/stories/sample-lake-6km/narration/seg-01.mp3",
+      "audio_url": "/files/stories/lake-mead-nevada-us-6km/narration/seg-01.mp3",
       "duration_s": 18.4,
       "words": [
         { "text": "This", "start_s": 0.05, "end_s": 0.22 },
@@ -293,7 +278,7 @@ DATA_DIR/
 Player loads audio as `NEXT_PUBLIC_API_BASE + audio_url` (backend static `/files`).  
 Gallery `has_narration` is already computed by backend as “does `narration/narration.json` exist?” — no contract change needed.
 
-**Mock note:** until Phase 1 ends, story body comes from mock (`EM_MOCK=1` → sample). Narration still lands under `DATA_DIR/stories/sample-lake-6km/narration/` so offline HL-9 works the same for real stories later.
+**Phase 1:** prefer live stories (`EM_MOCK=0`). Narration always lands under `DATA_DIR/stories/<story_id>/narration/` so offline HL-9 works the same for every id.
 
 ---
 

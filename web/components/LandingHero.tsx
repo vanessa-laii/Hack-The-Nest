@@ -1,13 +1,13 @@
 /**
  * Full-bleed Revisit landing: globe is the page; copy floats like the inspiration layout.
- * Inputs: placeholder places list.
+ * Inputs: seed gallery places list.
  * Outputs: cinematic interactive first viewport.
  */
 
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { PLACEHOLDER_PLACES, type PlaceLocation } from "@/lib/places";
+import { SEED_PLACES, type PlaceLocation } from "@/lib/places";
 import { GlobeCanvas } from "./GlobeCanvas";
 import { PlacePicker } from "./PlacePicker";
 import { PlaceVideoPanel } from "./PlaceVideoPanel";
@@ -17,7 +17,7 @@ type LandingHeroProps = {
   places?: PlaceLocation[];
 };
 
-export function LandingHero({ places = PLACEHOLDER_PLACES }: LandingHeroProps) {
+export function LandingHero({ places = SEED_PLACES }: LandingHeroProps) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [reducedMotion, setReducedMotion] = useState(false);
 

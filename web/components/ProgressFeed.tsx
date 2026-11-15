@@ -168,7 +168,7 @@ export function ProgressFeed({ storyId, eventsPath }: ProgressFeedProps) {
         >
           open the story now
         </Link>{" "}
-        (mock sample is already complete).
+        (if the build already finished, the film may be playable).
       </p>
     </div>
   );

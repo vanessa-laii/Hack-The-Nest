@@ -1,6 +1,6 @@
 /**
  * Story film page — player-dominant layout matching landing visual language.
- * Inputs: route param id (e.g. sample-lake-6km).
+ * Inputs: route param id (e.g. lake-mead-nevada-us-6km).
  * Outputs: FilmPlayer + MetricChart + EvidencePanel + quiet about section.
  */
 
@@ -243,15 +243,9 @@ async function StoryContent({ params }: StoryPageProps) {
         </h1>
         <p className="mt-3 max-w-lg text-[#a1a1a6]">
           {friendlyErrorMessage("NOT_READY" as ApiErrorCode)} Id{" "}
-          <code className="text-[#2997ff]">{id}</code> — start the backend with{" "}
-          <code className="text-[#2997ff]">EM_MOCK=1</code> and open{" "}
-          <Link
-            href="/story/sample-lake-6km"
-            className="text-[#2997ff] underline-offset-2 hover:underline"
-          >
-            sample-lake-6km
-          </Link>
-          .
+          <code className="text-[#2997ff]">{id}</code> isn’t on the server yet.
+          Search from the globe to build a film, or open a place once it appears
+          in the gallery.
         </p>
         <Link
           href="/"

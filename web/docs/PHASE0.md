@@ -1,6 +1,6 @@
-# Phase 0 — run mock backend + web together
+# Phase 0/1 — run backend + web together
 
-Proof that the web app loads `contracts/samples/story.sample.json` via the backend (`EM_MOCK=1`).
+Proof that the web app talks to the backend gallery + story APIs. Prefer **live builds** (`EM_MOCK=0`). Mock mode remains for contract/sample checks only.
 
 **Story schema:** `1.3` (regenerate with `npm run types`). Includes `changes[].scope` (`place` | `local`) + `changes[].area_ha`, plus earlier metric updates:
 - **1.1** `built_frac` excludes water (MNDWI ≤ 0)
@@ -11,13 +11,14 @@ Proof that the web app loads `contracts/samples/story.sample.json` via the backe
 ```powershell
 cd backend
 # once: py -3.12 -m venv .venv ; .venv\Scripts\python -m pip install -r requirements.txt
-$env:EM_MOCK=1; .venv\Scripts\python -m uvicorn app.main:app --port 8000
+$env:EM_MOCK=0; .venv\Scripts\python -m uvicorn app.main:app --port 8000
 ```
 
-Check: `curl http://localhost:8000/api/health` → `"mock": true`  
-Story: `curl http://localhost:8000/api/stories/sample-lake-6km`
+Check: `curl http://localhost:8000/api/health`  
+Gallery: `curl http://localhost:8000/api/stories`  
+Story (once built): `curl http://localhost:8000/api/stories/lake-mead-nevada-us-6km`
 
-**Important:** keep `EM_MOCK=1` for demos. With `EM_MOCK=0`, `POST /api/stories` returns **500** (“Live story generation isn't available yet”) until Harman’s live wiring lands.
+**Mock fallback:** `$env:EM_MOCK=1` still serves `contracts/samples/story.sample.json` for backend tests. The web globe seeds real catalog ids and does not promote the sample as the demo path.
 
 ## Web (port 3000)
 
@@ -30,11 +31,11 @@ npm run dev
 
 Open:
 
-- http://localhost:3000 — globe; pick **Sample Lake** → Play film
-- http://localhost:3000/story/sample-lake-6km — FilmPlayer + frames
-- Search “anything” → `createStory` → `/build/sample-lake-6km` (SSE replay) → story
+- http://localhost:3000 — globe; seed places (Lake Mead, Paradise, Summerlin, Palm Jumeirah, Central Park, Ypsilanti, Willow Run, Delray)
+- Play film when a place is in the gallery; otherwise the card says the film isn’t ready yet
+- Search a place → `createStory` → `/build/<story-id>` (SSE) → `/story/<story-id>`
 
-Frame URLs look like `http://localhost:8000/files/samples/thumbs/1984.jpg`.
+Frame URLs look like `http://localhost:8000/files/stories/<id>/frames/...` (or sample paths under mock).
 
 ## SSE note
 

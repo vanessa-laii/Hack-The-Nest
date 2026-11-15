@@ -8,11 +8,14 @@
 
 import { OrbitControls, Stars, useTexture } from "@react-three/drei";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Suspense, useEffect, useMemo, useRef } from "react";
+import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 import { cameraPositionForLatLon } from "@/lib/geo";
 import type { PlaceLocation } from "@/lib/places";
 import { GLOBE_RADIUS, LocationHotspot } from "./LocationHotspot";
+
+const OVERVIEW_POS = new THREE.Vector3(0, 0.28, 5.3);
+const OVERVIEW_TARGET = new THREE.Vector3(0, 0, 0);
 
 type GlobeProps = {
   places: PlaceLocation[];
@@ -87,9 +90,11 @@ function EarthSphere({ reducedMotion }: { reducedMotion: boolean }) {
 function CameraFocus({
   place,
   reducedMotion,
+  onAnimatingChange,
 }: {
   place: PlaceLocation | null;
   reducedMotion: boolean;
+  onAnimatingChange: (animating: boolean) => void;
 }) {
   const { camera } = useThree();
   const controls = useThree((s) => s.controls) as unknown as {
@@ -97,24 +102,33 @@ function CameraFocus({
     update: () => void;
     enabled: boolean;
   } | null;
-  const goalPos = useRef(new THREE.Vector3(0, 0.28, 5.3));
-  const goalTarget = useRef(new THREE.Vector3(0, 0, 0));
+  const goalPos = useRef(OVERVIEW_POS.clone());
+  const goalTarget = useRef(OVERVIEW_TARGET.clone());
   const active = useRef(false);
+  // Only return-to-overview after a real deselect — never on mount (that fights autoRotate).
+  const hadSelection = useRef(false);
+  const onAnimatingChangeRef = useRef(onAnimatingChange);
+  onAnimatingChangeRef.current = onAnimatingChange;
 
   useEffect(() => {
     if (!place) {
-      goalPos.current.set(0, 0.28, 5.3);
-      goalTarget.current.set(0, 0, 0);
+      if (!hadSelection.current) return;
+      hadSelection.current = false;
+      goalPos.current.copy(OVERVIEW_POS);
+      goalTarget.current.copy(OVERVIEW_TARGET);
       active.current = true;
+      onAnimatingChangeRef.current(true);
       return;
     }
+    hadSelection.current = true;
     // Gentle move-in from overview 5.3 → focus 3.9 (~1.4 delta).
     const cam = cameraPositionForLatLon(place.lat, place.lon, 3.9);
     const look = cameraPositionForLatLon(place.lat, place.lon, GLOBE_RADIUS * 0.05);
     goalPos.current.copy(cam);
     goalTarget.current.copy(look);
     active.current = true;
-  }, [place, camera]);
+    onAnimatingChangeRef.current(true);
+  }, [place]);
 
   useFrame((_, delta) => {
     if (!active.current) return;
@@ -126,8 +140,13 @@ function CameraFocus({
     } else {
       camera.lookAt(goalTarget.current);
     }
-    if (camera.position.distanceTo(goalPos.current) < 0.01) {
+    if (
+      camera.position.distanceTo(goalPos.current) < 0.01 &&
+      (!controls?.target ||
+        controls.target.distanceTo(goalTarget.current) < 0.01)
+    ) {
       active.current = false;
+      onAnimatingChangeRef.current(false);
     }
   });
 
@@ -144,6 +163,7 @@ function Scene({
     () => places.find((p) => p.id === selectedPlaceId) ?? null,
     [places, selectedPlaceId],
   );
+  const [focusAnimating, setFocusAnimating] = useState(false);
 
   return (
     <>
@@ -177,7 +197,11 @@ function Scene({
           onSelect={onSelectPlace}
         />
       ))}
-      <CameraFocus place={selected} reducedMotion={!!reducedMotion} />
+      <CameraFocus
+        place={selected}
+        reducedMotion={!!reducedMotion}
+        onAnimatingChange={setFocusAnimating}
+      />
       <OrbitControls
         makeDefault
         enablePan={false}
@@ -186,7 +210,7 @@ function Scene({
         maxDistance={7.0}
         rotateSpeed={0.5}
         zoomSpeed={0.6}
-        autoRotate={!reducedMotion && !selectedPlaceId}
+        autoRotate={!reducedMotion && !selectedPlaceId && !focusAnimating}
         autoRotateSpeed={0.35}
         dampingFactor={0.08}
         enableDamping

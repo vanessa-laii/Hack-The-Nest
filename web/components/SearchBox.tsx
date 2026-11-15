@@ -1,6 +1,6 @@
 /**
  * Place search — createStory then navigate to /build/[id].
- * Inputs: optional onSubmit override; otherwise hits mock/real POST /api/stories.
+ * Inputs: optional onSubmit override; otherwise POST /api/stories (live build).
  * Outputs: search field + friendly error status.
  */
 
@@ -69,7 +69,7 @@ export function SearchBox({ onSubmitQuery, className }: SearchBoxProps) {
         return;
       }
 
-      // Mock returns sample-lake-6km; real pipeline goes to build + SSE.
+      // Cached → play; otherwise live build + SSE progress.
       if (result.cached) {
         router.push(`/story/${result.id}`);
       } else {
@@ -80,7 +80,7 @@ export function SearchBox({ onSubmitQuery, className }: SearchBoxProps) {
       }
     } catch {
       flash(
-        "Couldn’t reach the backend. Run it with EM_MOCK=1 on port 8000, or open Sample Lake on the globe.",
+        "Couldn’t reach the backend. Start it on port 8000 (EM_MOCK=0 for live builds), or pick a ready place on the globe.",
       );
     } finally {
       setBusy(false);

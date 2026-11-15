@@ -1,5 +1,5 @@
 /**
- * Light live-progress page — SSE replay from mock backend (Phase 0).
+ * Light live-progress page — SSE from createStory events_url.
  * Inputs: route param id (+ optional ?events= from createStory).
  * Outputs: ProgressFeed; redirects to /story/[id] on done.
  */
@@ -28,12 +28,8 @@ async function BuildContent({ params, searchParams }: BuildPageProps) {
         </h1>
         <p className="mt-3 text-[#a1a1a6]">
           Story <code className="text-[#2997ff]">{id}</code>
-          {id === "sample-lake-6km" ? (
-            <>
-              {" "}
-              — mock mode replays sample events (~1 s apart).
-            </>
-          ) : null}
+          {" "}
+          — watching live build events.
         </p>
       </header>
 
