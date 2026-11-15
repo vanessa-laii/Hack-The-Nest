@@ -1,0 +1,177 @@
+{
+  "approach": "single-pass",
+  "summary": {
+    "claims": 8,
+    "unsupported": 0,
+    "found": 4,
+    "expected": 7,
+    "llm_calls": 31,
+    "schema_errors": 0,
+    "seconds": 89.8,
+    "cause_recall": 0.571,
+    "passes": false
+  },
+  "llm_calls_per_story": {
+    "lake-mead": 8,
+    "paradise": 2,
+    "summerlin": 1,
+    "palm-jumeirah": 4,
+    "willow-run": 13,
+    "delray": 3
+  },
+  "final_run_note": "The summary is from the last full scoring run. 21 of its 31 LLM requests got 429 rate limits (the Gemini quota is shared with the two parallel spike agents). Willow Run lost all 5 changes to them, and Lake Mead and Palm Jumeirah lost one each. So 0.571 recall here is limited by the quota, not by the method.",
+  "runs": [
+    {
+      "run": "run 3",
+      "unsupported": 0,
+      "schema_errors": 0,
+      "cause_recall": 0.857,
+      "llm_calls": 23,
+      "found": "6/7 (all but Summerlin)",
+      "rate_limited_requests": 6
+    },
+    {
+      "run": "run 6 (before the last two prompt rules)",
+      "unsupported": 0,
+      "schema_errors": 0,
+      "cause_recall": 0.857,
+      "llm_calls": 24,
+      "found": "6/7 (all but Summerlin)",
+      "rate_limited_requests": 7
+    },
+    {
+      "run": "final",
+      "unsupported": 0,
+      "schema_errors": 0,
+      "cause_recall": 0.571,
+      "llm_calls": 31,
+      "found": "4/7 (both Willow Run changes lost to 429s, Summerlin declined)",
+      "rate_limited_requests": 21
+    }
+  ],
+  "llm_calls_note": "One call per change when nothing fails: lake-mead 4, paradise 2, summerlin 1, palm-jumeirah 2, willow-run 5, delray 3, so 17 for the gold set. llm.py retries 429s, and each retry also spends a budgeted call (up to 3 per change), which is why counts go above that.",
+  "tr5_judgement_final_run": [
+    {
+      "chapter": "lake-mead ch-04 1999-2010",
+      "claim": "Since the drought took hold in 1999, the surface of Lake Mead has plunged 130 feet ...",
+      "verdict": "supported",
+      "reason": "Repeats the quote word for word. It names Lake Mead, 1999 and the drought."
+    },
+    {
+      "chapter": "lake-mead ch-05 2013-2014",
+      "claim": "The decrease in the water level has been the result of excessively arid winters in 2012 and 2013, and it's caused Lake Mead to drop approximately 51 feet since December 2012.",
+      "verdict": "supported",
+      "reason": "The quote with the attribution clause cut. Nothing added."
+    },
+    {
+      "chapter": "paradise ch-03 2018-2020",
+      "claim": "The Camp Fire destroyed much of the town of Paradise in November 2018.",
+      "verdict": "supported",
+      "reason": "Quote 1: the firestorm destroyed much of Paradise. Quote 2, from the same page, names the fire after Camp Creek Road and dates it November 8, 2018. Two sentences of one article joined, with no new fact."
+    },
+    {
+      "chapter": "paradise ch-03 2018-2020",
+      "claim": "The Camp Fire burned through Paradise, California, on November 10, 2018.",
+      "verdict": "supported (borderline)",
+      "reason": "This is literally what a photo caption says, but the caption date is probably the photo date (the fire started Nov 8). Weak evidence. The narration should not quote that date."
+    },
+    {
+      "chapter": "palm-jumeirah ch-02 2002-2019",
+      "claim": "The Palm Jumeirah is an artificial island located in Dubai, United Arab Emirates, created through the process of land reclamation.",
+      "verdict": "supported",
+      "reason": "Word for word. It explains water turning into land."
+    },
+    {
+      "chapter": "palm-jumeirah ch-02 2002-2019",
+      "claim": "Construction of The Palm Jumeirah Dubai island began in June 2001 and the developers announced handover of the first residential units in 2006.",
+      "verdict": "supported",
+      "reason": "Word for word. 2001 is inside the ±1 window around 2002."
+    },
+    {
+      "chapter": "delray ch-04 2019-2021 (local, 28 ha)",
+      "claim": "Demolition and site-cleaning work for the Gordie Howe International Bridge is in full swing in Detroit's Delray neighborhood.",
+      "verdict": "supported",
+      "reason": "Restates the quote. It names a specific site project (the bridge and port of entry), not a trend across the neighbourhood, and does not claim buildings were finished."
+    },
+    {
+      "chapter": "delray ch-04 2019-2021 (local, 28 ha)",
+      "claim": "Residential blocks of southwest Detroit's Delray neighborhood have been cleared through buyouts and eminent domain by the Michigan Department of Transportation to build the customs plaza for the Gordie Howe International Bridge.",
+      "verdict": "supported",
+      "reason": "Word for word without 'One-time' and 'long-planned'. The customs plaza is a specific site."
+    }
+  ],
+  "tr5_judgement_earlier_runs": [
+    {
+      "chapter": "palm-jumeirah ch-03 2007-2023",
+      "claim": "Extensive landscaping efforts resulted in the planting of thousands of trees, shrubs and flowers on Palm Jumeirah by 2007.",
+      "verdict": "overreach",
+      "reason": "'By 2007' comes from a different sentence, about homes being built. The landscaping quote has no date. It passes every code check because 2007 appears in one of its quotes. Seen in 3 runs, including one after the rule 'never move a year or place between sentences' was added."
+    },
+    {
+      "chapter": "willow-run ch-03 2013-2014 (local)",
+      "claim": "Demolition crews have torn down about half of the former Kaiser-Frazer and GM structure outside of Willow Run.",
+      "verdict": "overreach",
+      "reason": "The quote says 'outside of Ypsilanti, Michigan'. The claim swapped in a different place name. The 'do not move a place' rule targets this, but it is unconfirmed: Willow Run was rate-limited in later runs."
+    },
+    {
+      "chapter": "willow-run ch-03 2013-2014 (local)",
+      "claim": "Demolition crews have torn down about half of the former Kaiser-Frazer and GM structure outside of Ypsilanti, Michigan, to make way for an autonomous vehicle research facility in 2014.",
+      "verdict": "overreach",
+      "reason": "'in 2014' is the page's publication year, not something the quote says. Fixed in code: every number in a claim must now appear in its own quotes (the change's years are no longer allowed)."
+    },
+    {
+      "chapter": "delray ch-03 2015-2016 (local, 16 ha)",
+      "claim": "The city of Detroit demolished 33 homes and cleared blighted vacant properties and overgrown brush in the Delray neighborhood as part of blight removal efforts.",
+      "verdict": "overreach",
+      "reason": "The quotes say the city 'will' demolish (future tense). It is also a scattered program across the neighbourhood, attached to one 16 ha patch. Addressed by the tense rule and the LOCAL rule (a named site is required). Not seen in the last two runs."
+    },
+    {
+      "chapter": "delray ch-03 2015-2016 (local, 16 ha)",
+      "claim": "The city of Detroit planned to demolish 33 homes in the Delray community as part of a blight removal effort.",
+      "verdict": "overreach (scope)",
+      "reason": "The tense is now right, but it is still a program across the whole neighbourhood attached to one small patch. The LOCAL rule was added after this."
+    },
+    {
+      "chapter": "willow-run ch-03 2013-2014 (local)",
+      "claim": "Demolition of the former Willow Run plant began as part of plans for a connected vehicle research center.",
+      "verdict": "supported",
+      "reason": "Quote 2 says crews had torn down half the plant to make way for a vehicle research facility. ADR-003 places this demolition in this patch."
+    },
+    {
+      "chapter": "willow-run ch-04 2017-2018 (local, 5 ha)",
+      "claim": "Construction on the first phase of the American Center for Mobility project at the Willow Run site began in May 2017.",
+      "verdict": "supported, with a scope caveat",
+      "reason": "Both quotes come from one ACM page: construction began in May 2017, and ACM is on the 500-acre Willow Run site. It matches gold, but no excerpt says the 5 ha patch is inside ACM."
+    },
+    {
+      "chapter": "lake-mead ch-03 1992-1998",
+      "claim": "In the late 1980s and early 1990s dry weather caused the water level to drop, but more recently the return of normal rainfall and runoff on the Colorado caused the water impounded at Lake Mead to rise back to its normal levels.",
+      "verdict": "supported",
+      "reason": "Two sentences in a row from one court opinion, joined together. The second half explains the water gain. The page is about the upper-lake delta, so it may not be the exact east patch."
+    }
+  ],
+  "prompt_key_instructions": [
+    "Copy quotes character for character, 8 to 60 words, never across a [...] gap, and give the page URL from its header line.",
+    "At least one quote must contain the place name and a year in the window (or come from a page published then). Writing the name into the claim is not enough.",
+    "The claim says nothing its quotes don't: no added causes, numbers, names or dates. Keep the quote's tense (planned stays planned). Never move a year or place from one sentence onto another.",
+    "Change-kind glossary from ADR-003: urban_growth means cleared or built over, so never claim finished buildings. water_loss includes land reclamation. In deserts, new neighbourhoods show as greening.",
+    "LOCAL changes need a named site. A trend across a neighbourhood, town or region is not a cause for a small patch.",
+    "'Cause unknown' (an empty list) is a correct, respected answer. Never fill a gap from your own knowledge."
+  ],
+  "code_checks": [
+    "A quote is kept only if verify.excerpt_in_page passes on that URL's recorded text and it is at most 600 characters.",
+    "A quote that neither names the place nor fits the years is dropped.",
+    "A claim is kept only if at least one kept quote passes both names_place and in_years, and the claim is at most 240 characters.",
+    "TR-6: every number in the claim must appear in its own quotes.",
+    "Confidence comes from verify.confidence over the chapter's used sources. Authority comes from verify.authority(domain)."
+  ],
+  "weaknesses": [
+    "Rate limits dominate the numbers. llm.py retries 429s inside the budget, so a busy quota both burns calls (up to 3 per change) and quietly turns changes into cause_unknown. Recall swung from 0.29 to 0.86 across runs, mostly for this reason.",
+    "Results vary from run to run even at temperature 0: the Paradise and Lake Mead claims came and went.",
+    "There is no code check for TR-5 itself. Moving a date between sentences of the same page (Palm Jumeirah 'by 2007') passes every code check. Only a person or a separate checker call catches it.",
+    "Summerlin was missed in every run. The model will not tie 'Summerlin began to take shape in 1990' to the desert greening, even with the ADR-003 hint.",
+    "For local changes the model makes the scope call. Code cannot tell whether a named site covers the detected patch.",
+    "retrieved_at is the time explain() ran, because the recorded pages carry no fetch time.",
+    "The spike points llm.PROMPTS_DIR at its own prompts folder at run time, because llm.load_prompt only reads that one folder. Promoting it would move the prompt into backend/app/agent/prompts/."
+  ]
+}

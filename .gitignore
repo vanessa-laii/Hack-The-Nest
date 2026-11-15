@@ -32,3 +32,9 @@ Thumbs.db
 # Large spike contact sheets (regenerate with spikes/s2b-mask/run_s2b.py)
 spikes/s2b-mask/*_before.jpg
 spikes/s2b-mask/*_after.jpg
+
+# Spike run logs (regenerated on every scoring run)
+spikes/**/trace/
+spikes/**/input_trace/
+spikes/**/record_trace/
+spikes/**/runs/

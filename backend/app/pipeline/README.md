@@ -103,7 +103,7 @@ def assemble_story(story_dir: Path, changes: list[dict], *, status: str = "compl
 - Builds a full `story.json` from `imagery.json` (place, coverage, frames, metrics) plus `changes`.
 - Until the cause agent (S4) exists, every change chapter has `confidence: "cause_unknown"`, no claims, and `sources: []`. The intro and outro have no claims either.
 - **Script** of 150–225 words, from a fixed template. Every number, year and name comes from `imagery.json` (metrics, `place.display_name`) or from `changes` (years, `area_ha`, kind), per TR-6.
-  - Each change segment says plainly that the cause hasn't been found (TR-8).
+  - The narration never says a cause is missing (TR-8); `cause_unknown` is shown in the timeline and evidence panel.
   - A `local` change is told in hectares ("about 6 hectares"), never as a share of the place.
 - Returns the dict. The caller validates and saves it (`store.save_story`).
 
@@ -115,7 +115,8 @@ async def build_story(query: str, *, lat=None, lon=None, display_name=None, aoi_
                       deadline: float | None = None) -> dict   # the saved story
 ```
 
-- Steps: `run_imagery` → `detect_changes` (emits one `change` event per change, stage `changes`) → `assemble_story` (stage `script`) → `save_and_index` (stage `save`) → `done` event with `story_url`.
+- Steps: `run_imagery` → `detect_changes` (emits one `change` event per change, stage `changes`) → `find_causes` (stages `research` / `verify`, own `Trace(story_dir)` and `Budget()`) → `assemble_story(..., causes=...)` (stage `script`) → `save_and_index` (stage `save`) → `done` event with `story_url`.
+- **Causes and HL-5:** with a deadline, the cause search is skipped when less than `RESEARCH_MIN_S` (40 s) would be left after keeping `AFTER_RESEARCH_S` (12 s) for script and save, and is cut off at that point otherwise. A skip, a cut-off or an unexpected agent error leaves every change `cause_unknown` with a warning; the build still saves. `generation.usage` comes from the story budget (`vision_calls` 0) and `generation.warnings` from the agent.
 - `place`: an already-resolved Place (jobs.py passes the one main.py resolved). `run_imagery` then skips the geocoder, so the story id can't differ from the one the API returned. The CLI keeps using `query` / `lat` / `lon` / `display_name`.
 - `deadline` (a `time.monotonic()` value): `save_and_index` checks it in its thread before writing and raises `DeadlinePassed` (a `TimeoutError`) instead of saving. A timeout cancels the coroutine but not the thread, so this check is what keeps a late story off disk.
 - `save_and_index` writes `story.json` (validated) and the gallery entry in one thread call: if the index update fails, the new `story.json` is removed again.
@@ -137,3 +138,41 @@ async def build_story(query: str, *, lat=None, lon=None, display_name=None, aoi_
 - Worker threads: main.py's startup makes the loop's default thread pool a `jobs.TrackedExecutor`, which records each `asyncio.to_thread` call on the job that made it. That is how a timed-out job knows its threads are still running.
 - `GET /api/stories` reads `stories/index.json`, newest first.
 - Mock mode keeps working exactly as now.
+
+## agent/causes.py (S4 winner, ADR-004; TR-1 … TR-10, HL-10)
+
+```python
+async def find_causes(story_dir: Path, place: dict, changes: list[dict], *,
+                      trace: Trace, budget: Budget, emit=None) -> dict
+# -> {"sources": [schema sources], "chapters": {change_id: {"confidence": ..., "claims": [...]}},
+#     "usage": {"exa_calls": n, "llm_calls": n}, "warnings": ["chg-02: cause left unknown because ..."]}
+```
+
+- **Per change:** 2 cause-neutral Exa searches (the same template as `spikes/s4-causes/record.py`, so recorded queries are free cache hits), then the extract → verify → compose → TR-5 checker steps from ADR-004, with one rewrite round.
+- **Rules from the spike:** every number in a claim must appear in its own quotes, and claims that only describe the imagery or the source are dropped.
+- **Budgets and failures:** `BudgetExceeded`, `ExaSpendCapReached`, `ExaNotCached`, `ExaSearchError` or `LLMError` are caught per change: that change stays `cause_unknown` and gets one line in `warnings`. It never raises them.
+- `usage` counts the story budget's calls (HL-10): live Exa requests only, so cache hits count 0.
+- **Events** (optional `emit`): `progress` events at stage `research` (searching) and `verify` (checking quotes), with plain messages ≤ 120 chars.
+
+## story.py with causes (TR-6, TR-8)
+
+```python
+def assemble_story(story_dir, changes, *, causes: dict | None = None, status="complete",
+                   generation=None) -> dict
+```
+
+- `causes` is `find_causes`' result.
+  - Change chapters with claims get them, with their confidence.
+  - The rest stay `cause_unknown`.
+  - `sources` comes from `causes`.
+- **Script:** a sourced change segment says what the record says, using the claim text, introduced by its confidence in plain words:
+  - `confirmed` → "Records show: …"
+  - `likely` → "One report says: …"
+  - Each claim gets the lead-in of its OWN confidence (`causes["claim_confidence"]`, private, never saved), and follows it word for word, capitals included.
+
+  Each segment lists its `claim_ids`. Numbers, years and names come only from metrics, changes or those claims (TR-6). Still 150–225 words.
+- **Script plan (where the time goes):** segments cover every kept year once, in order, with no gaps or overlaps, so the film never skips; the words in a segment set how slowly the film moves through its years (CONTRACTS §2 playback rule).
+  - Each change with verified claims gets its own segment over its own years: what changed, all its claims (up to 3), the sensor note if flagged, then measured details (before/after share, hectares, how long it held, which frames to compare).
+  - The years between them go to the opening, the closing, or a short connector (on an unsourced change's chapter) that says only what changed. Never a cause, never "we haven't found" (TR-8).
+  - With no sourced change at all, every change gets its own plain measured segment.
+  - Opening/closing extras and the neutral "how the pictures were made" lines are fillers: added only to reach 150 words, the neutral ones inside the main sourced segment.

@@ -1,0 +1,236 @@
+{
+  "summary": {
+    "claims": 8,
+    "unsupported": 0,
+    "found": 3,
+    "expected": 7,
+    "llm_calls": 43,
+    "schema_errors": 0,
+    "seconds": 108.1,
+    "checker_dropped": 0,
+    "rescued": 0,
+    "cause_recall": 0.429,
+    "passes": false
+  },
+  "places": {
+    "lake-mead": {
+      "claims": 3,
+      "unsupported": [],
+      "schema": [],
+      "found": 1,
+      "expected": 1,
+      "notes": [
+        "FOUND  water_loss [2000, 2015] ['drought', 'low water', 'reservoir level']"
+      ],
+      "llm_calls": 10,
+      "seconds": 11.3,
+      "crashed": null,
+      "checker_dropped": 0,
+      "rescued": 0,
+      "checks": {
+        "chg-01": {
+          "code_dropped": [],
+          "checker_dropped": [],
+          "rescued": []
+        },
+        "chg-02": {
+          "code_dropped": [],
+          "checker_dropped": [],
+          "rescued": []
+        },
+        "chg-03": {
+          "code_dropped": [],
+          "checker_dropped": [],
+          "rescued": []
+        },
+        "chg-04": {
+          "code_dropped": [],
+          "checker_dropped": [],
+          "rescued": []
+        }
+      },
+      "confidence": [
+        "cause_unknown",
+        "likely",
+        "confirmed",
+        "cause_unknown"
+      ]
+    },
+    "paradise": {
+      "claims": 3,
+      "unsupported": [],
+      "schema": [],
+      "found": 1,
+      "expected": 1,
+      "notes": [
+        "FOUND  burn [2018, 2018] ['camp fire', 'wildfire']"
+      ],
+      "llm_calls": 5,
+      "seconds": 5.4,
+      "crashed": null,
+      "checker_dropped": 0,
+      "rescued": 0,
+      "checks": {
+        "chg-01": {
+          "code_dropped": [],
+          "checker_dropped": [],
+          "rescued": []
+        },
+        "chg-02": {
+          "code_dropped": [],
+          "checker_dropped": [],
+          "rescued": []
+        }
+      },
+      "confidence": [
+        "cause_unknown",
+        "confirmed"
+      ]
+    },
+    "summerlin": {
+      "claims": 0,
+      "unsupported": [],
+      "schema": [],
+      "found": 0,
+      "expected": 1,
+      "notes": [
+        "MISSED vegetation_gain [1990, 2010] ['development', 'master-planned community', 'housing']"
+      ],
+      "llm_calls": 3,
+      "seconds": 15.6,
+      "crashed": null,
+      "checker_dropped": 0,
+      "rescued": 0,
+      "checks": {
+        "chg-01": {
+          "code_dropped": [],
+          "checker_dropped": [],
+          "rescued": []
+        }
+      },
+      "confidence": [
+        "cause_unknown"
+      ]
+    },
+    "palm-jumeirah": {
+      "claims": 1,
+      "unsupported": [],
+      "schema": [],
+      "found": 0,
+      "expected": 1,
+      "notes": [
+        "MISSED water_loss [2001, 2006] ['land reclamation', 'artificial island']"
+      ],
+      "llm_calls": 6,
+      "seconds": 6.0,
+      "crashed": null,
+      "checker_dropped": 0,
+      "rescued": 0,
+      "checks": {
+        "chg-01": {
+          "code_dropped": [],
+          "checker_dropped": [],
+          "rescued": []
+        },
+        "chg-02": {
+          "code_dropped": [],
+          "checker_dropped": [],
+          "rescued": []
+        }
+      },
+      "confidence": [
+        "cause_unknown",
+        "likely"
+      ]
+    },
+    "willow-run": {
+      "claims": 0,
+      "unsupported": [],
+      "schema": [],
+      "found": 0,
+      "expected": 2,
+      "notes": [
+        "MISSED other [2014, 2015] ['willow run plant', 'demolition', 'racer trust']",
+        "MISSED urban_growth [2016, 2018] ['american center for mobility', 'test track', 'autonomous vehicles']"
+      ],
+      "llm_calls": 12,
+      "seconds": 63.2,
+      "crashed": null,
+      "checker_dropped": 0,
+      "rescued": 0,
+      "checks": {
+        "chg-01": {
+          "code_dropped": [],
+          "checker_dropped": [],
+          "rescued": []
+        },
+        "chg-02": {
+          "code_dropped": [
+            "name not in its quotes: Construction on the first phase of the American Center for Mobility project at W"
+          ],
+          "checker_dropped": [],
+          "rescued": []
+        },
+        "chg-03": {
+          "code_dropped": [],
+          "checker_dropped": [],
+          "rescued": []
+        },
+        "chg-04": {
+          "code_dropped": [],
+          "checker_dropped": [],
+          "rescued": []
+        },
+        "chg-05": {
+          "code_dropped": [],
+          "checker_dropped": [],
+          "rescued": []
+        }
+      },
+      "confidence": [
+        "cause_unknown",
+        "cause_unknown",
+        "cause_unknown",
+        "cause_unknown",
+        "cause_unknown"
+      ]
+    },
+    "delray": {
+      "claims": 1,
+      "unsupported": [],
+      "schema": [],
+      "found": 1,
+      "expected": 1,
+      "notes": [
+        "FOUND  urban_growth [2019, 2024] ['gordie howe international bridge', 'port of entry']"
+      ],
+      "llm_calls": 7,
+      "seconds": 6.6,
+      "crashed": null,
+      "checker_dropped": 0,
+      "rescued": 0,
+      "checks": {
+        "chg-01": {
+          "code_dropped": [],
+          "checker_dropped": [],
+          "rescued": []
+        },
+        "chg-02": {
+          "code_dropped": [],
+          "checker_dropped": [],
+          "rescued": []
+        },
+        "chg-03": {
+          "code_dropped": [],
+          "checker_dropped": [],
+          "rescued": []
+        }
+      },
+      "confidence": [
+        "cause_unknown",
+        "cause_unknown",
+        "likely"
+      ]
+    }
+  }
+}
