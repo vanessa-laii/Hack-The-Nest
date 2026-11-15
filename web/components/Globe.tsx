@@ -178,7 +178,7 @@ function Scene({
         intensity={0.45}
         color="#6aa8ff"
       />
-      <pointLight position={[2.2, 1.2, 3.2]} intensity={0.55} color="#2997ff" />
+      <pointLight position={[2.2, 1.2, 3.2]} intensity={0.55} color="#5BA8A0" />
       <Stars
         radius={120}
         depth={55}

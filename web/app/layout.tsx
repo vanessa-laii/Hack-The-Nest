@@ -40,7 +40,7 @@ const body = Manrope({
 export const metadata: Metadata = {
   title: "Revisit",
   description:
-    "Type a place → a 60–90s narrated Landsat film of how it changed since 1984.",
+    "Type a place for a 60–90s narrated Landsat film of how it changed since 1984.",
 };
 
 export default function RootLayout({
@@ -53,7 +53,7 @@ export default function RootLayout({
       lang="en"
       className={`${display.variable} ${ui.variable} ${label.variable} ${body.variable} h-full antialiased`}
     >
-      <body className="flex h-dvh flex-col overflow-hidden bg-[#121214] text-[#f5f5f7]">
+      <body className="flex h-dvh flex-col overflow-hidden bg-[#0A0E13] text-[#F4F1EC]">
         <div className="flex min-h-0 flex-1 flex-col overflow-y-auto">
           {children}
         </div>

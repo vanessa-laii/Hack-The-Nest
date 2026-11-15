@@ -106,12 +106,12 @@ export function SearchBox({ onSubmitQuery, className }: SearchBoxProps) {
           placeholder="Lake Mead, Nevada"
           autoComplete="off"
           disabled={busy}
-          className="min-h-11 flex-1 rounded-full border border-white/15 bg-black/45 px-5 text-sm text-[#f5f5f7] placeholder:text-[#6e6e73] outline-none backdrop-blur-md transition focus:border-[#2997ff]/70 focus:ring-1 focus:ring-[#2997ff]/40 disabled:opacity-60"
+          className="min-h-11 flex-1 rounded-full border border-white/15 bg-[#14181E] px-5 text-sm text-[#F4F1EC] placeholder:text-[#7A766E] outline-none transition focus:border-[#5BA8A0]/70 focus:ring-1 focus:ring-[#5BA8A0]/40 disabled:opacity-60"
         />
         <button
           type="submit"
           disabled={busy}
-          className="min-h-11 shrink-0 rounded-full bg-[#2997ff] px-5 text-sm font-medium text-white transition hover:bg-[#54aeff] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2997ff] disabled:cursor-wait disabled:opacity-60"
+          className="min-h-11 shrink-0 rounded-full bg-[#5BA8A0] px-5 text-sm font-medium text-[#0A0E13] transition hover:bg-[#6FB8B0] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5BA8A0] disabled:cursor-wait disabled:opacity-60"
         >
           {busy ? "…" : "Go"}
         </button>
@@ -119,7 +119,7 @@ export function SearchBox({ onSubmitQuery, className }: SearchBoxProps) {
       {notice ? (
         <p
           role="status"
-          className="mt-2 text-xs text-[#a1a1a6]"
+          className="mt-2 text-xs text-[#A8A49C]"
           aria-live="polite"
         >
           {notice}

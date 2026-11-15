@@ -67,10 +67,8 @@ export function MetricChart({
         className={clsx("relative z-10 mt-10", className)}
         aria-label="Metrics"
       >
-        <h2 className="font-label text-[10px] uppercase tracking-[0.28em] text-[#6e6e73]">
-          Metrics
-        </h2>
-        <p className="mt-3 text-sm text-[#a1a1a6]">No metric series for this film.</p>
+        <h2 className="em-chrome-label text-[#7A766E]">Metrics</h2>
+        <p className="mt-3 text-sm text-[#A8A49C]">No metric series for this film.</p>
       </section>
     );
   }
@@ -122,9 +120,7 @@ export function MetricChart({
       aria-label="Metrics over time"
     >
       <div className="flex flex-wrap items-end justify-between gap-3">
-        <h2 className="font-label text-[10px] uppercase tracking-[0.28em] text-[#6e6e73]">
-          Whole-area metrics
-        </h2>
+        <h2 className="em-chrome-label text-[#7A766E]">Whole-area metrics</h2>
         <div
           className="flex flex-wrap gap-1"
           role="group"
@@ -137,10 +133,10 @@ export function MetricChart({
               aria-pressed={metric === key}
               onClick={() => setMetric(key)}
               className={clsx(
-                "min-h-9 rounded-full border px-3 font-label text-[10px] uppercase tracking-[0.14em] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2997ff]",
+                "min-h-9 rounded-full border px-3 text-[12px] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5BA8A0]",
                 metric === key
-                  ? "border-[#2997ff]/60 bg-[#2997ff]/15 text-[#f5f5f7]"
-                  : "border-white/10 text-[#a1a1a6] hover:border-white/25 hover:text-[#f5f5f7]",
+                  ? "border-[#5BA8A0]/60 bg-[#5BA8A0]/15 text-[#F4F1EC]"
+                  : "border-white/10 text-[#A8A49C] hover:border-white/25 hover:text-[#F4F1EC]",
               )}
             >
               {METRIC_LABELS[key]}
@@ -167,7 +163,7 @@ export function MetricChart({
                   y1={padT}
                   x2={x}
                   y2={padT + innerH}
-                  stroke="rgba(240,163,94,0.28)"
+                  stroke="rgba(196,165,116,0.35)"
                   strokeWidth={1}
                   strokeDasharray="3 4"
                 >
@@ -196,7 +192,7 @@ export function MetricChart({
                 width={Math.max(Math.abs(x2 - x1), 2)}
                 height={innerH}
                 fill={
-                  active ? "rgba(79,209,181,0.14)" : "rgba(79,209,181,0.07)"
+                  active ? "rgba(91,168,160,0.16)" : "rgba(91,168,160,0.08)"
                 }
               >
                 <title>
@@ -227,7 +223,7 @@ export function MetricChart({
 
           <polyline
             fill="none"
-            stroke="#2997ff"
+            stroke="#5BA8A0"
             strokeWidth={2}
             strokeLinejoin="round"
             strokeLinecap="round"
@@ -240,7 +236,7 @@ export function MetricChart({
               cx={xOf(p.year)}
               cy={yOf(p[metric])}
               r={activeYear === p.year ? 4.5 : 3}
-              fill={activeYear === p.year ? "#4FD1B5" : "#2997ff"}
+              fill={activeYear === p.year ? "#F4F1EC" : "#5BA8A0"}
             >
               <title>
                 {p.year}: {p[metric].toFixed(3)}
@@ -257,7 +253,7 @@ export function MetricChart({
               y1={padT}
               x2={xOf(activeYear)}
               y2={padT + innerH}
-              stroke="#4FD1B5"
+              stroke="#5BA8A0"
               strokeWidth={1.5}
               opacity={0.85}
             />
@@ -268,7 +264,7 @@ export function MetricChart({
             x={padL - 8}
             y={padT + 4}
             textAnchor="end"
-            className="fill-[#6e6e73]"
+            className="fill-[#7A766E]"
             fontSize={10}
             fontFamily="var(--font-label), monospace"
           >
@@ -278,7 +274,7 @@ export function MetricChart({
             x={padL - 8}
             y={padT + innerH}
             textAnchor="end"
-            className="fill-[#6e6e73]"
+            className="fill-[#7A766E]"
             fontSize={10}
             fontFamily="var(--font-label), monospace"
           >
@@ -291,7 +287,7 @@ export function MetricChart({
               x={xOf(y)}
               y={H - 8}
               textAnchor="middle"
-              className="fill-[#6e6e73]"
+              className="fill-[#7A766E]"
               fontSize={10}
               fontFamily="var(--font-label), monospace"
             >
@@ -306,15 +302,15 @@ export function MetricChart({
               <li
                 key={chg.id}
                 className={clsx(
-                  "font-ui text-sm text-[#a1a1a6]",
-                  highlightedChangeId === chg.id && "text-[#4FD1B5]",
+                  "font-ui text-sm text-[#A8A49C]",
+                  highlightedChangeId === chg.id && "text-[#5BA8A0]",
                 )}
               >
-                <span className="text-[#f5f5f7]">
+                <span className="text-[#F4F1EC]">
                   {chg.start_year}–{chg.end_year}
                 </span>
                 <span className="mx-2 text-white/20">·</span>
-                <span className="text-[#4FD1B5]">
+                <span className="text-[#5BA8A0]">
                   {formatMag(chg.metric, chg.magnitude)}
                 </span>
                 <span className="mx-2 text-white/20">·</span>
@@ -333,8 +329,8 @@ export function MetricChart({
         {localChanges.length > 0 ? (
           <ul className="mt-3 space-y-1.5 border-t border-white/[0.06] pt-3">
             {localChanges.map((chg) => (
-              <li key={chg.id} className="font-ui text-sm text-[#a1a1a6]">
-                <span className="text-[#F0A35E]">{formatHa(chg.area_ha)}</span>
+              <li key={chg.id} className="font-ui text-sm text-[#A8A49C]">
+                <span className="text-[#C4A574]">{formatHa(chg.area_ha)}</span>
                 <span className="mx-2 text-white/20">·</span>
                 local change {chg.start_year}–{chg.end_year}
                 {chg.region.description ? (
@@ -352,7 +348,7 @@ export function MetricChart({
         ) : null}
 
         {yearsSkipped.length > 0 ? (
-          <p className="mt-3 font-label text-[10px] uppercase tracking-[0.14em] text-[#6e6e73]">
+          <p className="em-chrome-label mt-3 text-[#7A766E]">
             Dashed marks: skipped years (
             {yearsSkipped.map((s) => s.year).join(", ")})
           </p>

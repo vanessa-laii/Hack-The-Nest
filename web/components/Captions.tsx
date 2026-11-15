@@ -119,13 +119,13 @@ export function Captions({
   return (
     <div
       className={clsx(
-        "rounded-lg bg-[#0A0E13]/78 px-4 py-2.5 text-center shadow-[0_8px_28px_rgba(0,0,0,0.45)] backdrop-blur-md ring-1 ring-white/10 sm:px-5 sm:py-3",
+        "rounded-md bg-[#0A0E13]/92 px-4 py-2.5 text-center shadow-[0_8px_28px_rgba(0,0,0,0.45)] ring-1 ring-white/10 sm:px-5 sm:py-3",
         className,
       )}
       aria-live="polite"
       aria-atomic="true"
     >
-      <p className="font-ui text-[14px] leading-snug tracking-tight text-white/95 sm:text-[15px]">
+      <p className="font-ui text-[14px] leading-snug tracking-tight text-[#F4F1EC]/95 sm:text-[15px]">
         {line}
       </p>
     </div>

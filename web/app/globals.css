@@ -1,16 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  /* Lifted charcoal — still black, less void */
-  --em-ground: #131314;
-  --em-surface: #1a1a1d;
-  --em-elevated: #222226;
-  --em-panel: rgba(26, 26, 29, 0.88);
-  --em-text: #f5f5f7;
-  --em-muted: #a1a1a6;
-  --em-faint: #6e6e73;
-  --em-accent: #2997ff;
-  --em-accent-soft: rgba(41, 151, 255, 0.45);
+  /* Orbital ground — Landsat documentary chrome */
+  --em-ground: #0a0e13;
+  --em-surface: #14181e;
+  --em-elevated: #1c2229;
+  --em-panel: #14181e;
+  --em-text: #f4f1ec;
+  --em-muted: #a8a49c;
+  --em-faint: #7a766e;
+  /* Muted Landsat true-color water — sole action accent */
+  --em-accent: #5ba8a0;
+  --em-accent-hover: #6fb8b0;
+  --em-accent-soft: rgba(91, 168, 160, 0.35);
+  /* Semantic warn / change only — not a second brand accent */
   --em-warm: #c4a574;
   --background: var(--em-ground);
   --foreground: var(--em-text);
@@ -25,6 +28,7 @@
   --color-em-accent: var(--em-accent);
   --color-em-warm: var(--em-warm);
   --color-em-muted: var(--em-muted);
+  --color-em-faint: var(--em-faint);
   --font-sans: var(--font-body);
   --font-heading: var(--font-display);
   --font-mono: var(--font-label);
@@ -48,6 +52,15 @@ body {
   font-family: var(--font-label), ui-monospace, monospace;
 }
 
+/* Sentence-case section / field labels — not tracked ALL-CAPS mono */
+.em-chrome-label {
+  font-family: var(--font-ui), var(--font-body), system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--em-muted);
+}
+
 .grain {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
   background-repeat: repeat;
@@ -68,6 +81,6 @@ body {
 }
 
 ::selection {
-  background: rgba(41, 151, 255, 0.35);
+  background: rgba(91, 168, 160, 0.4);
   color: #fff;
 }

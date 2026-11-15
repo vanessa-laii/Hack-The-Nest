@@ -40,13 +40,13 @@ function confidenceLabel(
   confidence: Chapter["confidence"],
 ): { text: string; className: string } | null {
   if (confidence === "cause_unknown") {
-    return { text: "Cause unknown", className: "text-[#F0A35E]" };
+    return { text: "Cause unknown", className: "text-[#C4A574]" };
   }
   if (confidence === "confirmed") {
-    return { text: "Confirmed", className: "text-[#4FD1B5]" };
+    return { text: "Confirmed", className: "text-[#5BA8A0]" };
   }
   if (confidence === "likely") {
-    return { text: "Likely", className: "text-[#2997ff]" };
+    return { text: "Likely", className: "text-[#5BA8A0]" };
   }
   return null;
 }
@@ -96,13 +96,13 @@ function BeforeAfter({
                 className="aspect-square w-full object-cover"
               />
             ) : (
-              <div className="flex aspect-square items-center justify-center text-sm text-[#6e6e73]">
+              <div className="flex aspect-square items-center justify-center text-sm text-[#7A766E]">
                 No frame for {year}
               </div>
             )}
           </div>
-          <figcaption className="mt-2 font-ui text-sm text-[#a1a1a6]">
-            <span className="text-[#f5f5f7]">{label}</span>
+          <figcaption className="mt-2 font-ui text-sm text-[#A8A49C]">
+            <span className="text-[#F4F1EC]">{label}</span>
             <span className="mx-2 text-white/20">·</span>
             {year}
             {change.area_ha > 0 ? (
@@ -110,7 +110,7 @@ function BeforeAfter({
                 <span className="mx-2 text-white/20">·</span>
                 <span
                   className={
-                    change.scope === "local" ? "text-[#F0A35E]" : "text-[#a1a1a6]"
+                    change.scope === "local" ? "text-[#C4A574]" : "text-[#A8A49C]"
                   }
                 >
                   {formatHa(change.area_ha)}
@@ -119,9 +119,9 @@ function BeforeAfter({
               </>
             ) : null}
             {frame ? (
-              <span className="mt-0.5 block font-label text-[10px] uppercase tracking-[0.12em] text-[#6e6e73]">
+              <span className="mt-0.5 block em-chrome-label text-[#7A766E]">
                 Acquired {frame.date_from}
-                {frame.date_to !== frame.date_from ? ` → ${frame.date_to}` : ""}
+                {frame.date_to !== frame.date_from ? `–${frame.date_to}` : ""}
                 {frame.clear_pct != null ? ` · ${Math.round(frame.clear_pct)}% clear` : ""}
               </span>
             ) : null}
@@ -153,16 +153,16 @@ function ChangeChapterBlock({
   return (
     <article className="py-6">
       <header className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-        <h3 className="font-ui text-lg font-semibold text-[#f5f5f7]">
+        <h3 className="font-ui text-lg font-semibold text-[#F4F1EC]">
           {chapter.headline}
         </h3>
-        <span className="font-label text-[10px] uppercase tracking-[0.14em] text-[#6e6e73]">
+        <span className="font-label text-[12px] tabular-nums text-[#7A766E]">
           {chapter.start_year}–{chapter.end_year}
         </span>
         {conf ? (
           <span
             className={clsx(
-              "font-label text-[10px] uppercase tracking-[0.14em]",
+              "text-[12px]",
               conf.className,
             )}
           >
@@ -173,7 +173,7 @@ function ChangeChapterBlock({
 
       {change?.sensor_switch_flag ? (
         <p
-          className="mt-3 border-l-2 border-[#F0A35E]/60 pl-3 text-sm text-[#F0A35E]"
+          className="mt-3 border-l-2 border-[#C4A574]/60 pl-3 text-sm text-[#C4A574]"
           role="status"
         >
           Sensor switch near this change — may be an artefact.
@@ -183,28 +183,28 @@ function ChangeChapterBlock({
       {change ? <BeforeAfter change={change} frames={frames} /> : null}
 
       {change?.mask_url ? (
-        <p className="mt-3 font-label text-[10px] uppercase tracking-[0.14em] text-[#6e6e73]">
+        <p className="mt-3 em-chrome-label text-[#7A766E]">
           Change mask available
           <span className="mx-2 text-white/20">·</span>
           <a
             href={fileUrl(change.mask_url)}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#2997ff] underline-offset-2 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2997ff]"
+            className="text-[#5BA8A0] underline-offset-2 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5BA8A0]"
           >
             Open mask overlay
           </a>
           {change.region.description ? (
-            <span className="mt-1 block normal-case tracking-normal font-ui text-sm text-[#a1a1a6]">
+            <span className="mt-1 block normal-case tracking-normal font-ui text-sm text-[#A8A49C]">
               Region: {change.region.description}
             </span>
           ) : null}
         </p>
       ) : change?.region.description ? (
-        <p className="mt-3 text-sm text-[#a1a1a6]">
+        <p className="mt-3 text-sm text-[#A8A49C]">
           Region: {change.region.description}
           {change.scope === "local" ? (
-            <span className="ml-2 text-[#F0A35E]">
+            <span className="ml-2 text-[#C4A574]">
               ({formatHa(change.area_ha)})
             </span>
           ) : null}
@@ -212,7 +212,7 @@ function ChangeChapterBlock({
       ) : null}
 
       {isUnknown ? (
-        <p className="mt-4 text-sm text-[#a1a1a6]">
+        <p className="mt-4 text-sm text-[#A8A49C]">
           No verified cause found for this change. Claims are empty by design.
         </p>
       ) : (
@@ -226,36 +226,36 @@ function ChangeChapterBlock({
                   type="button"
                   aria-expanded={open}
                   onClick={() => onToggleClaim(claim.id)}
-                  className="w-full text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2997ff]"
+                  className="w-full text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5BA8A0]"
                 >
-                  <span className="font-ui text-[15px] leading-snug text-[#f5f5f7]">
+                  <span className="font-ui text-[15px] leading-snug text-[#F4F1EC]">
                     {claim.text}
                   </span>
-                  <span className="mt-1 block font-label text-[10px] uppercase tracking-[0.14em] text-[#2997ff]">
+                  <span className="mt-1 block em-chrome-label text-[#5BA8A0]">
                     {open ? "Hide sources" : "Show sources & excerpts"}
                   </span>
                 </button>
                 {open ? (
                   <div className="mt-3 space-y-3 pl-0 sm:pl-3">
                     {resolved.length === 0 ? (
-                      <p className="text-sm text-[#a1a1a6]">
+                      <p className="text-sm text-[#A8A49C]">
                         No matching excerpts for these ids.
                       </p>
                     ) : (
                       resolved.map(({ excerpt, source }) => (
                         <blockquote
                           key={excerpt.id}
-                          className="border-l-2 border-[#2997ff]/40 pl-3"
+                          className="border-l-2 border-[#5BA8A0]/40 pl-3"
                         >
-                          <p className="text-sm leading-relaxed text-[#f5f5f7]">
+                          <p className="text-sm leading-relaxed text-[#F4F1EC]">
                             “{excerpt.text}”
                           </p>
-                          <footer className="mt-2 text-sm text-[#a1a1a6]">
+                          <footer className="mt-2 text-sm text-[#A8A49C]">
                             <a
                               href={source.url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-[#2997ff] underline-offset-2 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2997ff]"
+                              className="text-[#5BA8A0] underline-offset-2 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5BA8A0]"
                             >
                               {source.title}
                             </a>
@@ -289,10 +289,10 @@ function ChangeChapterBlock({
 
       {chapter.vision_check.verdict !== "not_run" ||
       chapter.vision_check.note ? (
-        <p className="mt-4 font-label text-[10px] uppercase tracking-[0.14em] text-[#6e6e73]">
+        <p className="mt-4 em-chrome-label text-[#7A766E]">
           Vision check: {chapter.vision_check.verdict}
           {chapter.vision_check.note ? (
-            <span className="mt-1 block normal-case tracking-normal font-ui text-sm text-[#a1a1a6]">
+            <span className="mt-1 block normal-case tracking-normal font-ui text-sm text-[#A8A49C]">
               {chapter.vision_check.note}
             </span>
           ) : null}
@@ -305,13 +305,13 @@ function ChangeChapterBlock({
 function QuietChapterStrip({ chapter }: { chapter: Chapter }) {
   return (
     <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 py-4">
-      <span className="font-label text-[10px] uppercase tracking-[0.18em] text-[#6e6e73]">
+      <span className="em-chrome-label capitalize text-[#7A766E]">
         {chapter.kind}
       </span>
-      <span className="font-ui text-[15px] font-semibold text-[#f5f5f7]">
+      <span className="font-ui text-[15px] font-semibold text-[#F4F1EC]">
         {chapter.headline}
       </span>
-      <span className="font-label text-[10px] uppercase tracking-[0.14em] text-[#6e6e73]">
+      <span className="font-label text-[12px] tabular-nums text-[#7A766E]">
         {chapter.start_year}–{chapter.end_year}
       </span>
     </div>
@@ -331,10 +331,10 @@ export function EvidencePanel({ story, className }: EvidencePanelProps) {
       className={clsx("relative z-10 mt-12", className)}
       aria-label="Evidence"
     >
-      <h2 className="font-label text-[10px] uppercase tracking-[0.28em] text-[#6e6e73]">
+      <h2 className="em-chrome-label text-[#7A766E]">
         Evidence
       </h2>
-      <p className="mt-2 max-w-2xl text-sm text-[#a1a1a6]">
+      <p className="mt-2 max-w-2xl text-sm text-[#A8A49C]">
         Every claim links to a verified excerpt. Click a claim to open its
         sources.
       </p>

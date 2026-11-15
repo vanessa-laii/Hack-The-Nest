@@ -50,7 +50,7 @@ export function NarrateStub({ storyId }: NarrateStubProps) {
           type="button"
           onClick={handleNarrate}
           disabled={busy}
-          className="inline-flex min-h-11 items-center justify-center rounded-full bg-[#2997ff] px-5 text-sm font-medium text-white transition hover:bg-[#54aeff] disabled:cursor-wait disabled:opacity-60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2997ff]"
+          className="inline-flex min-h-11 items-center justify-center rounded-full bg-[#5BA8A0] px-5 text-sm font-medium text-[#0A0E13] transition hover:bg-[#6FB8B0] disabled:cursor-wait disabled:opacity-60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5BA8A0]"
         >
           {busy
             ? "Narrating…"
@@ -58,27 +58,27 @@ export function NarrateStub({ storyId }: NarrateStubProps) {
               ? "Refresh narration"
               : "Narrate / play audio"}
         </button>
-        <span className="font-label text-[9px] uppercase tracking-[0.18em] text-[#6e6e73]">
+        <span className="em-chrome-label text-[#7A766E]">
           Stub · POST /api/narrate
         </span>
       </div>
 
       {error ? (
-        <p role="alert" className="mt-3 text-sm text-[#F0A35E]">
+        <p role="alert" className="mt-3 text-sm text-[#C4A574]">
           {error}
         </p>
       ) : null}
 
       {narration ? (
         <div className="mt-4 space-y-3">
-          <p className="text-sm text-[#a1a1a6]">
+          <p className="text-sm text-[#A8A49C]">
             Cached narration · {narration.total_duration_s.toFixed(1)} s ·{" "}
             {narration.segments.length} segments
           </p>
           <ul className="space-y-2">
             {narration.segments.map((seg) => (
               <li key={seg.segment_id} className="flex flex-col gap-1">
-                <span className="font-label text-[10px] uppercase tracking-[0.14em] text-[#6e6e73]">
+                <span className="font-label text-[11px] tabular-nums text-[#7A766E]">
                   {seg.segment_id}
                 </span>
                 {/* eslint-disable-next-line jsx-a11y/media-has-caption -- Phase 0 stub; captions land with FilmPlayer */}
