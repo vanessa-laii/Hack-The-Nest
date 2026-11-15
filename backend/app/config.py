@@ -40,7 +40,7 @@ class Settings(BaseSettings):
     pipeline_timeout_s: int = Field(180, alias="PIPELINE_TIMEOUT_S")  # HL-5
     web_origin: str = Field("http://localhost:3000", alias="WEB_ORIGIN")
     nominatim_user_agent: str = Field(
-        "earth-memory-hackthenest/1.0", alias="NOMINATIM_USER_AGENT"
+        "revisit-hackthenest/1.0", alias="NOMINATIM_USER_AGENT"
     )
 
     # --- Model + search providers ---

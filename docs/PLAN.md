@@ -1,10 +1,10 @@
-# Earth Memory: Build Plan
+# Revisit: Build Plan
 
 **Hack The Nest 2026 · Sat Nov 14, 12 PM → Sun Nov 15, 12 PM (Eastern)**
 
 ## What we're building and why
 
-**Earth Memory: type any place on Earth and get a 60–90 second narrated, sourced film of how that spot changed since 1984, and why.**
+**Revisit: type any place on Earth and get a 60–90 second narrated, sourced film of how that spot changed since 1984, and why.**
 
 **The problem.** The biggest changes to the places we live happen too slowly to notice: a lake shrinks, farmland becomes subdivisions, a forest burns and grows back. The proof exists, because NASA and USGS's Landsat satellites have photographed every patch of land since the 1980s. But that archive is built for remote-sensing specialists. Even when you can see that a place changed, nothing tells you *why*.
 

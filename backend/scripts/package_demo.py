@@ -1,6 +1,6 @@
 # CLI: zips the built stories' player files so the demo laptop can play them offline (HL-9).
 # Inputs: data/stories/ (story.json, frames, thumbs, masks, index.json).
-# Outputs: data/earth-memory-stories.zip, ready to unzip into the other machine's data/stories/.
+# Outputs: data/revisit-stories.zip, ready to unzip into the other machine's data/stories/.
 #
 # How it works:
 #   1. Take every story folder that has a story.json (finished stories only).
@@ -25,7 +25,7 @@ PLAYER_FOLDERS = ("frames", "thumbs", "masks", "narration")
 
 def main() -> int:
     stories_dir = settings.data_dir / "stories"
-    out = settings.data_dir / "earth-memory-stories.zip"
+    out = settings.data_dir / "revisit-stories.zip"
     finished = sorted(d for d in stories_dir.iterdir() if (d / "story.json").exists())
     ids = {d.name for d in finished}
 

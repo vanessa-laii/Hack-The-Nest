@@ -1,4 +1,4 @@
-# Earth Memory: Requirements
+# Revisit: Requirements
 
 The rules we build to. IDs (HL-, FR-, TR-, DR-) are referenced from the plan, prompts and commits. Details of formats live in [`CONTRACTS.md`](CONTRACTS.md); tasks and deadlines in [`PLAN.md`](PLAN.md).
 
