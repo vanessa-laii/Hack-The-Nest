@@ -84,6 +84,11 @@ def story_errors(story: dict) -> list[str]:
             errors.append(f"{ch['id']}: change_id {ch.get('change_id')} not in changes")
         if is_change and (ch.get("confidence") == "cause_unknown") != (len(ch["claims"]) == 0):
             errors.append(f"{ch['id']}: confidence cause_unknown <=> no claims")
+        # Intro and outro chapters carry no claims (schema: "Empty for intro/outro").
+        # Why enforce it: causes belong in change chapters, where confidence is set
+        # (TR-7). Claims in an intro would bypass that.
+        if not is_change and ch["claims"]:
+            errors.append(f"{ch['id']}: {ch['kind']} chapter must have no claims")
         for cl in ch["claims"]:
             claim_ids.add(cl["id"])
             missing = [e for e in cl["excerpt_ids"] if e not in excerpt_ids]

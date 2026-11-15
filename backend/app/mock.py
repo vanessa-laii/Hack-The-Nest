@@ -31,7 +31,9 @@ def sample_story() -> dict:
 
 
 def sample_events() -> list[dict]:
-    """Parses events.sample.jsonl (one JSON event per line), skipping blank lines."""
+    """Parses events.sample.jsonl (one JSON event per line), skipping blank lines.
+    Why read the contract file directly: the mock stream is then exactly the sample
+    Vanessa's types were generated from, with no second copy to drift."""
     lines = (SAMPLES / "events.sample.jsonl").read_text(encoding="utf-8").splitlines()
     return [json.loads(line) for line in lines if line.strip()]
 
@@ -68,12 +70,17 @@ async def replay_events(after_seq: int = -1) -> AsyncIterator[dict]:
     reconnects mid-build resumes where it left off rather than replaying from
     the start (CONTRACTS §1). Fresh timestamps make the live feed look real.
     """
-    for ev in sample_events():
-        if ev["seq"] <= after_seq:
-            continue
+    events = sample_events()
+    remaining = [ev for ev in events if ev["seq"] > after_seq]
+    if not remaining:
+        # Resuming at or past the end: send the final done/error event again.
+        # Why: EventSource reconnects automatically whenever a stream closes. An
+        # empty stream would make a client that missed `done` reconnect forever
+        # without ever learning the build finished.
+        remaining = events[-1:]
+    for ev in remaining:
         await asyncio.sleep(EVENT_DELAY_S)
-        ev = {**ev, "ts": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")}
-        yield ev
+        yield {**ev, "ts": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")}
 
 
 # ---------- Placeholder images ----------

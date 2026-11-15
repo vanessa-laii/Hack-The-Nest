@@ -20,6 +20,9 @@ ID_RE = re.compile(r"^[a-z0-9-]{1,64}$")
 
 
 def stories_dir() -> Path:
+    """DATA_DIR/stories, the root for every saved story (CONTRACTS §6).
+    Why a function, not a constant: settings.data_dir is resolved at call time,
+    so tests can point DATA_DIR at a temp folder."""
     return settings.data_dir / "stories"
 
 
@@ -42,9 +45,16 @@ def story_id(place_slug: str, country_code: str, aoi_km: float) -> str:
     id, so it doubles as the cache key ("already built? serve it").
     Why trim the slug rather than the tail: the country and km suffix are what
     keep ids unique, so a long place name loses characters first.
+    Why the exact area size in the id ('6km', '6p5km'): rounding would let 5.5 km
+    and 6.5 km share one cached story (QA finding). '.' isn't allowed in ids, so it becomes 'p'.
+    Raises ValueError if the place name has no usable characters (e.g. '!!!'),
+    instead of producing an id like '-us-6km'.
     """
-    tail = f"-{country_code.lower()}-{int(round(aoi_km))}km"
-    return slugify(place_slug)[: 64 - len(tail)].rstrip("-") + tail
+    slug = slugify(place_slug)
+    if not slug:
+        raise ValueError(f"place name {place_slug!r} gives an empty id slug")
+    tail = f"-{slugify(country_code) or 'xx'}-{f'{aoi_km:g}'.replace('.', 'p')}km"
+    return slug[: 64 - len(tail)].rstrip("-") + tail
 
 
 def story_path(sid: str) -> Path | None:
@@ -57,7 +67,9 @@ def story_path(sid: str) -> Path | None:
 
 
 def load_story(sid: str) -> dict | None:
-    """Reads a saved story, or returns None if there isn't one."""
+    """Reads a saved story, or returns None if there isn't one.
+    Why no validation here: every story was validated when it was saved
+    (save_story), so reading stays cheap on the request path."""
     p = story_path(sid)
     if p is None or not p.exists():
         return None

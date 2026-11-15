@@ -12,7 +12,7 @@ from fastapi import FastAPI, Header
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator, model_validator
 
 from app import errors, mock, store
 from app.config import settings
@@ -65,6 +65,26 @@ class StoryRequest(BaseModel):
     lon: float | None = Field(None, ge=-180, le=180)
     display_name: str | None = Field(None, max_length=200)
     aoi_km: float | None = Field(None, ge=3, le=10)
+
+    @field_validator("query")
+    @classmethod
+    def _query_not_blank(cls, v: str) -> str:
+        """Strips whitespace and rejects a blank query. Why: '   ' passes
+        min_length but would send an empty search to the geocoder."""
+        v = v.strip()
+        if not v:
+            raise ValueError("query is blank")
+        return v
+
+    @model_validator(mode="after")
+    def _picked_place_complete(self) -> "StoryRequest":
+        """lat, lon and display_name come together or not at all. Why: they are the
+        user's pick from the PLACE_AMBIGUOUS picker (FR-2), and half a pick (lat
+        without lon) can't be geocoded or labelled."""
+        given = [self.lat is not None, self.lon is not None, self.display_name is not None]
+        if any(given) and not all(given):
+            raise ValueError("lat, lon and display_name must be sent together")
+        return self
 
 
 @app.get("/api/health")
@@ -149,7 +169,17 @@ async def _with_pings(source: AsyncIterator[dict]) -> AsyncIterator[str]:
                 return
             pending = asyncio.ensure_future(it.__anext__())
     finally:
+        # Client gone or stream finished: stop the in-flight read, then close the
+        # source generator so its own cleanup runs. Why aclose: the real pipeline's
+        # event source will hold resources (queues, subscriptions) that must be
+        # released, not left for garbage collection.
         pending.cancel()
+        aclose = getattr(it, "aclose", None)
+        if aclose is not None:
+            try:
+                await aclose()
+            except RuntimeError:
+                pass  # generator still running: the cancelled __anext__ owns it, and cancellation cleans it up
 
 
 @app.get("/api/stories/{sid}/events")
