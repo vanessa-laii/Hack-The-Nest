@@ -42,7 +42,7 @@ Never traded for features.
 
 - **FR-20** Measure per year: vegetation (NDVI), water fraction, built-up fraction.
 - **FR-22** A change must last ≥ 2 years (fires excepted). **FR-23** The control place produces 0 changes.
-- **FR-30** For each change, search with Exa and reason with a text model, following §4. Gemini is allowed while building; **switch to OpenAI by the end of Phase 2** (track rule) with `LLM_PROVIDER=openai`.
+- **FR-30** For each change, search with Exa and reason with a text model (Gemini by default; any model is allowed), following §4.
 - **FR-33** Each chapter gets a confidence: `confirmed`, `likely` or `cause_unknown`.
 
 **Film and web app**
@@ -80,7 +80,7 @@ The product's credibility is its honesty. These apply to every model call.
 
 - All code written during the 24 hours; public repo; both of us added on Devpost; AI tools listed.
 - Draft by Sun 12:00 AM, final by Sun 12:00 PM, no late entries; demo video ≤ 3 min.
-- **Future of Intelligence:** built on OpenAI and Exa; a real user and problem.
+- **Future of Intelligence (updated Sat night):** any AI model or framework. Judged on creativity, innovation, technical implementation, real-world impact and meaningful AI integration; agentic systems and combining AI fields are strongly encouraged.
 - **Beyond the Horizon:** NASA data at the centre, used correctly, credited (HL-11).
 - **ElevenLabs:** the voice is the product.
 - **MLH (Gemini, MongoDB Atlas, GoDaddy Registry):** actually used; selected on Devpost.
