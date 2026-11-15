@@ -60,7 +60,7 @@ Which compositing method gives one clean image per summer, with no visible cloud
 - The data API returns an extra mask band after the 7 requested ones. The loader must select bands by name or position, never assume the band count.
 - Story ids keep a non-integer area size as `6p5km`. That isn't in the CONTRACTS §2 id format yet, so tell Vanessa before any non-integer size ships.
 
-## Known masking failures (open)
+## Known masking failures (fixed in S2b, results below)
 
 These come from the gold-set review of Detroit-area places. They are failures of the QA mask itself, so every compositing method is affected and the choice of median stands. They must be fixed, and tested on these places, when the pipeline is built (call it **S2b**).
 
@@ -82,3 +82,42 @@ These come from the gold-set review of Detroit-area places. They are failures of
 - The real pipeline, per place: about 170–200 scene downloads (15–25 s), then about 5 s of compositing. That fits the 90 s median story budget (HL-5).
 - Metrics (FR-20) are computed on the median composite, ignoring hole pixels.
 - Later: show hole pixels in the evidence panel, so "grey" is explained, not mysterious.
+
+## S2b results (2026-11-14)
+
+All three failures are fixed in `backend/app/pipeline/composite.py`, checked on real imagery with before/after contact sheets in `spikes/s2b-mask/`. Compositing takes 1.4–2.0 s per place.
+
+| Failure | Before → after | How |
+| --- | --- | --- |
+| A. Gordie Howe bridge deck erased | Holes in the deck window: 2024 12.7% → 1.5%, 2025 11.8% → 0.2%, 2026 10.4% → 0.6%. The deck is visible | **Persistent-bright guard.** A pixel is treated as a surface, not a cloud, if it is cloud-flagged in ≥ 75% of a summer's scenes, steadily bright (median blue ≥ 0.08, within ±0.05 in ≥ 75% of scenes) *and* confirmed by a summer ≤ 2 years away. A pixel flagged in one summer only stays masked |
+| B. Willow Run 2020 white blobs | Cloud-like pixels 5.7% → 0.48% | The real cause was an all-white **Tier 2** scene that QA labels *snow*. The full mask (bit 5) plus **outlier rejection** (+0.08 blue above the pixel's median for that summer) removes it |
+| C. Delray 2021 haze | Haze index 0.078 → 0.060 (neighbouring years 0.065 / 0.057) | **Hazy scenes demoted.** A scene ≥ 0.02 hazier than normal only fills pixels no clearer scene covers. Same-day scenes from neighbouring paths count as one look |
+
+**Flicker didn't get worse; it improved slightly.** 6 km, N = 4, series / pixel flicker, before → after:
+
+| Place | Before | After |
+| --- | --- | --- |
+| Central Park | 0.0147 / 0.0601 | 0.0130 / 0.0579 |
+| Lake Mead | 0.0178 / 0.0397 | 0.0167 / 0.0398 |
+| Paradise | 0.0194 / 0.0371 | 0.0141 / 0.0317 |
+
+Lake Mead and Paradise stay 100% clean.
+
+**Changes from the plan:**
+- Ranking scenes by clear pixels inside the area plus haze made Central Park flicker *more* (0.018–0.020). Scene ranking therefore stays on cloud cover, and haze is handled by demoting hazy scenes as described above.
+- **Scene ranking after QA.** Tier 2 scenes (+50 "cloud points") rank after clean ones both when downloading (`imagery.py`) and when compositing (`composite.py`), via the shared `types.scene_rank_score`. QA found Lake Mead 1993 composited from a Tier 2 scene.
+- **Striped Landsat 7 penalty (+25) applies to downloads only.** That stops a summer from getting only striped scenes, the motivation from Willow Run 2023 (9.31% → 9.13% holes in the spike, not yet re-measured with this ranking). Inside the composite, measured on the S2 cache:
+
+  | Composite ranking | Central Park flicker (series / pixel) |
+  | --- | --- |
+  | cloud cover only | 0.0130 / 0.0572 |
+  | + Tier 2 penalty (chosen) | 0.0130 / 0.0575 |
+  | + Tier 2 + stripe penalty | 0.0194 / 0.0589 |
+
+  These numbers use the same method as the S2b "after" table above (spike scorer, S2 cache, centre 200 px, recomputed by QA). The stripe penalty pulled in September scenes, where autumn fading looks like flicker, and the median already fills the stripes. Trade-off: the stripe penalty would *help* Lake Mead slightly (series 0.0167 → 0.0154) and leaves Paradise unchanged. The control place not flickering is the pass bar, so Central Park decides.
+
+**Still open:**
+- Delray 2021 cloud-like pixels went 0% → 0.17% with the fixes (small; noted for honesty).
+- Edge-ring pixels next to a confirmed bright surface ignore all QA flags, including shadow. A recurring shadow within 6 px of a deck could pass (QA: speculative, limited to those pixels).
+- Single-year holes over dark water (Delray 1985/87/97/2017). The guard only covers bright surfaces. These stay grey and are reported in `clear_pct`.
+- The Landsat 8/9 `qa_aerosol` band would detect haze directly. We don't download it.
