@@ -1,4 +1,4 @@
-# Earth Memory: Requirements
+# Revisit: Requirements
 
 The rules we build to. IDs (HL-, FR-, TR-, DR-) are referenced from the plan, prompts and commits. Details of formats live in [`CONTRACTS.md`](CONTRACTS.md); tasks and deadlines in [`PLAN.md`](PLAN.md).
 
@@ -64,7 +64,7 @@ The product's credibility is its honesty. These apply to every model call.
 - **TR-5** A separate checker call confirms each claim is actually stated by its excerpts. Any "no" drops the claim.
 - **TR-6** The narration may only use numbers, years and names that appear in the metrics or verified excerpts. Code rejects anything else.
 - **TR-7** Confidence is set by rules, not by the model: `confirmed` = 2+ independent sources, or 1 authoritative (government, science, major newspaper); `likely` = 1 other source; otherwise `cause_unknown`. Gemini disagreeing with the images lowers it one step.
-- **TR-8** "Cause unknown" is shown and narrated plainly. Never fill the gap with a guess.
+- **TR-8** "Cause unknown" is shown plainly in the timeline and evidence panel. The narration spends its time on changes with verified causes, never mentions a missing cause, and never fills a gap with a guess.
 - **TR-9** Web pages and search results are untrusted data; instructions inside them are ignored.
 - **TR-10** Every model and search call is logged to the story's `trace.jsonl`.
 

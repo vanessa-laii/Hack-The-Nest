@@ -1,0 +1,123 @@
+{
+  "summary": {
+    "claims": 17,
+    "unsupported": 0,
+    "found": 5,
+    "expected": 7,
+    "llm_calls": 41,
+    "schema_errors": 0,
+    "seconds": 194.0,
+    "cause_recall": 0.714,
+    "passes": true
+  },
+  "places": {
+    "lake-mead": {
+      "claims": 3,
+      "unsupported": [],
+      "schema": [],
+      "found": 1,
+      "expected": 1,
+      "notes": [
+        "FOUND  water_loss [2000, 2015] ['drought', 'low water', 'reservoir level']"
+      ],
+      "llm_calls": 7,
+      "seconds": 32.2,
+      "crashed": null,
+      "confidence": [
+        "cause_unknown",
+        "cause_unknown",
+        "confirmed",
+        "confirmed"
+      ]
+    },
+    "paradise": {
+      "claims": 3,
+      "unsupported": [],
+      "schema": [],
+      "found": 1,
+      "expected": 1,
+      "notes": [
+        "FOUND  burn [2018, 2018] ['camp fire', 'wildfire']"
+      ],
+      "llm_calls": 4,
+      "seconds": 28.1,
+      "crashed": null,
+      "confidence": [
+        "cause_unknown",
+        "confirmed"
+      ]
+    },
+    "summerlin": {
+      "claims": 1,
+      "unsupported": [],
+      "schema": [],
+      "found": 1,
+      "expected": 1,
+      "notes": [
+        "FOUND  vegetation_gain [1990, 2010] ['development', 'master-planned community', 'housing']"
+      ],
+      "llm_calls": 3,
+      "seconds": 13.3,
+      "crashed": null,
+      "confidence": [
+        "likely"
+      ]
+    },
+    "palm-jumeirah": {
+      "claims": 3,
+      "unsupported": [],
+      "schema": [],
+      "found": 0,
+      "expected": 1,
+      "notes": [
+        "MISSED water_loss [2001, 2006] ['land reclamation', 'artificial island']"
+      ],
+      "llm_calls": 8,
+      "seconds": 32.2,
+      "crashed": null,
+      "confidence": [
+        "confirmed",
+        "likely"
+      ]
+    },
+    "willow-run": {
+      "claims": 2,
+      "unsupported": [],
+      "schema": [],
+      "found": 1,
+      "expected": 2,
+      "notes": [
+        "FOUND  other [2014, 2015] ['willow run plant', 'demolition', 'racer trust']",
+        "MISSED urban_growth [2016, 2018] ['american center for mobility', 'test track', 'autonomous vehicles']"
+      ],
+      "llm_calls": 12,
+      "seconds": 58.5,
+      "crashed": null,
+      "confidence": [
+        "cause_unknown",
+        "likely",
+        "likely",
+        "cause_unknown",
+        "cause_unknown"
+      ]
+    },
+    "delray": {
+      "claims": 5,
+      "unsupported": [],
+      "schema": [],
+      "found": 1,
+      "expected": 1,
+      "notes": [
+        "FOUND  urban_growth [2019, 2024] ['gordie howe international bridge', 'port of entry']"
+      ],
+      "llm_calls": 7,
+      "seconds": 29.7,
+      "crashed": null,
+      "confidence": [
+        "cause_unknown",
+        "confirmed",
+        "likely"
+      ]
+    }
+  }
+}

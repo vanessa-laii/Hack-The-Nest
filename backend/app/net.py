@@ -15,7 +15,7 @@ import truststore
 # trusts what Windows trusts. Never use verify=False instead.
 truststore.inject_into_ssl()
 
-USER_AGENT = "earth-memory-hackthenest/1.0"
+USER_AGENT = "revisit-hackthenest/1.0"
 
 
 def http_client(
