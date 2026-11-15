@@ -2,7 +2,7 @@
 
 Proof that the web app loads `contracts/samples/story.sample.json` via the backend (`EM_MOCK=1`).
 
-**Story schema:** `1.2` (regenerate with `npm run types`). Description-only metric updates:
+**Story schema:** `1.3` (regenerate with `npm run types`). Includes `changes[].scope` (`place` | `local`) + `changes[].area_ha`, plus earlier metric updates:
 - **1.1** `built_frac` excludes water (MNDWI ≤ 0)
 - **1.2** `ndvi_mean` averaged over land only (MNDWI ≤ 0)
 

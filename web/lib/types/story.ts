@@ -20,10 +20,10 @@ export type Year = number;
 export type FileUrl = string;
 
 /**
- * One Earth Memory story. Written by backend/, read by web/. Version 1.2. See docs/CONTRACTS.md.
+ * One Earth Memory story. Written by backend/, read by web/. Version 1.3. See docs/CONTRACTS.md.
  */
 export interface Story {
-  schema_version: "1.2";
+  schema_version: "1.3";
   id: StoryId;
   /**
    * True only for hand-made sample/mock stories. Never true for generated stories.
@@ -203,9 +203,17 @@ export interface Story {
           start_year: Year;
           end_year: Year;
           /**
-           * Signed change in the metric's own units (after minus before).
+           * Signed change in the metric's own units (after minus before). Meaning depends on scope: place = whole AOI (same units as metrics.series); local = inside region.bbox only. Changed in 1.3.
            */
           magnitude: number;
+          /**
+           * place = magnitude is over the whole area (chart-comparable); local = magnitude is inside region.bbox only. Added in 1.3.
+           */
+          scope: "place" | "local";
+          /**
+           * Area of the changed region in hectares. For local chapters, narration/evidence can say e.g. 'a 6-hectare area…'. Added in 1.3.
+           */
+          area_ha: number;
           persistence_years: number;
           region: {
             bbox: Bbox;
@@ -231,9 +239,17 @@ export interface Story {
           start_year: Year;
           end_year: Year;
           /**
-           * Signed change in the metric's own units (after minus before).
+           * Signed change in the metric's own units (after minus before). Meaning depends on scope: place = whole AOI (same units as metrics.series); local = inside region.bbox only. Changed in 1.3.
            */
           magnitude: number;
+          /**
+           * place = magnitude is over the whole area (chart-comparable); local = magnitude is inside region.bbox only. Added in 1.3.
+           */
+          scope: "place" | "local";
+          /**
+           * Area of the changed region in hectares. For local chapters, narration/evidence can say e.g. 'a 6-hectare area…'. Added in 1.3.
+           */
+          area_ha: number;
           persistence_years: number;
           region: {
             bbox: Bbox;
@@ -257,9 +273,17 @@ export interface Story {
           start_year: Year;
           end_year: Year;
           /**
-           * Signed change in the metric's own units (after minus before).
+           * Signed change in the metric's own units (after minus before). Meaning depends on scope: place = whole AOI (same units as metrics.series); local = inside region.bbox only. Changed in 1.3.
            */
           magnitude: number;
+          /**
+           * place = magnitude is over the whole area (chart-comparable); local = magnitude is inside region.bbox only. Added in 1.3.
+           */
+          scope: "place" | "local";
+          /**
+           * Area of the changed region in hectares. For local chapters, narration/evidence can say e.g. 'a 6-hectare area…'. Added in 1.3.
+           */
+          area_ha: number;
           persistence_years: number;
           region: {
             bbox: Bbox;
@@ -285,9 +309,17 @@ export interface Story {
           start_year: Year;
           end_year: Year;
           /**
-           * Signed change in the metric's own units (after minus before).
+           * Signed change in the metric's own units (after minus before). Meaning depends on scope: place = whole AOI (same units as metrics.series); local = inside region.bbox only. Changed in 1.3.
            */
           magnitude: number;
+          /**
+           * place = magnitude is over the whole area (chart-comparable); local = magnitude is inside region.bbox only. Added in 1.3.
+           */
+          scope: "place" | "local";
+          /**
+           * Area of the changed region in hectares. For local chapters, narration/evidence can say e.g. 'a 6-hectare area…'. Added in 1.3.
+           */
+          area_ha: number;
           persistence_years: number;
           region: {
             bbox: Bbox;
@@ -311,9 +343,17 @@ export interface Story {
           start_year: Year;
           end_year: Year;
           /**
-           * Signed change in the metric's own units (after minus before).
+           * Signed change in the metric's own units (after minus before). Meaning depends on scope: place = whole AOI (same units as metrics.series); local = inside region.bbox only. Changed in 1.3.
            */
           magnitude: number;
+          /**
+           * place = magnitude is over the whole area (chart-comparable); local = magnitude is inside region.bbox only. Added in 1.3.
+           */
+          scope: "place" | "local";
+          /**
+           * Area of the changed region in hectares. For local chapters, narration/evidence can say e.g. 'a 6-hectare area…'. Added in 1.3.
+           */
+          area_ha: number;
           persistence_years: number;
           region: {
             bbox: Bbox;
@@ -337,9 +377,17 @@ export interface Story {
           start_year: Year;
           end_year: Year;
           /**
-           * Signed change in the metric's own units (after minus before).
+           * Signed change in the metric's own units (after minus before). Meaning depends on scope: place = whole AOI (same units as metrics.series); local = inside region.bbox only. Changed in 1.3.
            */
           magnitude: number;
+          /**
+           * place = magnitude is over the whole area (chart-comparable); local = magnitude is inside region.bbox only. Added in 1.3.
+           */
+          scope: "place" | "local";
+          /**
+           * Area of the changed region in hectares. For local chapters, narration/evidence can say e.g. 'a 6-hectare area…'. Added in 1.3.
+           */
+          area_ha: number;
           persistence_years: number;
           region: {
             bbox: Bbox;
@@ -365,9 +413,17 @@ export interface Story {
           start_year: Year;
           end_year: Year;
           /**
-           * Signed change in the metric's own units (after minus before).
+           * Signed change in the metric's own units (after minus before). Meaning depends on scope: place = whole AOI (same units as metrics.series); local = inside region.bbox only. Changed in 1.3.
            */
           magnitude: number;
+          /**
+           * place = magnitude is over the whole area (chart-comparable); local = magnitude is inside region.bbox only. Added in 1.3.
+           */
+          scope: "place" | "local";
+          /**
+           * Area of the changed region in hectares. For local chapters, narration/evidence can say e.g. 'a 6-hectare area…'. Added in 1.3.
+           */
+          area_ha: number;
           persistence_years: number;
           region: {
             bbox: Bbox;
@@ -391,9 +447,17 @@ export interface Story {
           start_year: Year;
           end_year: Year;
           /**
-           * Signed change in the metric's own units (after minus before).
+           * Signed change in the metric's own units (after minus before). Meaning depends on scope: place = whole AOI (same units as metrics.series); local = inside region.bbox only. Changed in 1.3.
            */
           magnitude: number;
+          /**
+           * place = magnitude is over the whole area (chart-comparable); local = magnitude is inside region.bbox only. Added in 1.3.
+           */
+          scope: "place" | "local";
+          /**
+           * Area of the changed region in hectares. For local chapters, narration/evidence can say e.g. 'a 6-hectare area…'. Added in 1.3.
+           */
+          area_ha: number;
           persistence_years: number;
           region: {
             bbox: Bbox;
@@ -417,9 +481,17 @@ export interface Story {
           start_year: Year;
           end_year: Year;
           /**
-           * Signed change in the metric's own units (after minus before).
+           * Signed change in the metric's own units (after minus before). Meaning depends on scope: place = whole AOI (same units as metrics.series); local = inside region.bbox only. Changed in 1.3.
            */
           magnitude: number;
+          /**
+           * place = magnitude is over the whole area (chart-comparable); local = magnitude is inside region.bbox only. Added in 1.3.
+           */
+          scope: "place" | "local";
+          /**
+           * Area of the changed region in hectares. For local chapters, narration/evidence can say e.g. 'a 6-hectare area…'. Added in 1.3.
+           */
+          area_ha: number;
           persistence_years: number;
           region: {
             bbox: Bbox;
@@ -443,9 +515,17 @@ export interface Story {
           start_year: Year;
           end_year: Year;
           /**
-           * Signed change in the metric's own units (after minus before).
+           * Signed change in the metric's own units (after minus before). Meaning depends on scope: place = whole AOI (same units as metrics.series); local = inside region.bbox only. Changed in 1.3.
            */
           magnitude: number;
+          /**
+           * place = magnitude is over the whole area (chart-comparable); local = magnitude is inside region.bbox only. Added in 1.3.
+           */
+          scope: "place" | "local";
+          /**
+           * Area of the changed region in hectares. For local chapters, narration/evidence can say e.g. 'a 6-hectare area…'. Added in 1.3.
+           */
+          area_ha: number;
           persistence_years: number;
           region: {
             bbox: Bbox;
@@ -471,9 +551,17 @@ export interface Story {
           start_year: Year;
           end_year: Year;
           /**
-           * Signed change in the metric's own units (after minus before).
+           * Signed change in the metric's own units (after minus before). Meaning depends on scope: place = whole AOI (same units as metrics.series); local = inside region.bbox only. Changed in 1.3.
            */
           magnitude: number;
+          /**
+           * place = magnitude is over the whole area (chart-comparable); local = magnitude is inside region.bbox only. Added in 1.3.
+           */
+          scope: "place" | "local";
+          /**
+           * Area of the changed region in hectares. For local chapters, narration/evidence can say e.g. 'a 6-hectare area…'. Added in 1.3.
+           */
+          area_ha: number;
           persistence_years: number;
           region: {
             bbox: Bbox;
@@ -497,9 +585,17 @@ export interface Story {
           start_year: Year;
           end_year: Year;
           /**
-           * Signed change in the metric's own units (after minus before).
+           * Signed change in the metric's own units (after minus before). Meaning depends on scope: place = whole AOI (same units as metrics.series); local = inside region.bbox only. Changed in 1.3.
            */
           magnitude: number;
+          /**
+           * place = magnitude is over the whole area (chart-comparable); local = magnitude is inside region.bbox only. Added in 1.3.
+           */
+          scope: "place" | "local";
+          /**
+           * Area of the changed region in hectares. For local chapters, narration/evidence can say e.g. 'a 6-hectare area…'. Added in 1.3.
+           */
+          area_ha: number;
           persistence_years: number;
           region: {
             bbox: Bbox;
@@ -523,9 +619,17 @@ export interface Story {
           start_year: Year;
           end_year: Year;
           /**
-           * Signed change in the metric's own units (after minus before).
+           * Signed change in the metric's own units (after minus before). Meaning depends on scope: place = whole AOI (same units as metrics.series); local = inside region.bbox only. Changed in 1.3.
            */
           magnitude: number;
+          /**
+           * place = magnitude is over the whole area (chart-comparable); local = magnitude is inside region.bbox only. Added in 1.3.
+           */
+          scope: "place" | "local";
+          /**
+           * Area of the changed region in hectares. For local chapters, narration/evidence can say e.g. 'a 6-hectare area…'. Added in 1.3.
+           */
+          area_ha: number;
           persistence_years: number;
           region: {
             bbox: Bbox;
@@ -549,9 +653,17 @@ export interface Story {
           start_year: Year;
           end_year: Year;
           /**
-           * Signed change in the metric's own units (after minus before).
+           * Signed change in the metric's own units (after minus before). Meaning depends on scope: place = whole AOI (same units as metrics.series); local = inside region.bbox only. Changed in 1.3.
            */
           magnitude: number;
+          /**
+           * place = magnitude is over the whole area (chart-comparable); local = magnitude is inside region.bbox only. Added in 1.3.
+           */
+          scope: "place" | "local";
+          /**
+           * Area of the changed region in hectares. For local chapters, narration/evidence can say e.g. 'a 6-hectare area…'. Added in 1.3.
+           */
+          area_ha: number;
           persistence_years: number;
           region: {
             bbox: Bbox;
@@ -575,9 +687,17 @@ export interface Story {
           start_year: Year;
           end_year: Year;
           /**
-           * Signed change in the metric's own units (after minus before).
+           * Signed change in the metric's own units (after minus before). Meaning depends on scope: place = whole AOI (same units as metrics.series); local = inside region.bbox only. Changed in 1.3.
            */
           magnitude: number;
+          /**
+           * place = magnitude is over the whole area (chart-comparable); local = magnitude is inside region.bbox only. Added in 1.3.
+           */
+          scope: "place" | "local";
+          /**
+           * Area of the changed region in hectares. For local chapters, narration/evidence can say e.g. 'a 6-hectare area…'. Added in 1.3.
+           */
+          area_ha: number;
           persistence_years: number;
           region: {
             bbox: Bbox;

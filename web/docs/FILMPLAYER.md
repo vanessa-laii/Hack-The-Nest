@@ -64,6 +64,6 @@ Re-generate: `POST /api/narrate` with `{ "story_id": "sample-lake-6km" }` (needs
 
 ## Gaps (ok for this pass)
 
-- Timeline chapter markers, MetricChart, EvidencePanel — stubs / later.
+- MetricChart, EvidencePanel — stubs / later. (Timeline chapter markers: cut by agreement.)
 - BeforeAfter slider — not wired.
 - Visual polish of chrome may still iterate; keep the props API above.
