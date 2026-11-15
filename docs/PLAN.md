@@ -8,7 +8,7 @@
 
 **The problem.** The biggest changes to the places we live happen too slowly to notice: a lake shrinks, farmland becomes subdivisions, a forest burns and grows back. The proof exists, because NASA and USGS's Landsat satellites have photographed every patch of land since the 1980s. But that archive is built for remote-sensing specialists. Even when you can see that a place changed, nothing tells you *why*.
 
-**What we do about it.** An agent reads 40 years of Landsat imagery for the place you name, measures what changed and when (vegetation, water, built-up land), and finds documented real-world events that explain each change. It narrates the result as a short film with every claim linked to its source. When it can't find a cause it says so, instead of guessing.
+**What we do about it.** An agent reads 40 years of Landsat imagery for the place you name, measures what changed and when (vegetation, water, built-up land), and finds documented real-world events that explain each change. It narrates the result as a short film with every claim linked to its source. When it can't find a cause, the evidence panel says so plainly, and the narration never guesses.
 
 **Who it's for.** Teachers and students who want a lesson about *their* town, local journalists who need evidence of how a place changed, residents and planners asking "what was here before?", and anyone curious about where they grew up.
 
@@ -111,7 +111,7 @@ Goal: submitted and rehearsed.
 4. Gemini image check
 5. Live generation (demo pre-built stories only)
 
-**Never cut:** source verification, "cause unknown" honesty, the player, narration, credit lines.
+**Never cut:** source verification, "cause unknown" honesty (shown in the timeline and evidence panel; the narration never guesses), the player, narration, credit lines.
 
 ## Repo structure
 

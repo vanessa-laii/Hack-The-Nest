@@ -1,0 +1,123 @@
+{
+  "summary": {
+    "claims": 0,
+    "unsupported": 0,
+    "found": 0,
+    "expected": 7,
+    "llm_calls": 0,
+    "schema_errors": 0,
+    "seconds": 0.0,
+    "cause_recall": 0.0,
+    "passes": false
+  },
+  "places": {
+    "lake-mead": {
+      "claims": 0,
+      "unsupported": [],
+      "schema": [],
+      "found": 0,
+      "expected": 1,
+      "notes": [
+        "MISSED water_loss [2000, 2015] ['drought', 'low water', 'reservoir level']"
+      ],
+      "llm_calls": 0,
+      "seconds": 0.0,
+      "crashed": null,
+      "confidence": [
+        "cause_unknown",
+        "cause_unknown",
+        "cause_unknown",
+        "cause_unknown"
+      ]
+    },
+    "paradise": {
+      "claims": 0,
+      "unsupported": [],
+      "schema": [],
+      "found": 0,
+      "expected": 1,
+      "notes": [
+        "MISSED burn [2018, 2018] ['camp fire', 'wildfire']"
+      ],
+      "llm_calls": 0,
+      "seconds": 0.0,
+      "crashed": null,
+      "confidence": [
+        "cause_unknown",
+        "cause_unknown"
+      ]
+    },
+    "summerlin": {
+      "claims": 0,
+      "unsupported": [],
+      "schema": [],
+      "found": 0,
+      "expected": 1,
+      "notes": [
+        "MISSED vegetation_gain [1990, 2010] ['development', 'master-planned community', 'housing']"
+      ],
+      "llm_calls": 0,
+      "seconds": 0.0,
+      "crashed": null,
+      "confidence": [
+        "cause_unknown"
+      ]
+    },
+    "palm-jumeirah": {
+      "claims": 0,
+      "unsupported": [],
+      "schema": [],
+      "found": 0,
+      "expected": 1,
+      "notes": [
+        "MISSED water_loss [2001, 2006] ['land reclamation', 'artificial island']"
+      ],
+      "llm_calls": 0,
+      "seconds": 0.0,
+      "crashed": null,
+      "confidence": [
+        "cause_unknown",
+        "cause_unknown"
+      ]
+    },
+    "willow-run": {
+      "claims": 0,
+      "unsupported": [],
+      "schema": [],
+      "found": 0,
+      "expected": 2,
+      "notes": [
+        "MISSED other [2014, 2015] ['willow run plant', 'demolition', 'racer trust']",
+        "MISSED urban_growth [2016, 2018] ['american center for mobility', 'test track', 'autonomous vehicles']"
+      ],
+      "llm_calls": 0,
+      "seconds": 0.0,
+      "crashed": null,
+      "confidence": [
+        "cause_unknown",
+        "cause_unknown",
+        "cause_unknown",
+        "cause_unknown",
+        "cause_unknown"
+      ]
+    },
+    "delray": {
+      "claims": 0,
+      "unsupported": [],
+      "schema": [],
+      "found": 0,
+      "expected": 1,
+      "notes": [
+        "MISSED urban_growth [2019, 2024] ['gordie howe international bridge', 'port of entry']"
+      ],
+      "llm_calls": 0,
+      "seconds": 0.0,
+      "crashed": null,
+      "confidence": [
+        "cause_unknown",
+        "cause_unknown",
+        "cause_unknown"
+      ]
+    }
+  }
+}

@@ -1,4 +1,4 @@
-# Runs a full story build: imagery → changes → story assembly → save → gallery index.
+# Runs a full story build: imagery → changes → causes → script → save → gallery index.
 # Inputs: a place query or an already-resolved Place, optional aoi_km, a `sink` for events,
 #         and an optional deadline (time.monotonic()) after which nothing is saved.
 # Outputs: the saved story dict; story.json and an updated stories/index.json under DATA_DIR.
@@ -7,11 +7,14 @@
 #   1. run_imagery makes the frames, metrics and imagery.json, emitting its own events.
 #   2. detect_changes finds 0–5 lasting changes; one `change` event is sent per change.
 #      No changes at all raises NoLastingChanges: a story needs 1–5 change chapters (HL-2).
-#   3. assemble_story writes the chapters and the 150–225 word script (stage "script").
-#   4. In one worker thread: check the deadline, then store.save_story validates and saves
+#   3. find_causes searches for documented causes and keeps only code-verified claims
+#      (stages "research" and "verify", ADR-004). If too little time is left (HL-5), or the
+#      agent fails, every change stays cause_unknown and a warning is recorded.
+#   4. assemble_story writes the chapters and the 150–225 word script (stage "script").
+#   5. In one worker thread: check the deadline, then store.save_story validates and saves
 #      story.json and the gallery list (stories/index.json) gets this story at the top.
 #      Both are written or neither is (stage "save").
-#   5. A `done` event carries the story's URL.
+#   6. A `done` event carries the story's URL.
 #
 # The caller (jobs.py) adds the 180 s timeout (HL-5) and turns exceptions into error events.
 # A timeout stops this coroutine but not a worker thread it is waiting on, which is why the
@@ -23,14 +26,22 @@ import threading
 import time
 from pathlib import Path
 
-from app import store
+from app import llm, store
+from app.agent.causes import find_causes
+from app.agent.trace import Budget, Trace
 from app.pipeline import changes as change_detection
 from app.pipeline.run import EventLog, Emit, _ignore_event, story_dir, run_imagery, write_json
 from app.pipeline.story import assemble_story, headline
 from app.pipeline.types import Place
 
 # Share of the progress bar reached when each stage finishes; run.py stops at 0.64.
-PROGRESS = {"changes": 0.75, "script": 0.88, "save": 0.97}
+PROGRESS = {"changes": 0.75, "research": 0.80, "verify": 0.84, "script": 0.88, "save": 0.97}
+
+# HL-5: the cause search needs roughly this long (about 7 model calls, paced). With less time
+# left before the deadline it is skipped, and every change stays cause_unknown.
+RESEARCH_MIN_S = 40.0
+# Time kept back after the cause search for the script, the save and the done event.
+AFTER_RESEARCH_S = 12.0
 
 
 # Builds save from worker threads, so two of them could read-modify-write index.json at once.
@@ -131,6 +142,71 @@ def save_and_index(story: dict, folder: Path, deadline: float | None = None) -> 
         raise
 
 
+# --- Causes (S4 agent) ---
+
+def research_time_s(deadline: float | None) -> float | None:
+    """Seconds the cause search may take before the deadline, or None for no limit."""
+    if deadline is None:
+        return None
+    return deadline - time.monotonic() - AFTER_RESEARCH_S
+
+
+def stage_emitter(emit: EventLog):
+    """An emit for find_causes that adds the progress value for its stage."""
+    async def emit_with_progress(type_: str, message: str, *, stage: str, **extra) -> None:
+        await emit(type_, message, stage=stage, progress=PROGRESS.get(stage), **extra)
+    return emit_with_progress
+
+
+async def research_causes(folder: Path, place: dict, found: list[dict], emit: EventLog,
+                          deadline: float | None) -> tuple[dict | None, dict, list[str]]:
+    """Runs the cause agent within the time left. Returns (causes or None, usage, warnings).
+    None means every change stays cause_unknown (TR-8); the build carries on either way."""
+    trace = Trace(folder)
+    budget = Budget()  # HL-10 per story
+    warnings: list[str] = []
+    time_left = research_time_s(deadline)
+    if time_left is not None and time_left < RESEARCH_MIN_S:
+        warnings.append("Cause search skipped: too little time left before the time limit "
+                        "(HL-5)")
+        await emit("progress", "Not enough time left to search for causes", stage="research",
+                   status="warning", progress=PROGRESS["research"])
+        return None, usage_counts(budget), warnings
+
+    await emit("progress", "Searching for documented causes", stage="research",
+               status="started", progress=PROGRESS["research"] - 0.03)
+    search = find_causes(folder, place, found, trace=trace, budget=budget,
+                         emit=stage_emitter(emit))
+    try:
+        causes = await asyncio.wait_for(search, timeout=time_left)
+    except asyncio.TimeoutError:
+        warnings.append("Cause search stopped at the time limit (HL-5); causes left unknown")
+        await emit("progress", "Cause search ran out of time", stage="research",
+                   status="warning", progress=PROGRESS["verify"])
+        return None, usage_counts(budget), warnings
+    except Exception as error:  # an unexpected agent bug must not cost the user the film
+        trace.log("check", "cause search failed", error=llm.describe_error(error))
+        warnings.append("Cause search failed; causes left unknown")
+        await emit("progress", "Cause search failed; causes left unknown", stage="research",
+                   status="warning", progress=PROGRESS["verify"])
+        return None, usage_counts(budget), warnings
+
+    warnings.extend(causes.get("warnings", []))
+    sourced = 0
+    for chapter in causes["chapters"].values():
+        if chapter["claims"]:
+            sourced += 1
+    await emit("progress", f"Found documented causes for {sourced} of {len(found)} changes",
+               stage="verify", status="done", progress=PROGRESS["verify"])
+    return causes, usage_counts(budget), warnings
+
+
+def usage_counts(budget: Budget) -> dict:
+    """story.generation.usage from the story's budget (HL-10). No image check yet."""
+    return {"exa_calls": budget.used.get("exa", 0), "llm_calls": budget.used.get("llm", 0),
+            "vision_calls": 0}
+
+
 # --- The full build ---
 
 async def announce_changes(emit: EventLog, found: list[dict]) -> None:
@@ -170,23 +246,29 @@ async def build_story(query: str, *, lat: float | None = None, lon: float | None
         raise NoLastingChanges(f"no lasting changes found for {imagery.story_id}")
     await announce_changes(emit, found)
 
-    # 3. Script
+    # 3. Causes
+    place_section = imagery.sections["place"]
+    causes, usage, warnings = await research_causes(folder, place_section, found, emit,
+                                                    deadline)
+
+    # 4. Script
     generation = {
         "duration_s": round(time.perf_counter() - start, 2),
-        "usage": {"exa_calls": 0, "llm_calls": 0, "vision_calls": 0},
-        "warnings": [],
+        "usage": usage,
+        "warnings": warnings,
     }
-    story = await asyncio.to_thread(assemble_story, folder, found, generation=generation)
+    story = await asyncio.to_thread(assemble_story, folder, found, causes=causes,
+                                    generation=generation)
     words = story["script"]["word_count"]
     await emit("progress", f"Wrote a {words}-word script", stage="script", status="done",
                progress=PROGRESS["script"])
 
-    # 4. Save (validates against the contract first), together with the gallery entry
+    # 5. Save (validates against the contract first), together with the gallery entry
     await asyncio.to_thread(save_and_index, story, folder, deadline)
     await emit("progress", "Saved the story", stage="save", status="done",
                progress=PROGRESS["save"])
 
-    # 5. Done
+    # 6. Done
     await emit("done", f"{story['place']['display_name']} is ready", progress=1.0,
                story_url=f"/api/stories/{story['id']}")
     return story
