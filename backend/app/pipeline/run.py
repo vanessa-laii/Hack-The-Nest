@@ -3,7 +3,8 @@
 # Outputs: frames/, thumbs/, composites.npz, imagery.json in DATA_DIR/stories/<id>/; ImageryResult.
 #
 # How it works:
-#   1. Find the place (geocode) and build the square area around it (AOI).
+#   1. Find the place (geocode, unless the caller already did) and build the square area
+#      around it (AOI).
 #   2. Search Landsat for up to 6 clear summer scenes per year, 1984–2026.
 #   3. Download those scenes and slice them back into one stack per year.
 #   4. Clean each year into one composite, then skip years under 60% clear (FR-14).
@@ -136,11 +137,13 @@ def write_json(path: Path, obj: dict) -> None:
 # --- Steps 1–3: place, scenes, downloads ---
 
 async def find_place(query: str, lat: float | None, lon: float | None,
-                     display_name: str | None, aoi_km: float,
-                     sink: Emit | None) -> tuple[Place, EventLog]:
-    """Geocodes the query (FR-1/2/3) and starts the event log.
-    Events can only start here, because the story id is built from the place."""
-    place = await geocode.resolve(query, lat=lat, lon=lon, display_name=display_name)
+                     display_name: str | None, aoi_km: float, sink: Emit | None,
+                     place: Place | None = None) -> tuple[Place, EventLog]:
+    """Geocodes the query (FR-1/2/3), or uses the caller's already-resolved place, and starts
+    the event log. Events can only start here, because the story id is built from the place.
+    Reusing the caller's place means the id can't differ from the one the API returned."""
+    if place is None:
+        place = await geocode.resolve(query, lat=lat, lon=lon, display_name=display_name)
     story_id = store.story_id(place.display_name, place.admin["country_code"], aoi_km)
     emit = EventLog(story_id, sink or _ignore_event)
     await emit("progress", f"Found {place.display_name}", stage="geocode", status="done",
@@ -319,16 +322,16 @@ def build_sections(place: Place, aoi: Aoi, kept: dict[int, YearComposite], skipp
 
 async def run_imagery(query: str, *, lat: float | None = None, lon: float | None = None,
                       display_name: str | None = None, aoi_km: float | None = None,
-                      sink: Emit | None = None) -> ImageryResult:
+                      sink: Emit | None = None, place: Place | None = None) -> ImageryResult:
     """Runs geocode → scenes → composite → render + metrics, emitting build events as it goes.
-    Heavy numpy work runs in threads so the event stream stays live. The caller adds the
-    HL-5 timeout."""
+    A `place` the caller already resolved skips the geocoder. Heavy numpy work runs in
+    threads so the event stream stays live. The caller adds the HL-5 timeout."""
     start = time.perf_counter()
     timings: dict[str, float] = {}
     aoi_km = aoi_km or settings.aoi_km
 
     # 1. Place and area
-    place, emit = await find_place(query, lat, lon, display_name, aoi_km, sink)
+    place, emit = await find_place(query, lat, lon, display_name, aoi_km, sink, place)
     timings["geocode_s"] = seconds_since(start)
     aoi = make_aoi(place.lat, place.lon, aoi_km)
     years = range(FIRST_YEAR, LAST_YEAR + 1)
