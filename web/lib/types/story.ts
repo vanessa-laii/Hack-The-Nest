@@ -20,10 +20,10 @@ export type Year = number;
 export type FileUrl = string;
 
 /**
- * One Earth Memory story. Written by backend/, read by web/. Version 1.0. See docs/CONTRACTS.md.
+ * One Earth Memory story. Written by backend/, read by web/. Version 1.2. See docs/CONTRACTS.md.
  */
 export interface Story {
-  schema_version: "1.0";
+  schema_version: "1.2";
   id: StoryId;
   /**
    * True only for hand-made sample/mock stories. Never true for generated stories.
@@ -177,7 +177,7 @@ export interface Story {
     series: {
       year: Year;
       /**
-       * Mean NDVI over clear pixels.
+       * Mean NDVI over clear land pixels (MNDWI <= 0; water excluded). Changed in 1.2: water was included and dragged the mean towards -1.
        */
       ndvi_mean: number;
       /**
@@ -185,7 +185,7 @@ export interface Story {
        */
       water_frac: number;
       /**
-       * Share of clear pixels with NDBI > 0 and NDVI < 0.2.
+       * Share of clear pixels with NDBI > 0, NDVI < 0.2 and MNDWI <= 0 (water excluded). Changed in 1.1: water was counted as built.
        */
       built_frac: number;
     }[];

@@ -1,5 +1,5 @@
 /**
- * Full-bleed Earth landing: globe is the page; copy floats like the inspiration layout.
+ * Full-bleed Revisit landing: globe is the page; copy floats like the inspiration layout.
  * Inputs: placeholder places list.
  * Outputs: cinematic interactive first viewport.
  */
@@ -11,6 +11,7 @@ import { PLACEHOLDER_PLACES, type PlaceLocation } from "@/lib/places";
 import { GlobeCanvas } from "./GlobeCanvas";
 import { PlacePicker } from "./PlacePicker";
 import { PlaceVideoPanel } from "./PlaceVideoPanel";
+import { SearchBox } from "./SearchBox";
 
 type LandingHeroProps = {
   places?: PlaceLocation[];
@@ -56,11 +57,9 @@ export function LandingHero({ places = PLACEHOLDER_PLACES }: LandingHeroProps) {
       {/* Top-left display copy — no header/nav, no mono eyebrow */}
       <div className="pointer-events-none absolute left-5 top-10 z-20 max-w-[15rem] sm:left-10 sm:top-[16%] sm:max-w-xs lg:left-14 lg:max-w-sm">
         <h1 className="font-display text-5xl font-medium leading-[0.95] tracking-tight text-[#f5f5f7] sm:text-6xl lg:text-7xl">
-          Earth
-          <br />
-          <span className="italic font-medium">Memory</span>
+          Revisit
         </h1>
-        <p className="mt-5 hidden max-w-[16rem] text-sm leading-relaxed text-[#a1a1a6] sm:block">
+        <p className="mt-5 italic hidden max-w-[16rem] text-sm leading-relaxed text-[#a1a1a6] sm:block">
           videos around the world across the decades.
         </p>
       </div>

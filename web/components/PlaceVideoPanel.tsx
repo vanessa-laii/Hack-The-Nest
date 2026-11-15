@@ -60,7 +60,9 @@ export function PlaceVideoPanel({ place, onClose }: PlaceVideoPanelProps) {
         <div className="flex items-start justify-between gap-4">
           <div className="min-w-0">
             <p className="font-label text-[10px] uppercase tracking-[0.28em] text-[#2997ff]/90">
-              Sample place
+              {place.stories.some((s) => s.id === "sample-lake-6km")
+                ? "Mock sample · ready"
+                : "Sample place"}
             </p>
             <h2 className="mt-2.5">
               <PlaceTitle displayName={place.displayName} />
@@ -82,7 +84,9 @@ export function PlaceVideoPanel({ place, onClose }: PlaceVideoPanelProps) {
           <span className="mx-2 text-white/20" aria-hidden>
             ·
           </span>
-          Placeholder
+          {place.stories.some((s) => s.id === "sample-lake-6km")
+            ? "Backend mock"
+            : "Placeholder"}
         </p>
 
         <div className="mt-5 flex flex-col gap-4">
@@ -110,7 +114,9 @@ export function PlaceVideoPanel({ place, onClose }: PlaceVideoPanelProps) {
                   Play film
                 </Link>
                 <span className="font-label text-[9px] uppercase tracking-[0.18em] text-[#6e6e73]">
-                  Stub · sample only
+                  {story.id === "sample-lake-6km"
+                    ? "Open mock story"
+                    : "Stub · sample only"}
                 </span>
               </div>
             </article>
